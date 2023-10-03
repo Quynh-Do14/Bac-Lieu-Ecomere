@@ -1,6 +1,7 @@
 import React from 'react'
 import MainLayout from '../../infratructure/common/layout/main-layout'
 import BannerCommon from '../../infratructure/common/layout/banner'
+import BreadcumbCommon from '../../infratructure/common/layout/breadcumb'
 
 const data =
 {
@@ -15,10 +16,10 @@ const data =
     date: ' 4th AUG 2020',
     type: "Ẩm thực"
 }
-const DetailArticle = () => {
+const DetailFestival = () => {
     return (
         <MainLayout>
-            <BannerCommon />
+            <BreadcumbCommon title={"Lễ hội"} breadcumb={"Trang chủ"} />
             <section class="blog blog-left">
                 <div class="container">
                     <div class="row">
@@ -364,4 +365,4 @@ const DetailArticle = () => {
     )
 }
 
-export default DetailArticle
+export default DetailFestival

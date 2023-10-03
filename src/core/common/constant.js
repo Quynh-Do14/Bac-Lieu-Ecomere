@@ -5,50 +5,26 @@ export default class Constants {
     static Menu = class {
         static List = [
             {
-                label: "Quản lý người dùng",
-                link: ROUTE_PATH.USER,
-                icon: <UserOutlined />
+                label: "Trang chủ",
+                link: ROUTE_PATH.HOME_PAGE,
             },
             {
-                label: "Danh mục lớp bản đồ",
-                link: ROUTE_PATH.CATEGORY_LAYOUT_MAP,
-                icon: <DatabaseOutlined />
+                label: "Điểm du lịch",
+                link: ROUTE_PATH.DESTINATION,
             },
             {
-                label: "Danh mục bài viết",
-                link: ROUTE_PATH.CATEGORY_NEWS,
-                icon: <DatabaseOutlined />
-            },
-            {
-                label: "Danh mục dịch vụ du lịch",
-                link: ROUTE_PATH.CATEGORY_SERVICE,
-                icon: <DatabaseOutlined />
-            },
-            {
-                label: "Quản lý lễ hội",
+                label: "Lễ hội",
                 link: ROUTE_PATH.FESTIVAL,
-                icon: <ScheduleOutlined />
             },
             {
-                label: "Quản lý đặc sản",
+                label: "Đặc sản",
                 link: ROUTE_PATH.SPECIALTY,
-                icon: <TagsOutlined />
             },
             {
-                label: "Quản lý bài viết",
-                link: ROUTE_PATH.NEWS,
-                icon: <ContainerOutlined />
+                label: "Bản đồ",
+                link: ROUTE_PATH.LAYOUT_MAP,
             },
-            {
-                label: "Quản lý lịch trình",
-                link: ROUTE_PATH.TOUR,
-                icon: <EnvironmentOutlined />
-            },
-            {
-                label: "Quản lý quận huyện",
-                link: ROUTE_PATH.DISTRICT,
-                icon: <ProjectOutlined />
-            },
+
         ]
     };
     static TOKEN = "token";

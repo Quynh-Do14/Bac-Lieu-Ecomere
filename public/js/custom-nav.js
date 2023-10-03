@@ -149,12 +149,12 @@ setTimeout(() => {
     if (curDirection === 2 && curScroll > threshold) {
       if (header.classList) {
         header.classList.add("hide");
-        jQuery(".sticky1").addClass(".tab-sticky");
+        jQuery(".sticky1").addClass("tab-sticky");
       }
     } else if (curDirection === 1) {
       if (header.classList) {
         header.classList.remove("hide");
-        jQuery(".sticky1").removeClass(".tab-sticky");
+        jQuery(".sticky1").removeClass("tab-sticky");
       }
     } else {
       toggled = false;
