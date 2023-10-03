@@ -1,4 +1,5 @@
 import React from 'react'
+import Constants from '../../../core/common/constant';
 // import logoWhite from "../../../assets/images/logo-white.png"
 // import logo from "../../../assets/images/logo.png"
 // import { DownOutlined } from "@ant-design/icons";
@@ -24,24 +25,14 @@ const HeaderPage = () => {
                                 id="bs-example-navbar-collapse-1"
                             >
                                 <ul className="nav navbar-nav" id="responsive-menu">
-                                    <li>
-                                        <a href="/">Trang chủ</a>
-                                    </li>
-                                    <li>
-                                        <a href="/article">Bài viết</a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">Điểm du lịch</a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">Lễ hội</a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">Đặc sản</a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">Bản đồ</a>
-                                    </li>
+                                    {Constants.Menu.List.map((it, index) => {
+                                        return (
+                                            <li key={index}>
+                                                <a href={it.link}>{it.label} </a>
+                                            </li>
+                                        )
+
+                                    })}
                                 </ul>
                             </div>
                             {/* /.navbar-collapse */}
