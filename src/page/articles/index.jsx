@@ -15,14 +15,6 @@ const Articles = () => {
                                     <div class="click-menu d-flex align-items-center justify-content-between">
                                         <div class="change-list f-active mr-2"><a href="destination-list.html"><i class="fa fa-bars"></i></a></div>
                                         <div class="change-grid"><a href="destination-grid.html"><i class="fa fa-th"></i></a></div>
-                                        <div class="sortby d-flex align-items-center justify-content-between ml-2">
-                                            <select class="niceSelect">
-                                                <option value="1" >Sort By</option>
-                                                <option value="2">Average rating</option>
-                                                <option value="3">Price: low to high</option>
-                                                <option value="4">Price: high to low</option>
-                                            </select>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="blog-full d-flex justify-content-around mb-4">
