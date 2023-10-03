@@ -36,10 +36,10 @@ const data = [
     }
 
 ]
-const ListArticles = () => {
+const ListFestival = () => {
     return (
         <MainLayout>
-            <BreadcumbCommon title={"Bài viết"} breadcumb={"Trang chủ"} />
+            <BreadcumbCommon title={"Lễ hội"} breadcumb={"Trang chủ"} />
             <section className="blog destination-b pb-6">
                 <div className="container">
                     <div className="row">
@@ -235,4 +235,4 @@ const ListArticles = () => {
     )
 }
 
-export default ListArticles
+export default ListFestival

@@ -1,6 +1,7 @@
 import React from 'react'
 import MainLayout from '../../infratructure/common/layout/main-layout'
 import BreadcumbCommon from '../../infratructure/common/layout/breadcumb'
+import { ROUTE_PATH } from '../../core/common/appRouter'
 const data = [
     {
         img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
@@ -75,7 +76,7 @@ const ListDestination = () => {
                                                         </div>
                                                         <div class="trend-content-main">
                                                             <div class="trend-content">
-                                                                <h4><a href="#">{it.name} </a></h4>
+                                                                <h4><a href={`${ROUTE_PATH.VIEW_DESTINATION}`}>{it.name} </a></h4>
                                                                 <p class="mb-0 pink"><i class="fa fa-eye mr-1"></i> {it.view} <i class="fa fa-map-marker mr-1 ml-3"></i>{it.address} </p>
                                                             </div>
                                                             <div class="trend-last-main">
