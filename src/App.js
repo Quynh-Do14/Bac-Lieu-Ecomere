@@ -1,21 +1,16 @@
 import "./App.css";
-import {
-  BrowserRouter,
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from "react-router-dom";
-import Home from "./components/Home";
+import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
+import HomePage from "./page/home-page";
+import DetailArticle from "./page/articles/detail";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/detail-article" element={<DetailArticle />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

@@ -43,480 +43,7 @@ const Home = () => {
                     <li>
                       <a href="contact.html">Bản đồ</a>
                     </li>
-                    {/* <li className="dropdown submenu active">
-                      <a
-                        href="index.html"
-                        className="dropdown-toggle"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Home{" "}
-                        <i className="icon-arrow-down" aria-hidden="true" />
-                      </a>
-                      <ul className="dropdown-menu">
-                        <li>
-                          <a href="index.html">Homepage Default</a>
-                        </li>
-                        <li>
-                          <a href="index-1.html">Homepage 1</a>
-                        </li>
-                        <li>
-                          <a href="index-2.html">Homepage 2</a>
-                        </li>
-                        <li>
-                          <a href="index-3.html">Homepage 3</a>
-                        </li>
-                        <li className="submenu dropdown">
-                          <a
-                            href="index-flight.html"
-                            className="dropdown-toggle"
-                            data-toggle="dropdown"
-                            role="button"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Flight
-                            <i
-                              className="fa fa-angle-right"
-                              aria-hidden="true"
-                            />
-                          </a>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <a href="index-flight.html">Homepage Flight</a>
-                            </li>
-                            <li>
-                              <a href="flight-list.html">Flight List</a>
-                            </li>
-                            <li>
-                              <a href="flight-grid.html">Flight Grid</a>
-                            </li>
-                            <li>
-                              <a href="flight-detail.html">Flight Detail</a>
-                            </li>
-                            <li>
-                              <a href="flight-booking.html">Flight Booking</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li className="submenu dropdown">
-                          <a
-                            href="index-car.html"
-                            className="dropdown-toggle"
-                            data-toggle="dropdown"
-                            role="button"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Car
-                            <i
-                              className="fa fa-angle-right"
-                              aria-hidden="true"
-                            />
-                          </a>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <a href="index-car.html">Homepage Car</a>
-                            </li>
-                            <li>
-                              <a href="car-list.html">Car List</a>
-                            </li>
-                            <li>
-                              <a href="car-grid.html">Car Grid</a>
-                            </li>
-                            <li>
-                              <a href="car-detail.html">Car Detail</a>
-                            </li>
-                            <li>
-                              <a href="car-booking.html">Car Booking</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li className="submenu dropdown">
-                          <a
-                            href="index-train.html"
-                            className="dropdown-toggle"
-                            data-toggle="dropdown"
-                            role="button"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Train
-                            <i
-                              className="fa fa-angle-right"
-                              aria-hidden="true"
-                            />
-                          </a>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <a href="index-train.html">Homepage Train</a>
-                            </li>
-                            <li>
-                              <a href="train-list.html">Train List</a>
-                            </li>
-                            <li>
-                              <a href="train-grid.html">Train Grid</a>
-                            </li>
-                            <li>
-                              <a href="train-detail.html">Train Detail</a>
-                            </li>
-                            <li>
-                              <a href="train-booking.html">Train Booking</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li className="submenu dropdown">
-                          <a
-                            href="index-hotel.html"
-                            className="dropdown-toggle"
-                            data-toggle="dropdown"
-                            role="button"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Hotels
-                            <i
-                              className="fa fa-angle-right"
-                              aria-hidden="true"
-                            />
-                          </a>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <a href="index-hotel.html">Homepage Hotel</a>
-                            </li>
-                            <li>
-                              <a href="hotel-list.html">Hotel List</a>
-                            </li>
-                            <li>
-                              <a href="hotel-grid.html">Hotel Grid</a>
-                            </li>
-                            <li>
-                              <a href="hotel-detail.html">Hotel Detail</a>
-                            </li>
-                            <li>
-                              <a href="hotel-booking.html">Hotel Booking</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <a href="index-search.html">Homepage Search</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="about.html">About Us</a>
-                    </li>
-                    <li className="submenu dropdown">
-                      <a
-                        href="#"
-                        className="dropdown-toggle"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Pages{" "}
-                        <i className="icon-arrow-down" aria-hidden="true" />
-                      </a>
-                      <ul className="dropdown-menu">
-                        <li>
-                          <a href="booking.html">Booking</a>
-                        </li>
-                        <li>
-                          <a href="confirmation.html">Confirmation</a>
-                        </li>
-                        <li className="submenu dropdown">
-                          <a
-                            href="gallery.html"
-                            className="dropdown-toggle"
-                            data-toggle="dropdown"
-                            role="button"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Gallery
-                            <i
-                              className="fa fa-angle-right"
-                              aria-hidden="true"
-                            />
-                          </a>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <a href="gallery.html">Gallery</a>
-                            </li>
-                            <li>
-                              <a href="gallery1.html">Gallery Masonry</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li className="submenu dropdown">
-                          <a
-                            href="404.html"
-                            className="dropdown-toggle"
-                            data-toggle="dropdown"
-                            role="button"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Error
-                            <i
-                              className="fa fa-angle-right"
-                              aria-hidden="true"
-                            />
-                          </a>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <a href="404.html">Error Page 1</a>
-                            </li>
-                            <li>
-                              <a href="404-1.html">Error Page 2</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li className="submenu dropdown">
-                          <a
-                            href="comingsoon.html"
-                            className="dropdown-toggle"
-                            data-toggle="dropdown"
-                            role="button"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Comming Soon
-                            <i
-                              className="fa fa-angle-right"
-                              aria-hidden="true"
-                            />
-                          </a>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <a href="comingsoon.html">Coming Soon 1</a>
-                            </li>
-                            <li>
-                              <a href="comingsoon-1.html">Coming Soon 2</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li className="submenu dropdown">
-                          <a
-                            href="#"
-                            className="dropdown-toggle"
-                            data-toggle="dropdown"
-                            role="button"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Shop{" "}
-                            <i
-                              className="fa fa-angle-right"
-                              aria-hidden="true"
-                            />
-                          </a>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <a href="shop-grid1.html">Right Grid</a>
-                            </li>
-                            <li>
-                              <a href="shop-list1.html">Right List</a>
-                            </li>
-                            <li>
-                              <a href="shop-detail.html">Shop Single One</a>
-                            </li>
-                            <li>
-                              <a href="cart.html">Cart</a>
-                            </li>
-                            <li>
-                              <a href="checkout.html">Checkout</a>
-                            </li>
-                            <li>
-                              <a href="login.html">Account</a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html">Wishlist</a>
-                            </li>
-                            <li>
-                              <a href="forgot-password.html">Forgot Password</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <a href="faq.html">Faq</a>
-                        </li>
-                        <li>
-                          <a href="testimonial.html">Testimonials</a>
-                        </li>
-                        <li>
-                          <a href="pricing.html">Pricing</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li className="submenu dropdown">
-                      <a
-                        href="destination.html"
-                        className="dropdown-toggle"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Destination{" "}
-                        <i className="icon-arrow-down" aria-hidden="true" />
-                      </a>
-                      <ul className="dropdown-menu">
-                        <li>
-                          <a href="destination-list.html">Destination List</a>
-                        </li>
-                        <li>
-                          <a href="destination-grid.html">Destination Grid</a>
-                        </li>
-                        <li>
-                          <a href="destination-full.html">
-                            Destination Fullwidth
-                          </a>
-                        </li>
-                        <li>
-                          <a href="destination-left.html">Destination Left</a>
-                        </li>
-                        <li>
-                          <a href="destination-list.html">Destination Right</a>
-                        </li>
-                        <li>
-                          <a href="destination-masonry.html">
-                            Destination Masonry
-                          </a>
-                        </li>
-                        <li className="submenu dropdown">
-                          <a
-                            href="destination-single.html"
-                            className="dropdown-toggle"
-                            data-toggle="dropdown"
-                            role="button"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Destination Single
-                            <i
-                              className="fa fa-angle-right"
-                              aria-hidden="true"
-                            />
-                          </a>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <a href="destination-single.html">
-                                Destination Single 1
-                              </a>
-                            </li>
-                            <li>
-                              <a href="destination-single1.html">
-                                Destination Single 2
-                              </a>
-                            </li>
-                            <li>
-                              <a href="destination-single-full.html">
-                                Destination Single Full
-                              </a>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </li>
-                    <li className="submenu dropdown">
-                      <a
-                        href="blog-home.html"
-                        className="dropdown-toggle"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Blogs{" "}
-                        <i className="icon-arrow-down" aria-hidden="true" />
-                      </a>
-                      <ul className="dropdown-menu">
-                        <li>
-                          <a href="blog-list.html">Blog List</a>
-                        </li>
-                        <li>
-                          <a href="blog-grid.html">Blog Grid</a>
-                        </li>
-                        <li>
-                          <a href="blog-full.html">Blog Fullwidth</a>
-                        </li>
-                        <li>
-                          <a href="blog-left.html">Blog Left</a>
-                        </li>
-                        <li>
-                          <a href="blog-list.html">Blog Right</a>
-                        </li>
-                        <li>
-                          <a href="blog-masonry.html">Blog Masonry</a>
-                        </li>
-                        <li>
-                          <a href="blog-single.html">Blog Single</a>
-                        </li>
-                        <li>
-                          <a href="blog-single-full.html">Blog Single Full</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li className="submenu dropdown">
-                      <a
-                        href="dashboard.html"
-                        className="dropdown-toggle"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Dashboard{" "}
-                        <i className="fa fa-angle-down" aria-hidden="true" />
-                      </a>
-                      <ul className="dropdown-menu">
-                        <li>
-                          <a href="dashboard.html">Dashboard</a>
-                        </li>
-                        <li>
-                          <a href="dashboard-my-profile.html">User Profile</a>
-                        </li>
-                        <li>
-                          <a href="dashboard-list.html">User Wishlist</a>
-                        </li>
-                        <li>
-                          <a href="dashboard-messages.html">User Messages</a>
-                        </li>
-                        <li>
-                          <a href="dashboard-history.html">Booking History</a>
-                        </li>
-                        <li>
-                          <a href="dashboard-add-new.html">Add New</a>
-                        </li>
-                        <li>
-                          <a href="dashboard-list.html">Tour List</a>
-                        </li>
-                        <li>
-                          <a href="dashboard-reviews.html">Dashboard Reviews</a>
-                        </li>
-                      </ul>
-                    </li> */}
-                    {/* <li>
-                      <a href="contact.html">Contact Us</a>
-                    </li> */}
                   </ul>
-                  {/* <div className="header_sidemenu">
-                    <div className="mhead">
-                      <span className="menu-ham">
-                        <a
-                          href="#"
-                          className="cart-icon d-flex align-items-center ml-1"
-                        >
-                          <i className="icon-basket-loaded" />
-                          <span className="cart-label">3</span>
-                        </a>
-                      </span>
-                    </div>
-                  </div> */}
                 </div>
                 {/* /.navbar-collapse */}
                 <div className="register-login">
@@ -754,7 +281,7 @@ const Home = () => {
                     thế giới. Kết hợp chúng tôi đã nhận được 1532 đánh giá của
                     khách hàng và xếp hạng trung bình là 5 trên 5 sao. <br />
                     <br />
-                    ​Tra cứu thông tin chi tiết 192 / 5.000 Kết quả dịch Kết quả
+                    Tra cứu thông tin chi tiết 192 / 5.000 Kết quả dịch Kết quả
                     bản dịch Du lịch đã giúp chúng ta hiểu được ý nghĩa cuộc
                     sống và nó đã giúp chúng tôi trở thành những người tốt hơn.
                     Mỗi lần chúng tôi đi du lịch, chúng ta nhìn thế giới bằng
@@ -953,7 +480,7 @@ const Home = () => {
                     </div>
                     <div className="trend-last-main">
                       <p className="mb-0 trend-para">
-                      Cánh đồng muối Đông Hải là tọa độ du lịch "mới toanh" ở Bạc Liêu.
+                        Cánh đồng muối Đông Hải là tọa độ du lịch "mới toanh" ở Bạc Liêu.
                       </p>
                       <div className="trend-last d-flex align-items-center justify-content-between">
                         <p className="mb-0 white">
@@ -986,7 +513,7 @@ const Home = () => {
                       </h6>
                       <h4>
                         <a href="#">
-                        Tháp cổ Vĩnh Hưng
+                          Tháp cổ Vĩnh Hưng
                         </a>
                       </h4>
                       <div className="rating-main d-flex align-items-center">
@@ -1002,7 +529,7 @@ const Home = () => {
                     </div>
                     <div className="trend-last-main">
                       <p className="mb-0 trend-para">
-                      Tháp cổ Vĩnh Hưng được công nhận là Di tích lịch lịch sử cấp quốc gia.
+                        Tháp cổ Vĩnh Hưng được công nhận là Di tích lịch lịch sử cấp quốc gia.
                       </p>
                       <div className="trend-last d-flex align-items-center justify-content-between">
                         <p className="mb-0 white">
@@ -1035,7 +562,7 @@ const Home = () => {
                       </h6>
                       <h4>
                         <a href="#">
-                        Lăng Ông Nam Hải
+                          Lăng Ông Nam Hải
                         </a>
                       </h4>
                       <div className="rating-main d-flex align-items-center">
@@ -1051,7 +578,7 @@ const Home = () => {
                     </div>
                     <div className="trend-last-main">
                       <p className="mb-0 trend-para">
-                      Lăng Ông Nam Hải, niềm tự hào của "xứ biển phương Nam".
+                        Lăng Ông Nam Hải, niềm tự hào của "xứ biển phương Nam".
                       </p>
                       <div className="trend-last d-flex align-items-center justify-content-between">
                         <p className="mb-0 white">
@@ -1084,7 +611,7 @@ const Home = () => {
                       </h6>
                       <h4>
                         <a href="#">
-                        Di tích Đồng Nọc Nạng
+                          Di tích Đồng Nọc Nạng
                         </a>
                       </h4>
                       <div className="rating-main d-flex align-items-center">
@@ -1100,7 +627,7 @@ const Home = () => {
                     </div>
                     <div className="trend-last-main">
                       <p className="mb-0 trend-para">
-                      Di tích Đồng Nọc Nạng, bản hùng ca tráng lệ của một thời vàng son.
+                        Di tích Đồng Nọc Nạng, bản hùng ca tráng lệ của một thời vàng son.
                       </p>
                       <div className="trend-last d-flex align-items-center justify-content-between">
                         <p className="mb-0 white">
