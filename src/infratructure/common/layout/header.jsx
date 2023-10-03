@@ -31,21 +31,21 @@ const HeaderPage = () => {
                                         <a href="/article">Bài viết</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Điểm du lịch</a>
+                                        <a href="#">Điểm du lịch</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Lễ hội</a>
+                                        <a href="#">Lễ hội</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Đặc sản</a>
+                                        <a href="#">Đặc sản</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Bản đồ</a>
+                                        <a href="/map">Bản đồ</a>
                                     </li>
                                 </ul>
                             </div>
                             {/* /.navbar-collapse */}
-                            <div className="register-login">
+                            {/* <div className="register-login">
                                 <a
                                     href="#"
                                     className="mr-2"
@@ -57,7 +57,7 @@ const HeaderPage = () => {
                                 <a href="#" data-toggle="modal" data-target="#login">
                                     <i className="icon-login mr-1" /> Đăng nhập
                                 </a>
-                            </div>
+                            </div> */}
                             <div id="slicknav-mobile" />
                         </div>
                     </div>
