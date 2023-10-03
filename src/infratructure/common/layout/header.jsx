@@ -28,6 +28,9 @@ const HeaderPage = () => {
                                         <a href="/">Trang chủ</a>
                                     </li>
                                     <li>
+                                        <a href="/article">Bài viết</a>
+                                    </li>
+                                    <li>
                                         <a href="contact.html">Điểm du lịch</a>
                                     </li>
                                     <li>
