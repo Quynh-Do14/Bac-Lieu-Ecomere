@@ -16,7 +16,7 @@ export const ROUTE_PATH = {
     FESTIVAL: `${PREFIX}/festival`,
     VIEW_FESTIVAL: `${PREFIX}/festival/view/:id`,
 
-    LAYOUT_MAP: `${PREFIX}/layout-map`,
+    LAYOUT_MAP: `${PREFIX}/map`,
 
     HOME_PAGE: `${PREFIX}/`,
 };
