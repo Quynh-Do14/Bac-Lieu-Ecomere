@@ -4,6 +4,7 @@ import BannerCommon from '../../infratructure/common/layout/banner';
 import Articles from './articles';
 import Destination from './destination';
 import Festival from './festival';
+import Specialty from './specialty';
 
 const HomePage = () => {
     return (
@@ -11,6 +12,7 @@ const HomePage = () => {
             <BannerCommon />
             <Destination />
             <Festival />
+            <Specialty />
             <Articles />
         </MainLayout>
     )

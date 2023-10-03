@@ -58,7 +58,7 @@ const Articles = () => {
                             {
                                 data.map((it, index) => {
                                     return (
-                                        <div className="col-lg-5 col-md-12 col-xs-12 mb-4" key={index}>
+                                        <div className="col-lg-4 col-md-12 col-xs-12 mb-4" key={index}>
                                             <div className="news-item overflow-hidden">
                                                 <div className="news-image">
                                                     <img src={it.img} alt="image" />

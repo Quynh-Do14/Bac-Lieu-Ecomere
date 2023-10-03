@@ -18,8 +18,19 @@ const data = [
         address: "Bạc Liêu",
         name: "Lễ hội trăng dằm",
         description: " Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.",
-
-    }
+    },
+    {
+        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-5-1691745308.jpg",
+        address: "Bạc Liêu",
+        name: "Lễ hội trăng dằm",
+        description: " Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.",
+    },
+    {
+        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-5-1691745308.jpg",
+        address: "Bạc Liêu",
+        name: "Lễ hội trăng dằm",
+        description: " Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.",
+    },
 ]
 const Festival = () => {
     return (
