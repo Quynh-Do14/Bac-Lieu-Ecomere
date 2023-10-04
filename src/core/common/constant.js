@@ -9,6 +9,10 @@ export default class Constants {
                 link: ROUTE_PATH.HOME_PAGE,
             },
             {
+                label: "Bài viết",
+                link: ROUTE_PATH.ARTICLE,
+            },
+            {
                 label: "Điểm du lịch",
                 link: ROUTE_PATH.DESTINATION,
             },

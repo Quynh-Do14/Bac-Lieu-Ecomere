@@ -26,11 +26,6 @@ export class Endpoint {
     }
 
     static Module = class {
-        static Tour = "/tour";
-        static User = "/user";
-        static Category = "/danhmuc";
-        static CategoryByParentId = "/danhmuc/parentId";
-        static Location = "/diadiem";
         static News = "/tintuc";
         static Evaluate = "/danhgia";
         static District = "/quanhuyen";
