@@ -16,7 +16,7 @@ const HeaderPage = () => {
                             <div className="navbar-header">
                                 <a className="navbar-brand" href="index.html">
                                     <img src="./images/logo-white.png" alt="image" />
-                                    <img src="./images/logo.png" alt="image" />
+                                    <img src="./images/logo.png" alt="image" style={{maxHeight:57}}/>
                                 </a>
                             </div>
                             {/* Collect the nav links, forms, and other content for toggling */}

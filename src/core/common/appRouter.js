@@ -31,5 +31,6 @@ export class Endpoint {
         static District = "/quanhuyen";
         static Upload = "/files/upload";
         static MultiUpload = "/files/upload-multi";
+        static DiaDiem = "/diadiem";
     }
 };

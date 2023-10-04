@@ -3,11 +3,14 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
 import HeaderPage from "../../infratructure/common/layout/header";
 import Footer from "../../infratructure/common/layout/footer";
+import api from "../../infratructure/api";
+import { removeDiacriticsAndSpaces } from "../../common";
 mapboxgl.accessToken =
   "pk.eyJ1IjoibnRkMTAxMDIwMDAiLCJhIjoiY2tvbzJ4anl1MDZjMzJwbzNpcnA5NXZpcCJ9.dePfFDv0RlCLnWoDq1zHlw";
 const Map = () => {
   const mapContainer = useRef(null);
   const [map, setMap] = useState("{}");
+  const [dsDiaDiemGeoJson, setDsDiaDiemGeoJson] = useState("{}");
 
   const fecthData = async () => {
     let map = new mapboxgl.Map({
@@ -16,8 +19,88 @@ const Map = () => {
       center: [105.7119304, 9.2684649],
       style: "mapbox://styles/mapbox/satellite-streets-v12",
     });
+
     setMap(map);
     map.addControl(new mapboxgl.NavigationControl());
+
+    const resGetDiaDiemGeometry = await api.getDiaDiemGeometry(
+      `idDanhMuc=${1}`
+    );
+    if (resGetDiaDiemGeometry.features) {
+      var dataDsDiaDiemGeoJson = { ...resGetDiaDiemGeometry };
+      setDsDiaDiemGeoJson(dataDsDiaDiemGeoJson);
+      map.on("load", () => {
+        map.addSource("diaDiemDuLich", {
+          type: "geojson",
+          data: `http://14.248.94.155:9022/api/diadiem/geometry?idDanhMuc=${1}`,
+        });
+
+        var dsImg = [];
+
+        for (const feature of dataDsDiaDiemGeoJson.features) {
+          if (dsImg.indexOf(feature.properties.tenDanhMuc) == -1) {
+            dsImg.push(feature.properties.tenDanhMuc);
+          }
+        }
+
+        dsImg.map((v) => {
+          var uriImg = "";
+
+          if (v == "Du lịch văn hóa - lịch sử") {
+            uriImg =
+              "https://cdn.iconscout.com/icon/premium/png-256-thumb/cultural-tourism-3965601-3289666.png?f=webp";
+          }
+          if (v == "Địa điểm tâm linh") {
+            uriImg = "https://cdn-icons-png.flaticon.com/512/2510/2510482.png";
+          }
+          if (v == "Du lịch khám phá") {
+            uriImg =
+              "https://iconape.com/wp-content/png_logo_vector/google-discover.png";
+          }
+          if (v == "Du lịch sinh thái") {
+            uriImg =
+              "https://cdn0.iconfinder.com/data/icons/eco-power/450/eco-travel-512.png";
+          }
+          if (v == "Du lịch nghỉ dưỡng") {
+            uriImg = "https://cdn-icons-png.flaticon.com/512/5273/5273660.png";
+          }
+          map.loadImage(uriImg, (error, image) => {
+            if (error) throw error;
+            map.addImage(removeDiacriticsAndSpaces(v), image);
+          });
+        });
+
+        for (const feature of dataDsDiaDiemGeoJson.features) {
+          var symbol = feature.properties.tenDanhMuc;
+          const layerID = `diaDiemDuLich-${removeDiacriticsAndSpaces(symbol)}`;
+          // Add a layer for this symbol type if it hasn't been added already.
+          if (!map.getLayer(layerID)) {
+            map.addLayer({
+              id: layerID,
+              type: "symbol",
+              source: "diaDiemDuLich",
+              layout: {
+                "icon-image": removeDiacriticsAndSpaces(symbol),
+                // "icon-allow-overlap": true,
+                "icon-size": 0.05,
+                "text-field": feature.properties.tenDiaDiem,
+                "text-size": 11,
+                "text-offset": [0, 2],
+                "icon-offset": [0, -17],
+              },
+              paint: {
+                "text-color": "#004eff",
+                "text-halo-color": "#fff",
+                "text-halo-width": 2,
+              },
+              filter: ["==", "tenDanhMuc", symbol],
+            });
+          }
+        }
+      });
+    } else {
+      console.log("resGetDiaDiemGeometry", resGetDiaDiemGeometry);
+    }
   };
 
   useEffect(() => {
@@ -62,7 +145,10 @@ const Map = () => {
       </section>
       {/* BreadCrumb Ends */}
 
-      <section className="overflow-hidden d-flex align-items-center" style={{justifyContent: 'center'}}>
+      <section
+        className="overflow-hidden d-flex align-items-center"
+        style={{ justifyContent: "center" }}
+      >
         <div id="map" ref={mapContainer} />
       </section>
 

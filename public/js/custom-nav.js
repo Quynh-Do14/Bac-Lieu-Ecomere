@@ -163,4 +163,4 @@ setTimeout(() => {
   };
 
   window.addEventListener("scroll", checkScroll);
-}, 100);
+}, 1000);
