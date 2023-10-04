@@ -49,7 +49,7 @@ const Festival = () => {
                         {
                             data.map((it, index) => {
                                 return (
-                                    <div className="col-lg-4 slider-item" key={index}>
+                                    <div className="col-lg-4 mb-2 slider-item" key={index}>
                                         <div className="slider-image">
                                             <img src={it.img} alt="image" />
                                         </div>

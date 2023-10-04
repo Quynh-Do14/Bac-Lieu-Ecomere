@@ -7,8 +7,8 @@ export const ROUTE_PATH = {
     DESTINATION: `${PREFIX}/destination`,
     VIEW_DESTINATION: `${PREFIX}/destination/view/:id`,
 
-    ARTICLE: `${PREFIX}/festival`,
-    VIEW_ARTICLE: `${PREFIX}/festival/view/:id`,
+    ARTICLE: `${PREFIX}/article`,
+    VIEW_ARTICLE: `${PREFIX}/article/view/:id`,
 
     SPECIALTY: `${PREFIX}/specialty`,
     VIEW_SPECIALTY: `${PREFIX}/specialty/view/:id`,
@@ -26,11 +26,12 @@ export class Endpoint {
     }
 
     static Module = class {
-        static News = "/tintuc";
         static Evaluate = "/danhgia";
         static District = "/quanhuyen";
         static Upload = "/files/upload";
         static MultiUpload = "/files/upload-multi";
         static DiaDiem = "/diadiem";
+        static TinTuc = "/tintuc";
+
     }
 };

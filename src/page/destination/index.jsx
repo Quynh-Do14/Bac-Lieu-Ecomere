@@ -2,6 +2,7 @@ import React from 'react'
 import MainLayout from '../../infratructure/common/layout/main-layout'
 import BreadcumbCommon from '../../infratructure/common/layout/breadcumb'
 import { ROUTE_PATH } from '../../core/common/appRouter'
+import LoadingFullPage from '../../infratructure/common/controls/loading'
 const data = [
     {
         img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
@@ -40,6 +41,7 @@ const data = [
 const ListDestination = () => {
     return (
         <MainLayout>
+            <LoadingFullPage />
             <BreadcumbCommon title={"Điểm du lịch"} breadcumb={"Trang chủ"} />
             <section class="blog trending destination-b">
                 <div class="container">

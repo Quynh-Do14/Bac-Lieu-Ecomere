@@ -2,6 +2,9 @@ import React from 'react'
 import MainLayout from '../../infratructure/common/layout/main-layout'
 import BreadcumbCommon from '../../infratructure/common/layout/breadcumb'
 import { ROUTE_PATH } from '../../core/common/appRouter'
+import LoadingFullPage from '../../infratructure/common/controls/loading'
+import SearchCommon from '../../infratructure/common/controls/search-common'
+import RelationCommon from '../../infratructure/common/layout/relation'
 const data = [
     {
         img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-5-1691745308.jpg",
@@ -36,9 +39,46 @@ const data = [
     }
 
 ]
+
+const dataR = [
+    {
+        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
+        review: 38,
+        name: " Lăng Ông Nam Hải",
+        view: 852,
+        star: 5,
+        description: "A wonderful little cottage right on the seashore - perfect for exploring.",
+        address: "Bạc Liêu",
+        day: "3 ngày 2 đêm",
+        price: 12000
+    },
+    {
+        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
+        review: 38,
+        name: " Lăng Ông Nam Hải",
+        view: 852,
+        star: 5,
+        description: "A wonderful little cottage right on the seashore - perfect for exploring.",
+        address: "Bạc Liêu",
+        day: "3 ngày 2 đêm",
+        price: 12000
+    },
+    {
+        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
+        review: 38,
+        name: " Lăng Ông Nam Hải",
+        view: 852,
+        star: 5,
+        description: "A wonderful little cottage right on the seashore - perfect for exploring.",
+        address: "Bạc Liêu",
+        day: "3 ngày 2 đêm",
+        price: 12000
+    },
+]
 const ListFestival = () => {
     return (
         <MainLayout>
+            <LoadingFullPage />
             <BreadcumbCommon title={"Lễ hội"} breadcumb={"Trang chủ"} />
             <section className="blog destination-b pb-6">
                 <div className="container">
@@ -66,9 +106,9 @@ const ListFestival = () => {
                                                     </div>
                                                     <div className="col-lg-7 col-md-8 col-xs-12">
                                                         <div className="blog-content p-0">
-                                                            <h4 className="mb-1"><a href={`${ROUTE_PATH.VIEW_FESTIVAL}`} className="">{it.name} </a></h4>
+                                                            <h4 className="mb-1"><a href={ROUTE_PATH.VIEW_FESTIVAL} className="">{it.name} </a></h4>
                                                             <div className="trend-tags">
-                                                                <a href={`${ROUTE_PATH.VIEW_FESTIVAL}`} ><i className="fa fa-heart"></i></a>
+                                                                <a href={ROUTE_PATH.VIEW_FESTIVAL} ><i className="fa fa-heart"></i></a>
                                                             </div>
                                                             <div className="rating pb-1">
                                                                 <span className="fa fa-star checked"></span>
@@ -91,142 +131,8 @@ const ListFestival = () => {
                                 </div>
                             </div>
                         </div>
-
                         <div className="col-lg-4 col-xs-12 mb-4">
-                            <div className="sidebar-sticky">
-                                <div className="sidebar-item mb-4">
-                                    <form className="form-content">
-                                        <h4 className="title white">Find The Places</h4>
-                                        <div className="row">
-                                            <div className="col-lg-12">
-                                                <div className="form-group">
-                                                    <label className="white">Your Destination</label>
-                                                    <div className="input-box">
-                                                        <i className="flaticon-placeholder"></i>
-                                                        <select className="niceSelect">
-                                                            <option value="1">Where are you going?</option>
-                                                            <option value="2">Argentina</option>
-                                                            <option value="3">Belgium</option>
-                                                            <option value="4">Canada</option>
-                                                            <option value="5">Denmark</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="col-lg-6">
-                                                <div className="form-group">
-                                                    <label className="white">Check In</label>
-                                                    <div className="input-box">
-                                                        <i className="flaticon-calendar"></i>
-                                                        <input id="date-range0" type="text" placeholder="yyyy-mmm-dd" />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="col-lg-6">
-                                                <div className="form-group">
-                                                    <label className="white">Check Out</label>
-                                                    <div className="input-box">
-                                                        <i className="flaticon-calendar"></i>
-                                                        <input id="date-range1" type="text" placeholder="yyyy-mm-dd" />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="col-lg-6">
-                                                <div className="form-group">
-                                                    <label className="white">Adult</label>
-                                                    <div className="input-box">
-                                                        <i className="flaticon-add-user"></i>
-                                                        <select className="niceSelect">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="col-lg-6">
-                                                <div className="form-group">
-                                                    <label className="white">Children</label>
-                                                    <div className="input-box">
-                                                        <i className="flaticon-add-user"></i>
-                                                        <select className="niceSelect">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-lg-12">
-                                                <div className="form-group mb-0">
-                                                    <a href="#" className="nir-btn w-100"><i className="fa fa-search"></i> Check Availability</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div className="list-sidebar">
-                                    <div className="sidebar-item">
-                                        <h4>Services</h4>
-                                        <div className="pretty p-default p-thick p-pulse mar-bottom-15">
-                                            <input type="checkbox" />
-                                            <div className="state p-warning-o">
-                                                <label>24/7 Reception</label>
-                                            </div>
-                                        </div>
-                                        <div className="pretty p-default p-thick p-pulse mar-bottom-15">
-                                            <input type="checkbox" />
-                                            <div className="state p-warning-o">
-                                                <label>Parking</label>
-                                            </div>
-                                        </div>
-                                        <div className="pretty p-default p-thick p-pulse mar-bottom-15">
-                                            <input type="checkbox" />
-                                            <div className="state p-warning-o">
-                                                <label>Bar</label>
-                                            </div>
-                                        </div>
-                                        <div className="pretty p-default p-thick p-pulse mar-bottom-15">
-                                            <input type="checkbox" />
-                                            <div className="state p-warning-o">
-                                                <label>Restaurant</label>
-                                            </div>
-                                        </div>
-                                        <div className="pretty p-default p-thick p-pulse mar-bottom-15">
-                                            <input type="checkbox" />
-                                            <div className="state p-warning-o">
-                                                <label>Satellite Television</label>
-                                            </div>
-                                        </div>
-                                        <div className="pretty p-default p-thick p-pulse mar-bottom-15">
-                                            <input type="checkbox" />
-                                            <div className="state p-warning-o">
-                                                <label>Lift/ELevator</label>
-                                            </div>
-                                        </div>
-                                        <div className="pretty p-default p-thick p-pulse">
-                                            <input type="checkbox" />
-                                            <div className="state p-warning-o">
-                                                <label>Luggage Storage </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="sidebar-item">
-                                        <div className="map-box">
-                                            <i className="fa fa-map-marker"></i>
-                                            <a href="#">Show on Map</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <SearchCommon title={"lễ hội"} />
                         </div>
                     </div>
                 </div>
