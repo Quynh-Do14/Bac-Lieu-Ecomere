@@ -57,11 +57,11 @@ const dataR = [
     },
 ]
 
-const DetailFestival = () => {
+const DetailSpecialty = () => {
     return (
         <MainLayout>
             <LoadingFullPage />
-            <BreadcumbCommon title={"Lễ hội"} breadcumb={"Trang chủ"} />
+            <BreadcumbCommon title={"Đặc sản"} breadcumb={"Trang chủ"} />
             <section class="blog trending destination-b">
                 <div class="container">
                     <div class="row">
@@ -201,4 +201,4 @@ const DetailFestival = () => {
     )
 }
 
-export default DetailFestival
+export default DetailSpecialty

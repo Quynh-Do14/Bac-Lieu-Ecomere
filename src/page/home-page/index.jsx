@@ -13,25 +13,17 @@ const HomePage = () => {
     const [data, setData] = useState([]);
     const [pageSize, setPageSize] = useState(10);
 
-    // const onGetListDiemDenAsync = async ({ keyWord = "", limit = pageSize, page = 1, idQuanHuyen = 1, idDanhMuc = 1 }) => {
-    //     const response = await api.getAllDiaDiem(
-    //         `dichvu/top?idDanhMuc=1`,
-    //         setLoading
-    //     )
-    //     setData(response.data.diaDiems);
-    //     // setPagination(response.data.pagination);
-    //     // setTotalItem(response.data.totalItems);
-    // }
+    const onGetListDiemDenAsync = async () => {
+        const response = await api.getAllDiaDiem(
+            `dichvu/top?idDanhMuc=1`,
+            setLoading
+        )
+        setData(response.data.diaDiems);
+        // setPagination(response.data.pagination);
+        // setTotalItem(response.data.totalItems);
+    }
 
-    // const onSearch = async (keyWord = "", limit = pageSize, page = 1) => {
-    //     await onGetListDiemDenAsync({ keyWord: keyWord, limit: limit, page: page });
-    // };
-
-    // useEffect(() => {
-    //     onSearch().then(_ => { });
-    // }, []);
-
-    const onGetListDiemDenAsync = async ({ keyWord = "", limit = pageSize, page = 1, idQuanHuyen = 1, idDanhMuc = 1 }) => {
+    const onGetListTinTucAsync = async () => {
         const response = await api.getAllTinTuc(
             `loaitin?type=1`,
             setLoading
@@ -41,12 +33,9 @@ const HomePage = () => {
         // setTotalItem(response.data.totalItems);
     }
 
-    const onSearch = async (keyWord = "", limit = pageSize, page = 1) => {
-        await onGetListDiemDenAsync({ keyWord: keyWord, limit: limit, page: page });
-    };
-
     useEffect(() => {
-        onSearch().then(_ => { });
+        onGetListDiemDenAsync().then(_ => { });
+        onGetListTinTucAsync().then(_ => { });
     }, []);
 
     console.log('data', data);

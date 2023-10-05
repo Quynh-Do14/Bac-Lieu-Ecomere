@@ -26,7 +26,7 @@ const api = {
 
   getAllDiaDiem: (params, setLoading) =>
     requestDuong.get(
-      `${apiLinks.API}${Endpoint.Module.DiaDiem}?${params}`,
+      `${apiLinks.API}${Endpoint.Module.DiaDiem}/${params}`,
       setLoading
     ),
   getDiaDiemById: (params, setLoading) =>
@@ -39,7 +39,7 @@ const api = {
   //////
   getAllTinTuc: (params, setLoading) =>
     requestDuong.get(
-      `${apiLinks.API}${Endpoint.Module.TinTuc}?${params}`,
+      `${apiLinks.API}${Endpoint.Module.TinTuc}/${params}`,
       setLoading
     ),
   getTinTucById: (params, setLoading) =>

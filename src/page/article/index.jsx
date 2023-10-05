@@ -38,7 +38,7 @@ const data = [
         price: 12000
     },
 ]
-const ListDestination = () => {
+const ListArticle = () => {
     return (
         <MainLayout>
             <LoadingFullPage />
@@ -112,4 +112,4 @@ const ListDestination = () => {
     )
 }
 
-export default ListDestination
+export default ListArticle

@@ -1,12 +1,12 @@
 import React from 'react'
 
-const RelationCommon = ({ data = [] }) => {
+const RelationCommon = ({ data = [], title, slogan }) => {
     return (
         <section class="trending destination bg-grey pb-6">
             <div class="container">
                 <div class="section-title text-center mb-5 pb-2 w-50 mx-auto">
-                    <h2 class="m-0">Related <span>Tour Packages</span></h2>
-                    <p class="mb-0">Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.</p>
+                    <h2 class="m-0">{title} <span>Liên Quan</span></h2>
+                    <p class="mb-0">{slogan}</p>
                 </div>
                 <div class="trend-box">
                     <div class="row team-slider">

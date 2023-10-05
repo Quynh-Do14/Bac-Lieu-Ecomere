@@ -1,10 +1,12 @@
 import React from 'react'
 import Constants from '../../../core/common/constant';
+import { useLocation } from 'react-router-dom';
 // import logoWhite from "../../../assets/images/logo-white.png"
 // import logo from "../../../assets/images/logo.png"
 // import { DownOutlined } from "@ant-design/icons";
 
 const HeaderPage = () => {
+    const location = useLocation();
     return (
         <header className="main_header_area headerstye-1">
             {/* Navigation Bar */}
@@ -16,7 +18,7 @@ const HeaderPage = () => {
                             <div className="navbar-header">
                                 <a className="navbar-brand" href="index.html">
                                     <img src="./images/logo-white.png" alt="image" />
-                                    <img src="./images/logo.png" alt="image" style={{maxHeight:57}}/>
+                                    <img src="./images/logo.png" alt="image" style={{ maxHeight: 57 }} />
                                 </a>
                             </div>
                             {/* Collect the nav links, forms, and other content for toggling */}
@@ -27,7 +29,7 @@ const HeaderPage = () => {
                                 <ul className="nav navbar-nav" id="responsive-menu">
                                     {Constants.Menu.List.map((it, index) => {
                                         return (
-                                            <li key={index}>
+                                            <li className={`${location.pathname.includes(it.link) ? "menu-title active" : "menu-title"}`} key={index}>
                                                 <a href={it.link}>{it.label} </a>
                                             </li>
                                         )

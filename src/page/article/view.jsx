@@ -54,7 +54,7 @@ const dataR = [
         price: 12000
     },
 ]
-const DetailDestination = () => {
+const DetailArticle = () => {
     return (
         <MainLayout>
             {/* <LoadingFullPage /> */}
@@ -113,7 +113,7 @@ const DetailDestination = () => {
                                         </table>
                                     </div>
                                     <div class="description-inner mb-4">
-                                    <h4>What to Expect</h4>
+                                        <h4>What to Expect</h4>
                                         <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs.</p>
                                         <p class="mb-0">The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.</p>
                                     </div>
@@ -140,4 +140,4 @@ const DetailDestination = () => {
     )
 }
 
-export default DetailDestination
+export default DetailArticle
