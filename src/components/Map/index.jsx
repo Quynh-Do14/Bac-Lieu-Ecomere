@@ -11,62 +11,70 @@ const Map = () => {
   const mapContainer = useRef(null);
   const [map, setMap] = useState("{}");
   const [dsDiaDiemGeoJson, setDsDiaDiemGeoJson] = useState("{}");
+  const [dsDanhMucDiaDiemDuLich, setDsDanhMucDiaDiemDuLich] = useState([]);
 
   const fecthData = async () => {
     let map = new mapboxgl.Map({
       container: mapContainer.current,
       zoom: 13,
       center: [105.7119304, 9.2684649],
-      style: "mapbox://styles/mapbox/satellite-streets-v12",
+      style: "mapbox://styles/mapbox/streets-v12",
     });
 
     setMap(map);
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true,
+        },
+        // When active the map will receive updates to the device's location as it changes.
+        trackUserLocation: true,
+        // Draw an arrow next to the location dot to indicate which direction the device is heading.
+        showUserHeading: true,
+      }),
+      "bottom-right"
+    );
     map.addControl(new mapboxgl.NavigationControl());
-
     const resGetDiaDiemGeometry = await api.getDiaDiemGeometry(
       `idDanhMuc=${1}`
     );
-    if (resGetDiaDiemGeometry.features) {
+    const resGetDanhMucConCuaDanhMuc = await api.getDanhMucConCuaDanhMuc(
+      `idDanhMuc=${1}`
+    );
+    if (resGetDiaDiemGeometry.features && resGetDanhMucConCuaDanhMuc.success) {
       var dataDsDiaDiemGeoJson = { ...resGetDiaDiemGeometry };
       setDsDiaDiemGeoJson(dataDsDiaDiemGeoJson);
+      setDsDanhMucDiaDiemDuLich(resGetDanhMucConCuaDanhMuc.result);
       map.on("load", () => {
         map.addSource("diaDiemDuLich", {
           type: "geojson",
           data: `http://14.248.94.155:9022/api/diadiem/geometry?idDanhMuc=${1}`,
         });
 
-        var dsImg = [];
-
-        for (const feature of dataDsDiaDiemGeoJson.features) {
-          if (dsImg.indexOf(feature.properties.tenDanhMuc) == -1) {
-            dsImg.push(feature.properties.tenDanhMuc);
-          }
-        }
-
-        dsImg.map((v) => {
+        resGetDanhMucConCuaDanhMuc.result.map((v) => {
           var uriImg = "";
 
-          if (v == "Du lịch văn hóa - lịch sử") {
+          if (v.tenDanhMuc == "Du lịch văn hóa - lịch sử") {
             uriImg =
               "https://cdn.iconscout.com/icon/premium/png-256-thumb/cultural-tourism-3965601-3289666.png?f=webp";
           }
-          if (v == "Địa điểm tâm linh") {
+          if (v.tenDanhMuc == "Địa điểm tâm linh") {
             uriImg = "https://cdn-icons-png.flaticon.com/512/2510/2510482.png";
           }
-          if (v == "Du lịch khám phá") {
+          if (v.tenDanhMuc == "Du lịch khám phá") {
             uriImg =
               "https://iconape.com/wp-content/png_logo_vector/google-discover.png";
           }
-          if (v == "Du lịch sinh thái") {
+          if (v.tenDanhMuc == "Du lịch sinh thái") {
             uriImg =
               "https://cdn0.iconfinder.com/data/icons/eco-power/450/eco-travel-512.png";
           }
-          if (v == "Du lịch nghỉ dưỡng") {
+          if (v.tenDanhMuc == "Du lịch nghỉ dưỡng") {
             uriImg = "https://cdn-icons-png.flaticon.com/512/5273/5273660.png";
           }
           map.loadImage(uriImg, (error, image) => {
             if (error) throw error;
-            map.addImage(removeDiacriticsAndSpaces(v), image);
+            map.addImage(removeDiacriticsAndSpaces(v.tenDanhMuc), image);
           });
         });
 
@@ -95,6 +103,66 @@ const Map = () => {
               },
               filter: ["==", "tenDanhMuc", symbol],
             });
+            map.on("click", layerID, (e) => {
+              const coordinates = e.features[0].geometry.coordinates.slice();
+              const description = `<div>
+              <img src="${e.features[0].properties.hinhAnh}" alt="" style="min-width: 280px;min-height: 120px;">
+              <div style="
+                  padding: 20px;
+              ">
+                  <p style="
+          color: #d32f2f;
+          font-size: 11px;
+          text-transform: uppercase;
+      ">${e.features[0].properties.tenDanhMuc}</p>
+                  <p style="
+          color: #333;
+          font-size: 18px;
+          width: 240px;
+          font-weight: 500;
+      ">${e.features[0].properties.tenDiaDiem}</p>
+                  <p style="
+          font-size: 11px;
+          color: #333;
+          font-weight: 400;
+      ">${e.features[0].properties.gioMoCua} - ${e.features[0].properties.gioDongCua}</p>
+                  <p style="
+          width: 240px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 3;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          font-size: 13px;
+          line-height: 1.6;
+          color: #333;
+      ">${e.features[0].properties.moTa}</p>
+              </div>
+          </div>`;
+
+              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+              }
+
+              map.flyTo({
+                center: e.features[0].geometry.coordinates,
+                essential: true,
+                duration: 1000,
+              });
+
+              new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+            });
+
+            map.on("mouseenter", layerID, () => {
+              map.getCanvas().style.cursor = "pointer";
+            });
+
+            map.on("mouseleave", layerID, () => {
+              map.getCanvas().style.cursor = "";
+            });
           }
         }
       });
@@ -106,6 +174,15 @@ const Map = () => {
   useEffect(() => {
     fecthData();
   }, []);
+
+  const btDiaDiemDuLich = (e) => {
+    document.getElementById(e.target.value).checked = e.target.checked;
+    map.setLayoutProperty(
+      e.target.value,
+      "visibility",
+      e.target.checked ? "visible" : "none"
+    );
+  };
 
   return (
     <>
@@ -147,9 +224,77 @@ const Map = () => {
 
       <section
         className="overflow-hidden d-flex align-items-center"
-        style={{ justifyContent: "center" }}
+        style={{ justifyContent: "center", position: "relative" }}
       >
-        <div id="map" ref={mapContainer} />
+        <div id="map" ref={mapContainer}></div>
+        {dsDanhMucDiaDiemDuLich.length > 0 && (
+          <div
+            style={{
+              backgroundColor: "#fff",
+              padding: 4,
+              position: "absolute",
+              top: 100,
+              left: 60,
+            }}
+          >
+            {dsDanhMucDiaDiemDuLich.map((v, k) => (
+              <div
+                key={k}
+                className="d-flex align-items-center"
+                style={{ padding: "8px 12px" }}
+              >
+                <input
+                  type="checkbox"
+                  name={`diaDiemDuLich-${removeDiacriticsAndSpaces(
+                    v.tenDanhMuc
+                  )}`}
+                  id={`diaDiemDuLich-${removeDiacriticsAndSpaces(
+                    v.tenDanhMuc
+                  )}`}
+                  value={`diaDiemDuLich-${removeDiacriticsAndSpaces(
+                    v.tenDanhMuc
+                  )}`}
+                  style={{
+                    marginRight: 8,
+                  }}
+                  onClick={btDiaDiemDuLich}
+                  defaultChecked={true}
+                />
+                <label
+                  htmlFor={`diaDiemDuLich-${removeDiacriticsAndSpaces(
+                    v.tenDanhMuc
+                  )}`}
+                  style={{
+                    margin: 0,
+                  }}
+                >
+                  {v.tenDanhMuc}
+                </label>
+              </div>
+            ))}
+          </div>
+        )}
+        <div
+          style={{
+            position: "absolute",
+            top: 100,
+            right: 120,
+          }}
+        >
+          <div class="d-flex form-group">
+            <button className="onsearch">
+              <i class="flaticon-search"></i>
+            </button>
+            <input
+              type="text"
+              name=""
+              id=""
+              style={{
+                width: 260,
+              }}
+            />
+          </div>
+        </div>
       </section>
 
       {/* footer starts */}
