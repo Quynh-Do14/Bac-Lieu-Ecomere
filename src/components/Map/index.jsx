@@ -4,14 +4,16 @@ import mapboxgl from "mapbox-gl";
 import HeaderPage from "../../infratructure/common/layout/header";
 import Footer from "../../infratructure/common/layout/footer";
 import api from "../../infratructure/api";
-import { removeDiacriticsAndSpaces } from "../../common";
+import { removeAccents, removeDiacriticsAndSpaces } from "../../common";
 mapboxgl.accessToken =
   "pk.eyJ1IjoibnRkMTAxMDIwMDAiLCJhIjoiY2tvbzJ4anl1MDZjMzJwbzNpcnA5NXZpcCJ9.dePfFDv0RlCLnWoDq1zHlw";
 const Map = () => {
   const mapContainer = useRef(null);
-  const [map, setMap] = useState("{}");
-  const [dsDiaDiemGeoJson, setDsDiaDiemGeoJson] = useState("{}");
+  const [map, setMap] = useState({});
+  const [dsDiaDiemGeoJson, setDsDiaDiemGeoJson] = useState({});
   const [dsDanhMucDiaDiemDuLich, setDsDanhMucDiaDiemDuLich] = useState([]);
+  const [textSearch, setTextSearch] = useState("");
+  const [dsDiaDiemSearch, setDsDiaDiemSearch] = useState([]);
 
   const fecthData = async () => {
     let map = new mapboxgl.Map({
@@ -55,8 +57,7 @@ const Map = () => {
           var uriImg = "";
 
           if (v.tenDanhMuc == "Du lịch văn hóa - lịch sử") {
-            uriImg =
-              "https://cdn.iconscout.com/icon/premium/png-256-thumb/cultural-tourism-3965601-3289666.png?f=webp";
+            uriImg = "https://cdn-icons-png.flaticon.com/512/5778/5778440.png";
           }
           if (v.tenDanhMuc == "Địa điểm tâm linh") {
             uriImg = "https://cdn-icons-png.flaticon.com/512/2510/2510482.png";
@@ -67,7 +68,7 @@ const Map = () => {
           }
           if (v.tenDanhMuc == "Du lịch sinh thái") {
             uriImg =
-              "https://cdn0.iconfinder.com/data/icons/eco-power/450/eco-travel-512.png";
+              "https://images.squarespace-cdn.com/content/v1/5b07c60a96e76f9f641cdad6/1626769467137-PUUVF03Q49KZMCVTQ1PC/Conservation.png";
           }
           if (v.tenDanhMuc == "Du lịch nghỉ dưỡng") {
             uriImg = "https://cdn-icons-png.flaticon.com/512/5273/5273660.png";
@@ -103,9 +104,10 @@ const Map = () => {
               },
               filter: ["==", "tenDanhMuc", symbol],
             });
+
             map.on("click", layerID, (e) => {
               const coordinates = e.features[0].geometry.coordinates.slice();
-              const description = `<div>
+              const html = `<div>
               <img src="${e.features[0].properties.hinhAnh}" alt="" style="min-width: 280px;min-height: 120px;">
               <div style="
                   padding: 20px;
@@ -152,7 +154,7 @@ const Map = () => {
 
               new mapboxgl.Popup()
                 .setLngLat(coordinates)
-                .setHTML(description)
+                .setHTML(html)
                 .addTo(map);
             });
 
@@ -182,6 +184,75 @@ const Map = () => {
       "visibility",
       e.target.checked ? "visible" : "none"
     );
+  };
+
+  const searchDiaDiem = (e) => {
+    setTextSearch(e.target.value);
+    if (e.target.value != "") {
+      var dsDiaDiem = [...dsDiaDiemGeoJson.features];
+      var dsDiaDiemSearch = dsDiaDiem.filter(
+        (v) =>
+          removeAccents(v.properties.tenDiaDiem.toLowerCase()).indexOf(
+            removeAccents(e.target.value)
+          ) != -1
+      );
+      setDsDiaDiemSearch(dsDiaDiemSearch);
+    } else {
+      setDsDiaDiemSearch([]);
+    }
+  };
+
+  const clickItemSearhDiaDiem = (e) => {
+    setTextSearch("");
+    setDsDiaDiemSearch([]);
+    const popup = document.getElementsByClassName("mapboxgl-popup");
+    if (popup.length) {
+      popup[0].remove();
+    }
+    const html = `<div>
+              <img src="${e.properties.hinhAnh}" alt="" style="min-width: 280px;min-height: 120px;">
+              <div style="
+                  padding: 20px;
+              ">
+                  <p style="
+          color: #d32f2f;
+          font-size: 11px;
+          text-transform: uppercase;
+      ">${e.properties.tenDanhMuc}</p>
+                  <p style="
+          color: #333;
+          font-size: 18px;
+          width: 240px;
+          font-weight: 500;
+      ">${e.properties.tenDiaDiem}</p>
+                  <p style="
+          font-size: 11px;
+          color: #333;
+          font-weight: 400;
+      ">${e.properties.gioMoCua} - ${e.properties.gioDongCua}</p>
+                  <p style="
+          width: 240px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 3;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          font-size: 13px;
+          line-height: 1.6;
+          color: #333;
+      ">${e.properties.moTa}</p>
+              </div>
+          </div>`;
+    map.flyTo({
+      center: e.geometry.coordinates,
+      essential: true,
+      duration: 1000,
+    });
+
+    new mapboxgl.Popup()
+      .setLngLat(e.geometry.coordinates)
+      .setHTML(html)
+      .addTo(map);
   };
 
   return (
@@ -237,6 +308,17 @@ const Map = () => {
               left: 60,
             }}
           >
+            <p
+              style={{
+                fontSize: 14,
+                fontWeight: 500,
+                paddingLeft: 12,
+                paddingTop: 8,
+                color: "#333",
+              }}
+            >
+              Các loại hình du lịch
+            </p>
             {dsDanhMucDiaDiemDuLich.map((v, k) => (
               <div
                 key={k}
@@ -260,6 +342,27 @@ const Map = () => {
                   onClick={btDiaDiemDuLich}
                   defaultChecked={true}
                 />
+                <img
+                  style={{
+                    width: 25,
+                    height: 25,
+                    marginRight: 8,
+                  }}
+                  src={
+                    v.tenDanhMuc == "Du lịch văn hóa - lịch sử"
+                      ? "https://cdn-icons-png.flaticon.com/512/5778/5778440.png"
+                      : v.tenDanhMuc == "Địa điểm tâm linh"
+                      ? "https://cdn-icons-png.flaticon.com/512/2510/2510482.png"
+                      : v.tenDanhMuc == "Du lịch khám phá"
+                      ? "https://iconape.com/wp-content/png_logo_vector/google-discover.png"
+                      : v.tenDanhMuc == "Du lịch sinh thái"
+                      ? "https://images.squarespace-cdn.com/content/v1/5b07c60a96e76f9f641cdad6/1626769467137-PUUVF03Q49KZMCVTQ1PC/Conservation.png"
+                      : v.tenDanhMuc == "Du lịch nghỉ dưỡng"
+                      ? "https://cdn-icons-png.flaticon.com/512/5273/5273660.png"
+                      : ""
+                  }
+                  alt=""
+                />
                 <label
                   htmlFor={`diaDiemDuLich-${removeDiacriticsAndSpaces(
                     v.tenDanhMuc
@@ -278,22 +381,82 @@ const Map = () => {
           style={{
             position: "absolute",
             top: 100,
-            right: 120,
+            right: 90,
           }}
         >
-          <div class="d-flex form-group">
+          <div
+            class="d-flex form-group"
+            style={{
+              boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
+            }}
+          >
             <button className="onsearch">
-              <i class="flaticon-search"></i>
+              <i class="flaticon-location-pin"></i>
             </button>
             <input
               type="text"
               name=""
               id=""
+              value={textSearch}
+              onChange={(e) => searchDiaDiem(e)}
               style={{
                 width: 260,
               }}
+              placeholder="Nhập từ khoá để tìm kiếm"
             />
           </div>
+          {dsDiaDiemSearch.length > 0 && (
+            <div
+              id="style-5"
+              style={{
+                width: 310,
+                maxHeight: 250,
+                backgroundColor: "#fff",
+                overflow: "hidden",
+                overflowY: "auto",
+                boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
+              }}
+            >
+              {dsDiaDiemSearch.map((v, k) => (
+                <div
+                  key={k}
+                  className="d-flex align-items-center itemSearch"
+                  style={{
+                    padding: "8px 16px",
+                  }}
+                  onClick={() => clickItemSearhDiaDiem(v)}
+                >
+                  <i class="flaticon-location-pin"></i>
+                  <div
+                    className="justify-content-center"
+                    style={{
+                      marginLeft: 16,
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: 13,
+                        color: "#333",
+                        marginBottom: 4,
+                        fontWeight: 500,
+                      }}
+                    >
+                      {v.properties.tenDiaDiem}
+                    </p>
+                    <p
+                      style={{
+                        margin: 0,
+                        fontSize: 11,
+                        fontWeight: 400,
+                      }}
+                    >
+                      {v.properties.tenDanhMuc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
