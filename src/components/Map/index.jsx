@@ -31,7 +31,8 @@ const Map = () => {
         trackUserLocation: true,
         // Draw an arrow next to the location dot to indicate which direction the device is heading.
         showUserHeading: true,
-      }), 'bottom-right'
+      }),
+      "bottom-right"
     );
     map.addControl(new mapboxgl.NavigationControl());
     const resGetDiaDiemGeometry = await api.getDiaDiemGeometry(
@@ -273,6 +274,27 @@ const Map = () => {
             ))}
           </div>
         )}
+        <div
+          style={{
+            position: "absolute",
+            top: 100,
+            right: 120,
+          }}
+        >
+          <div class="d-flex form-group">
+            <button className="onsearch">
+              <i class="flaticon-search"></i>
+            </button>
+            <input
+              type="text"
+              name=""
+              id=""
+              style={{
+                width: 260,
+              }}
+            />
+          </div>
+        </div>
       </section>
 
       {/* footer starts */}
