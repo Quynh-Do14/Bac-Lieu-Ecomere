@@ -46,7 +46,7 @@ const Articles = ({ data = [] }) => {
                                                             {it.tieuDe}
                                                         </a>
                                                     </h4>
-                                                    <p className="mb-3">
+                                                    <p className="mb-3 text-truncate">
                                                         {it.tieuDeCon}
                                                     </p>
                                                     {/* <div className="author-img">

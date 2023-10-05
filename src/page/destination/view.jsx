@@ -5,7 +5,7 @@ import LoadingFullPage from '../../infratructure/common/controls/loading'
 import SearchCommon from '../../infratructure/common/controls/search-common'
 import RelationCommon from '../../infratructure/common/layout/relation'
 import Constants from '../../core/common/constant'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import api from '../../infratructure/api'
 import { convertTimeOnly, showImageCommon } from '../../infratructure/utils/helper'
 const dataR = [
@@ -44,13 +44,14 @@ const dataR = [
     },
 ]
 const DetailDestination = () => {
-    const param = useParams();
     const [loading, setLoading] = useState(false);
     const [detailUser, setDetailUser] = useState({});
-
+    const location = useLocation()
+    const search = location.search.replace("?", "")
+    console.log('search', search);
     const onGetDetailDiemDenAsync = async () => {
         const response = await api.getDiaDiemById(
-            `dichvu/top/${param.id}?idDanhMuc=${Constants.CategoryConfig.Location.value}`,
+            `dichvu/top/${search}?idDanhMuc=${Constants.CategoryConfig.Location.value}`,
             setLoading
         )
         setDetailUser(response.diaDiem);
@@ -61,7 +62,7 @@ const DetailDestination = () => {
     }, []);
     return (
         <MainLayout>
-            {/* <LoadingFullPage loading={loading} /> */}
+            <LoadingFullPage loading={loading} />
             <BreadcumbCommon title={"Điểm du lịch"} breadcumb={"Trang chủ"} />
             <section class="blog trending destination-b">
                 <div class="container">

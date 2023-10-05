@@ -49,7 +49,8 @@ const ListDestination = () => {
     };
 
     const onNavigate = (id) => {
-        navigate(`${(ROUTE_PATH.VIEW_DESTINATION).replace(`${Constants.UseParams.Id}`, "")}${id}`);
+        // navigate(`${(ROUTE_PATH.VIEW_DESTINATION).replace(`${Constants.UseParams.Id}`, "")}${id}`);
+        navigate(`${(ROUTE_PATH.VIEW_DESTINATION)}?${id}`)
     }
 
     return (
@@ -100,7 +101,7 @@ const ListDestination = () => {
 
                                     <div class="col-lg-12">
                                         <div class="text-center">
-                                            <a onClick={showMore} class="nir-btn">Xem thêm <i class="fa fa-long-arrow-alt-right"></i></a>
+                                            <a onClick={showMore} class="nir-btn white">Xem thêm <i class="fa fa-long-arrow-alt-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
