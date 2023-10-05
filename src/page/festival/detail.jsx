@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MainLayout from '../../infratructure/common/layout/main-layout'
 import BannerCommon from '../../infratructure/common/layout/banner'
 import BreadcumbCommon from '../../infratructure/common/layout/breadcumb'
 import LoadingFullPage from '../../infratructure/common/controls/loading'
 import RelationCommon from '../../infratructure/common/layout/relation'
 import Constants from '../../core/common/constant'
+import { useLocation } from 'react-router-dom'
+import { showImageCommon } from '../../infratructure/utils/helper'
+import api from '../../infratructure/api'
 
 const data =
 {
@@ -58,9 +61,26 @@ const dataR = [
 ]
 
 const DetailFestival = () => {
+    const [loading, setLoading] = useState(false);
+    const [detailFestival, setDetailFestival] = useState({});
+    const location = useLocation()
+    const search = location.search.replace("?", "")
+    console.log('search', search);
+    const onGetDetailDiemDenAsync = async () => {
+        const response = await api.getDiaDiemById(
+            `dichvu/top/${search}?idDanhMuc=7`,
+            setLoading
+        )
+        setDetailFestival(response.diaDiem);
+    }
+
+    useEffect(() => {
+        onGetDetailDiemDenAsync().then(_ => { });
+    }, []);
+
     return (
         <MainLayout>
-            <LoadingFullPage />
+            <LoadingFullPage loading={loading} />
             <BreadcumbCommon title={"Lễ hội"} breadcumb={"Trang chủ"} />
             <section class="blog trending destination-b">
                 <div class="container">
@@ -71,7 +91,7 @@ const DetailFestival = () => {
                                     <div class="thumbnail-images">
                                         <div class="slider-store">
                                             <div>
-                                                <img src={data.img} alt="1" />
+                                                <img src={showImageCommon(detailFestival.hinhAnh)} alt="1" />
                                             </div>
                                         </div>
                                         {/* <div class="slider-thumbs">

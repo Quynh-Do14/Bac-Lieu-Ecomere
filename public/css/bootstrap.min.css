@@ -10818,7 +10818,7 @@ button.bg-dark:hover {
     -webkit-line-clamp: 3;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    height: 72px;
+    height: 9.5vh;
 }
 
 .text-left {

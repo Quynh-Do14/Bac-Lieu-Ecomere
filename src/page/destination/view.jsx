@@ -45,16 +45,15 @@ const dataR = [
 ]
 const DetailDestination = () => {
     const [loading, setLoading] = useState(false);
-    const [detailUser, setDetailUser] = useState({});
+    const [detailDestination, setDetailDestination] = useState({});
     const location = useLocation()
     const search = location.search.replace("?", "")
-    console.log('search', search);
     const onGetDetailDiemDenAsync = async () => {
         const response = await api.getDiaDiemById(
             `dichvu/top/${search}?idDanhMuc=${Constants.CategoryConfig.Location.value}`,
             setLoading
         )
-        setDetailUser(response.diaDiem);
+        setDetailDestination(response.diaDiem);
     }
 
     useEffect(() => {
@@ -73,7 +72,7 @@ const DetailDestination = () => {
                                     <div class="thumbnail-images">
                                         <div class="slider-store">
                                             <div>
-                                                <img src={showImageCommon(detailUser.hinhAnh)} alt="1" />
+                                                <img src={showImageCommon(detailDestination.hinhAnh)} alt="1" />
                                             </div>
 
                                         </div>
@@ -88,30 +87,30 @@ const DetailDestination = () => {
                                 <div class="description" id="description">
                                     <div class="single-full-title border-b mb-2 pb-2">
                                         <div class="single-title">
-                                            <h3 class="mb-1">{detailUser.tenDiaDiem}</h3>
+                                            <h3 class="mb-1">{detailDestination.tenDiaDiem}</h3>
                                             <div class="rating-main d-sm-flex align-items-center">
-                                                <p class="mb-0 mr-2"><i class="flaticon-location-pin"></i>{detailUser.diaChi} </p>
+                                                <p class="mb-0 mr-2"><i class="flaticon-location-pin"></i>{detailDestination.diaChi} </p>
 
-                                                <span>({detailUser.luotXem} lượt xem)</span>
+                                                <span>({detailDestination.luotXem} lượt xem)</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="description-inner mb-2">
-                                        {/* <h4>{detailUser.title} </h4> */}
-                                        <p>{detailUser.moTa} </p>
+                                        {/* <h4>{detailDestination.title} </h4> */}
+                                        <p>{detailDestination.moTa} </p>
                                     </div>
 
                                     <div class="tour-includes mb-2">
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <td>Giờ mở cửa : {convertTimeOnly(detailUser.gioMoCua)} </td>
-                                                    <td>Giờ đóng cửa : {convertTimeOnly(detailUser.gioDongCua)} </td>
-                                                    <td>Giá vé : {detailUser.giaVe} </td>
+                                                    <td>Giờ mở cửa : {convertTimeOnly(detailDestination.gioMoCua)} </td>
+                                                    <td>Giờ đóng cửa : {convertTimeOnly(detailDestination.gioDongCua)} </td>
+                                                    <td>Giá vé : {detailDestination.giaVe} </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Số điện thoại liên hệ: {detailUser.sdtLienHe}</td>
-                                                    <td>Email liên hệ : {detailUser.emailLienHe} </td>
+                                                    <td>Số điện thoại liên hệ: {detailDestination.sdtLienHe}</td>
+                                                    <td>Email liên hệ : {detailDestination.emailLienHe} </td>
                                                     <td></td>
                                                 </tr>
                                             </tbody>

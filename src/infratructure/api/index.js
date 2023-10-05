@@ -27,12 +27,6 @@ const api = {
       `${apiLinks.API}${Endpoint.Module.DiaDiem}/getDanhMucConCuaDanhMuc?${params}`
     ),
   //////
-  //////
-  getDanhMucConCuaDanhMuc: (params) =>
-    requestDuong.get(
-      `${apiLinks.API}${Endpoint.Module.DiaDiem} / getDanhMucConCuaDanhMuc ? ${params}`
-    ),
-  //////
   getAllDiaDiem: (params, setLoading) =>
     requestDuong.get(
       `${apiLinks.API}${Endpoint.Module.DiaDiem}/${params}`,
