@@ -1,46 +1,9 @@
 import { Col, Row } from 'antd'
 import React from 'react'
-const data = [
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
-        review: 38,
-        title: " Văn hóa",
-        subTitle: "Văn hóa Văn hóa Văn hóa Văn hóa ",
-        view: 852,
-        star: 5,
-        description: "A wonderful little cottage right on the seashore - perfect for exploring.",
-        address: "Bạc Liêu",
-        date: ' 4th AUG 2020',
-        type: "Ẩm thực"
-    },
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
-        review: 38,
-        title: " Văn hóa",
-        subTitle: "Văn hóa Văn hóa Văn hóa Văn hóa ",
-        view: 852,
-        star: 5,
-        description: "A wonderful little cottage right on the seashore - perfect for exploring.",
-        address: "Bạc Liêu",
-        date: ' 4th AUG 2020',
-        type: "Ẩm thực"
-    },
+import { convertDateOnly, showImageCommon } from '../../infratructure/utils/helper';
 
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
-        review: 38,
-        title: " Văn hóa",
-        subTitle: "Văn hóa Văn hóa Văn hóa Văn hóa ",
-        view: 852,
-        star: 5,
-        description: "A wonderful little cottage right on the seashore - perfect for exploring.",
-        address: "Bạc Liêu",
-        date: ' 4th AUG 2020',
-        type: "Ẩm thực"
-    },
-
-]
-const Articles = () => {
+const Articles = ({ data = [] }) => {
+    console.log('data', data);
     return (
         <div>
             <section className="news pb-2 pt-9">
@@ -61,23 +24,18 @@ const Articles = () => {
                                         <div className="col-lg-4 col-md-12 col-xs-12 mb-4" key={index}>
                                             <div className="news-item overflow-hidden">
                                                 <div className="news-image">
-                                                    <img src={it.img} alt="image" />
+                                                    <img src={showImageCommon(it.hinhAnh)} alt="image" height={255} />
                                                 </div>
                                                 <div className="news-list mt-2 border-b pb-2 mb-2">
                                                     <ul>
                                                         <li>
                                                             <a href="/detail-article" className="pr-3">
-                                                                <i className="fa fa-calendar pink pr-1" />{it.date}
+                                                                <i className="fa fa-calendar pink pr-1" />{convertDateOnly(it.ngayDang)}
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="/detail-article" className="pr-3">
-                                                                <i className="fa fa-comment pink pr-1" /> {it.review}
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/detail-article" className="">
-                                                                <i className="fa fa-tag pink pr-1" /> {it.type}
+                                                                <i className="fa fa-comment pink pr-1" /> {it.luotXem}
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -85,11 +43,11 @@ const Articles = () => {
                                                 <div className="news-content mt-2">
                                                     <h4 className="pb-2 mb-2 border-b">
                                                         <a href="/detail-article">
-                                                            {it.title}
+                                                            {it.tieuDe}
                                                         </a>
                                                     </h4>
                                                     <p className="mb-3">
-                                                        {it.description}
+                                                        {it.tieuDeCon}
                                                     </p>
                                                     {/* <div className="author-img">
                                                         <img src="./images/reviewer/1.jpg" alt="Demo Image" />

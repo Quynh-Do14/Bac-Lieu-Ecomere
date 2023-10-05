@@ -1,41 +1,10 @@
 import React from 'react'
-const data = [
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-5-1691745308.jpg",
-        address: "Bạc Liêu",
-        name: "Lễ hội trăng dằm",
-        description: " Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.",
-    },
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-5-1691745308.jpg",
-        address: "Bạc Liêu",
-        name: "Lễ hội trăng dằm",
-        description: " Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.",
+import { showImageCommon } from '../../infratructure/utils/helper'
 
-    },
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-5-1691745308.jpg",
-        address: "Bạc Liêu",
-        name: "Lễ hội trăng dằm",
-        description: " Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.",
-    },
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-5-1691745308.jpg",
-        address: "Bạc Liêu",
-        name: "Lễ hội trăng dằm",
-        description: " Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.",
-    },
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-5-1691745308.jpg",
-        address: "Bạc Liêu",
-        name: "Lễ hội trăng dằm",
-        description: " Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.",
-    },
-]
-const Festival = () => {
+const Festival = ({ data }) => {
     return (
         <div>
-            <section className="top-deals bg-grey pt-9">
+            <section className="top-deals bg-lgrey pt-9">
                 <div className="container">
                     <div className="section-title text-center mb-5 pb-2 w-50 mx-auto">
                         <h2 className="m-0">
@@ -51,16 +20,16 @@ const Festival = () => {
                                 return (
                                     <div className="col-lg-4 mb-2 slider-item" key={index}>
                                         <div className="slider-image">
-                                            <img src={it.img} alt="image" />
+                                            <img src={showImageCommon(it.hinhAnh)} alt="image" height={255} />
                                         </div>
                                         <div className="slider-content">
                                             <h6 className="font-weight-normal pink">
-                                                <i className="fa fa-map-marker-alt" /> {it.address}
+                                                <i className="fa fa-map-marker-alt" /> {it.diaChi}
                                             </h6>
                                             <h4>
-                                                <a href="#">{it.name}</a>
+                                                <a href="#">{it.tenDiaDiem}</a>
                                             </h4>
-                                            <p>{it.description}</p>
+                                            <p className='text-truncate'>{it.moTa}</p>
                                             {/* <div className="deal-price">
                                                 <p className="price font-weight-bold pink mb-0">
                                                     From <span>$250.00</span>

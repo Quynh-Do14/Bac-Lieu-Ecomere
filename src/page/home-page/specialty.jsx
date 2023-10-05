@@ -1,45 +1,7 @@
 import React from 'react'
-const data = [
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
-        review: 38,
-        title: " Văn hóa",
-        subTitle: "Văn hóa Văn hóa Văn hóa Văn hóa ",
-        view: 852,
-        star: 5,
-        description: "A wonderful little cottage right on the seashore - perfect for exploring.",
-        address: "Bạc Liêu",
-        date: ' 4th AUG 2020',
-        type: "Ẩm thực"
-    },
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
-        review: 38,
-        title: " Văn hóa",
-        subTitle: "Văn hóa Văn hóa Văn hóa Văn hóa ",
-        view: 852,
-        star: 5,
-        description: "A wonderful little cottage right on the seashore - perfect for exploring.",
-        address: "Bạc Liêu",
-        date: ' 4th AUG 2020',
-        type: "Ẩm thực"
-    },
+import { showImageCommon } from '../../infratructure/utils/helper'
 
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
-        review: 38,
-        title: " Văn hóa",
-        subTitle: "Văn hóa Văn hóa Văn hóa Văn hóa ",
-        view: 852,
-        star: 5,
-        description: "A wonderful little cottage right on the seashore - perfect for exploring.",
-        address: "Bạc Liêu",
-        date: ' 4th AUG 2020',
-        type: "Ẩm thực"
-    },
-
-]
-const Specialty = () => {
+const Specialty = ({ data }) => {
     return (
         <section className="top-destination overflow-hidden bg-navy pt-9">
             <div className="container">
@@ -53,21 +15,14 @@ const Specialty = () => {
                             return (
                                 <div className="col-lg-4 col-md-6 p-1" key={index}>
                                     <div className="desti-image">
-                                        <img src={it.img} alt="desti" />
+                                        <img src={showImageCommon(it.hinhAnh)} alt="desti" height={255} />
                                         <div className="desti-content">
-                                            <div className="rating mb-1">
-                                                <span className="fa fa-star checked"></span>
-                                                <span className="fa fa-star checked"></span>
-                                                <span className="fa fa-star checked"></span>
-                                                <span className="fa fa-star checked"></span>
-                                                <span className="fa fa-star checked"></span>
-                                            </div>
-                                            <h4 className="white mb-0">{it.address}</h4>
+                                            <h4 className="white mb-0">{it.tenDiaDiem}</h4>
                                         </div>
                                         <div className="desti-overlay">
                                             <a href="#" className="nir-btn">
                                                 <span className="white">Chi tiết</span>
-                                                <i className="fa fa-arrow-right white pl-1"></i>
+                                                <i className="fa fa-arrow-right white pl-1"> </i>
                                             </a>
                                         </div>
                                     </div>

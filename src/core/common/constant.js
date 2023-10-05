@@ -44,7 +44,7 @@ export default class Constants {
     }
 
     static PaginationConfigs = class {
-        static Size = 10;
+        static Size = 3;
         static SizeSearchPage = 8;
         static LimitSize = 60;
         static AllSize = 9000;
@@ -86,7 +86,7 @@ export default class Constants {
     static DefaultImage = "1"
     static CategoryConfig = class {
         static Location = class {
-            static label = "Location";
+            static label = "Địa điểm du lịch";
             static value = 1;
         }
         static Stay = class {

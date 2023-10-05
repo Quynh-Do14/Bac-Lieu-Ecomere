@@ -1,11 +1,18 @@
 import React from 'react'
 
 const LoadingFullPage = (loading = false) => {
-    return (
-        <div id="preloader">
-            <div id="status"></div>
-        </div>
-    )
+    if (loading) {
+        return (
+
+            <div id="preloader">
+                <div id="status"></div>
+            </div>
+        )
+    }
+    else {
+        return
+    }
+
 }
 
 export default LoadingFullPage

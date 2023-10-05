@@ -23,7 +23,12 @@ const api = {
       `${apiLinks.API}${Endpoint.Module.DiaDiem}/geometry?${params}`
     ),
   //////
-
+  //////
+  getDanhMucConCuaDanhMuc: (params) =>
+    requestDuong.get(
+      `${apiLinks.API}${Endpoint.Module.DiaDiem} / getDanhMucConCuaDanhMuc ? ${params}`
+    ),
+  //////
   getAllDiaDiem: (params, setLoading) =>
     requestDuong.get(
       `${apiLinks.API}${Endpoint.Module.DiaDiem}/${params}`,
@@ -31,7 +36,7 @@ const api = {
     ),
   getDiaDiemById: (params, setLoading) =>
     requestDuong.get(
-      `${apiLinks.API}${Endpoint.Module.DiaDiem}/${params.id}`,
+      `${apiLinks.API}${Endpoint.Module.DiaDiem}/${params}`,
       setLoading
     ),
   ///////

@@ -7,18 +7,44 @@ import Festival from './festival';
 import Specialty from './specialty';
 import api from '../../infratructure/api';
 import LoadingFullPage from '../../infratructure/common/controls/loading';
+import Constants from '../../core/common/constant';
 
 const HomePage = () => {
     const [loading, setLoading] = useState(false);
-    const [data, setData] = useState([]);
+    const [listTinTuc, setListTinTuc] = useState([]);
+    const [listDiaDiem, setListDiaDiem] = useState([]);
+    const [listDacSan, setListDacSan] = useState([]);
+    const [listLeHoi, setListLeHoi] = useState([]);
+
     const [pageSize, setPageSize] = useState(10);
 
     const onGetListDiemDenAsync = async () => {
         const response = await api.getAllDiaDiem(
-            `dichvu/top?idDanhMuc=1`,
+            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}`,
             setLoading
         )
-        setData(response.data.diaDiems);
+        setListDiaDiem(response.data.diaDiems);
+        // setPagination(response.data.pagination);
+        // setTotalItem(response.data.totalItems);
+    }
+
+
+    const onGetListDacSanAsync = async () => {
+        const response = await api.getAllDiaDiem(
+            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Specialty.value}`,
+            setLoading
+        )
+        setListDacSan(response.data.diaDiems);
+        // setPagination(response.data.pagination);
+        // setTotalItem(response.data.totalItems);
+    }
+
+    const onGetListLeHoiAsync = async () => {
+        const response = await api.getAllDiaDiem(
+            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Festival.value}`,
+            setLoading
+        )
+        setListLeHoi(response.data.diaDiems);
         // setPagination(response.data.pagination);
         // setTotalItem(response.data.totalItems);
     }
@@ -28,25 +54,34 @@ const HomePage = () => {
             `loaitin?type=1`,
             setLoading
         )
-        setData(response.data.diaDiems);
+        setListTinTuc(response.data.tinTucs);
         // setPagination(response.data.pagination);
         // setTotalItem(response.data.totalItems);
     }
-
     useEffect(() => {
         onGetListDiemDenAsync().then(_ => { });
         onGetListTinTucAsync().then(_ => { });
+        onGetListDacSanAsync().then(_ => { });
+        onGetListLeHoiAsync().then(_ => { });
+
     }, []);
 
-    console.log('data', data);
     return (
         <MainLayout>
-            <LoadingFullPage />
+            <LoadingFullPage isLoading={loading} />
             <BannerCommon />
-            <Destination />
-            <Festival />
-            <Specialty />
-            <Articles />
+            <Destination
+                data={listDiaDiem}
+            />
+            <Festival
+                data={listLeHoi}
+            />
+            <Specialty
+                data={listDacSan}
+            />
+            <Articles
+                data={listTinTuc}
+            />
         </MainLayout>
     )
 }
