@@ -9,6 +9,7 @@ import { convertTimeOnly, showImageCommon } from '../../infratructure/utils/help
 import SearchBarCommon from '../../infratructure/common/controls/search-bar'
 import { useNavigate } from 'react-router-dom'
 import SearchCommon from '../../infratructure/common/controls/search-common'
+import SearchBar from './search'
 let timeout
 const ListSpecialty = () => {
     const [listDacSan, setListDacSan] = useState([]);
@@ -102,7 +103,7 @@ const ListSpecialty = () => {
                             </div>
                         </div>
                         <div className="col-lg-4 col-xs-12 mb-4">
-                            <SearchCommon title={"lễ hội"} />
+                            <SearchBar title={"Đặc sản"} />
                         </div>
                     </div>
                 </div>

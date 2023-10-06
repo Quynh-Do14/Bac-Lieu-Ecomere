@@ -6,8 +6,8 @@ import LoadingFullPage from '../../infratructure/common/controls/loading'
 import Constants from '../../core/common/constant'
 import api from '../../infratructure/api'
 import { convertDateOnly, convertTimeOnly, showImageCommon } from '../../infratructure/utils/helper'
-import SearchBarCommon from '../../infratructure/common/controls/search-bar'
 import { useNavigate } from 'react-router-dom'
+import SearchBar from './search'
 let timeout
 const ListArticle = () => {
     const [listTinTuc, setListTinTuc] = useState([]);
@@ -58,7 +58,7 @@ const ListArticle = () => {
             <BreadcumbCommon title={"Bài viết"} breadcumb={"Trang chủ"} />
             <section class="blog trending destination-b">
                 <div>
-                    <SearchBarCommon value={searchText} onChange={onChangeSearchText} />
+                    <SearchBar value={searchText} onChange={onChangeSearchText} />
                 </div>
                 <div class="container">
                     <div class="row">

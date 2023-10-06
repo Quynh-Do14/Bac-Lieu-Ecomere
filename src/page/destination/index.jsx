@@ -74,7 +74,7 @@ const ListDestination = () => {
                                                 <div class="col-lg-4 col-md-6 col-xs-12 mb-4" key={index}>
                                                     <div class="trend-item">
                                                         <div class="trend-image">
-                                                            <img src={showImageCommon(it.hinhAnh)} alt="image" height={255} />
+                                                            <img src={it.hinhAnh} alt="image" height={255} />
                                                         </div>
                                                         <div class="trend-content-main">
                                                             <div class="trend-content ">
@@ -90,7 +90,7 @@ const ListDestination = () => {
                                                             <div class="trend-last-main">
                                                                 <p class="mb-0 trend-para text-truncate">{it.moTa} </p>
                                                                 <div class="trend-last d-flex align-items-center justify-content-between bg-navy">
-                                                                    <p class="mb-0 white"><i class="fa fa-clock-o" aria-hidden="true"></i>{convertTimeOnly(it.gioMoCua)} - {convertTimeOnly(it.gioDongCua)} </p>
+                                                                    <p class="mb-0 white"><i class="fa fa-clock-o" aria-hidden="true"></i>{(it.gioMoCua)} - {(it.gioDongCua)} </p>
                                                                     <div class="trend-price">
                                                                         <p class="price white mb-0">Chỉ từ <span>{it.giaVe} VNĐ </span></p>
                                                                     </div>

@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import Constants from '../../core/common/constant'
 import { showImageCommon } from '../../infratructure/utils/helper'
 import api from '../../infratructure/api'
+import SearchBar from './search'
 let timeout
 const ListFestival = () => {
     const [listLeHoi, setListLeHoi] = useState([]);
@@ -84,7 +85,7 @@ const ListFestival = () => {
                                                         <div className="blog-content p-0">
                                                             <h4 className="mb-1"><a onClick={() => onNavigate(it.idDiaDiem)} className="">{it.tenDiaDiem} </a></h4>
                                                             <p className="mb-2 pink"><i className="fa fa-eye mr-1"></i> {it.luotXem} <i className="fa fa-map-marker mr-1 ml-3"></i> {it.diaChi}</p>
-                                                            <p className="mb-2 border-t pt-2 text-truncate" style={{ height: "90px !important" }}>{it.moTa} </p>
+                                                            <p className="mb-2 border-t pt-2 text-truncate-fes" style={{ height: "90px !important" }}>{it.moTa} </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -98,7 +99,7 @@ const ListFestival = () => {
                             </div>
                         </div>
                         <div className="col-lg-4 col-xs-12 mb-4">
-                            <SearchCommon title={"lễ hội"} />
+                            <SearchBar title={"lễ hội"} />
                         </div>
                     </div>
                 </div>

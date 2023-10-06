@@ -72,7 +72,7 @@ const DetailDestination = () => {
                                     <div class="thumbnail-images">
                                         <div class="slider-store">
                                             <div>
-                                                <img src={showImageCommon(detailDestination.hinhAnh)} alt="1" />
+                                                <img src={detailDestination.hinhAnh} alt="1" />
                                             </div>
 
                                         </div>
@@ -104,8 +104,8 @@ const DetailDestination = () => {
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <td>Giờ mở cửa : {convertTimeOnly(detailDestination.gioMoCua)} </td>
-                                                    <td>Giờ đóng cửa : {convertTimeOnly(detailDestination.gioDongCua)} </td>
+                                                    <td>Giờ mở cửa : {(detailDestination.gioMoCua)} </td>
+                                                    <td>Giờ đóng cửa : {(detailDestination.gioDongCua)} </td>
                                                     <td>Giá vé : {detailDestination.giaVe} </td>
                                                 </tr>
                                                 <tr>
