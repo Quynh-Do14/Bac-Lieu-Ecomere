@@ -14,7 +14,7 @@ const ListDestination = () => {
     const [listDiaDiem, setListDiaDiem] = useState([]);
     const [pagination, setPagination] = useState({});
     const [totalItem, setTotalItem] = useState();
-    const [pageSize, setPageSize] = useState(9);
+    const [pageSize, setPageSize] = useState(Constants.PaginationConfigs.Size);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [searchText, setSearchText] = useState("");

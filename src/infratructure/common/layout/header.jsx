@@ -1,6 +1,7 @@
 import React from 'react'
 import Constants from '../../../core/common/constant';
 import { useLocation } from 'react-router-dom';
+import { ROUTE_PATH } from '../../../core/common/appRouter';
 // import logoWhite from "../../../assets/images/logo-white.png"
 // import logo from "../../../assets/images/logo.png"
 // import { DownOutlined } from "@ant-design/icons";
@@ -18,7 +19,7 @@ const HeaderPage = () => {
                         <div className="navbar-flex d-flex align-items-center justify-content-between w-100 pb-2 pt-2">
                             {/* Brand and toggle get grouped for better mobile display */}
                             <div className="navbar-header">
-                                <a className="navbar-brand" href="index.html">
+                                <a className="navbar-brand" href={ROUTE_PATH.HOME_PAGE}>
                                     <img src="./images/logo-white.png" alt="image" height={90} />
                                     <img src="./images/logo.png" alt="image" style={{ maxHeight: 57 }} />
                                 </a>

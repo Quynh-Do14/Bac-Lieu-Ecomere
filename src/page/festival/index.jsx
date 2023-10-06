@@ -24,7 +24,7 @@ const ListFestival = () => {
 
     const onGetListLeHoiAsync = async ({ keyWord = "", limit = pageSize, page = 1 }) => {
         const response = await api.getAllDiaDiem(
-            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Festival.value}`,
+            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Festival.value}&${Constants.Params.limit}=${limit}`,
             setLoading
         )
         setListLeHoi(response.data.diaDiems);

@@ -44,7 +44,7 @@ export default class Constants {
     }
 
     static PaginationConfigs = class {
-        static Size = 3;
+        static Size = 9;
         static SizeSearchPage = 8;
         static LimitSize = 60;
         static AllSize = 9000;
