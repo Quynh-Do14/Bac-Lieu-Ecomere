@@ -25,7 +25,7 @@ const HomePage = () => {
 
   const onGetListDiemDenAsync = async () => {
     const response = await api.getAllDiaDiem(
-      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit}=${Constants.PaginationConfigs.Size}`,
+      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit}=3`,
       setLoading
     );
     setListDiaDiem(response.data.diaDiems);
@@ -56,7 +56,7 @@ const HomePage = () => {
 
   const onGetListDacSanAsync = async () => {
     const response = await api.getAllDiaDiem(
-      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Specialty.value}`,
+      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Specialty.value}&${Constants.Params.limit}=3`,
       setLoading
     );
     setListDacSan(response.data.diaDiems);
@@ -66,7 +66,7 @@ const HomePage = () => {
 
   const onGetListLeHoiAsync = async () => {
     const response = await api.getAllDiaDiem(
-      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Festival.value}`,
+      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Festival.value}&${Constants.Params.limit}=4`,
       setLoading
     );
     setListLeHoi(response.data.diaDiems);
@@ -75,7 +75,7 @@ const HomePage = () => {
   };
 
   const onGetListTinTucAsync = async () => {
-    const response = await api.getAllTinTuc(`loaitin?type=1`, setLoading);
+    const response = await api.getAllTinTuc(`loaitin?type=1&limit=3`, setLoading);
     setListTinTuc(response.data.tinTucs);
     // setPagination(response.data.pagination);
     // setTotalItem(response.data.totalItems);
@@ -252,7 +252,7 @@ const HomePage = () => {
                   listDiaDiemTop2.map((v, k) => (
                     <div className="col-lg-4 col-md-6 p-1" key={k}>
                       <div className="desti-image">
-                        <img src={v.hinhAnh} alt="desti" />
+                        <img src={v.hinhAnh} alt="desti" height={250}/>
                         <div className="desti-content">
                           <div className="rating mb-1">
                             <span className="fa fa-star checked" />
@@ -276,7 +276,7 @@ const HomePage = () => {
                   listDiaDiemTop4TuTop2.map((v, k) => (
                     <div className="col-lg-3 col-md-6 p-1" key={k}>
                       <div className="desti-image">
-                        <img src={v.hinhAnh} alt="desti" />
+                        <img src={v.hinhAnh} alt="desti" height={200}/>
                         <div className="desti-content">
                           <div className="rating mb-1">
                             <span className="fa fa-star checked" />

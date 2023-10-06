@@ -1,5 +1,5 @@
 import React from "react";
-import { showImageCommon } from "../../infratructure/utils/helper";
+import { convertTimeOnly, showImageCommon } from "../../infratructure/utils/helper";
 import { useNavigate } from 'react-router-dom'
 import { ROUTE_PATH } from "../../core/common/appRouter";
 
@@ -35,7 +35,7 @@ const Festival = ({ data }) => {
                       <li>
                         <a href="single-right.html" className="pr-3">
                           <i className="fa fa-calendar pink pr-1" />{" "}
-                          {data[0].gioDongCua}{" "}
+                          {convertTimeOnly(data[0].gioDongCua)}{" "}
                         </a>
                       </li>
                       <li>
@@ -82,14 +82,14 @@ const Festival = ({ data }) => {
                     >
                       <div className="news-item overflow-hidden">
                         <div className="news-image">
-                          <img src={showImageCommon(it.hinhAnh)} alt="image" />
+                          <img src={showImageCommon(it.hinhAnh)} alt="image" width={180}/>
                         </div>
                         <div className="news-list mt-2 border-b pb-2 mb-2">
                           <ul>
                             <li>
                               <a href="single-right.html" className="pr-3">
                                 <i className="fa fa-calendar pink pr-1" />{" "}
-                                {it.gioDongCua}{" "}
+                                {convertTimeOnly(it.gioDongCua)}{" "}
                               </a>
                             </li>
                             <li>

@@ -26,9 +26,9 @@ const ListFestival = () => {
 
     const navigate = useNavigate();
 
-    const onGetListLeHoiAsync = async () => {
+    const onGetListLeHoiAsync = async ({ keyWord = "", limit = pageSize, page = 1, startDate = "", endDate = "" }) => {
         const response = await api.getAllDiaDiem(
-            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Festival.value}&${Constants.Params.page}=${page}&startDate=${startDate}&endDate=${endDate}&search=${searchText}`,
+            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Festival.value}&${Constants.Params.page}=${page}&startDate=${startDate}&endDate=${endDate}&search=${keyWord}`,
             setLoading
         )
         setListLeHoi(response.data.diaDiems);
@@ -46,20 +46,20 @@ const ListFestival = () => {
         setSearchText(e.target.value);
         clearTimeout(timeout);
         timeout = setTimeout(() => {
-            onSearch(e.target.value, pageSize, page, startDate, endDate).then((_) => { });
+            onGetListLeHoiAsync(e.target.value, pageSize, page, startDate, endDate).then((_) => { });
         }, Constants.DEBOUNCE_SEARCH);
     };
     const onChangeStartDate = (e) => {
         setStartDate(e.target.value);
-        onSearch(searchText, pageSize, page, e.target.value, endDate).then((_) => { });
+        onGetListLeHoiAsync(searchText, pageSize, page, e.target.value, endDate).then((_) => { });
     }
 
     const onChangeEndDate = (e) => {
         setEndDate(e.target.value);
-        onSearch(searchText, pageSize, page, startDate, e.target.value).then((_) => { });
+        onGetListLeHoiAsync(searchText, pageSize, page, startDate, e.target.value).then((_) => { });
     }
     const showMore = (prev) => {
-        onSearch(searchText, pageSize, prev + 1, startDate, endDate).then((_) => { });
+        onGetListLeHoiAsync(searchText, pageSize, prev + 1, startDate, endDate).then((_) => { });
     };
 
     const onNavigate = (id) => {
@@ -119,7 +119,7 @@ const ListFestival = () => {
                                 onChangeStartDate={onChangeStartDate}
                                 endDate={endDate}
                                 onChangeEndDate={onChangeEndDate}
-                                onSearch={onSearch}
+                                onSearch={() => onSearch()}
                             />
                         </div>
                     </div>
