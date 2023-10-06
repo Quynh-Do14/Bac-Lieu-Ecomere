@@ -11,6 +11,15 @@ const district = [
     }
 ]
 const SearchBar = (props) => {
+    const onGetListDiemDenAsync = async () => {
+        const response = await api.getAllDiaDiem(
+          `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit}=${Constants.PaginationConfigs.Size}`,
+          setLoading
+        );
+        setListDiaDiem(response.data.diaDiems);
+        // setPagination(response.data.pagination);
+        // setTotalItem(response.data.totalItems);
+      };
     const { title } = props;
     return (
         <div>
@@ -37,7 +46,6 @@ const SearchBar = (props) => {
                                 <div class="form-group">
                                     <label className="white">Tìm kiếm theo tên địa điểm</label>
                                     <div class="input-box">
-                                        <i class="fa fa-calendar"></i>
                                         <input id="date-range1" type="text" placeholder="Địa điểm..." />
                                     </div>
                                 </div>

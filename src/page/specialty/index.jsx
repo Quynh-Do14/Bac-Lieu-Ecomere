@@ -62,15 +62,6 @@ const ListSpecialty = () => {
                     <div className="row">
                         <div className="col-lg-8 col-xs-12 mb-4">
                             <div className="trend-box">
-                                <div className="list-results d-flex align-items-center justify-content-between">
-                                    <div className="list-results-sort">
-                                        <p className="m-0">Showing 1-5 of 80 results</p>
-                                    </div>
-                                    <div className="click-menu d-flex align-items-center justify-content-between">
-                                        <div className="change-list f-active mr-2"><a href="#"><i className="fa fa-bars"></i></a></div>
-                                        <div className="change-grid"><a href="#"><i className="fa fa-th"></i></a></div>
-                                    </div>
-                                </div>
                                 {
                                     listDacSan.map((it, index) => {
                                         return (

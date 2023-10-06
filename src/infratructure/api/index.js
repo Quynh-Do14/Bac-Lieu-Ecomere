@@ -52,5 +52,10 @@ const api = {
       setLoading
     ),
   ///////
+  getAllQuanHuyen: (params, setLoading) =>
+    request.get(
+      `${apiLinks.API}${Endpoint.Module.District}/${params}`,
+      setLoading
+    ),
 };
 export default api;
