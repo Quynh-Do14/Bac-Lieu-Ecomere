@@ -14,7 +14,7 @@ const ListDestination = () => {
     const [listDiaDiem, setListDiaDiem] = useState([]);
     const [pagination, setPagination] = useState({});
     const [totalItem, setTotalItem] = useState();
-    const [pageSize, setPageSize] = useState(Constants.PaginationConfigs.Size);
+    const [pageSize, setPageSize] = useState(9);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [searchText, setSearchText] = useState("");
@@ -81,18 +81,18 @@ const ListDestination = () => {
                                                                 <h4 className='text-truncate-1'><a onClick={() => onNavigate(it.idDiaDiem)}>{it.tenDiaDiem} </a></h4>
                                                                 <div className='d-flex justify-content-between'>
                                                                     <div class="mb-0 pink">
-                                                                        <i class="fa fa-map-marker mr-1"></i>{it.diaChi} </div>
+                                                                        <i class="fa fa-map-marker mr-2"></i>{it.diaChi.replace(', Bạc Liêu', '')} </div>
                                                                     <div class="mb-0 pink">
                                                                         <i class="fa fa-eye mb-1"></i> {it.luotXem}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="trend-last-main">
-                                                                <p class="mb-0 trend-para text-truncate">{it.moTa} </p>
+                                                                <p class="mb-0 trend-para">{it.moTa.length > 75 ? it.moTa.slice(0, 75) + ' ...' : it.moTa} </p>
                                                                 <div class="trend-last d-flex align-items-center justify-content-between bg-navy">
-                                                                    <p class="mb-0 white"><i class="fa fa-clock-o" aria-hidden="true"></i>{(it.gioMoCua)} - {(it.gioDongCua)} </p>
+                                                                    <p class="mb-0 white"><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>{(it.gioMoCua)} - {(it.gioDongCua)} </p>
                                                                     <div class="trend-price">
-                                                                        <p class="price white mb-0">Chỉ từ <span>{it.giaVe} VNĐ </span></p>
+                                                                        <p class="price white mb-0"><span>{it.giaVe}</span></p>
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -89,7 +89,7 @@ const ListSpecialty = () => {
                                                             </div>
 
                                                             <p className="mb-2 pink"><i className="fa fa-eye mr-1"></i> {it.luotXem} <i className="fa fa-map-marker mr-1 ml-3"></i> {it.diaChi}</p>
-                                                            <p className="mb-2 border-t pt-2 text-truncate" style={{ height: "90px !important" }}>{it.moTa} </p>
+                                                            <p className="mb-2 border-t pt-2">{it.moTa.length > 200 ? it.moTa.slice(0, 200) + ' ...' : it.moTa}</p>
                                                         </div>
                                                     </div>
                                                 </div>
