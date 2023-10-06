@@ -19,7 +19,7 @@ const HeaderPage = () => {
                             {/* Brand and toggle get grouped for better mobile display */}
                             <div className="navbar-header">
                                 <a className="navbar-brand" href="index.html">
-                                    <img src="./images/logo-white.png" alt="image" />
+                                    <img src="./images/logo-white.png" alt="image" height={90} />
                                     <img src="./images/logo.png" alt="image" style={{ maxHeight: 57 }} />
                                 </a>
                             </div>
