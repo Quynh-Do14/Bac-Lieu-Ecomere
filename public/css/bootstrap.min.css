@@ -10833,7 +10833,7 @@ button.bg-dark:hover {
 .text-truncate {
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     height: 8vh;
