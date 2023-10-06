@@ -20,7 +20,7 @@ const HomePage = () => {
 
     const onGetListDiemDenAsync = async () => {
         const response = await api.getAllDiaDiem(
-            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}`,
+            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit}=${Constants.PaginationConfigs.Size}`,
             setLoading
         )
         setListDiaDiem(response.data.diaDiems);

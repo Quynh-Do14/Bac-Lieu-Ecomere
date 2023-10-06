@@ -77,11 +77,15 @@ const ListDestination = () => {
                                                             <img src={showImageCommon(it.hinhAnh)} alt="image" height={255} />
                                                         </div>
                                                         <div class="trend-content-main">
-                                                            <div class="trend-content">
-                                                                <h4><a onClick={() => onNavigate(it.idDiaDiem)}>{it.tenDiaDiem} </a></h4>
-                                                                <div class="mb-0 pink"><i class="fa fa-eye mb-1"></i> {it.luotXem}
-                                                                    <br />
-                                                                    <i class="fa fa-map-marker mr-1"></i>{it.diaChi} </div>
+                                                            <div class="trend-content ">
+                                                                <h4 className='text-truncate-1'><a onClick={() => onNavigate(it.idDiaDiem)}>{it.tenDiaDiem} </a></h4>
+                                                                <div className='d-flex justify-content-between'>
+                                                                    <div class="mb-0 pink">
+                                                                        <i class="fa fa-map-marker mr-1"></i>{it.diaChi} </div>
+                                                                    <div class="mb-0 pink">
+                                                                        <i class="fa fa-eye mb-1"></i> {it.luotXem}
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <div class="trend-last-main">
                                                                 <p class="mb-0 trend-para text-truncate">{it.moTa} </p>

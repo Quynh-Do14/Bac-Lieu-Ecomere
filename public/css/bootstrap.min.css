@@ -5865,6 +5865,15 @@ a.badge-dark:focus {
     border-bottom-left-radius: 0
 }
 
+.pointer-link {
+    cursor: pointer;
+}
+
+.pointer-link:hover {
+    color: #007bff;
+    border-bottom: solid 1px #007bff;
+}
+
 @media (min-width:576px) {
     .list-group-horizontal-sm {
         -ms-flex-direction: row;
@@ -10812,13 +10821,22 @@ button.bg-dark:hover {
     white-space: nowrap !important
 }
 
+.text-truncate-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    height: 5.4vh;
+}
+
 .text-truncate {
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 3;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    height: 9.5vh;
+    height: 8vh;
 }
 
 .text-left {

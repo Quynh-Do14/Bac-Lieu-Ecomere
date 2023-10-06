@@ -1,81 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MainLayout from '../../infratructure/common/layout/main-layout'
 import BreadcumbCommon from '../../infratructure/common/layout/breadcumb'
 import { ROUTE_PATH } from '../../core/common/appRouter'
 import LoadingFullPage from '../../infratructure/common/controls/loading'
+import Constants from '../../core/common/constant'
+import api from '../../infratructure/api'
+import { convertTimeOnly, showImageCommon } from '../../infratructure/utils/helper'
+import SearchBarCommon from '../../infratructure/common/controls/search-bar'
+import { useNavigate } from 'react-router-dom'
 import SearchCommon from '../../infratructure/common/controls/search-common'
-import RelationCommon from '../../infratructure/common/layout/relation'
-const data = [
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-5-1691745308.jpg",
-        address: "Bạc Liêu",
-        name: "Lễ hội trăng dằm",
-        description: " Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.",
-    },
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-5-1691745308.jpg",
-        address: "Bạc Liêu",
-        name: "Lễ hội trăng dằm",
-        description: " Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.",
+let timeout
+const ListSpecialty = () => {
+    const [listDacSan, setListDacSan] = useState([]);
+    const [pagination, setPagination] = useState({});
+    const [totalItem, setTotalItem] = useState();
+    const [pageSize, setPageSize] = useState(Constants.PaginationConfigs.Size);
+    const [page, setPage] = useState(1);
+    const [loading, setLoading] = useState(false);
+    const [searchText, setSearchText] = useState("");
+    const navigate = useNavigate();
 
-    },
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-5-1691745308.jpg",
-        address: "Bạc Liêu",
-        name: "Lễ hội trăng dằm",
-        description: " Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.",
-    },
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-5-1691745308.jpg",
-        address: "Bạc Liêu",
-        name: "Lễ hội trăng dằm",
-        description: " Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.",
-    },
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-5-1691745308.jpg",
-        address: "Bạc Liêu",
-        name: "Lễ hội trăng dằm",
-        description: " Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.",
+    const onGetListDacSanAsync = async ({ keyWord = "", limit = pageSize, page = 1 }) => {
+        const response = await api.getAllDiaDiem(
+            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Specialty.value}&${Constants.Params.limit}=${limit}`,
+            setLoading
+        )
+        setListDacSan(response.data.diaDiems);
+        setPagination(response.data.pagination);
+        setTotalItem(response.data.totalItems);
     }
 
-]
+    const onSearch = async (keyWord = "", limit = pageSize, page = 1) => {
+        onGetListDacSanAsync({ keyWord: keyWord, limit: limit, page: page })
+    }
+    useEffect(() => {
+        onSearch().then(_ => { });
+    }, []);
 
-const dataR = [
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
-        review: 38,
-        name: " Lăng Ông Nam Hải",
-        view: 852,
-        star: 5,
-        description: "A wonderful little cottage right on the seashore - perfect for exploring.",
-        address: "Bạc Liêu",
-        day: "3 ngày 2 đêm",
-        price: 12000
-    },
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
-        review: 38,
-        name: " Lăng Ông Nam Hải",
-        view: 852,
-        star: 5,
-        description: "A wonderful little cottage right on the seashore - perfect for exploring.",
-        address: "Bạc Liêu",
-        day: "3 ngày 2 đêm",
-        price: 12000
-    },
-    {
-        img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
-        review: 38,
-        name: " Lăng Ông Nam Hải",
-        view: 852,
-        star: 5,
-        description: "A wonderful little cottage right on the seashore - perfect for exploring.",
-        address: "Bạc Liêu",
-        day: "3 ngày 2 đêm",
-        price: 12000
-    },
-]
-const ListSpecialty = () => {
+    const onChangeSearchText = (e) => {
+        setSearchText(e.target.value);
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            onSearch(e.target.value, pageSize, page).then((_) => { });
+        }, Constants.DEBOUNCE_SEARCH);
+    };
+    const showMore = (prev) => {
+        onSearch(searchText, prev + Constants.Params.limit, page).then((_) => { });
+    };
+
+    const onNavigate = (id) => {
+        // navigate(`${(ROUTE_PATH.VIEW_SPECIALTY).replace(`${Constants.UseParams.Id}`, "")}${id}`);
+        navigate(`${(ROUTE_PATH.VIEW_SPECIALTY)}?${id}`)
+    }
     return (
         <MainLayout>
             <LoadingFullPage />
@@ -95,30 +71,24 @@ const ListSpecialty = () => {
                                     </div>
                                 </div>
                                 {
-                                    data.map((it, index) => {
+                                    listDacSan.map((it, index) => {
                                         return (
                                             <div className="blog-full d-flex justify-content-around mb-4" key={index}>
                                                 <div className="row w-100">
                                                     <div className="col-lg-5 col-md-4 col-xs-12 blog-height">
                                                         <div className="blog-image">
-                                                            <a href="#" style={{ backgroundImage: `url(/images/destination/destination3.jpg)` }}></a>
+                                                            <img src={showImageCommon(it.hinhAnh)} alt="image" height={255} />
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-7 col-md-8 col-xs-12">
                                                         <div className="blog-content p-0">
-                                                            <h4 className="mb-1"><a href={ROUTE_PATH.VIEW_SPECIALTY} className="">{it.name} </a></h4>
+                                                            <h4 className="mb-1"><a onClick={() => onNavigate(it.idDiaDiem)} className="">{it.tenDiaDiem} </a></h4>
                                                             <div className="trend-tags">
                                                                 <a href={ROUTE_PATH.VIEW_SPECIALTY} ><i className="fa fa-heart"></i></a>
                                                             </div>
-                                                            <div className="rating pb-1">
-                                                                <span className="fa fa-star checked"></span>
-                                                                <span className="fa fa-star checked"></span>
-                                                                <span className="fa fa-star checked"></span>
-                                                                <span className="fa fa-star checked"></span>
-                                                                <span className="fa fa-star checked"></span>
-                                                            </div>
-                                                            <p className="mb-2 pink"><i className="fa fa-eye mr-1"></i> {it.view} <i className="fa fa-map-marker mr-1 ml-3"></i> {it.address}</p>
-                                                            <p className="mb-2 border-t pt-2">{it.description} </p>
+
+                                                            <p className="mb-2 pink"><i className="fa fa-eye mr-1"></i> {it.luotXem} <i className="fa fa-map-marker mr-1 ml-3"></i> {it.diaChi}</p>
+                                                            <p className="mb-2 border-t pt-2 text-truncate" style={{ height: "90px !important" }}>{it.moTa} </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -127,7 +97,7 @@ const ListSpecialty = () => {
                                     })
                                 }
                                 <div className="text-center">
-                                    <a href="#" className="nir-btn">Xem thêm <i className="fa fa-long-arrow-alt-right"></i></a>
+                                    <a onClick={showMore} class="nir-btn white">Xem thêm <i class="fa fa-long-arrow-alt-right"></i></a>
                                 </div>
                             </div>
                         </div>

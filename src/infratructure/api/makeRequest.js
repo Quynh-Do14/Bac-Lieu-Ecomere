@@ -1,4 +1,4 @@
-import { FailMessage, SuccessMessage } from "../common/components/toast/notificationToast";
+// import { FailMessage, SuccessMessage } from "../common/components/toast/notificationToast";
 
 
 // import store from "../store";
@@ -67,13 +67,13 @@ const request = {
     console.log(result);
     setLoading(true)
     if (result.ok) {
-      SuccessMessage("Upload dữ liệu thành công", "Dữ liệu đã được upload thành công")
+      // SuccessMessage("Upload dữ liệu thành công", "Dữ liệu đã được upload thành công")
       setLoading(false)
       callBack()
       return result.json();
     } else {
       setLoading(false)
-      FailMessage("Upload dữ liệu thất bại", "Dữ liệu đã được Upload thất bại");
+      // FailMessage("Upload dữ liệu thất bại", "Dữ liệu đã được Upload thất bại");
       return {
         status: false,
         data: {},
@@ -98,13 +98,13 @@ const request = {
     console.log(result);
     setLoading(true)
     if (result.ok) {
-      SuccessMessage("Upload dữ liệu thành công", "Dữ liệu đã được upload thành công")
+      // SuccessMessage("Upload dữ liệu thành công", "Dữ liệu đã được upload thành công")
       setLoading(false)
       callBack()
       return result.json();
     } else {
       setLoading(false)
-      FailMessage("Upload dữ liệu thất bại", "Dữ liệu đã được Upload thất bại");
+      // FailMessage("Upload dữ liệu thất bại", "Dữ liệu đã được Upload thất bại");
       return {
         status: false,
         data: {},
@@ -129,12 +129,12 @@ const request = {
     });
     setLoading(true);
     if (result.ok) {
-      SuccessMessage("Tạo mới dữ liệu thành công", "Dữ liệu đã được tạo mới thành công")
+      // SuccessMessage("Tạo mới dữ liệu thành công", "Dữ liệu đã được tạo mới thành công")
       setLoading(false);
       callBack()
       return result.json();
     } else {
-      FailMessage("Tạo mới dữ liệu thất bại", "Dữ liệu đã được tạo mới thất bại");
+      // FailMessage("Tạo mới dữ liệu thất bại", "Dữ liệu đã được tạo mới thất bại");
       setLoading(false);
       return {
         status: false,
@@ -160,12 +160,12 @@ const request = {
     });
     setLoading(true)
     if (result.ok) {
-      SuccessMessage("Cập nhật dữ liệu thành công", "Dữ liệu đã được cập nhật thành công")
+      // SuccessMessage("Cập nhật dữ liệu thành công", "Dữ liệu đã được cập nhật thành công")
       callBack();
       setLoading(false);
       return result.json();
     } else {
-      FailMessage("Cập nhật dữ liệu thất bại", "Dữ liệu đã được cập nhật thất bại");
+      // FailMessage("Cập nhật dữ liệu thất bại", "Dữ liệu đã được cập nhật thất bại");
       setLoading(false);
       return {
         status: false,
@@ -191,12 +191,12 @@ const request = {
     });
     setLoading(true);
     if (result.ok) {
-      SuccessMessage("Xóa dữ liệu thành công", "Dữ liệu đã được xóa thành công")
+      // SuccessMessage("Xóa dữ liệu thành công", "Dữ liệu đã được xóa thành công")
       setLoading(false);
       callBack()
       return result.json();
     } else {
-      FailMessage("Xóa dữ liệu thất bại", "Dữ liệu đã được xóa thất bại");
+      // FailMessage("Xóa dữ liệu thất bại", "Dữ liệu đã được xóa thất bại");
       setLoading(false);
       return {
         status: false,
@@ -242,11 +242,11 @@ const request = {
       console.log(e);
     });
     if (result.ok) {
-      SuccessMessage("Đăng nhập thành công", "")
+      // SuccessMessage("Đăng nhập thành công", "")
       setLoading(false);
       return result.json();
     } else {
-      FailMessage("Đăng nhập thất bại", "");
+      // FailMessage("Đăng nhập thất bại", "");
       setLoading(false);
       return {
         status: false,
