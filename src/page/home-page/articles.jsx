@@ -30,12 +30,12 @@ const Articles = ({ data = [] }) => {
                                                     <ul>
                                                         <li>
                                                             <a href="/detail-article" className="pr-3">
-                                                                <i className="fa fa-calendar pink pr-1" />{convertDateOnly(it.ngayDang)}
+                                                                <i className="fa fa-calendar pink pr-2" />{convertDateOnly(it.ngayDang)}
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="/detail-article" className="pr-3">
-                                                                <i className="fa fa-comment pink pr-1" /> {it.luotXem}
+                                                                <i className="fa fa-eye pink pr-2" /> {it.luotXem}
                                                             </a>
                                                         </li>
                                                     </ul>
