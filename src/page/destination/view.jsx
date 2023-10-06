@@ -139,6 +139,39 @@ const DetailDestination = () => {
                       </tbody>
                     </table>
                   </div>
+                  <div>
+                    <br />
+                    <br />
+                    <a target="_blank"
+                      href={detailDestination.uriVideo}
+                      style={{
+                        color: "#F56961",
+                      }}
+                    >
+                      Video mô tả {detailDestination.tenDiaDiem}
+                    </a>
+                    <br />
+                    <br />
+
+                    <a target="_blank"
+                      href={detailDestination.uriBaiViet}
+                      style={{
+                        color: "#F56961",
+                      }}
+                    >
+                      Bài viết mô tả {detailDestination.tenDiaDiem}
+                    </a>
+                    <br />
+                    <br />
+                    <a target="_blank"
+                      href={detailDestination.thoiGianGhe}
+                      style={{
+                        color: "#F56961",
+                      }}
+                    >
+                      Album ảnh về {detailDestination.tenDiaDiem}
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
