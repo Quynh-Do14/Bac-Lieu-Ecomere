@@ -1,4 +1,6 @@
 import React from 'react'
+import Constants from '../../core/common/constant';
+import api from '../../infratructure/api';
 const district = [
     {
         name: "Tp Bạc Liêu",
@@ -11,15 +13,15 @@ const district = [
     }
 ]
 const SearchBar = (props) => {
-    const onGetListDiemDenAsync = async () => {
-        const response = await api.getAllDiaDiem(
-          `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit}=${Constants.PaginationConfigs.Size}`,
-          setLoading
-        );
-        setListDiaDiem(response.data.diaDiems);
-        // setPagination(response.data.pagination);
-        // setTotalItem(response.data.totalItems);
-      };
+    // const onGetListDiemDenAsync = async () => {
+    //     const response = await api.getAllQuanHuyen(
+    //       `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit}=${Constants.PaginationConfigs.Size}`,
+    //       setLoading
+    //     );
+    //     setListDiaDiem(response.data.diaDiems);
+    //     // setPagination(response.data.pagination);
+    //     // setTotalItem(response.data.totalItems);
+    //   };
     const { title } = props;
     return (
         <div>
