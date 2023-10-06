@@ -18,12 +18,13 @@ const ListSpecialty = () => {
     const [pageSize, setPageSize] = useState(Constants.PaginationConfigs.Size);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
+    const [qH, setQH] = useState("")
     const [searchText, setSearchText] = useState("");
     const navigate = useNavigate();
 
-    const onGetListDacSanAsync = async ({ keyWord = "", limit = pageSize, page = 1 }) => {
+    const onGetListDacSanAsync = async ({ keyWord = "", limit = pageSize, page = 1, qH = "" }) => {
         const response = await api.getAllDiaDiem(
-            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Specialty.value}&${Constants.Params.limit}=${limit}`,
+            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Specialty.value}&${Constants.Params.page}=${page}&idQuanHuyen=${qH}&searchDiaChi=${keyWord}`,
             setLoading
         )
         setListDacSan(response.data.diaDiems);
@@ -31,8 +32,8 @@ const ListSpecialty = () => {
         setTotalItem(response.data.totalItems);
     }
 
-    const onSearch = async (keyWord = "", limit = pageSize, page = 1) => {
-        onGetListDacSanAsync({ keyWord: keyWord, limit: limit, page: page })
+    const onSearch = async (keyWord = "", limit = pageSize, page = 1, qH = "") => {
+        onGetListDacSanAsync({ keyWord: keyWord, limit: limit, page: page, qH: qH })
     }
     useEffect(() => {
         onSearch().then(_ => { });
@@ -42,26 +43,40 @@ const ListSpecialty = () => {
         setSearchText(e.target.value);
         clearTimeout(timeout);
         timeout = setTimeout(() => {
-            onSearch(e.target.value, pageSize, page).then((_) => { });
+            onSearch(e.target.value, pageSize, page, qH).then((_) => { });
         }, Constants.DEBOUNCE_SEARCH);
     };
+
+    const OnChangeQH = (e) => {
+        setQH(e.target.value)
+        onSearch("", pageSize, page, e.target.value)
+    }
+
+
     const showMore = (prev) => {
-        onSearch(searchText, prev + Constants.Params.limit, page).then((_) => { });
+        onSearch(searchText, pageSize, prev + 1, qH).then((_) => { });
     };
 
     const onNavigate = (id) => {
-        // navigate(`${(ROUTE_PATH.VIEW_SPECIALTY).replace(`${Constants.UseParams.Id}`, "")}${id}`);
         navigate(`${(ROUTE_PATH.VIEW_SPECIALTY)}?${id}`)
     }
     return (
         <MainLayout>
-            <LoadingFullPage />
+            <LoadingFullPage loading={loading} />
             <BreadcumbCommon title={"Đặc sản"} breadcumb={"Trang chủ"} />
             <section className="blog destination-b pb-6">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 col-xs-12 mb-4">
                             <div className="trend-box">
+                                <div className="list-results d-flex align-items-center justify-content-between">
+                                    <div className="list-results-sort">
+                                        <p className="m-0">Hiển thị {totalItem} kết quả</p>
+                                    </div>
+                                    <div className="click-menu d-flex align-items-center justify-content-between">
+                                        <div className="change-list f-active mr-2"><a href="#"><i className="fa fa-bars"></i></a></div>
+                                    </div>
+                                </div>
                                 {
                                     listDacSan.map((it, index) => {
                                         return (
@@ -88,13 +103,20 @@ const ListSpecialty = () => {
                                         )
                                     })
                                 }
-                                <div className="text-center">
-                                    <a onClick={showMore} class="nir-btn white">Xem thêm <i class="fa fa-long-arrow-alt-right"></i></a>
-                                </div>
+                                {
+                                    listDacSan.length
+                                        ?
+                                        <div className="text-center">
+                                            <a onClick={showMore} class="nir-btn white">Xem thêm <i class="fa fa-long-arrow-alt-right"></i></a>
+                                        </div>
+                                        :
+                                        <div className="text-center">Không có kết quả nào </div>
+                                }
+
                             </div>
                         </div>
                         <div className="col-lg-4 col-xs-12 mb-4">
-                            <SearchBar title={"Đặc sản"} />
+                            <SearchBar title={"Đặc sản"} onChangeSearchText={onChangeSearchText} qH={qH} OnChangeQH={OnChangeQH} />
                         </div>
                     </div>
                 </div>

@@ -20,33 +20,46 @@ const ListFestival = () => {
     const [pageSize, setPageSize] = useState(Constants.PaginationConfigs.Size);
     const [page, setPage] = useState(1);
 
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
+
+
     const navigate = useNavigate();
 
-    const onGetListLeHoiAsync = async ({ keyWord = "", limit = pageSize, page = 1 }) => {
+    const onGetListLeHoiAsync = async () => {
         const response = await api.getAllDiaDiem(
-            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Festival.value}&${Constants.Params.limit}=${limit}`,
+            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Festival.value}&${Constants.Params.page}=${page}&startDate=${startDate}&endDate=${endDate}&search=${searchText}`,
             setLoading
         )
         setListLeHoi(response.data.diaDiems);
         setPagination(response.data.pagination);
         setTotalItem(response.data.totalItems);
     }
-    const onSearch = async (keyWord = "", limit = pageSize, page = 1) => {
-        onGetListLeHoiAsync({ keyWord: keyWord, limit: limit, page: page })
+    const onSearch = async () => {
+        onGetListLeHoiAsync()
     }
     useEffect(() => {
-        onSearch().then(_ => { });
+        onGetListLeHoiAsync()
     }, []);
 
     const onChangeSearchText = (e) => {
         setSearchText(e.target.value);
         clearTimeout(timeout);
         timeout = setTimeout(() => {
-            onSearch(e.target.value, pageSize, page).then((_) => { });
+            onSearch(e.target.value, pageSize, page, startDate, endDate).then((_) => { });
         }, Constants.DEBOUNCE_SEARCH);
     };
+    const onChangeStartDate = (e) => {
+        setStartDate(e.target.value);
+        onSearch(searchText, pageSize, page, e.target.value, endDate).then((_) => { });
+    }
+
+    const onChangeEndDate = (e) => {
+        setEndDate(e.target.value);
+        onSearch(searchText, pageSize, page, startDate, e.target.value).then((_) => { });
+    }
     const showMore = (prev) => {
-        onSearch(searchText, prev + Constants.Params.limit, page).then((_) => { });
+        onSearch(searchText, pageSize, prev + 1, startDate, endDate).then((_) => { });
     };
 
     const onNavigate = (id) => {
@@ -64,11 +77,10 @@ const ListFestival = () => {
                             <div className="trend-box">
                                 <div className="list-results d-flex align-items-center justify-content-between">
                                     <div className="list-results-sort">
-                                        <p className="m-0">Showing 1-5 of 80 results</p>
+                                        <p className="m-0">Hiển thị {totalItem} kết quả</p>
                                     </div>
                                     <div className="click-menu d-flex align-items-center justify-content-between">
                                         <div className="change-list f-active mr-2"><a href="#"><i className="fa fa-bars"></i></a></div>
-                                        <div className="change-grid"><a href="#"><i className="fa fa-th"></i></a></div>
                                     </div>
                                 </div>
                                 {
@@ -99,7 +111,16 @@ const ListFestival = () => {
                             </div>
                         </div>
                         <div className="col-lg-4 col-xs-12 mb-4">
-                            <SearchBar title={"lễ hội"} />
+                            <SearchBar
+                                title={"lễ hội"}
+                                searchText={searchText}
+                                onChangeSearchText={onChangeSearchText}
+                                startDate={startDate}
+                                onChangeStartDate={onChangeStartDate}
+                                endDate={endDate}
+                                onChangeEndDate={onChangeEndDate}
+                                onSearch={onSearch}
+                            />
                         </div>
                     </div>
                 </div>

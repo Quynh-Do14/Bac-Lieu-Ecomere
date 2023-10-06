@@ -1,7 +1,16 @@
 import React from 'react'
 
 const SearchBar = (props) => {
-    const { title } = props;
+    const {
+        title,
+        searchText,
+        onChangeSearchText,
+        startDate,
+        onChangeStartDate,
+        endDate,
+        onChangeEndDate,
+        onSearch
+    } = props;
     return (
         <div>
 
@@ -15,13 +24,7 @@ const SearchBar = (props) => {
                                     <label className="white">Tìm kiếm theo tên {title}</label>
                                     <div className="input-box">
                                         <i className="flaticon-placeholder"></i>
-                                        <select className="niceSelect">
-                                            {/* <option value="1">Where are you going?</option>
-                                                            <option value="2">Argentina</option>
-                                                            <option value="3">Belgium</option>
-                                                            <option value="4">Canada</option>
-                                                            <option value="5">Denmark</option> */}
-                                        </select>
+                                        <input onChange={onChangeSearchText} value={searchText} id="" type="text" placeholder="Địa điểm..." />
                                     </div>
                                 </div>
                             </div>
@@ -29,9 +32,9 @@ const SearchBar = (props) => {
                             <div className="col-lg-6">
                                 <div className="form-group">
                                     <label className="white">Ngày bắt đầu</label>
-                                    <div className="input-box">
-                                        <i className="flaticon-calendar"></i>
-                                        <input id="date-range0" type="text" placeholder="yyyy-mmm-dd" />
+                                    <div className="input-box-2">
+                                        {/* <i className="flaticon-calendar"></i> */}
+                                        <input  onChange={onChangeStartDate} value={startDate} id="" type="date" placeholder="yyyy-mmm-dd" />
                                     </div>
                                 </div>
                             </div>
@@ -39,15 +42,15 @@ const SearchBar = (props) => {
                             <div className="col-lg-6">
                                 <div className="form-group">
                                     <label className="white">Ngày kết thúc</label>
-                                    <div className="input-box">
-                                        <i className="flaticon-calendar"></i>
-                                        <input id="date-range1" type="text" placeholder="yyyy-mm-dd" />
+                                    <div className="input-box-2">
+                                        {/* <i className="flaticon-calendar"></i> */}
+                                        <input onChange={onChangeEndDate} value={endDate} id="" type="date" placeholder="yyyy-mm-dd" />
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-12">
                                 <div className="form-group mb-0 white">
-                                    <a  className="nir-btn w-100"><i className="fa fa-search"></i> Tìm kiếm</a>
+                                    <a onClick={onSearch} className="nir-btn w-100"><i className="fa fa-search"></i> Tìm kiếm</a>
                                 </div>
                             </div>
                         </div>

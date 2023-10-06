@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Constants from '../../core/common/constant';
 import api from '../../infratructure/api';
 const district = [
@@ -13,16 +13,17 @@ const district = [
     }
 ]
 const SearchBar = (props) => {
-    // const onGetListDiemDenAsync = async () => {
-    //     const response = await api.getAllQuanHuyen(
-    //       `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit}=${Constants.PaginationConfigs.Size}`,
-    //       setLoading
-    //     );
-    //     setListDiaDiem(response.data.diaDiems);
-    //     // setPagination(response.data.pagination);
-    //     // setTotalItem(response.data.totalItems);
-    //   };
-    const { title } = props;
+    const { title, onChangeSearchText, qH, OnChangeQH } = props;
+
+    const [dsQuanHuyen, setDsQuanHuyen] = useState([])
+    const onGetQuanHuyenAsync = async () => {
+        const response = await api.getAllQuanHuyen();
+        setDsQuanHuyen(response.data.quanHuyens);
+    };
+    useEffect(() => {
+        onGetQuanHuyenAsync()
+    }, [])
+
     return (
         <div>
 
@@ -36,10 +37,10 @@ const SearchBar = (props) => {
                                     <label className="white">Tìm kiếm quận huyện</label>
                                     <div className="input-box">
                                         <i className="flaticon-placeholder"></i>
-                                        <select className="niceSelect">
-                                            {district.map((it, index) => {
+                                        <select className="niceSelect" value={qH} onChange={OnChangeQH}>
+                                            {dsQuanHuyen.map((it, index) => {
                                                 return (
-                                                    <option key={index}>{it.name}</option>
+                                                    <option value={it.idQuanHuyen} key={index}>{it.tenQuanHuyen}</option>
                                                 )
                                             })}
                                         </select>
@@ -48,7 +49,7 @@ const SearchBar = (props) => {
                                 <div class="form-group">
                                     <label className="white">Tìm kiếm theo tên địa điểm</label>
                                     <div class="input-box">
-                                        <input id="date-range1" type="text" placeholder="Địa điểm..." />
+                                        <input onChange={onChangeSearchText} id="date-range1" type="text" placeholder="Địa điểm..." />
                                     </div>
                                 </div>
                             </div>
