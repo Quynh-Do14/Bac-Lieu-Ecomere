@@ -52,10 +52,7 @@ const api = {
       setLoading
     ),
   ///////
-  getAllQuanHuyen: (params, setLoading) =>
-    request.get(
-      `${apiLinks.API}${Endpoint.Module.District}/${params}`,
-      setLoading
-    ),
+  getAllQuanHuyen: (params) =>
+    requestDuong.get(`${apiLinks.API}${Endpoint.Module.District}`),
 };
 export default api;
