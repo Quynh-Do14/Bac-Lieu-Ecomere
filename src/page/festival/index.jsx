@@ -21,7 +21,7 @@ const ListFestival = () => {
 
     const navigate = useNavigate();
 
-    const onGetListLeHoiAsync = async () => {
+    const onGetListLeHoiAsync = async ({ keyWord = "", limit = pageSize, page = 1 }) => {
         const response = await api.getAllDiaDiem(
             `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Festival.value}`,
             setLoading
@@ -50,12 +50,11 @@ const ListFestival = () => {
 
     const onNavigate = (id) => {
         // navigate(`${(ROUTE_PATH.VIEW_DESTINATION).replace(`${Constants.UseParams.Id}`, "")}${id}`);
-        navigate(`${(ROUTE_PATH.VIEW_DESTINATION)}?${id}`)
+        navigate(`${(ROUTE_PATH.VIEW_FESTIVAL)}?${id}`)
     }
 
     return (
         <MainLayout>
-            <LoadingFullPage />
             <BreadcumbCommon title={"Lễ hội"} breadcumb={"Trang chủ"} />
             <section className="blog destination-b pb-6">
                 <div className="container">
@@ -104,6 +103,7 @@ const ListFestival = () => {
                     </div>
                 </div>
             </section>
+            <LoadingFullPage loading={loading} />
         </MainLayout>
     )
 }

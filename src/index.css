@@ -2732,14 +2732,14 @@ code {
   white-space: nowrap !important
 }
 
-.text-truncate {
+/* .text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   height: 9.5vh;
-}
+} */
 
 .text-left {
   text-align: left !important

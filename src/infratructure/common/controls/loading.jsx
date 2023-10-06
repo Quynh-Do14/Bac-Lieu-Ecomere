@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LoadingFullPage = (loading = false) => {
+const LoadingFullPage = ({ loading = true }) => {
     if (loading) {
         return (
 
@@ -10,7 +10,7 @@ const LoadingFullPage = (loading = false) => {
         )
     }
     else {
-        return
+        return null
     }
 
 }

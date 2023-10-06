@@ -2,6 +2,7 @@ import { Endpoint } from "../../core/common/appRouter";
 // import request from "./makeRequest";
 import * as apiLinks from "../../core/common/apiLinks";
 import requestDuong from "./makeRequestDuong";
+import request from "./makeRequest";
 
 const api = {
   login: (data, setLoading) =>
@@ -28,12 +29,12 @@ const api = {
     ),
   //////
   getAllDiaDiem: (params, setLoading) =>
-    requestDuong.get(
+    request.get(
       `${apiLinks.API}${Endpoint.Module.DiaDiem}/${params}`,
       setLoading
     ),
   getDiaDiemById: (params, setLoading) =>
-    requestDuong.get(
+    request.get(
       `${apiLinks.API}${Endpoint.Module.DiaDiem}/${params}`,
       setLoading
     ),
@@ -41,12 +42,12 @@ const api = {
 
   //////
   getAllTinTuc: (params, setLoading) =>
-    requestDuong.get(
+    request.get(
       `${apiLinks.API}${Endpoint.Module.TinTuc}/${params}`,
       setLoading
     ),
   getTinTucById: (params, setLoading) =>
-    requestDuong.get(
+    request.get(
       `${apiLinks.API}${Endpoint.Module.TinTuc}/${params.id}`,
       setLoading
     ),

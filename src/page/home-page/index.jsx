@@ -18,15 +18,16 @@ const HomePage = () => {
 
   const [pageSize, setPageSize] = useState(10);
 
-  const onGetListDiemDenAsync = async () => {
-    const response = await api.getAllDiaDiem(
-      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}`,
-      setLoading
-    );
-    setListDiaDiem(response.data.diaDiems);
-    // setPagination(response.data.pagination);
-    // setTotalItem(response.data.totalItems);
-  };
+
+    const onGetListDiemDenAsync = async () => {
+        const response = await api.getAllDiaDiem(
+            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit}=${Constants.PaginationConfigs.Size}`,
+            setLoading
+        )
+        setListDiaDiem(response.data.diaDiems);
+        // setPagination(response.data.pagination);
+        // setTotalItem(response.data.totalItems);
+    }
 
   const onGetListDacSanAsync = async () => {
     const response = await api.getAllDiaDiem(

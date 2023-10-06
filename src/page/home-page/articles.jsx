@@ -42,17 +42,14 @@ const Articles = ({ data = [] }) => {
                                                 </div>
                                                 <div className="news-content mt-2">
                                                     <h4 className="pb-2 mb-2 border-b">
-                                                        <a href="/detail-article">
+                                                        <a className='text-truncate-2' href="/detail-article">
                                                             {it.tieuDe}
                                                         </a>
                                                     </h4>
                                                     <p className="mb-3 text-truncate">
                                                         {it.tieuDeCon}
                                                     </p>
-                                                    {/* <div className="author-img">
-                                                        <img src="./images/reviewer/1.jpg" alt="Demo Image" />
-                                                        <span>By - Jack Well Fardez</span>
-                                                    </div> */}
+
                                                 </div>
                                             </div>
                                         </div>

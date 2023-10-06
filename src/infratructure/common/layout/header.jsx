@@ -7,6 +7,8 @@ import { useLocation } from 'react-router-dom';
 
 const HeaderPage = () => {
     const location = useLocation();
+    let aa = location.pathname
+    console.log('a',aa);
     return (
         <header className="main_header_area headerstye-1">
             {/* Navigation Bar */}
@@ -28,8 +30,9 @@ const HeaderPage = () => {
                             >
                                 <ul className="nav navbar-nav" id="responsive-menu">
                                     {Constants.Menu.List.map((it, index) => {
+                                        console.log(it.link.includes(aa));
                                         return (
-                                            <li className={`${location.pathname.includes(it.link) ? "menu-title active" : "menu-title"}`} key={index}>
+                                            <li className={`${it.link.includes(aa) ? "menu-title active" : "menu-title"}`} key={index}>
                                                 <a href={it.link}>{it.label} </a>
                                             </li>
                                         )
