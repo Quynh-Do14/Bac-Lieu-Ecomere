@@ -36,8 +36,8 @@ const Footer = () => {
                     <div class="container">
                         <div class="row w-100">
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-4">
-                                <div class="footer-about bg-white p-4">
-                                    <img src="images/logo.png" alt="" />
+                                <div class="d-flex  flex-column footer-about bg-white p-4 justify-content-center align-items-center" style={{alignItems:'center'}}>
+                                    <img src="images/logo.png" alt="" style={{maxWidth: 170,}}/>
                                     <p class="mt-3">
                                         Nếu có cơ hội về thăm miền Tây Nam Bộ
                                         <br />
@@ -49,7 +49,7 @@ const Footer = () => {
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-4">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-4">
                                 <div class="footer-links">
                                     <h4 class="white">Thông tin liên hệ</h4>
                                     <ul>
@@ -67,6 +67,16 @@ const Footer = () => {
                                         </li>
                                     </ul>
                                 </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-4">
+                            <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63003.66873809114!2d105.71193037574447!3d9.26846490738424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a10a2351f087b3%3A0x4949992f9e65b750!2zVHAuIELhuqFjIExpw6p1LCBC4bqhYyBMacOqdSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1696579104318!5m2!1svi!2s"
+  style={{ border: 0, width: '100%',height: '100%' }}
+  allowFullScreen=""
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+/>
+
                             </div>
                         </div>
                     </div>
