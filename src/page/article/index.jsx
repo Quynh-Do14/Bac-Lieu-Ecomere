@@ -78,16 +78,16 @@ const ListArticle = () => {
                                                                 <h4><a className='text-truncate-2' onClick={() => onNavigate(it.idTinTuc)}>{it.tieuDe} </a></h4>
                                                                 <div className='d-flex justify-content-between'>
                                                                     <div class="mb-0 pink">
-                                                                        <i class="fa fa-map-marker mr-1"></i>{it.diaChi} </div>
+                                                                        <i class="fa fa-map-marker mr-2"></i>{it.diaChi} </div>
                                                                     <div class="mb-0 pink">
-                                                                        <i class="fa fa-eye mb-1"></i> {it.luotXem}
+                                                                        <i class="fa fa-eye mb-1 mr-1"></i> {it.luotXem}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="trend-last-main">
-                                                                <p class="mb-0 trend-para text-truncate-2">{it.tieuDeCon} </p>
+                                                                <p class="mb-0 trend-para" style={{minHeight: 73,}}>{it.tieuDeCon.length > 75 ? it.tieuDeCon.slice(0, 75) + ' ...' : it.tieuDeCon} </p>
                                                                 <div class="trend-last d-flex align-items-center justify-content-between bg-navy">
-                                                                    <p class="mb-0 white"><i class="fa fa-clock-o" aria-hidden="true"></i>{convertDateOnly(it.ngayDang)}</p>
+                                                                    <p class="mb-0 white"><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>{convertDateOnly(it.ngayDang)}</p>
 
                                                                 </div>
                                                             </div>

@@ -11,7 +11,7 @@ const BreadcumbCommon = (props) => {
                             <h2 className="mb-0">{title} </h2>
                             <nav aria-label="breadcrumb">
                                 <ul className="breadcrumb">
-                                    <li className="breadcrumb-item"><a href="#">{breadcumb}</a></li>
+                                    <li className="breadcrumb-item"><a href="/">{breadcumb}</a></li>
                                     <li className="breadcrumb-item active" aria-current="page">{title} </li>
                                 </ul>
                             </nav>
