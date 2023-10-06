@@ -13,8 +13,8 @@ const SearchBar = ({ value, onChange }) => {
                                 <input value={value} id="" onChange={onChange} type="text" placeholder="Tìm kiếm theo tên..." />
                             </div>
                         </div>
-                        <div class="form-group mb-2 col-lg-3 col-md-3 col-xs-3 ">
-                            <a href="#" class="nir-btn w-100"><i class="fa fa-search"></i> Tìm kiếm</a>
+                        <div class="form-group mb-2 col-lg-3 col-md-3 col-xs-3 white ">
+                            <a class="nir-btn w-100"><i class="fa fa-search"></i> Tìm kiếm</a>
                         </div>
                     </div>
                 </div>

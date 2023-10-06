@@ -1,7 +1,14 @@
 import React from 'react'
 import { showImageCommon } from '../../infratructure/utils/helper'
+import { useNavigate } from 'react-router-dom'
+import { ROUTE_PATH } from '../../core/common/appRouter';
 
 const Specialty = ({ data }) => {
+    const navigate = useNavigate();
+
+    const onNavigate = (id) => {
+        navigate(`${(ROUTE_PATH.VIEW_SPECIALTY)}?${id}`)
+    }
     return (
         <section className="top-destination overflow-hidden bg-navy pt-9">
             <div className="container">
@@ -20,8 +27,8 @@ const Specialty = ({ data }) => {
                                             <h4 className="white mb-0">{it.tenDiaDiem}</h4>
                                         </div>
                                         <div className="desti-overlay">
-                                            <a href="#" className="nir-btn">
-                                                <span className="white">Chi tiết</span>
+                                            <a className="nir-btn">
+                                                <span className="white" onClick={() => onNavigate(it.idDiaDiem)}>Chi tiết</span>
                                                 <i className="fa fa-arrow-right white pl-1"> </i>
                                             </a>
                                         </div>

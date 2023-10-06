@@ -9,7 +9,6 @@ const HeaderPage = () => {
     const location = useLocation();
     let aa = location.pathname
 
-    console.log('a', aa);
     return (
         <header className="main_header_area headerstye-1">
             {/* Navigation Bar */}
@@ -43,14 +42,14 @@ const HeaderPage = () => {
                             {/* /.navbar-collapse */}
                             {/* <div className="register-login">
                                 <a
-                                    href="#"
+                                    
                                     className="mr-2"
                                     data-toggle="modal"
                                     data-target="#register"
                                 >
                                     <i className="icon-user mr-1" /> Đăng kí
                                 </a>
-                                <a href="#" data-toggle="modal" data-target="#login">
+                                <a  data-toggle="modal" data-target="#login">
                                     <i className="icon-login mr-1" /> Đăng nhập
                                 </a>
                             </div> */}

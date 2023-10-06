@@ -25,8 +25,8 @@ const SearchBarCommon = ({ value, onChange }) => {
                             </div>
                         </div>
  
-                        <div class="form-group m-0">
-                            <a href="#" class="nir-btn w-100"><i class="fa fa-search"></i> Tìm kiếm</a>
+                        <div class="form-group m-0 white">
+                            <a  class="nir-btn w-100"><i class="fa fa-search"></i> Tìm kiếm</a>
                         </div>
                     </div>
                 </div>

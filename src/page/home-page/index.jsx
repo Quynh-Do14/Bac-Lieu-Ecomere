@@ -8,6 +8,8 @@ import Specialty from "./specialty";
 import api from "../../infratructure/api";
 import LoadingFullPage from "../../infratructure/common/controls/loading";
 import Constants from "../../core/common/constant";
+import { useNavigate } from 'react-router-dom'
+import { ROUTE_PATH } from "../../core/common/appRouter";
 
 const HomePage = () => {
   const [loading, setLoading] = useState(false);
@@ -19,6 +21,7 @@ const HomePage = () => {
   const [listLeHoi, setListLeHoi] = useState([]);
 
   const [pageSize, setPageSize] = useState(10);
+  const navigate = useNavigate();
 
   const onGetListDiemDenAsync = async () => {
     const response = await api.getAllDiaDiem(
@@ -32,8 +35,7 @@ const HomePage = () => {
 
   const onGetTop2DiaDiemDuLich = async () => {
     const response = await api.getAllDiaDiem(
-      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${
-        Constants.Params.limit
+      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit
       }=${2}`,
       setLoading
     );
@@ -43,8 +45,7 @@ const HomePage = () => {
   };
   const onGetTop4TuTop2DiaDiemDuLich = async () => {
     const response = await api.getAllDiaDiem(
-      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${
-        Constants.Params.limit
+      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit
       }=${4}&page=2`,
       setLoading
     );
@@ -80,19 +81,25 @@ const HomePage = () => {
     // setTotalItem(response.data.totalItems);
   };
   useEffect(() => {
-    onGetListDiemDenAsync().then((_) => {});
-    onGetListTinTucAsync().then((_) => {});
-    onGetListDacSanAsync().then((_) => {});
-    onGetListLeHoiAsync().then((_) => {});
-    onGetTop2DiaDiemDuLich().then((_) => {});
-    onGetTop4TuTop2DiaDiemDuLich().then((_) => {});
+    onGetListDiemDenAsync().then((_) => { });
+    onGetListTinTucAsync().then((_) => { });
+    onGetListDacSanAsync().then((_) => { });
+    onGetListLeHoiAsync().then((_) => { });
+    onGetTop2DiaDiemDuLich().then((_) => { });
+    onGetTop4TuTop2DiaDiemDuLich().then((_) => { });
   }, []);
+
+  const onNavigate = (id) => {
+    navigate(`${(ROUTE_PATH.VIEW_DESTINATION)}?${id}`)
+  }
 
   return (
     <MainLayout>
-      <LoadingFullPage isLoading={loading} />
       <BannerCommon />
       <>
+        <div id="preloader">
+          <div id="status"></div>
+        </div>
         {/* why us starts */}
         <section className="featured-us pb-0">
           <div className="container">
@@ -105,7 +112,7 @@ const HomePage = () => {
                     </div>
                     <div className="featured-us-content">
                       <h4 className="mb-1">
-                        <a href="#">Giá cả cạnh tranh</a>
+                        <a>Giá cả cạnh tranh</a>
                       </h4>
                       <p className="mb-0">
                         Với hơn 500 nhà cung cấp và sức mua 300 triệu thành viên
@@ -120,7 +127,7 @@ const HomePage = () => {
                     </div>
                     <div className="featured-us-content">
                       <h4 className="mb-1">
-                        <a href="#">Dịch vụ đạt giải thưởng</a>
+                        <a>Dịch vụ đạt giải thưởng</a>
                       </h4>
                       <p className="mb-0">
                         Du lịch tuyệt vời không cần lo lắng khi biết rằng chúng
@@ -136,7 +143,7 @@ const HomePage = () => {
                     </div>
                     <div className="featured-us-content">
                       <h4 className="mb-1">
-                        <a href="#">Bảo hiểm toàn cầu</a>
+                        <a>Bảo hiểm toàn cầu</a>
                       </h4>
                       <p className="mb-0">
                         1.200.000 khách sạn tại hơn 200 quốc gia và khu vực
@@ -257,7 +264,7 @@ const HomePage = () => {
                           <h4 className="white mb-0">{v.tenDiaDiem}</h4>
                         </div>
                         <div className="desti-overlay">
-                          <a href="#" className="nir-btn">
+                          <a className="nir-btn" onClick={() => onNavigate(v.idDiaDiem)}>
                             <span className="white">Xem ngay</span>
                             <i className="fa fa-arrow-right white pl-1" />
                           </a>
@@ -281,7 +288,7 @@ const HomePage = () => {
                           <h4 className="white mb-0">{v.tenDiaDiem}</h4>
                         </div>
                         <div className="desti-overlay">
-                          <a href="#" className="nir-btn">
+                          <a className="nir-btn" onClick={() => onNavigate(v.idDiaDiem)}>
                             <span className="white">Xem ngay</span>
                             <i className="fa fa-arrow-right white pl-1" />
                           </a>
@@ -309,7 +316,7 @@ const HomePage = () => {
                       DÀNH KỲ NGHỈ TỐT NHẤT CÙNG CHÚNG TÔI <br />
                       Du lịch tới Bạc Liêu
                     </h2>
-                    <a href="#" className="nir-btn">
+                    <a href={ROUTE_PATH.DESTINATION} className="nir-btn white">
                       Chi tiết{" "}
                       <i className="fa fa-arrow-right white pl-1" />
                     </a>
@@ -391,7 +398,7 @@ const HomePage = () => {
                     </p>
                   </div>
                   <div className="author-title d-flex align-items-center">
-                    <a href="#">
+                    <a>
                       <img src="images/testimonial/img1.jpg" alt="" />
                     </a>
                     <div className="author-in ml-3">
@@ -422,7 +429,7 @@ const HomePage = () => {
                     </p>
                   </div>
                   <div className="author-title d-flex align-items-center">
-                    <a href="#">
+                    <a>
                       <img src="images/testimonial/img2.jpg" alt="" />
                     </a>
                     <div className="author-in ml-3">
@@ -453,7 +460,7 @@ const HomePage = () => {
                     </p>
                   </div>
                   <div className="author-title d-flex align-items-center">
-                    <a href="#">
+                    <a>
                       <img src="images/testimonial/img3.jpg" alt="" />
                     </a>
                     <div className="author-in ml-3">
@@ -482,10 +489,11 @@ const HomePage = () => {
       <Festival data={listLeHoi} />
       <div class="cta-horizon bg-blue pt-4 pb-2">
         <div class="container d-md-flex align-items-center justify-content-between">
-            <h4 class="mb-2 white">Bạn muốn có câu hỏi nào về dịch vụ của Bạc Liêu ?</h4>
-            <a href="#" class="nir-btn-black">Liên hệ chúng tôi ngay !</a>
+          <h4 class="mb-2 white">Bạn muốn có câu hỏi nào về dịch vụ của Bạc Liêu ?</h4>
+          <a class="nir-btn-black">Liên hệ chúng tôi ngay !</a>
         </div>
-    </div>
+      </div>
+      {/* <LoadingFullPage isLoading={loading} /> */}
     </MainLayout>
   );
 };

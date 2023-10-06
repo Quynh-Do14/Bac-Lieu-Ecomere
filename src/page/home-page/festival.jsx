@@ -1,7 +1,14 @@
 import React from "react";
 import { showImageCommon } from "../../infratructure/utils/helper";
+import { useNavigate } from 'react-router-dom'
+import { ROUTE_PATH } from "../../core/common/appRouter";
 
 const Festival = ({ data }) => {
+  const navigate = useNavigate();
+
+  const onNavigate = (id) => {
+    navigate(`${(ROUTE_PATH.VIEW_FESTIVAL)}?${id}`)
+  }
   return (
     <section className="news pb-2 pt-9">
       <div className="container">
@@ -40,14 +47,14 @@ const Festival = ({ data }) => {
                       <li>
                         <a href="single-right.html" className="">
                           <i className="fa fa-tag pink pr-1" />{" "}
-                          {data[0].tenQuanHuyen}, Bạc Liêu
+                          {data[0].tenQuanHuyen}
                         </a>
                       </li>
                     </ul>
                   </div>
                   <div className="news-content mt-2">
                     <h4 className="pb-2 mb-2 border-b">
-                      <a href="single-right.html">{data[0].tenDiaDiem}</a>
+                      <a onClick={() => { onNavigate(data[0].idDiaDiem) }}>{data[0].tenDiaDiem}</a>
                     </h4>
                     <p className="mb-3">
                       {data[0].moTa.length > 500
@@ -94,14 +101,14 @@ const Festival = ({ data }) => {
                             <li>
                               <a href="single-right.html" className="">
                                 <i className="fa fa-tag pink pr-1" />{" "}
-                                {data[0].tenQuanHuyen}, Bạc Liêu
+                                {data[0].tenQuanHuyen}
                               </a>
                             </li>
                           </ul>
                         </div>
                         <div className="news-content mt-2">
                           <h4 className="bordernone mb-0">
-                            <a href="single-right.html">{it.tenDiaDiem}</a>
+                            <a onClick={() => { onNavigate(it.idDiaDiem) }}>{it.tenDiaDiem}</a>
                           </h4>
                         </div>
                       </div>

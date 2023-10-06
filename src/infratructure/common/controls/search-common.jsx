@@ -47,7 +47,7 @@ const SearchCommon = (props) => {
                             </div>
                             <div className="col-lg-12">
                                 <div className="form-group mb-0">
-                                    <a href="#" className="nir-btn w-100"><i className="fa fa-search"></i> Tìm kiếm</a>
+                                    <a className="nir-btn w-100"><i className="fa fa-search"></i> Tìm kiếm</a>
                                 </div>
                             </div>
                         </div>

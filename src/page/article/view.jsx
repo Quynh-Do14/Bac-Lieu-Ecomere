@@ -48,9 +48,9 @@ const DetailArticle = () => {
                                         <div class="blog-content mb-4 pt-0">
                                             <h3 class="blog-title"><a href="blog-single.html" class="yellow">{detailArticle.tieuDe} </a></h3>
                                             <div class="para-content mb-2">
-                                                <span class="mr-2"><a href="#" class="tag pink"><i class="fa fa-tag mr-1"></i> Văn hóa </a></span>
-                                                <span class="mr-2"><a href="#" class="pink"><i class="fa fa-user mr-1"></i>Hưng Trần </a></span>
-                                                <span><a href="#" class="pink"><i class="fa fa-eye mb-1"></i>{detailArticle.luotXem} </a></span>
+                                                <span class="mr-2"><a  class="tag pink"><i class="fa fa-tag mr-1"></i> Văn hóa </a></span>
+                                                <span class="mr-2"><a  class="pink"><i class="fa fa-user mr-1"></i>Hưng Trần </a></span>
+                                                <span><a  class="pink"><i class="fa fa-eye mb-1"></i>{detailArticle.luotXem} </a></span>
                                             </div>
                                             <p>{detailArticle.tieuDeCon} </p>
                                         </div>
@@ -66,11 +66,11 @@ const DetailArticle = () => {
                                     <div class="blog-share-tag">
                                         <ul class="inline">
                                             <li><strong>Link bài viết: </strong></li>
-                                            <li><a className='pointer-link' href="#">Xem thêm</a></li>
+                                            <li><a className='pointer-link' >Xem thêm</a></li>
                                         </ul>
                                         <ul class="inline">
                                             <li><strong>Link video: </strong></li>
-                                            <li><a className='pointer-link' href="#">Xem thêm</a></li>
+                                            <li><a className='pointer-link' >Xem thêm</a></li>
                                         </ul>
                                     </div>
 

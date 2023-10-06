@@ -4,11 +4,6 @@ import { useNavigate } from 'react-router-dom'
 
 const RelationCommon = ({ data = [], title, slogan }) => {
     const navigate = useNavigate();
-
-    const onNavigate = (id) => {
-        // navigate(`${(ROUTE_PATH.VIEW_DESTINATION).replace(`${Constants.UseParams.Id}`, "")}${id}`);
-        navigate(`${(ROUTE_PATH.VIEW_DESTINATION)}?${id}`)
-    }
     return (
         <section class="trending destination bg-grey pb-6">
             <div class="container">
@@ -19,7 +14,7 @@ const RelationCommon = ({ data = [], title, slogan }) => {
                 <div class="trend-box">
                     <div class="row team-slider">
                         {data.map((it, index) => {
-                             return (
+                            return (
                                 <div class="col-lg-4 col-md-6 col-xs-12 mb-4" key={index}>
                                     <div class="trend-item">
                                         <div class="trend-image">
@@ -27,7 +22,7 @@ const RelationCommon = ({ data = [], title, slogan }) => {
                                         </div>
                                         <div class="trend-content-main">
                                             <div class="trend-content ">
-                                                <h4 className='text-truncate-1'><a onClick={() => onNavigate(it.idDiaDiem)}>{it.tenDiaDiem} </a></h4>
+                                                <h4 className='text-truncate-1'><a href={`${(ROUTE_PATH.VIEW_DESTINATION)}?${it.idDiaDiem}`}>{it.tenDiaDiem} </a></h4>
                                                 <div className='d-flex justify-content-between'>
                                                     <div class="mb-0 pink">
                                                         <i class="fa fa-map-marker mr-2"></i>{it.diaChi.replace(', Bạc Liêu', '')} </div>

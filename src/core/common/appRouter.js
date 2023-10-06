@@ -1,24 +1,24 @@
-const PREFIX = "/";
+const PREFIX = "";
 
 export const ROUTE_PATH = {
-    LOGIN: `${PREFIX}login`,
-    REGISTER: `${PREFIX}register`,
+    LOGIN: `/${PREFIX}login`,
+    REGISTER: `/${PREFIX}register`,
 
-    DESTINATION: `${PREFIX}destination`,
-    VIEW_DESTINATION: `${PREFIX}view-destination`,
+    DESTINATION: `/${PREFIX}destination`,
+    VIEW_DESTINATION: `/${PREFIX}view-destination`,
 
-    ARTICLE: `${PREFIX}article`,
-    VIEW_ARTICLE: `${PREFIX}view-article`,
+    ARTICLE: `/${PREFIX}article`,
+    VIEW_ARTICLE: `/${PREFIX}view-article`,
 
-    SPECIALTY: `${PREFIX}specialty`,
-    VIEW_SPECIALTY: `${PREFIX}view-specialty`,
+    SPECIALTY: `/${PREFIX}specialty`,
+    VIEW_SPECIALTY: `/${PREFIX}view-specialty`,
 
-    FESTIVAL: `${PREFIX}festival`,
-    VIEW_FESTIVAL: `${PREFIX}view-festival`,
+    FESTIVAL: `/${PREFIX}festival`,
+    VIEW_FESTIVAL: `/${PREFIX}view-festival`,
 
-    LAYOUT_MAP: `${PREFIX}map`,
+    LAYOUT_MAP: `/${PREFIX}map`,
 
-    HOME_PAGE: `${PREFIX}`,
+    HOME_PAGE: `/`,
 };
 export class Endpoint {
     static Auth = class {

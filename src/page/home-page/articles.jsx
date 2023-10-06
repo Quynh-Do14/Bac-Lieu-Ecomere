@@ -1,9 +1,15 @@
 import { Col, Row } from 'antd'
 import React from 'react'
 import { convertDateOnly, showImageCommon } from '../../infratructure/utils/helper';
+import { ROUTE_PATH } from '../../core/common/appRouter';
+import { useNavigate } from 'react-router-dom'
 
 const Articles = ({ data = [] }) => {
-    console.log('data', data);
+    const navigate = useNavigate();
+
+    const onNavigate = (id) => {
+        navigate(`${(ROUTE_PATH.VIEW_ARTICLE)}?${id}`)
+    }
     return (
         <div>
             <section className="news pb-2 pt-9">
@@ -42,7 +48,7 @@ const Articles = ({ data = [] }) => {
                                                 </div>
                                                 <div className="news-content mt-2">
                                                     <h4 className="pb-2 mb-2 border-b">
-                                                        <a className='text-truncate-2' href="/detail-article">
+                                                        <a className='text-truncate-2' onClick={() => onNavigate(it.idTinTuc)}>
                                                             {it.tieuDe}
                                                         </a>
                                                     </h4>
