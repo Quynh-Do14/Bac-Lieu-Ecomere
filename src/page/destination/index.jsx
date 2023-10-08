@@ -32,8 +32,7 @@ const ListDestination = () => {
     page = 1,
   }) => {
     const response = await api.getAllDiaDiem(
-      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${
-        Constants.Params.limit
+      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit
       }=${limit}${keyWord ? (keyWord != "" ? `&search=${keyWord}` : ``) : ``}`,
       setLoading
     );
@@ -55,19 +54,19 @@ const ListDestination = () => {
     onGetListDiemDenAsync({ keyWord: keyWord, limit: limit, page: page });
   };
   useEffect(() => {
-    onSearch().then((_) => {});
-    onGetQuanHuyenAsync().then((_) => {});
+    onSearch().then((_) => { });
+    onGetQuanHuyenAsync().then((_) => { });
   }, []);
 
   const onChangeSearchText = (e) => {
     setSearchText(e.target.value);
     clearTimeout(timeout);
     timeout = setTimeout(() => {
-      onSearch(e.target.value, pageSize, page).then((_) => {});
+      onSearch(e.target.value, pageSize, page).then((_) => { });
     }, Constants.DEBOUNCE_SEARCH);
   };
   const showMore = (prev) => {
-    onSearch(searchText, prev + Constants.Params.limit, page).then((_) => {});
+    onSearch(searchText, prev + Constants.Params.limit, page).then((_) => { });
   };
 
   const onNavigate = (id) => {
@@ -78,10 +77,8 @@ const ListDestination = () => {
   const searchSelect = async (keyWord, quanhuyen, danhmuc) => {
     console.log(keyWord, quanhuyen, danhmuc);
     const response = await api.getAllDiaDiem(
-      `dichvu/top?idDanhMuc=${danhmuc != "" ? danhmuc : 1}&${
-        Constants.Params.limit
-      }=${1000}${keyWord ? (keyWord != "" ? `&search=${keyWord}` : ``) : ``}${
-        quanhuyen != "" ? `&idQuanHuyen=${quanhuyen}` : ``
+      `dichvu/top?idDanhMuc=${danhmuc != "" ? danhmuc : 1}&${Constants.Params.limit
+      }=${1000}${keyWord ? (keyWord != "" ? `&search=${keyWord}` : ``) : ``}${quanhuyen != "" ? `&idQuanHuyen=${quanhuyen}` : ``
       }`,
       setLoading
     );
@@ -162,11 +159,15 @@ const ListDestination = () => {
                   })}
 
                   <div class="col-lg-12">
-                    <div class="text-center">
-                      <a onClick={showMore} class="nir-btn white">
-                        Xem thêm <i class="fa fa-long-arrow-alt-right"></i>
-                      </a>
-                    </div>
+                    {
+                      listDiaDiem.length
+                        ?
+                        <div className="text-center">
+                          <a onClick={showMore} class="nir-btn white">Xem thêm <i class="fa fa-long-arrow-alt-right"></i></a>
+                        </div>
+                        :
+                        <div className="text-center">Không có kết quả nào </div>
+                    }
                   </div>
                 </div>
               </div>

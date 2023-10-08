@@ -8,7 +8,7 @@ import Specialty from "./specialty";
 import api from "../../infratructure/api";
 import LoadingFullPage from "../../infratructure/common/controls/loading";
 import Constants from "../../core/common/constant";
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { ROUTE_PATH } from "../../core/common/appRouter";
 
 const HomePage = () => {
@@ -20,9 +20,13 @@ const HomePage = () => {
   const [listDacSan, setListDacSan] = useState([]);
   const [listLeHoi, setListLeHoi] = useState([]);
 
-  const [pageSize, setPageSize] = useState(10);
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log('aa',location);
 
+  if (location.pathname === "" || "/") {
+    navigate(ROUTE_PATH.HOME_PAGE)
+  }
   const onGetListDiemDenAsync = async () => {
     const response = await api.getAllDiaDiem(
       `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit}=3`,
@@ -252,7 +256,7 @@ const HomePage = () => {
                   listDiaDiemTop2.map((v, k) => (
                     <div className="col-lg-4 col-md-6 p-1" key={k}>
                       <div className="desti-image">
-                        <img src={v.hinhAnh} alt="desti" height={250}/>
+                        <img src={v.hinhAnh} alt="desti" height={250} />
                         <div className="desti-content">
                           <div className="rating mb-1">
                             <span className="fa fa-star checked" />
@@ -276,7 +280,7 @@ const HomePage = () => {
                   listDiaDiemTop4TuTop2.map((v, k) => (
                     <div className="col-lg-3 col-md-6 p-1" key={k}>
                       <div className="desti-image">
-                        <img src={v.hinhAnh} alt="desti" height={200}/>
+                        <img src={v.hinhAnh} alt="desti" height={200} />
                         <div className="desti-content">
                           <div className="rating mb-1">
                             <span className="fa fa-star checked" />
@@ -493,7 +497,7 @@ const HomePage = () => {
           <a class="nir-btn-black">Liên hệ chúng tôi ngay !</a>
         </div>
       </div>
-      {/* <LoadingFullPage isLoading={loading} /> */}
+      <LoadingFullPage isLoading={loading} />
     </MainLayout>
   );
 };

@@ -5,16 +5,16 @@ export const ROUTE_PATH = {
     REGISTER: `/${PREFIX}register`,
 
     DESTINATION: `/${PREFIX}destination`,
-    VIEW_DESTINATION: `/${PREFIX}view-destination`,
+    VIEW_DESTINATION: `/${PREFIX}destination-view`,
 
     ARTICLE: `/${PREFIX}article`,
-    VIEW_ARTICLE: `/${PREFIX}view-article`,
+    VIEW_ARTICLE: `/${PREFIX}article-view`,
 
     SPECIALTY: `/${PREFIX}specialty`,
-    VIEW_SPECIALTY: `/${PREFIX}view-specialty`,
+    VIEW_SPECIALTY: `/${PREFIX}specialty-view`,
 
     FESTIVAL: `/${PREFIX}festival`,
-    VIEW_FESTIVAL: `/${PREFIX}view-festival`,
+    VIEW_FESTIVAL: `/${PREFIX}festival-view`,
 
     LAYOUT_MAP: `/${PREFIX}map`,
 

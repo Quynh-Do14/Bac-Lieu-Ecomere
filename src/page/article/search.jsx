@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SearchBar = ({ value, onChange }) => {
+const SearchBar = ({ value, onChange, onSearch }) => {
     return (
         < div class="form-main-search mt-2 mb-4" >
             <div class="container">
@@ -14,7 +14,7 @@ const SearchBar = ({ value, onChange }) => {
                             </div>
                         </div>
                         <div class="form-group mb-2 col-lg-3 col-md-3 col-xs-3 white ">
-                            <a class="nir-btn w-100"><i class="fa fa-search"></i> Tìm kiếm</a>
+                            <a onClick={onSearch} class="nir-btn w-100"><i class="fa fa-search"></i> Tìm kiếm</a>
                         </div>
                     </div>
                 </div>

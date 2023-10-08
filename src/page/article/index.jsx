@@ -24,31 +24,32 @@ const ListArticle = () => {
 
   const navigate = useNavigate();
 
-  const onGetListTinTucAsync = async ({ keyWord, limit, page }) => {
+  const onGetListTinTucAsync = async () => {
     const response = await api.getAllTinTuc(
-      `loaitin?type=1${keyWord ? keyWord != "" ? `&search=${keyWord}` : `` : ``}&limit=${limit}&page=${page}`,
+      `loaitin?type=1${searchText ? searchText != "" ? `&search=${searchText}` : `` : ``}&limit=${pageSize}&page=${page}`,
       setLoading
     );
     setListTinTuc(response.data.tinTucs);
     setPagination(response.data.pagination);
     setTotalItem(response.data.totalItems);
   };
-  const onSearch = async (keyWord, limit = pageSize, page = 1) => {
-    onGetListTinTucAsync({ keyWord: keyWord, limit: limit, page: page });
+  const onSearch = async () => {
+    onGetListTinTucAsync();
   };
   useEffect(() => {
-    onSearch().then((_) => {});
-  }, []);
+    onGetListTinTucAsync().then((_) => { });
+  }, [pageSize]);
 
   const onChangeSearchText = (e) => {
     setSearchText(e.target.value);
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      onSearch(e.target.value, pageSize, page).then((_) => {});
-    }, Constants.DEBOUNCE_SEARCH);
+    // clearTimeout(timeout);
+    // timeout = setTimeout(() => {
+    //   onSearch(e.target.value, pageSize, page).then((_) => {});
+    // }, Constants.DEBOUNCE_SEARCH);
   };
-  const showMore = (prev) => {
-    onSearch(searchText, prev + Constants.Params.limit, page).then((_) => {});
+  const showMore = () => {
+    setPageSize(prev => prev + 1);
+    // onSearch(searchText, prev + Constants.Params.limit, page).then((_) => {});
   };
 
   const onNavigate = (id) => {
@@ -62,7 +63,7 @@ const ListArticle = () => {
       <BreadcumbCommon title={"Bài viết"} breadcumb={"Trang chủ"} />
       <section class="blog trending destination-b">
         <div>
-          <SearchBar value={searchText} onChange={onChangeSearchText} />
+          <SearchBar value={searchText} onChange={onChangeSearchText} onSearch={onSearch} />
         </div>
         <div class="container">
           <div class="row">
@@ -127,11 +128,15 @@ const ListArticle = () => {
                   })}
 
                   <div class="col-lg-12">
-                    <div class="text-center">
-                      <a onClick={showMore} class="nir-btn white">
-                        Xem thêm <i class="fa fa-long-arrow-alt-right"></i>
-                      </a>
-                    </div>
+                    {
+                      listTinTuc.length
+                        ?
+                        <div className="text-center">
+                          <a onClick={showMore} class="nir-btn white">Xem thêm <i class="fa fa-long-arrow-alt-right"></i></a>
+                        </div>
+                        :
+                        <div className="text-center">Không có kết quả nào </div>
+                    }
                   </div>
                 </div>
               </div>

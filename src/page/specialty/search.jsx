@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Constants from '../../core/common/constant';
 import api from '../../infratructure/api';
-const district = [
-    {
-        name: "Tp Bạc Liêu",
-    },
-    {
-        name: "Đông Hải"
-    },
-    {
-        name: "Giá Rai"
-    }
-]
+
 const SearchBar = (props) => {
-    const { title, onChangeSearchText, qH, OnChangeQH } = props;
+    const { title, onChangeSearchText, qH, OnChangeQH, onSearch } = props;
 
     const [dsQuanHuyen, setDsQuanHuyen] = useState([])
     const onGetQuanHuyenAsync = async () => {
@@ -38,6 +28,7 @@ const SearchBar = (props) => {
                                     <div className="input-box">
                                         <i className="flaticon-placeholder"></i>
                                         <select className="niceSelect" value={qH} onChange={OnChangeQH}>
+                                            <option value={""} selected>Quận huyện</option>
                                             {dsQuanHuyen.map((it, index) => {
                                                 return (
                                                     <option value={it.idQuanHuyen} key={index}>{it.tenQuanHuyen}</option>
@@ -49,13 +40,14 @@ const SearchBar = (props) => {
                                 <div class="form-group">
                                     <label className="white">Tìm kiếm theo tên địa điểm</label>
                                     <div class="input-box">
+                                        <i className="flaticon-placeholder"></i>
                                         <input onChange={onChangeSearchText} id="date-range1" type="text" placeholder="Địa điểm..." />
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-12">
                                 <div className="form-group mb-0 white">
-                                    <a className="nir-btn w-100"><i className="fa fa-search"></i> Tìm kiếm</a>
+                                    <a onClick={onSearch} className="nir-btn w-100"><i className="fa fa-search"></i> Tìm kiếm</a>
                                 </div>
                             </div>
                         </div>

@@ -22,9 +22,9 @@ const ListSpecialty = () => {
     const [searchText, setSearchText] = useState("");
     const navigate = useNavigate();
 
-    const onGetListDacSanAsync = async ({ keyWord = "", limit = pageSize, page = 1, qH = "" }) => {
+    const onGetListDacSanAsync = async () => {
         const response = await api.getAllDiaDiem(
-            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Specialty.value}&${Constants.Params.page}=${page}&idQuanHuyen=${qH}&searchDiaChi=${keyWord}`,
+            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Specialty.value}&${Constants.Params.limit}=${pageSize}&${Constants.Params.page}=${page}&idQuanHuyen=${qH}&searchDiaChi=${searchText}`,
             setLoading
         )
         setListDacSan(response.data.diaDiems);
@@ -32,29 +32,24 @@ const ListSpecialty = () => {
         setTotalItem(response.data.totalItems);
     }
 
-    const onSearch = async (keyWord = "", limit = pageSize, page = 1, qH = "") => {
-        onGetListDacSanAsync({ keyWord: keyWord, limit: limit, page: page, qH: qH })
+    const onSearch = async () => {
+        onGetListDacSanAsync()
     }
     useEffect(() => {
-        onSearch().then(_ => { });
-    }, []);
+        onGetListDacSanAsync().then(_ => { });
+    }, [pageSize]);
 
     const onChangeSearchText = (e) => {
         setSearchText(e.target.value);
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            onSearch(e.target.value, pageSize, page, qH).then((_) => { });
-        }, Constants.DEBOUNCE_SEARCH);
     };
 
     const OnChangeQH = (e) => {
         setQH(e.target.value)
-        onSearch("", pageSize, page, e.target.value)
     }
 
 
-    const showMore = (prev) => {
-        onSearch(searchText, pageSize, prev + 1, qH).then((_) => { });
+    const showMore = () => {
+        setPageSize(prev => prev + 1);
     };
 
     const onNavigate = (id) => {
@@ -116,7 +111,7 @@ const ListSpecialty = () => {
                             </div>
                         </div>
                         <div className="col-lg-4 col-xs-12 mb-4">
-                            <SearchBar title={"Đặc sản"} onChangeSearchText={onChangeSearchText} qH={qH} OnChangeQH={OnChangeQH} />
+                            <SearchBar title={"Đặc sản"} onChangeSearchText={onChangeSearchText} qH={qH} OnChangeQH={OnChangeQH} onSearch={onSearch} />
                         </div>
                     </div>
                 </div>

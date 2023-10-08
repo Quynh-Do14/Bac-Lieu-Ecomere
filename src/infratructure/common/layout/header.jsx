@@ -9,7 +9,6 @@ import { ROUTE_PATH } from '../../../core/common/appRouter';
 const HeaderPage = () => {
     const location = useLocation();
     let aa = location.pathname
-
     return (
         <header className="main_header_area headerstye-1">
             {/* Navigation Bar */}
@@ -32,7 +31,7 @@ const HeaderPage = () => {
                                 <ul className="nav navbar-nav" id="responsive-menu">
                                     {Constants.Menu.List.map((it, index) => {
                                         return (
-                                            <li className={`${aa === (it.link) ? "menu-title active" : "menu-title"}`} key={index}>
+                                            <li className={`${aa == (it.link) ? "menu-title active" : "menu-title"}`} key={index}>
                                                 <a href={it.link}>{it.label} </a>
                                             </li>
                                         )

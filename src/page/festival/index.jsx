@@ -26,9 +26,9 @@ const ListFestival = () => {
 
     const navigate = useNavigate();
 
-    const onGetListLeHoiAsync = async ({ keyWord = "", limit = pageSize, page = 1, startDate = "", endDate = "" }) => {
+    const onGetListLeHoiAsync = async () => {
         const response = await api.getAllDiaDiem(
-            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Festival.value}&${Constants.Params.page}=${page}&startDate=${startDate}&endDate=${endDate}&search=${keyWord}`,
+            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Festival.value}&${Constants.Params.page}=${page}&startDate=${startDate}&endDate=${endDate}&search=${searchText}`,
             setLoading
         )
         setListLeHoi(response.data.diaDiems);
@@ -38,28 +38,29 @@ const ListFestival = () => {
     const onSearch = async () => {
         onGetListLeHoiAsync()
     }
+    console.log('startDate', startDate);
     useEffect(() => {
         onGetListLeHoiAsync()
     }, []);
 
     const onChangeSearchText = (e) => {
         setSearchText(e.target.value);
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            onGetListLeHoiAsync(e.target.value, pageSize, page, startDate, endDate).then((_) => { });
-        }, Constants.DEBOUNCE_SEARCH);
+        // clearTimeout(timeout);
+        // timeout = setTimeout(() => {
+        //     onGetListLeHoiAsync(e.target.value, pageSize, page, startDate, endDate).then((_) => { });
+        // }, Constants.DEBOUNCE_SEARCH);
     };
     const onChangeStartDate = (e) => {
         setStartDate(e.target.value);
-        onGetListLeHoiAsync(searchText, pageSize, page, e.target.value, endDate).then((_) => { });
+        // onGetListLeHoiAsync(searchText, pageSize, page, e.target.value, endDate).then((_) => { });
     }
 
     const onChangeEndDate = (e) => {
         setEndDate(e.target.value);
-        onGetListLeHoiAsync(searchText, pageSize, page, startDate, e.target.value).then((_) => { });
+        // onGetListLeHoiAsync(searchText, pageSize, page, startDate, e.target.value).then((_) => { });
     }
     const showMore = (prev) => {
-        onGetListLeHoiAsync(searchText, pageSize, prev + 1, startDate, endDate).then((_) => { });
+        // onGetListLeHoiAsync(searchText, pageSize, prev + 1, startDate, endDate).then((_) => { });
     };
 
     const onNavigate = (id) => {
@@ -105,9 +106,15 @@ const ListFestival = () => {
                                         )
                                     })
                                 }
-                                <div className="text-center">
-                                    <a onClick={showMore} class="nir-btn white">Xem thêm <i class="fa fa-long-arrow-alt-right"></i></a>
-                                </div>
+                                {
+                                    listLeHoi.length
+                                        ?
+                                        <div className="text-center">
+                                            <a onClick={showMore} class="nir-btn white">Xem thêm <i class="fa fa-long-arrow-alt-right"></i></a>
+                                        </div>
+                                        :
+                                        <div className="text-center">Không có kết quả nào </div>
+                                }
                             </div>
                         </div>
                         <div className="col-lg-4 col-xs-12 mb-4">
