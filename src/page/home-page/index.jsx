@@ -8,7 +8,7 @@ import Specialty from "./specialty";
 import api from "../../infratructure/api";
 import LoadingFullPage from "../../infratructure/common/controls/loading";
 import Constants from "../../core/common/constant";
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { ROUTE_PATH } from "../../core/common/appRouter";
 
 const HomePage = () => {
@@ -21,12 +21,7 @@ const HomePage = () => {
   const [listLeHoi, setListLeHoi] = useState([]);
 
   const navigate = useNavigate();
-  const location = useLocation();
-  console.log('aa',location);
 
-  if (location.pathname === "" || "/") {
-    navigate(ROUTE_PATH.HOME_PAGE)
-  }
   const onGetListDiemDenAsync = async () => {
     const response = await api.getAllDiaDiem(
       `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit}=3`,
@@ -101,9 +96,9 @@ const HomePage = () => {
     <MainLayout>
       <BannerCommon />
       <>
-        <div id="preloader">
+        {/* <div id="preloader">
           <div id="status"></div>
-        </div>
+        </div> */}
         {/* why us starts */}
         <section className="featured-us pb-0">
           <div className="container">
@@ -497,7 +492,7 @@ const HomePage = () => {
           <a class="nir-btn-black">Liên hệ chúng tôi ngay !</a>
         </div>
       </div>
-      <LoadingFullPage isLoading={loading} />
+      {/* <LoadingFullPage isLoading={loading} /> */}
     </MainLayout>
   );
 };

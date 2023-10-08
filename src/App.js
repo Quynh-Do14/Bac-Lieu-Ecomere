@@ -18,7 +18,7 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          <Route exact path={ROUTE_PATH.HOME_PAGE} element={<HomePage />} />
+          <Route path={ROUTE_PATH.HOME_PAGE} element={<HomePage />} />
 
           <Route path={ROUTE_PATH.ARTICLE} element={<ListArticle />} />
           <Route path={ROUTE_PATH.VIEW_ARTICLE} element={<DetailArticle />} />
