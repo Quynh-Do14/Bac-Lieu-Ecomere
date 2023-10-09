@@ -4,16 +4,24 @@ import mapboxgl from "mapbox-gl";
 import HeaderPage from "../../infratructure/common/layout/header";
 import Footer from "../../infratructure/common/layout/footer";
 import api from "../../infratructure/api";
-import { removeAccents, removeDiacriticsAndSpaces } from "../../common";
+import { removeAccents, removeDiacriticsAndSpaces } from "../../common";import { useNavigate } from "react-router-dom";import { ROUTE_PATH } from "../../core/common/appRouter";
+
 mapboxgl.accessToken =
   "pk.eyJ1IjoibnRkMTAxMDIwMDAiLCJhIjoiY2tvbzJ4anl1MDZjMzJwbzNpcnA5NXZpcCJ9.dePfFDv0RlCLnWoDq1zHlw";
 const Map = () => {
   const mapContainer = useRef(null);
+  const navigate = useNavigate();
+
   const [map, setMap] = useState({});
   const [dsDiaDiemGeoJson, setDsDiaDiemGeoJson] = useState({});
   const [dsDanhMucDiaDiemDuLich, setDsDanhMucDiaDiemDuLich] = useState([]);
   const [textSearch, setTextSearch] = useState("");
   const [dsDiaDiemSearch, setDsDiaDiemSearch] = useState([]);
+  const onNavigate = (id) => {
+    // navigate(`${(ROUTE_PATH.VIEW_DESTINATION).replace(`${Constants.UseParams.Id}`, "")}${id}`);
+    navigate(`${ROUTE_PATH.VIEW_DESTINATION}?${id}`);
+  };
+
 
   const fecthData = async () => {
     let map = new mapboxgl.Map({
@@ -117,12 +125,12 @@ const Map = () => {
           font-size: 11px;
           text-transform: uppercase;
       ">${e.features[0].properties.tenDanhMuc}</p>
-                  <p style="
+                  <a href="/destination-view?${e.features[0].properties.idDiaDiem}" style="
           color: #333;
           font-size: 18px;
           width: 240px;
           font-weight: 500;
-      ">${e.features[0].properties.tenDiaDiem}</p>
+      ">${e.features[0].properties.tenDiaDiem}</a>
                   <p style="
           font-size: 11px;
           color: #333;

@@ -8,7 +8,7 @@ const BreadcumbCommon = (props) => {
                 <div className="breadcrumb-outer pt-10">
                     <div className="container">
                         <div className="breadcrumb-content d-md-flex align-items-center pt-10">
-                            <h2 className="mb-0">{title} </h2>
+                            <h2>{title} </h2>
                             <nav aria-label="breadcrumb">
                                 <ul className="breadcrumb">
                                     <li className="breadcrumb-item"><a href="/">{breadcumb}</a></li>
