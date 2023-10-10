@@ -9541,13 +9541,19 @@ ul.sidebar-tags li a:hover {
   }
 }
 
-.input-box .form-select {
+.input-box .form-select,
+.input-box-2 .form-select {
   border: 1px solid #939393;
   border-radius: 5px;
+  height: 44px !important;
 }
 
-.input-box .form-select:focus{
-  border: 2px solid #91bdff;
+.input-box .form-select:focus,
+.input-box-2 .form-select:focus {
   border-radius: 5px;
+  border: 1px solid #91bdff;
+  box-shadow: 1px 1px 2px 0px #91bdff;
+  transition: border .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
 /*# sourceMappingURL=style.css.map */

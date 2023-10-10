@@ -24,7 +24,7 @@ const SearchBar = (props) => {
                                     <label className="white">Tìm kiếm theo tên {title}</label>
                                     <div className="input-box">
                                         <i className="flaticon-placeholder"></i>
-                                        <input onChange={onChangeSearchText} value={searchText} id="" type="text" placeholder="Địa điểm..." />
+                                        <input onChange={onChangeSearchText} value={searchText} id="" type="text" placeholder="Địa điểm..." className="form-select" />
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@ const SearchBar = (props) => {
                                     <label className="white">Ngày bắt đầu</label>
                                     <div className="input-box-2">
                                         {/* <i className="flaticon-calendar"></i> */}
-                                        <input  onChange={onChangeStartDate} value={startDate} id="" type="date" placeholder="yyyy-mmm-dd" />
+                                        <input onChange={onChangeStartDate} value={startDate} id="" type="date" placeholder="yyyy-mmm-dd" className="form-select" />
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +44,7 @@ const SearchBar = (props) => {
                                     <label className="white">Ngày kết thúc</label>
                                     <div className="input-box-2">
                                         {/* <i className="flaticon-calendar"></i> */}
-                                        <input onChange={onChangeEndDate} value={endDate} id="" type="date" placeholder="yyyy-mm-dd" />
+                                        <input onChange={onChangeEndDate} value={endDate} id="" type="date" placeholder="yyyy-mm-dd" className="form-select" />
                                     </div>
                                 </div>
                             </div>

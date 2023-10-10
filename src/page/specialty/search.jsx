@@ -27,7 +27,7 @@ const SearchBar = (props) => {
                                     <label className="white">Tìm kiếm quận huyện</label>
                                     <div className="input-box">
                                         <i className="flaticon-placeholder"></i>
-                                        <select className="niceSelect" value={qH} onChange={OnChangeQH}>
+                                        <select className="niceSelect form-select" value={qH} onChange={OnChangeQH}>
                                             <option value={""} selected>Quận huyện</option>
                                             {dsQuanHuyen.map((it, index) => {
                                                 return (
@@ -41,7 +41,7 @@ const SearchBar = (props) => {
                                     <label className="white">Tìm kiếm theo tên địa điểm</label>
                                     <div class="input-box">
                                         <i className="flaticon-placeholder"></i>
-                                        <input onChange={onChangeSearchText} id="date-range1" type="text" placeholder="Địa điểm..." />
+                                        <input onChange={onChangeSearchText} id="date-range1" type="text" placeholder="Địa điểm..." className="form-select" />
                                     </div>
                                 </div>
                             </div>
