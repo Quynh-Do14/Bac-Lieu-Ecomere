@@ -245,12 +245,12 @@ const Map = () => {
           font-size: 11px;
           text-transform: uppercase;
       ">${e.properties.tenDanhMuc}</p>
-                  <p style="
+      <a href="/destination-view?${e.properties.idDiaDiem}" style="
           color: #333;
           font-size: 18px;
           width: 240px;
           font-weight: 500;
-      ">${e.properties.tenDiaDiem}</p>
+      ">${e.properties.tenDiaDiem}</a>
                   <p style="
           font-size: 11px;
           color: #333;
@@ -314,187 +314,184 @@ const Map = () => {
               </nav>
             </div>
           </div>
+          <div className="container-fluid" style={{ paddingBottom: 20 }}>
+            <div id="map" ref={mapContainer}></div>
+            {dsDanhMucDiaDiemDuLich.length > 0 && (
+              <div
+                style={{
+                  backgroundColor: "#fff",
+                  padding: 4,
+                  position: "absolute",
+                  top: 234,
+                  left: 34,
+                  boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: 14,
+                    fontWeight: 500,
+                    paddingLeft: 12,
+                    paddingTop: 8,
+                    color: "#333",
+                  }}
+                >
+                  Các loại hình du lịch
+                </p>
+                {dsDanhMucDiaDiemDuLich.map((v, k) => (
+                  <div
+                    key={k}
+                    className="d-flex align-items-center"
+                    style={{ padding: "8px 12px" }}
+                  >
+                    <input
+                      type="checkbox"
+                      name={`diaDiemDuLich-${removeDiacriticsAndSpaces(
+                        v.tenDanhMuc
+                      )}`}
+                      id={`diaDiemDuLich-${removeDiacriticsAndSpaces(
+                        v.tenDanhMuc
+                      )}`}
+                      value={`diaDiemDuLich-${removeDiacriticsAndSpaces(
+                        v.tenDanhMuc
+                      )}`}
+                      style={{
+                        marginRight: 8,
+                      }}
+                      onClick={btDiaDiemDuLich}
+                      defaultChecked={true}
+                    />
+                    <img
+                      style={{
+                        width: 25,
+                        height: 25,
+                        marginRight: 8,
+                      }}
+                      src={
+                        v.tenDanhMuc == "Du lịch văn hóa - lịch sử"
+                          ? "https://cdn-icons-png.flaticon.com/512/5778/5778440.png"
+                          : v.tenDanhMuc == "Địa điểm tâm linh"
+                          ? "https://cdn-icons-png.flaticon.com/512/2510/2510482.png"
+                          : v.tenDanhMuc == "Du lịch khám phá"
+                          ? "https://iconape.com/wp-content/png_logo_vector/google-discover.png"
+                          : v.tenDanhMuc == "Du lịch sinh thái"
+                          ? "https://images.squarespace-cdn.com/content/v1/5b07c60a96e76f9f641cdad6/1626769467137-PUUVF03Q49KZMCVTQ1PC/Conservation.png"
+                          : v.tenDanhMuc == "Du lịch nghỉ dưỡng"
+                          ? "https://cdn-icons-png.flaticon.com/512/5273/5273660.png"
+                          : v.tenDanhMuc == "Công trình kiến trúc"
+                          ? "https://cdn4.iconfinder.com/data/icons/hotel-105/64/hotel_building_architecture_tourism_travel_five_star-512.png"
+                          : v.tenDanhMuc == "Du lịch giải trí"
+                          ? "https://cdn1.iconfinder.com/data/icons/travel-and-vacation-16/80/vector_825_06-512.png"
+                          : v.tenDanhMuc == "Thương mại - ẩm thực"
+                          ? "https://cdn-icons-png.flaticon.com/512/1205/1205756.png"
+                          : v.tenDanhMuc == "Nguồn nước khoáng"
+                          ? "https://cdn-icons-png.flaticon.com/512/7075/7075789.png"
+                          : v.tenDanhMuc == "Khu bảo tồn"
+                          ? "https://cdn-icons-png.flaticon.com/512/3937/3937245.png"
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <label
+                      htmlFor={`diaDiemDuLich-${removeDiacriticsAndSpaces(
+                        v.tenDanhMuc
+                      )}`}
+                      style={{
+                        margin: 0,
+                      }}
+                    >
+                      {v.tenDanhMuc}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div
+              style={{
+                position: "absolute",
+                top: 234,
+                right: 70,
+              }}
+            >
+              <div
+                class="d-flex form-group"
+                style={{
+                  boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
+                }}
+              >
+                <button className="onsearch">
+                  <i class="flaticon-location-pin"></i>
+                </button>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  value={textSearch}
+                  onChange={(e) => searchDiaDiem(e)}
+                  style={{
+                    width: 260,
+                  }}
+                  placeholder="Nhập từ khoá để tìm kiếm"
+                />
+              </div>
+              {dsDiaDiemSearch.length > 0 && (
+                <div
+                  id="style-5"
+                  style={{
+                    width: 310,
+                    maxHeight: 250,
+                    backgroundColor: "#fff",
+                    overflow: "hidden",
+                    overflowY: "auto",
+                    boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
+                  }}
+                >
+                  {dsDiaDiemSearch.map((v, k) => (
+                    <div
+                      key={k}
+                      className="d-flex align-items-center itemSearch"
+                      style={{
+                        padding: "8px 16px",
+                      }}
+                      onClick={() => clickItemSearhDiaDiem(v)}
+                    >
+                      <i class="flaticon-location-pin"></i>
+                      <div
+                        className="justify-content-center"
+                        style={{
+                          marginLeft: 16,
+                        }}
+                      >
+                        <p
+                          style={{
+                            fontSize: 13,
+                            color: "#333",
+                            marginBottom: 4,
+                            fontWeight: 500,
+                          }}
+                        >
+                          {v.properties.tenDiaDiem}
+                        </p>
+                        <p
+                          style={{
+                            margin: 0,
+                            fontSize: 11,
+                            fontWeight: 400,
+                          }}
+                        >
+                          {v.properties.tenDanhMuc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
         <div className="dot-overlay" />
       </section>
       {/* BreadCrumb Ends */}
-
-      <section
-        className="overflow-hidden d-flex align-items-center"
-        style={{ justifyContent: "center", position: "relative" }}
-      >
-        <div id="map" ref={mapContainer}></div>
-        {dsDanhMucDiaDiemDuLich.length > 0 && (
-          <div
-            style={{
-              backgroundColor: "#fff",
-              padding: 4,
-              position: "absolute",
-              top: 100,
-              left: 60,
-            }}
-          >
-            <p
-              style={{
-                fontSize: 14,
-                fontWeight: 500,
-                paddingLeft: 12,
-                paddingTop: 8,
-                color: "#333",
-              }}
-            >
-              Các loại hình du lịch
-            </p>
-            {dsDanhMucDiaDiemDuLich.map((v, k) => (
-              <div
-                key={k}
-                className="d-flex align-items-center"
-                style={{ padding: "8px 12px" }}
-              >
-                <input
-                  type="checkbox"
-                  name={`diaDiemDuLich-${removeDiacriticsAndSpaces(
-                    v.tenDanhMuc
-                  )}`}
-                  id={`diaDiemDuLich-${removeDiacriticsAndSpaces(
-                    v.tenDanhMuc
-                  )}`}
-                  value={`diaDiemDuLich-${removeDiacriticsAndSpaces(
-                    v.tenDanhMuc
-                  )}`}
-                  style={{
-                    marginRight: 8,
-                  }}
-                  onClick={btDiaDiemDuLich}
-                  defaultChecked={true}
-                />
-                <img
-                  style={{
-                    width: 25,
-                    height: 25,
-                    marginRight: 8,
-                  }}
-                  src={
-                    v.tenDanhMuc == "Du lịch văn hóa - lịch sử"
-                      ? "https://cdn-icons-png.flaticon.com/512/5778/5778440.png"
-                      : v.tenDanhMuc == "Địa điểm tâm linh"
-                      ? "https://cdn-icons-png.flaticon.com/512/2510/2510482.png"
-                      : v.tenDanhMuc == "Du lịch khám phá"
-                      ? "https://iconape.com/wp-content/png_logo_vector/google-discover.png"
-                      : v.tenDanhMuc == "Du lịch sinh thái"
-                      ? "https://images.squarespace-cdn.com/content/v1/5b07c60a96e76f9f641cdad6/1626769467137-PUUVF03Q49KZMCVTQ1PC/Conservation.png"
-                      : v.tenDanhMuc == "Du lịch nghỉ dưỡng"
-                      ? "https://cdn-icons-png.flaticon.com/512/5273/5273660.png"
-                      : v.tenDanhMuc == "Công trình kiến trúc"
-                      ? "https://cdn4.iconfinder.com/data/icons/hotel-105/64/hotel_building_architecture_tourism_travel_five_star-512.png"
-                      : v.tenDanhMuc == "Du lịch giải trí"
-                      ? "https://cdn1.iconfinder.com/data/icons/travel-and-vacation-16/80/vector_825_06-512.png"
-                      : v.tenDanhMuc == "Thương mại - ẩm thực"
-                      ? "https://cdn-icons-png.flaticon.com/512/1205/1205756.png"
-                      : v.tenDanhMuc == "Nguồn nước khoáng"
-                      ? "https://cdn-icons-png.flaticon.com/512/7075/7075789.png"
-                      : v.tenDanhMuc == "Khu bảo tồn"
-                      ? "https://cdn-icons-png.flaticon.com/512/3937/3937245.png"
-                      : ""
-                  }
-                  alt=""
-                />
-                <label
-                  htmlFor={`diaDiemDuLich-${removeDiacriticsAndSpaces(
-                    v.tenDanhMuc
-                  )}`}
-                  style={{
-                    margin: 0,
-                  }}
-                >
-                  {v.tenDanhMuc}
-                </label>
-              </div>
-            ))}
-          </div>
-        )}
-        <div
-          style={{
-            position: "absolute",
-            top: 100,
-            right: 90,
-          }}
-        >
-          <div
-            class="d-flex form-group"
-            style={{
-              boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
-            }}
-          >
-            <button className="onsearch">
-              <i class="flaticon-location-pin"></i>
-            </button>
-            <input
-              type="text"
-              name=""
-              id=""
-              value={textSearch}
-              onChange={(e) => searchDiaDiem(e)}
-              style={{
-                width: 260,
-              }}
-              placeholder="Nhập từ khoá để tìm kiếm"
-            />
-          </div>
-          {dsDiaDiemSearch.length > 0 && (
-            <div
-              id="style-5"
-              style={{
-                width: 310,
-                maxHeight: 250,
-                backgroundColor: "#fff",
-                overflow: "hidden",
-                overflowY: "auto",
-                boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
-              }}
-            >
-              {dsDiaDiemSearch.map((v, k) => (
-                <div
-                  key={k}
-                  className="d-flex align-items-center itemSearch"
-                  style={{
-                    padding: "8px 16px",
-                  }}
-                  onClick={() => clickItemSearhDiaDiem(v)}
-                >
-                  <i class="flaticon-location-pin"></i>
-                  <div
-                    className="justify-content-center"
-                    style={{
-                      marginLeft: 16,
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontSize: 13,
-                        color: "#333",
-                        marginBottom: 4,
-                        fontWeight: 500,
-                      }}
-                    >
-                      {v.properties.tenDiaDiem}
-                    </p>
-                    <p
-                      style={{
-                        margin: 0,
-                        fontSize: 11,
-                        fontWeight: 400,
-                      }}
-                    >
-                      {v.properties.tenDanhMuc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
 
       {/* footer starts */}
       <Footer />
