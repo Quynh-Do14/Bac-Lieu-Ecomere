@@ -10,7 +10,7 @@ const SearchBar = ({ value, onChange, onSearch }) => {
                         <div class="form-group mb-2 col-lg-9 col-md-9 col-xs-9 ">
                             <div class="input-box">
                                 {/* <i class="fa fa-calendar"></i> */}
-                                <input value={value} id="" onChange={onChange} type="text" placeholder="Tìm kiếm theo tên..." />
+                                <input value={value} id="" onChange={onChange} type="text" className="form-select" placeholder="Tìm kiếm theo tên..." />
                             </div>
                         </div>
                         <div class="form-group mb-2 col-lg-3 col-md-3 col-xs-3 white ">

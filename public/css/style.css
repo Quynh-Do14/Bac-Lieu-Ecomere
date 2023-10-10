@@ -4375,7 +4375,7 @@ nav.navbar.navbar-default.navbar-sticky-in .logo-black {
 }
 
 .sidebar-sticky .form-content .input-box-2 input {
-  padding:0 10px;
+  padding: 0 10px;
 }
 
 
@@ -9541,4 +9541,13 @@ ul.sidebar-tags li a:hover {
   }
 }
 
+.input-box .form-select {
+  border: 1px solid #939393;
+  border-radius: 5px;
+}
+
+.input-box .form-select:focus{
+  border: 4px solid #91bdff;
+  border-radius: 5px;
+}
 /*# sourceMappingURL=style.css.map */

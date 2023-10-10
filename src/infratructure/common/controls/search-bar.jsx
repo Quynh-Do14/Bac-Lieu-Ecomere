@@ -23,13 +23,14 @@ const SearchBarCommon = ({
                   onChange={onChange}
                   type="text"
                   placeholder="Tìm kiếm theo tên..."
+                  className="form-select"
                 />
               </div>
             </div>
             <div class="form-group pr-4 m-0">
               <div className="input-box">
                 <select
-                  className="niceSelect"
+                  className="niceSelect form-select"
                   id="searchSelectDiaDiemQuanHuyen"
                 >
                   <option value={""} selected>
@@ -52,7 +53,7 @@ const SearchBarCommon = ({
 
             <div class="form-group pr-4 m-0">
               <div className="input-box">
-                <select className="niceSelect" id="searchSelectDiaDiemDanhMuc">
+                <select className="niceSelect form-select" id="searchSelectDiaDiemDanhMuc">
                   <option value={""} selected>
                     Danh mục
                   </option>
