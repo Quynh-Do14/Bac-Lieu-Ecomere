@@ -4,7 +4,9 @@ import mapboxgl from "mapbox-gl";
 import HeaderPage from "../../infratructure/common/layout/header";
 import Footer from "../../infratructure/common/layout/footer";
 import api from "../../infratructure/api";
-import { removeAccents, removeDiacriticsAndSpaces } from "../../common";import { useNavigate } from "react-router-dom";import { ROUTE_PATH } from "../../core/common/appRouter";
+import { removeAccents, removeDiacriticsAndSpaces } from "../../common";
+import { useNavigate } from "react-router-dom";
+import { ROUTE_PATH } from "../../core/common/appRouter";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoibnRkMTAxMDIwMDAiLCJhIjoiY2tvbzJ4anl1MDZjMzJwbzNpcnA5NXZpcCJ9.dePfFDv0RlCLnWoDq1zHlw";
@@ -21,7 +23,6 @@ const Map = () => {
     // navigate(`${(ROUTE_PATH.VIEW_DESTINATION).replace(`${Constants.UseParams.Id}`, "")}${id}`);
     navigate(`${ROUTE_PATH.VIEW_DESTINATION}?${id}`);
   };
-
 
   const fecthData = async () => {
     let map = new mapboxgl.Map({
@@ -80,6 +81,23 @@ const Map = () => {
           }
           if (v.tenDanhMuc == "Du lịch nghỉ dưỡng") {
             uriImg = "https://cdn-icons-png.flaticon.com/512/5273/5273660.png";
+          }
+          if (v.tenDanhMuc == "Công trình kiến trúc") {
+            uriImg =
+              "https://cdn4.iconfinder.com/data/icons/hotel-105/64/hotel_building_architecture_tourism_travel_five_star-512.png";
+          }
+          if (v.tenDanhMuc == "Du lịch giải trí") {
+            uriImg =
+              "https://cdn1.iconfinder.com/data/icons/travel-and-vacation-16/80/vector_825_06-512.png";
+          }
+          if (v.tenDanhMuc == "Thương mại - ẩm thực") {
+            uriImg = "https://cdn-icons-png.flaticon.com/512/1205/1205756.png";
+          }
+          if (v.tenDanhMuc == "Nguồn nước khoáng") {
+            uriImg = "https://cdn-icons-png.flaticon.com/512/7075/7075789.png";
+          }
+          if (v.tenDanhMuc == "Khu bảo tồn") {
+            uriImg = "https://cdn-icons-png.flaticon.com/512/3937/3937245.png";
           }
           map.loadImage(uriImg, (error, image) => {
             if (error) throw error;
@@ -367,6 +385,16 @@ const Map = () => {
                       ? "https://images.squarespace-cdn.com/content/v1/5b07c60a96e76f9f641cdad6/1626769467137-PUUVF03Q49KZMCVTQ1PC/Conservation.png"
                       : v.tenDanhMuc == "Du lịch nghỉ dưỡng"
                       ? "https://cdn-icons-png.flaticon.com/512/5273/5273660.png"
+                      : v.tenDanhMuc == "Công trình kiến trúc"
+                      ? "https://cdn4.iconfinder.com/data/icons/hotel-105/64/hotel_building_architecture_tourism_travel_five_star-512.png"
+                      : v.tenDanhMuc == "Du lịch giải trí"
+                      ? "https://cdn1.iconfinder.com/data/icons/travel-and-vacation-16/80/vector_825_06-512.png"
+                      : v.tenDanhMuc == "Thương mại - ẩm thực"
+                      ? "https://cdn-icons-png.flaticon.com/512/1205/1205756.png"
+                      : v.tenDanhMuc == "Nguồn nước khoáng"
+                      ? "https://cdn-icons-png.flaticon.com/512/7075/7075789.png"
+                      : v.tenDanhMuc == "Khu bảo tồn"
+                      ? "https://cdn-icons-png.flaticon.com/512/3937/3937245.png"
                       : ""
                   }
                   alt=""
