@@ -5,18 +5,19 @@ const SearchBarCommon = ({
   onChange,
   dsQuanHuyen,
   dsDanhMucDiaDiem,
-  searchSelect,
+  onSelectDanhMuc,
+  onSelectQuanHuyen
 }) => {
-    console.log(dsDanhMucDiaDiem);
+  console.log(dsDanhMucDiaDiem);
   return (
-    <div class="form-main-search mt-2 mb-4">
-      <div class="container">
-        <div class="form-content w-100">
-          <h3 class="form-title text-center d-inline white">Tìm kiếm</h3>
-          <div class="d-lg-flex align-items-center justify-content-between">
-            <div class="form-group pr-4 m-0">
-              <div class="input-box">
-                {/* <i class="fa fa-calendar"></i> */}
+    <div className="form-main-search mt-2 mb-4">
+      <div className="container">
+        <div className="form-content w-100">
+          <h3 className="form-title text-center d-inline white">Tìm kiếm</h3>
+          <div className="d-lg-flex align-items-center justify-content-between">
+            <div className="form-group pr-4 m-0">
+              <div className="input-box">
+                {/* <i className="fa fa-calendar"></i> */}
                 <input
                   value={value}
                   id="searchInputDiaDiem"
@@ -27,11 +28,12 @@ const SearchBarCommon = ({
                 />
               </div>
             </div>
-            <div class="form-group pr-4 m-0">
+            <div className="form-group pr-4 m-0">
               <div className="input-box">
                 <select
                   className="niceSelect form-select"
                   id="searchSelectDiaDiemQuanHuyen"
+                  onChange={onSelectQuanHuyen}
                 >
                   <option value={""} selected>
                     Quận/Huyện
@@ -51,11 +53,11 @@ const SearchBarCommon = ({
               </div>
             </div>
 
-            <div class="form-group pr-4 m-0">
+            <div className="form-group pr-4 m-0">
               <div className="input-box">
-                <select className="niceSelect form-select" id="searchSelectDiaDiemDanhMuc">
+                <select className="niceSelect form-select" id="searchSelectDiaDiemDanhMuc" onChange={onSelectDanhMuc}>
                   <option value={""} selected>
-                    Danh mục
+                    Loại hình du lịch
                   </option>
                   {dsDanhMucDiaDiem.length > 0 &&
                     dsDanhMucDiaDiem.map((v, k) => (
@@ -72,18 +74,18 @@ const SearchBarCommon = ({
               </div>
             </div>
 
-            <div class="form-group m-0 white">
+            {/* <div className="form-group m-0 white">
               <button
-                class="nir-btn w-100"
+                className="nir-btn w-100"
                 onClick={()=>searchSelect(
                   document.getElementById("searchInputDiaDiem").value,
                   document.getElementById("searchSelectDiaDiemQuanHuyen").value,
                   document.getElementById("searchSelectDiaDiemDanhMuc").value
                 )}
               >
-                <i class="fa fa-search"></i> Tìm kiếm
+                <i className="fa fa-search"></i> Tìm kiếm
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

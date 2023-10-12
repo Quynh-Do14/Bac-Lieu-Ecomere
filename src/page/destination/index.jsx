@@ -24,16 +24,20 @@ const ListDestination = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
+  const [searchQuanHuyen, setSearchQuanHuyen] = useState("");
+  const [searchDanhMuc, setSearchDanhMuc] = useState("");
+
   const navigate = useNavigate();
 
   const onGetListDiemDenAsync = async ({
     keyWord,
     limit = pageSize,
     page = 1,
+    danhMuc = "",
+    quanhuyen = ""
   }) => {
     const response = await api.getAllDiaDiem(
-      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit
-      }=${limit}${keyWord ? (keyWord != "" ? `&search=${keyWord}` : ``) : ``}`,
+      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit}=${limit}${keyWord ? (keyWord != "" ? `&search=${keyWord}` : ``) : ``}&page=${page}&idQuanHuyen=${quanhuyen}&idDanhMuc=${danhMuc}`,
       setLoading
     );
     setListDiaDiem(response.data.diaDiems);
@@ -50,8 +54,8 @@ const ListDestination = () => {
     setDsDanhMucDiaDiem(resGetDanhMucConCuaDanhMuc.result);
   };
 
-  const onSearch = async (keyWord, limit = pageSize, page = 1) => {
-    onGetListDiemDenAsync({ keyWord: keyWord, limit: limit, page: page });
+  const onSearch = async (keyWord = "", limit = pageSize, page = 1, danhMuc = "", quanhuyen = "") => {
+    onGetListDiemDenAsync({ keyWord: keyWord, limit: limit, page: page, danhMuc: danhMuc, quanhuyen: quanhuyen });
   };
   useEffect(() => {
     onSearch().then((_) => { });
@@ -62,11 +66,12 @@ const ListDestination = () => {
     setSearchText(e.target.value);
     clearTimeout(timeout);
     timeout = setTimeout(() => {
-      onSearch(e.target.value, pageSize, page).then((_) => { });
+      onSearch(e.target.value, pageSize, page, searchDanhMuc, searchQuanHuyen).then((_) => { });
     }, Constants.DEBOUNCE_SEARCH);
   };
   const showMore = (prev) => {
-    onSearch(searchText, prev + Constants.Params.limit, page).then((_) => { });
+    setPageSize(prev + Constants.Params.limit);
+    onSearch(searchText, prev + Constants.Params.limit, page, searchDanhMuc, searchQuanHuyen).then((_) => { });
   };
 
   const onNavigate = (id) => {
@@ -74,79 +79,89 @@ const ListDestination = () => {
     navigate(`${ROUTE_PATH.VIEW_DESTINATION}?${id}`);
   };
 
-  const searchSelect = async (keyWord, quanhuyen, danhmuc) => {
-    console.log(keyWord, quanhuyen, danhmuc);
-    const response = await api.getAllDiaDiem(
-      `dichvu/top?idDanhMuc=${danhmuc != "" ? danhmuc : 1}&${Constants.Params.limit
-      }=${1000}${keyWord ? (keyWord != "" ? `&search=${keyWord}` : ``) : ``}${quanhuyen != "" ? `&idQuanHuyen=${quanhuyen}` : ``
-      }`,
-      setLoading
-    );
-    setListDiaDiem(response.data.diaDiems);
-    setPagination(response.data.pagination);
-    setTotalItem(response.data.totalItems);
-  };
+  const onSelectDanhMuc = (e) => {
+    setSearchDanhMuc(e.target.value)
+    onSearch(searchText, pageSize, page, searchDanhMuc, e.target.value).then((_) => { });
+  }
+
+  const onSelectQuanHuyen = (e) => {
+    setSearchQuanHuyen(e.target.value)
+    onSearch(searchText, pageSize, page, e.target.value, searchQuanHuyen).then((_) => { });
+  }
+  // const searchSelect = async (keyWord, quanhuyen, danhmuc) => {
+  //   console.log(keyWord, quanhuyen, danhmuc);
+  //   const response = await api.getAllDiaDiem(
+  //     `dichvu/top?idDanhMuc=${danhmuc != "" ? danhmuc : 1}&${Constants.Params.limit
+  //     }=${1000}${keyWord ? (keyWord != "" ? `&search=${keyWord}` : ``) : ``}${quanhuyen != "" ? `&idQuanHuyen=${quanhuyen}` : ``
+  //     }`,
+  //     setLoading
+  //   );
+  //   setListDiaDiem(response.data.diaDiems);
+  //   setPagination(response.data.pagination);
+  //   setTotalItem(response.data.totalItems);
+  // };
 
   return (
     <MainLayout>
       <LoadingFullPage loading={loading} />
       <BreadcumbCommon title={"Điểm du lịch"} breadcumb={"Trang chủ"} />
 
-      <section class="blog trending destination-b">
+      <section className="blog trending destination-b">
         <div>
           <SearchBarCommon
             value={searchText}
             onChange={onChangeSearchText}
             dsQuanHuyen={dsQuanHuyen}
             dsDanhMucDiaDiem={dsDanhMucDiaDiem}
-            searchSelect={searchSelect}
+            onSelectDanhMuc={onSelectDanhMuc}
+            onSelectQuanHuyen={onSelectQuanHuyen}
           />
         </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 col-xs-12">
-              <div class="trend-box">
-                <div class="row">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12 col-xs-12">
+              <div className="trend-box">
+                <div className="row">
                   {listDiaDiem.map((it, index) => {
                     return (
-                      <div class="col-lg-4 col-md-6 col-xs-12 mb-4" key={index}>
-                        <div class="trend-item">
-                          <div class="trend-image">
+                      <div className="col-lg-4 col-md-6 col-xs-12 mb-4" key={index}>
+                        <div className="trend-item">
+                          <div className="trend-image">
                             <img src={it.hinhAnh} alt="image" height={255} />
                           </div>
-                          <div class="trend-content-main">
-                            <div class="trend-content ">
+                          <div className="trend-content-main">
+                            <div className="trend-content ">
                               <h4 className="text-truncate-1">
                                 <a onClick={() => onNavigate(it.idDiaDiem)}>
                                   {it.tenDiaDiem}{" "}
                                 </a>
                               </h4>
                               <div className="d-flex justify-content-between">
-                                <div class="mb-0 pink">
-                                  <i class="fa fa-map-marker mr-2"></i>
+                                <div className="mb-0 pink">
+                                  <i className="fa fa-map-marker mr-2"></i>
                                   {it.diaChi.replace(", Bạc Liêu", "")}{" "}
                                 </div>
-                                <div class="mb-0 pink">
-                                  <i class="fa fa-eye mb-1"></i> {it.luotXem}
+                                <div className="mb-0 pink">
+                                  <i className="fa fa-eye mb-1"></i> {it.luotXem}
                                 </div>
                               </div>
                             </div>
-                            <div class="trend-last-main">
-                              <p class="mb-0 trend-para">
+                            <div className="trend-last-main">
+                              <p className="mb-0 trend-para">
                                 {it.moTa.length > 75
                                   ? it.moTa.slice(0, 75) + " ..."
                                   : it.moTa}{" "}
                               </p>
-                              <div class="trend-last d-flex align-items-center justify-content-between bg-navy">
-                                <p class="mb-0 white">
+                              <div className="trend-last d-flex align-items-center justify-content-between bg-navy">
+                                <p className="mb-0 white">
                                   <i
-                                    class="fa fa-clock-o mr-2"
+                                    className="fa fa-clock-o mr-2"
                                     aria-hidden="true"
                                   ></i>
                                   {it.gioMoCua} - {it.gioDongCua}{" "}
                                 </p>
-                                <div class="trend-price">
-                                  <p class="price white mb-0">
+                                <div className="trend-price">
+                                  <p className="price white mb-0">
                                     <span>{it.giaVe}</span>
                                   </p>
                                 </div>
@@ -158,12 +173,12 @@ const ListDestination = () => {
                     );
                   })}
 
-                  <div class="col-lg-12">
+                  <div className="col-lg-12">
                     {
                       listDiaDiem.length
                         ?
                         <div className="text-center">
-                          <a onClick={showMore} class="nir-btn white">Xem thêm <i class="fa fa-long-arrow-alt-right"></i></a>
+                          <a onClick={showMore} className="nir-btn white">Xem thêm <i className="fa fa-long-arrow-alt-right"></i></a>
                         </div>
                         :
                         <div className="text-center">Không có kết quả nào </div>

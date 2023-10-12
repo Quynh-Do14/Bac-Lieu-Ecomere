@@ -12,6 +12,32 @@ code {
     monospace;
 }
 
+:where(.css-dev-only-do-not-override-pr0fja).ant-modal .ant-modal-content {
+  padding: 0;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.register-login .auth-title {
+  background: transparent;
+  color: #777;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0px;
+  letter-spacing: .45px;
+  line-height: inherit;
+  transition: all 150ms linear;
+  border: none;
+  padding: 0 20px;
+}
+
+.register-login .auth-title:hover {
+  color: #02c3ff
+}
+
 .d-flex {
   display: flex;
 }

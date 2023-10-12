@@ -977,6 +977,29 @@ button {
   box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.1);
 }
 
+.nir-btn,
+.nir-btn-red {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  text-align: center;
+  padding: 12px 24px;
+  text-transform: capitalize;
+  transition: all ease-in-out 0.5s;
+  background: #e84634;
+  color: #fff;
+  display: inline-block;
+  border-radius: 0px;
+  box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.1);
+}
+
+.nir-btn:hover,
+.nir-btn-red:hover {
+  background: #f5d361;
+  transition: all ease-in-out 0.5s;
+  color: #fff;
+}
+
 .nir-btn:hover,
 .nir-btn-black:hover {
   background: #F56961;
@@ -2234,19 +2257,19 @@ header #navbar {
   animation-name: slideInUp;
 }
 
-.main_header_area .register-login a {
+.main_header_area .register-login .auth-title {
   font-size: 15px;
   text-transform: uppercase;
   letter-spacing: .45;
   color: #777;
 }
 
-.main_header_area .register-login a:hover {
-  color: #02c3ff;
+.main_header_area .register-login .auth-title:hover {
+  color: #02c3ff !important;
 }
 
 .main_header_area .register-login .dropdown a {
-  color: #777 !important;
+  color: #777;
   text-transform: capitalize;
 }
 

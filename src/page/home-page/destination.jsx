@@ -104,7 +104,7 @@ const Destination = ({ data }) => {
                     </div>
                 </div>
             </div>
-            <div class="dot-overlay"></div>
+            <div className="dot-overlay"></div>
         </section>
     );
 };

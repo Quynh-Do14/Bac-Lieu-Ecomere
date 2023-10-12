@@ -48,11 +48,11 @@ const SearchBar = (props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-12">
+                            {/* <div className="col-lg-12">
                                 <div className="form-group mb-0 white">
                                     <a onClick={onSearch} className="nir-btn w-100"><i className="fa fa-search"></i> Tìm kiếm</a>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </form>
                 </div>

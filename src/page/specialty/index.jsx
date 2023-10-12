@@ -22,9 +22,9 @@ const ListSpecialty = () => {
     const [searchText, setSearchText] = useState("");
     const navigate = useNavigate();
 
-    const onGetListDacSanAsync = async () => {
+    const onGetListDacSanAsync = async ({ searchText = "", limit = pageSize, page = 1, qH = "" }) => {
         const response = await api.getAllDiaDiem(
-            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Specialty.value}&${Constants.Params.limit}=${pageSize}&${Constants.Params.page}=${page}&idQuanHuyen=${qH}&searchDiaChi=${searchText}`,
+            `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Specialty.value}&${Constants.Params.limit}=${limit}&${Constants.Params.page}=${page}&idQuanHuyen=${qH}&searchDiaChi=${searchText}`,
             setLoading
         )
         setListDacSan(response.data.diaDiems);
@@ -32,24 +32,28 @@ const ListSpecialty = () => {
         setTotalItem(response.data.totalItems);
     }
 
-    const onSearch = async () => {
-        onGetListDacSanAsync()
+    const onSearch = async (searchText = "", limit = pageSize, page = 1, qH = "",) => {
+        onGetListDacSanAsync({ searchText: searchText, limit: limit, page: page, qH: qH })
     }
     useEffect(() => {
-        onGetListDacSanAsync().then(_ => { });
-    }, [pageSize]);
+        onSearch().then(_ => { });
+    }, []);
 
     const onChangeSearchText = (e) => {
         setSearchText(e.target.value);
+        timeout = setTimeout(() => {
+            onSearch(e.target.value, pageSize, page, qH,).then((_) => { });
+        }, Constants.DEBOUNCE_SEARCH);
     };
 
-    const OnChangeQH = (e) => {
-        setQH(e.target.value)
+    const OnChangeQH = async (e) => {
+        setQH(e.target.value);
+        await onSearch(searchText, pageSize, page, e.target.value).then((_) => { });
     }
 
-
-    const showMore = () => {
-        setPageSize(prev => prev + 1);
+    const showMore = async (prev) => {
+        setPageSize(prev + Constants.Params.limit);
+        await onSearch(searchText, prev + Constants.Params.limit, page, qH).then((_) => { });
     };
 
     const onNavigate = (id) => {
@@ -102,7 +106,7 @@ const ListSpecialty = () => {
                                     listDacSan.length
                                         ?
                                         <div className="text-center">
-                                            <a onClick={showMore} class="nir-btn white">Xem thêm <i class="fa fa-long-arrow-alt-right"></i></a>
+                                            <a onClick={showMore} className="nir-btn white">Xem thêm <i className="fa fa-long-arrow-alt-right"></i></a>
                                         </div>
                                         :
                                         <div className="text-center">Không có kết quả nào </div>

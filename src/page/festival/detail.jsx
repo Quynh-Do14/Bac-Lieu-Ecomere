@@ -33,14 +33,14 @@ const DetailFestival = () => {
   return (
     <MainLayout>
       <BreadcumbCommon title={"Lễ hội"} breadcumb={"Trang chủ"} />
-      <section class="blog trending destination-b">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="single-content">
-                <div class="description-images mb-4">
-                  <div class="thumbnail-images">
-                    <div class="slider-store">
+      <section className="blog trending destination-b">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="single-content">
+                <div className="description-images mb-4">
+                  <div className="thumbnail-images">
+                    <div className="slider-store">
                       <div>
                         <img
                           src={showImageCommon(detailFestival.hinhAnh)}
@@ -48,7 +48,7 @@ const DetailFestival = () => {
                         />
                       </div>
                     </div>
-                    {/* <div class="slider-thumbs">
+                    {/* <div className="slider-thumbs">
                                             <div>
                                                 <img src="images/bg/bg1.jpg" alt="1" />
                                             </div>
@@ -56,24 +56,24 @@ const DetailFestival = () => {
                   </div>
                 </div>
 
-                <div class="description" id="description">
-                  <div class="single-full-title border-b mb-2 pb-2">
-                    <div class="single-title">
-                      <h3 class="mb-1">{detailFestival.tenDiaDiem} </h3>
-                      <div class="rating-main d-sm-flex align-items-center">
-                        <p class="mb-0 mr-2">
-                          <i class="flaticon-location-pin"></i>
+                <div className="description" id="description">
+                  <div className="single-full-title border-b mb-2 pb-2">
+                    <div className="single-title">
+                      <h3 className="mb-1">{detailFestival.tenDiaDiem} </h3>
+                      <div className="rating-main d-sm-flex align-items-center">
+                        <p className="mb-0 mr-2">
+                          <i className="flaticon-location-pin"></i>
                           {detailFestival.diaChi}{" "}
                         </p>
                         <span>({detailFestival.luotXem} Lượt xem)</span>
                       </div>
                     </div>
                   </div>
-                  <div class="description-inner mb-2">
+                  <div className="description-inner mb-2">
                     <p> {detailFestival.moTa} </p>
                   </div>
 
-                  <div class="tour-includes mb-2">
+                  <div className="tour-includes mb-2">
                     <table>
                       <tbody>
                         <tr>

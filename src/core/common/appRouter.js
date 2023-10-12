@@ -23,6 +23,7 @@ export const ROUTE_PATH = {
 export class Endpoint {
     static Auth = class {
         static Login = "/auth/login";
+        static Register = "/auth/register";
     }
 
     static Module = class {

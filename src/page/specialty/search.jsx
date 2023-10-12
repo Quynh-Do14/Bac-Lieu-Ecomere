@@ -37,19 +37,19 @@ const SearchBar = (props) => {
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div className="form-group">
                                     <label className="white">Tìm kiếm theo tên địa điểm</label>
-                                    <div class="input-box">
+                                    <div className="input-box">
                                         <i className="flaticon-placeholder"></i>
                                         <input onChange={onChangeSearchText} id="date-range1" type="text" placeholder="Địa điểm..." className="form-select" />
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-12">
+                            {/* <div className="col-lg-12">
                                 <div className="form-group mb-0 white">
                                     <a onClick={onSearch} className="nir-btn w-100"><i className="fa fa-search"></i> Tìm kiếm</a>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </form>
                 </div>

@@ -6,11 +6,19 @@ import request from "./makeRequest";
 
 const api = {
   login: (data, setLoading) =>
-    requestDuong.login(
+    request.login(
       `${apiLinks.API}${Endpoint.Auth.Login}`,
       data,
       setLoading
     ),
+
+  register: (data, setLoading) =>
+    request.login(
+      `${apiLinks.API}${Endpoint.Auth.Register}`,
+      data,
+      setLoading
+    ),
+
   upload: (data, setLoading) =>
     requestDuong.postUploadFile(
       `${apiLinks.API}${Endpoint.Module.Upload}`,

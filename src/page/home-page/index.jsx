@@ -486,10 +486,10 @@ const HomePage = () => {
       <Articles data={listTinTuc} />
       <Specialty data={listDacSan} />
       <Festival data={listLeHoi} />
-      <div class="cta-horizon bg-blue pt-4 pb-2">
-        <div class="container d-md-flex align-items-center justify-content-between">
-          <h4 class="mb-2 white">Bạn muốn có câu hỏi nào về dịch vụ của Bạc Liêu ?</h4>
-          <a class="nir-btn-black">Liên hệ chúng tôi ngay !</a>
+      <div className="cta-horizon bg-blue pt-4 pb-2">
+        <div className="container d-md-flex align-items-center justify-content-between">
+          <h4 className="mb-2 white">Bạn muốn có câu hỏi nào về dịch vụ của Bạc Liêu ?</h4>
+          <a className="nir-btn-black">Liên hệ chúng tôi ngay !</a>
         </div>
       </div>
       {/* <LoadingFullPage isLoading={loading} /> */}

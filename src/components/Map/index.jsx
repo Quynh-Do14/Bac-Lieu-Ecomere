@@ -414,13 +414,13 @@ const Map = () => {
               }}
             >
               <div
-                class="d-flex form-group"
+                className="d-flex form-group"
                 style={{
                   boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
                 }}
               >
                 <button className="onsearch">
-                  <i class="flaticon-location-pin"></i>
+                  <i className="flaticon-location-pin"></i>
                 </button>
                 <input
                   type="text"
@@ -455,7 +455,7 @@ const Map = () => {
                       }}
                       onClick={() => clickItemSearhDiaDiem(v)}
                     >
-                      <i class="flaticon-location-pin"></i>
+                      <i className="flaticon-location-pin"></i>
                       <div
                         className="justify-content-center"
                         style={{
