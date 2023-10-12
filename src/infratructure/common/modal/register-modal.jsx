@@ -54,7 +54,7 @@ const ModalRegister = ({
                                     </div>
                                 </form>
                                 <div class="form-btn">
-                                    <a href="#" class="nir-btn white" onClick={onSubmit}>Đăng kí</a>
+                                    <a class="nir-btn white" onClick={onSubmit}>Đăng kí</a>
                                 </div>
                                 {/* <div class="form-group mb-0 form-checkbox mt-3">
                                     <input type="checkbox" /> By clicking this, you are agree to to<a href="#" class=""> our terms of use</a> and <a href="#" class="">privacy policy</a> including the use of cookies
