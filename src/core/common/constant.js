@@ -129,4 +129,13 @@ export default class Constants {
         ]
     }
     static Slogan = " Du lịch đã giúp chúng ta hiểu được ý nghĩa của cuộc sống và nó đã giúp chúng ta trở thành những người tốt hơn. Mỗi lần đi du lịch, chúng ta nhìn thế giới bằng con mắt mới."
+
+    static ToastMessage = class {
+        static Notification = class {
+            static Position = "top-right";
+            static Duration = 6000;
+        };
+        static Confirmation = class { };
+    };
+
 };

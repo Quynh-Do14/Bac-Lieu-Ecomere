@@ -1,8 +1,19 @@
 import { Modal } from 'antd'
 import React from 'react'
 import Constants from '../../../core/common/constant';
+import { MessageError } from '../controls/MessageError';
 
-const ModalLogin = ({ visible, handleCancel, onChangeEmail, onChangePassword, onSubmit }) => {
+const ModalLogin = ({ visible,
+    handleCancel,
+    onChangeEmail,
+    onChangePassword,
+    onSubmit,
+    onOpenRegister,
+    validate,
+    setValidate,
+    onBlurEmail,
+    onBlurPassword,
+}) => {
 
     return (
         <div className=''>
@@ -13,6 +24,7 @@ const ModalLogin = ({ visible, handleCancel, onChangeEmail, onChangePassword, on
                 closable={false}
                 footer={false}
                 onCancel={handleCancel}
+                width={700}
             >
                 {/* <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document"> */}
@@ -30,10 +42,18 @@ const ModalLogin = ({ visible, handleCancel, onChangeEmail, onChangePassword, on
                             <div class="login-form">
                                 <form>
                                     <div class="form-group">
-                                        <input onChange={onChangeEmail} type="email" placeholder="Nhập tên đăng nhập" />
+                                        <input type="email"
+                                            onBlur={() => onBlurEmail(false)}
+                                            onChange={onChangeEmail} placeholder="Nhập tên email" />
+                                        <MessageError isError={validate.email?.isError || false}
+                                            message={validate.email?.message || ""} />
                                     </div>
                                     <div class="form-group">
-                                        <input onChange={onChangePassword} type="password" placeholder="Nhập mật khẩu" />
+                                        <input type="password"
+                                            onBlur={() => onBlurPassword(false)}
+                                            onChange={onChangePassword} placeholder="Nhập mật khẩu" />
+                                        <MessageError isError={validate.password?.isError || false}
+                                            message={validate.password?.message || ""} />
                                     </div>
                                 </form>
                                 <div class="form-btn">
@@ -48,9 +68,9 @@ const ModalLogin = ({ visible, handleCancel, onChangeEmail, onChangePassword, on
                                 <a href="#" class="btn-facebook"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a>
                                 <a href="#" class="btn-twitter"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a> */}
                             </div>
-                            {/* <div class="sign-up">
-                                <p class="m-0">Bạn đã có tài khoản chưa?<a href="login.html" class="pink">Đăng kí</a></p>
-                            </div> */}
+                            <div class="sign-up">
+                                <p class="m-0">Bạn đã có tài khoản chưa?<a onClick={onOpenRegister} class="pink">Đăng kí</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>

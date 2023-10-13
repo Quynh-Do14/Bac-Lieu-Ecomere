@@ -46,6 +46,15 @@ const api = {
       `${apiLinks.API}${Endpoint.Module.DiaDiem}/${params}`,
       setLoading
     ),
+
+  danhGiaDiaDiem: (data, callBack, setLoading) => {
+    request.post(`${apiLinks.API}${Endpoint.Module.Evaluate}/diadiem`, data, callBack, setLoading)
+  },
+  getAllDanhGiaDiaDiem: (params, setLoading) =>
+    request.get(
+      `${apiLinks.API}${Endpoint.Module.Evaluate}?${params}`,
+      setLoading
+    ),
   ///////
 
   //////

@@ -1,5 +1,6 @@
 import { Modal } from 'antd'
 import React from 'react'
+import { MessageError } from '../controls/MessageError'
 
 const ModalRegister = ({
     visible,
@@ -8,8 +9,19 @@ const ModalRegister = ({
     onChangePassword,
     onChangeUserName,
     onChangeSdt,
+    onChangeFirstName,
+    onChangeLastName,
     onChangeAddress,
-    onSubmit
+    onSubmit,
+    validate,
+    setValidate,
+    onBlurEmail,
+    onBlurPassword,
+    onBlurUserName,
+    onBlurSdt,
+    onBlurFirstName,
+    onBlurLastName,
+    onBlurAddress,
 }) => {
     return (
         <div className=''>
@@ -20,6 +32,7 @@ const ModalRegister = ({
                 closable={false}
                 footer={false}
                 onCancel={() => handleCancel()}
+                width={700}
             >
                 {/* <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document"> */}
@@ -38,20 +51,55 @@ const ModalRegister = ({
                             <div class="login-form text-center">
                                 <form>
                                     <div class="form-group">
-                                        <input type="email" onChange={onChangeEmail} placeholder="Nhập tên email" />
+                                        <input type="email"
+                                            onBlur={() => onBlurEmail(false)}
+                                            onChange={onChangeEmail} placeholder="Nhập tên email" />
+                                        <MessageError isError={validate.email?.isError || false}
+                                            message={validate.email?.message || ""} />
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" onChange={onChangePassword} placeholder="Nhập mật khẩu" />
+                                        <input type="password"
+                                            onBlur={() => onBlurPassword(false)}
+                                            onChange={onChangePassword} placeholder="Nhập mật khẩu" />
+                                        <MessageError isError={validate.password?.isError || false}
+                                            message={validate.password?.message || ""} />
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" onChange={onChangeUserName} placeholder="Nhập tên đăng nhập" />
+                                        <input type="text"
+                                            onBlur={() => onBlurUserName(false)}
+                                            onChange={onChangeUserName} placeholder="Nhập tên đăng nhập" />
+                                        <MessageError isError={validate.userName?.isError || false}
+                                            message={validate.userName?.message || ""} />
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" onChange={onChangeSdt} placeholder="Nhập địa chỉ" />
+                                        <input type="text"
+                                            onBlur={() => onBlurSdt(false)}
+                                            onChange={onChangeSdt} placeholder="Nhập số điện thoại" />
+                                        <MessageError isError={validate.sdt?.isError || false}
+                                            message={validate.sdt?.message || ""} />
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" onChange={onChangeAddress} placeholder="Nhập số điện thoại" />
+                                        <input type="text"
+                                            onBlur={() => onBlurFirstName(false)}
+                                            onChange={onChangeFirstName} placeholder="Nhập tên" />
+                                        <MessageError isError={validate.firstName?.isError || false}
+                                            message={validate.firstName?.message || ""} />
                                     </div>
+                                    <div class="form-group">
+                                        <input type="text"
+                                            onBlur={() => onBlurLastName(false)}
+                                            onChange={onChangeLastName} placeholder="Nhập họ" />
+                                        <MessageError isError={validate.lastName?.isError || false}
+                                            message={validate.lastName?.message || ""} />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text"
+                                            onBlur={() => onBlurAddress(false)}
+                                            onChange={onChangeAddress} placeholder="Nhập địa chỉ " />
+                                        <MessageError isError={validate.address?.isError || false}
+                                            message={validate.address?.message || ""} />
+                                    </div>
+
                                 </form>
                                 <div class="form-btn">
                                     <a class="nir-btn white" onClick={onSubmit}>Đăng kí</a>
@@ -66,9 +114,9 @@ const ModalRegister = ({
                                 <a href="#" class="btn-twitter"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a>
                                 <a href="#" class="btn-google"><i class="fab fa-google" aria-hidden="true"></i> Google</a> */}
                             </div>
-                            {/* <div class="sign-up">
-                                <p class="m-0">Bạn đã có tài khoản? <a href="login.html" class="pink">Đăng nhập</a></p>
-                            </div> */}
+                            <div class="sign-up">
+                                <p class="m-0">Bạn đã có tài khoản? <a class="pink" onClick={handleCancel}>Đăng nhập</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>

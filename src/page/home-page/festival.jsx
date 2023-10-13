@@ -28,7 +28,7 @@ const Festival = ({ data }) => {
               <div className="col-lg-5 col-md-12 col-xs-12 mb-4">
                 <div className="news-item overflow-hidden">
                   <div className="news-image">
-                    <img src={showImageCommon(data[0].hinhAnh)} alt="image" />
+                    <img src={showImageCommon(data[0].hinhAnh)} alt="image" height={260}/>
                   </div>
                   <div className="news-list mt-2 border-b pb-2 mb-2">
                     <ul>
@@ -82,7 +82,7 @@ const Festival = ({ data }) => {
                     >
                       <div className="news-item overflow-hidden">
                         <div className="news-image">
-                          <img src={showImageCommon(it.hinhAnh)} alt="image" width={180}/>
+                          <img src={showImageCommon(it.hinhAnh)} alt="image" height={180}/>
                         </div>
                         <div className="news-list mt-2 border-b pb-2 mb-2">
                           <ul>

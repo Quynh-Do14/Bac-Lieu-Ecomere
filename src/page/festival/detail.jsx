@@ -17,7 +17,6 @@ const DetailFestival = () => {
   const [detailFestival, setDetailFestival] = useState({});
   const location = useLocation();
   const search = location.search.replace("?", "");
-  console.log("search", search);
   const onGetDetailDiemDenAsync = async () => {
     const response = await api.getDiaDiemById(
       `dichvu/top/${search}?idDanhMuc=${Constants.CategoryConfig.Festival.value}`,

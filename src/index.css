@@ -20,6 +20,54 @@ code {
   cursor: pointer;
 }
 
+.no-wrap {
+  white-space: nowrap;
+}
+
+.message-error {
+  font-weight: 600;
+  text-align: left;
+  color: rgb(246, 26, 26);
+}
+
+.color-success {
+  color: #447C29;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+
+.color-fail {
+  color: #F21717;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  /* 218.182% */
+  letter-spacing: 0.15px;
+}
+
+.color-warning {
+  color: #A58D0E;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  /* 218.182% */
+  letter-spacing: 0.15px;
+}
+
+.color-title,
+.font-size-icon {
+  font-size: 18px;
+}
+
+.color-des {
+  font-size: 15px;
+}
+
 .register-login .auth-title {
   background: transparent;
   color: #777;
@@ -36,6 +84,47 @@ code {
 
 .register-login .auth-title:hover {
   color: #02c3ff
+}
+
+.checked-star {
+  color: #ffbc00 !important;
+  font-size: 20px !important;
+}
+
+.un-checked-star {
+  color: #959595 !important;
+  font-size: 20px !important;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  opacity: 0;
+}
+
+.carousel-control-next:focus,
+.carousel-control-next:hover,
+.carousel-control-prev:focus,
+.carousel-control-prev:hover {
+  opacity: 0;
+}
+
+.opacity-8 {
+  opacity: 0.8 !important;
+}
+
+.overlay-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #162241;
+  transition: all ease-in-out 0.5s;
+  opacity: 0.6;
+}
+
+.swiper-content.container {
+  margin-top: 280px;
 }
 
 .d-flex {

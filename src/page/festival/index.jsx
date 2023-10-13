@@ -58,7 +58,6 @@ const ListFestival = () => {
 
     const onChangeEndDate = async (e) => {
         setEndDate(e.target.value);
-        console.log(startDate, "&&", endDate);
         if (startDate != "") {
             await onSearch(searchText, pageSize, page, startDate, e.target.value).then((_) => { });
         }

@@ -14,7 +14,6 @@ const DetailSpecialty = () => {
     const [detailSpecialty, setDetailSpecialty] = useState({});
     const location = useLocation()
     const search = location.search.replace("?", "")
-    console.log('search', search);
     const onGetDetailDacSanAsync = async () => {
         const response = await api.getDiaDiemById(
             `dichvu/top/${search}?idDanhMuc=${Constants.CategoryConfig.Specialty.value}`,

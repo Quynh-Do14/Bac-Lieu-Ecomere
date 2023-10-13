@@ -33,6 +33,6 @@ export class Endpoint {
         static MultiUpload = "/files/upload-multi";
         static DiaDiem = "/diadiem";
         static TinTuc = "/tintuc";
-
+        static Evaluate = "/danhgia"
     }
 };

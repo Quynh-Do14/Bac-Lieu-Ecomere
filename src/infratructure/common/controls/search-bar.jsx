@@ -8,7 +8,6 @@ const SearchBarCommon = ({
   onSelectDanhMuc,
   onSelectQuanHuyen
 }) => {
-  console.log(dsDanhMucDiaDiem);
   return (
     <div className="form-main-search mt-2 mb-4">
       <div className="container">

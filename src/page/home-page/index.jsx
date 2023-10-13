@@ -100,7 +100,7 @@ const HomePage = () => {
           <div id="status"></div>
         </div> */}
         {/* why us starts */}
-        <section className="featured-us pb-0">
+        {/* <section className="featured-us pb-0">
           <div className="container">
             <div className="featured-us-box pt-9">
               <div className="row">
@@ -154,7 +154,7 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* why us ends */}
         {/* about-us starts */}
         <section className="about-us pb-0 pt-6">
@@ -328,7 +328,7 @@ const HomePage = () => {
         </section>
         {/* Discount action Ends */}
         {/* Counter */}
-        <section className="counter-main pt-0 pb-6">
+        {/* <section className="counter-main pt-0 pb-6">
           <div className="container">
             <div className="counter text-center">
               <div className="row">
@@ -363,7 +363,7 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* End Counter */}
         {/* testomonial start */}
         {/* <section

@@ -4091,6 +4091,7 @@ nav.navbar.navbar-default.navbar-sticky-in .logo-black {
 
 .trending .trend-item .trend-content-main .trend-last-main p.trend-para {
     padding: 0 20px 25px;
+    height: 80px !important;
 }
 
 .trending .trend-item .trend-content-main .trend-last-main .trend-last {

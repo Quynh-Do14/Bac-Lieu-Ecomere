@@ -2,69 +2,36 @@ import React, { useEffect, useState } from "react";
 import MainLayout from "../../infratructure/common/layout/main-layout";
 import BreadcumbCommon from "../../infratructure/common/layout/breadcumb";
 import LoadingFullPage from "../../infratructure/common/controls/loading";
-import SearchCommon from "../../infratructure/common/controls/search-common";
 import RelationCommon from "../../infratructure/common/layout/relation";
 import Constants from "../../core/common/constant";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import api from "../../infratructure/api";
-import {
-  convertTimeOnly,
-  showImageCommon,
-} from "../../infratructure/utils/helper";
-const dataR = [
-  {
-    img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
-    review: 38,
-    name: " Lăng Ông Nam Hải",
-    view: 852,
-    star: 5,
-    description:
-      "A wonderful little cottage right on the seashore - perfect for exploring.",
-    address: "Bạc Liêu",
-    day: "3 ngày 2 đêm",
-    price: 12000,
-  },
-  {
-    img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
-    review: 38,
-    name: " Lăng Ông Nam Hải",
-    view: 852,
-    star: 5,
-    description:
-      "A wonderful little cottage right on the seashore - perfect for exploring.",
-    address: "Bạc Liêu",
-    day: "3 ngày 2 đêm",
-    price: 12000,
-  },
-  {
-    img: "https://media.mia.vn/uploads/blog-du-lich/du-lich-bac-lieu-11-1691745370.jpeg",
-    review: 38,
-    name: " Lăng Ông Nam Hải",
-    view: 852,
-    star: 5,
-    description:
-      "A wonderful little cottage right on the seashore - perfect for exploring.",
-    address: "Bạc Liêu",
-    day: "3 ngày 2 đêm",
-    price: 12000,
-  },
-];
+import EvaluateDestination from "./evaluate";
+import { WarningMessage } from "../../infratructure/common/toast/toastMessage";
+
 const DetailDestination = () => {
   const [loading, setLoading] = useState(false);
   const [detailDestination, setDetailDestination] = useState({});
   const [dsDiaDiemLienQuan, setDiaDiemLienQuan] = useState([]);
+  const [soSao, setSoSao] = useState(0);
+  const [noiDung, setNoiDung] = useState("");
+  const [listEvaluate, setListEvaluate] = useState([]);
+  const [pagination, setPagination] = useState({});
+  const [totalItem, setTotalItem] = useState();
 
+  let storage = sessionStorage.getItem(Constants.TOKEN);
   const location = useLocation();
-  const search = location.search.replace("?", "");
+  const dateTime = new Date();
+  const timeNow = `${dateTime.getFullYear()}-${dateTime.getMonth()}-${dateTime.getDate()}`
+  const param = location.search.replace("?", "");
   const onGetDetailDiemDenAsync = async () => {
     const response = await api.getDiaDiemById(
-      `dichvu/top/${search}?idDanhMuc=${Constants.CategoryConfig.Location.value}`,
+      `dichvu/top/${param}?idDanhMuc=${Constants.CategoryConfig.Location.value}`,
       setLoading
     );
     setDetailDestination(response.diaDiem);
     const responses = await api.getAllDiaDiem(
-      `dichvu/top?idDanhMuc=${response.diaDiem.idDanhMuc}&${
-        Constants.Params.limit
+      `dichvu/top?idDanhMuc=${response.diaDiem.idDanhMuc}&${Constants.Params.limit
       }=${3}&idQuanHuyen=${response.diaDiem.idQuanHuyen}`,
       setLoading
     );
@@ -72,8 +39,46 @@ const DetailDestination = () => {
   };
 
   useEffect(() => {
-    onGetDetailDiemDenAsync().then((_) => {});
+    onGetDetailDiemDenAsync().then((_) => { });
   }, []);
+
+  const getAllEvaluate = async () => {
+    if (storage) {
+      const response = await api.getAllDanhGiaDiaDiem(
+        `idDiaDiem=${param}`,
+        setLoading
+      );
+      setListEvaluate(response.data.danhGias);
+      setPagination(response.data.pagination);
+      setTotalItem(response.data.totalItems);
+    }
+  };
+
+  useEffect(() => {
+    getAllEvaluate().then((_) => { });
+  }, []);
+
+  const onEvaluate = async () => {
+    if (soSao && noiDung) {
+      api.danhGiaDiaDiem({
+        soSao: soSao,
+        noiDung: noiDung,
+        thoiGianDanhGia: timeNow,
+        idDiaDiem: param
+      },
+        getAllEvaluate,
+        setLoading,
+      )
+      setNoiDung("");
+      setSoSao(0);
+    }
+
+    else {
+      WarningMessage("Không thể đánh giá", "Vui lòng đánh giá số sao và nhập đánh giá của bạn")
+    }
+
+  }
+
   return (
     <MainLayout>
       <LoadingFullPage loading={loading} />
@@ -173,6 +178,20 @@ const DetailDestination = () => {
                     </a>
                   </div>
                 </div>
+                {
+                  storage ?
+                    <EvaluateDestination
+                      listEvaluate={listEvaluate}
+                      onEvaluate={onEvaluate}
+                      soSao={soSao}
+                      setSoSao={setSoSao}
+                      noiDung={noiDung}
+                      setNoiDung={setNoiDung}
+                    />
+                    :
+                    null
+                }
+
               </div>
             </div>
           </div>

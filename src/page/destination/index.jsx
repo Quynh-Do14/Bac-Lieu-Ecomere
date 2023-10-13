@@ -25,25 +25,19 @@ const ListDestination = () => {
   const [loading, setLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [searchQuanHuyen, setSearchQuanHuyen] = useState("");
-  const [searchDanhMuc, setSearchDanhMuc] = useState("");
+  const [searchDanhMuc, setSearchDanhMuc] = useState(Constants.CategoryConfig.Location.value);
 
   const navigate = useNavigate();
 
-  const onGetListDiemDenAsync = async ({
-    keyWord,
-    limit = pageSize,
-    page = 1,
-    danhMuc = "",
-    quanhuyen = ""
-  }) => {
+  const onGetListDiemDenAsync = async ({ searchText = "", limit = pageSize, page = 1, danhMuc = 1, quanhuyen = "" }) => {
     const response = await api.getAllDiaDiem(
-      `dichvu/top?idDanhMuc=${Constants.CategoryConfig.Location.value}&${Constants.Params.limit}=${limit}${keyWord ? (keyWord != "" ? `&search=${keyWord}` : ``) : ``}&page=${page}&idQuanHuyen=${quanhuyen}&idDanhMuc=${danhMuc}`,
+      `dichvu/top?${Constants.Params.limit}=${limit}&${Constants.Params.page}=${page}&idQuanHuyen=${quanhuyen}&search=${searchText}&idDanhMuc=${danhMuc}`,
       setLoading
-    );
+    )
     setListDiaDiem(response.data.diaDiems);
     setPagination(response.data.pagination);
     setTotalItem(response.data.totalItems);
-  };
+  }
 
   const onGetQuanHuyenAsync = async () => {
     const response = await api.getAllQuanHuyen();
@@ -54,7 +48,7 @@ const ListDestination = () => {
     setDsDanhMucDiaDiem(resGetDanhMucConCuaDanhMuc.result);
   };
 
-  const onSearch = async (keyWord = "", limit = pageSize, page = 1, danhMuc = "", quanhuyen = "") => {
+  const onSearch = async (keyWord = "", limit = pageSize, page = 1, danhMuc = 1, quanhuyen = "") => {
     onGetListDiemDenAsync({ keyWord: keyWord, limit: limit, page: page, danhMuc: danhMuc, quanhuyen: quanhuyen });
   };
   useEffect(() => {
@@ -81,12 +75,12 @@ const ListDestination = () => {
 
   const onSelectDanhMuc = (e) => {
     setSearchDanhMuc(e.target.value)
-    onSearch(searchText, pageSize, page, searchDanhMuc, e.target.value).then((_) => { });
+    onSearch(searchText, pageSize, page, e.target.value, searchQuanHuyen).then((_) => { });
   }
 
   const onSelectQuanHuyen = (e) => {
     setSearchQuanHuyen(e.target.value)
-    onSearch(searchText, pageSize, page, e.target.value, searchQuanHuyen).then((_) => { });
+    onSearch(searchText, pageSize, page, searchDanhMuc, e.target.value).then((_) => { });
   }
   // const searchSelect = async (keyWord, quanhuyen, danhmuc) => {
   //   console.log(keyWord, quanhuyen, danhmuc);
