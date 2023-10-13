@@ -83,7 +83,6 @@ const Map = () => {
           },
         });
 
-
         map.addSource('ranhGioiHuyen', {
           type: "geojson",
           data: `http://14.248.94.155:9022/api/quanHuyen/ranhGioiHuyen`,
@@ -105,10 +104,9 @@ const Map = () => {
           layout: {},
           paint: {
             "line-color": '#50cd89',
-            "line-width": 3,
+            "line-width": 1.5,
           },
         });
-
 
         map.addSource("diaDiemDuLich", {
           type: "geojson",
