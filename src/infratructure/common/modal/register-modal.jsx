@@ -106,7 +106,7 @@ const ModalRegister = ({
                                 </div>
                                 {/* <div class="form-group mb-0 form-checkbox mt-3">
                                     <input type="checkbox" /> By clicking this, you are agree to to<a href="#" class=""> our terms of use</a> and <a href="#" class="">privacy policy</a> including the use of cookies
-                                </div> */}
+                                </div> */}  
                             </div>
                             <div class="login-social border-t mt-3 pt-2 mb-3">
                                 {/* <p class="mb-2">OR continue with</p>

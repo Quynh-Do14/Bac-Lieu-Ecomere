@@ -18,6 +18,7 @@ const DetailDestination = () => {
   const [listEvaluate, setListEvaluate] = useState([]);
   const [pagination, setPagination] = useState({});
   const [totalItem, setTotalItem] = useState();
+  const [pageSize, setPageSize] = useState(Constants.PaginationConfigs.Size);
 
   let storage = sessionStorage.getItem(Constants.TOKEN);
   const location = useLocation();
@@ -26,7 +27,7 @@ const DetailDestination = () => {
   const param = location.search.replace("?", "");
   const onGetDetailDiemDenAsync = async () => {
     const response = await api.getDiaDiemById(
-      `dichvu/top/${param}?idDanhMuc=${Constants.CategoryConfig.Location.value}`,
+      `dichvu/top/${param}?idDanhMuc=${Constants.CategoryConfig.Location.value}&limit=${pageSize}`,
       setLoading
     );
     setDetailDestination(response.diaDiem);
@@ -56,7 +57,11 @@ const DetailDestination = () => {
 
   useEffect(() => {
     getAllEvaluate().then((_) => { });
-  }, []);
+  }, [pageSize]);
+
+  const showMore = (prev) => {
+    setPageSize(prev + Constants.Params.limit);
+  };
 
   const onEvaluate = async () => {
     if (soSao && noiDung) {
@@ -187,6 +192,7 @@ const DetailDestination = () => {
                       setSoSao={setSoSao}
                       noiDung={noiDung}
                       setNoiDung={setNoiDung}
+                      showMore={showMore}
                     />
                     :
                     null

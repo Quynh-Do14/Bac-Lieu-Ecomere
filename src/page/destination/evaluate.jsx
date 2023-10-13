@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const EvaluateDestination = ({ listEvaluate, onEvaluate, soSao, setSoSao, noiDung, setNoiDung }) => {
+const EvaluateDestination = ({ listEvaluate, onEvaluate, soSao, setSoSao, noiDung, setNoiDung, showMore }) => {
 
     const starEvaluateCount = (star) => {
         const stars = [];
@@ -55,7 +55,17 @@ const EvaluateDestination = ({ listEvaluate, onEvaluate, soSao, setSoSao, noiDun
                         )
                     })
                 }
-
+                <div className="col-lg-12">
+                    {
+                        listEvaluate.length
+                            ?
+                            <div className="text-center">
+                                <a onClick={showMore} className="nir-btn white">Xem thêm <i className="fa fa-long-arrow-alt-right"></i></a>
+                            </div>
+                            :
+                            <div className="text-center">Không có kết quả nào </div>
+                    }
+                </div>
 
             </div>
             {/* Viết đánh giá */}
