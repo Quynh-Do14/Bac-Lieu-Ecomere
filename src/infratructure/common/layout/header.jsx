@@ -246,6 +246,16 @@ const HeaderPage = () => {
                                         )
 
                                     })}
+                                    {
+                                        storage ?
+                                            <li onClick={() => openModalLogout} className="menu-title mobile-screen" >
+                                                <a >Đăng xuất </a>
+                                            </li>
+                                            :
+                                            <li onClick={() => onOpenLogin} className="menu-title mobile-screen" >
+                                                <a >Đăng nhập </a>
+                                            </li>
+                                    }
                                 </ul>
                             </div>
                             {/* /.navbar-collapse */}
@@ -302,7 +312,7 @@ const HeaderPage = () => {
                 validate={validate}
                 setValidate={setValidate}
                 onBlurEmail={onBlurEmail}
-                onBlurPassword={onBlurPassword}F
+                onBlurPassword={onBlurPassword}
             />
             <ModalRegister
                 visible={isOpenRegister}

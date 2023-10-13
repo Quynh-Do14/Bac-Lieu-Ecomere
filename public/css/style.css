@@ -83,6 +83,15 @@ h6 {
   h2 {
     font-size: 28px;
   }
+
+
+}
+
+@media (min-width:992px) {
+
+  .mobile-screen {
+    display: none !important;
+  }
 }
 
 @media (max-width: 735px) {
