@@ -57,6 +57,59 @@ const Map = () => {
       setDsDiaDiemGeoJson(dataDsDiaDiemGeoJson);
       setDsDanhMucDiaDiemDuLich(resGetDanhMucConCuaDanhMuc.result);
       map.on("load", () => {
+
+        map.addSource('ranhGioiTinh', {
+          type: "geojson",
+          data: `http://14.248.94.155:9022/api/quanHuyen/ranhGioiTinh`,
+        });
+        map.addLayer({
+          id: 'ranhGioiTinh',
+          type: "fill",
+          source: 'ranhGioiTinh',
+          layout: {},
+          paint: {
+            "fill-color": '#f1416c',
+            "fill-opacity": 0.0,
+          },
+        });
+        map.addLayer({
+          id: "outline-ranhGioiTinh",
+          type: "line",
+          source: 'ranhGioiTinh',
+          layout: {},
+          paint: {
+            "line-color": '#f1416c',
+            "line-width": 3,
+          },
+        });
+
+
+        map.addSource('ranhGioiHuyen', {
+          type: "geojson",
+          data: `http://14.248.94.155:9022/api/quanHuyen/ranhGioiHuyen`,
+        });
+        map.addLayer({
+          id: 'ranhGioiHuyen',
+          type: "fill",
+          source: 'ranhGioiHuyen',
+          layout: {},
+          paint: {
+            "fill-color": '#50cd89',
+            "fill-opacity": 0.0,
+          },
+        });
+        map.addLayer({
+          id: "outline-ranhGioiHuyen",
+          type: "line",
+          source: 'ranhGioiHuyen',
+          layout: {},
+          paint: {
+            "line-color": '#50cd89',
+            "line-width": 3,
+          },
+        });
+
+
         map.addSource("diaDiemDuLich", {
           type: "geojson",
           data: `http://14.248.94.155:9022/api/diadiem/geometry?idDanhMuc=${1}`,
