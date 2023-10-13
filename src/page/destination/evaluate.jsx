@@ -63,7 +63,7 @@ const EvaluateDestination = ({ listEvaluate, onEvaluate, soSao, setSoSao, noiDun
                                 <a onClick={showMore} className="nir-btn white">Xem thêm <i className="fa fa-long-arrow-alt-right"></i></a>
                             </div>
                             :
-                            <div className="text-center">Không có kết quả nào </div>
+                            <div className="text-center">Chưa có đánh giá nào </div>
                     }
                 </div>
 
