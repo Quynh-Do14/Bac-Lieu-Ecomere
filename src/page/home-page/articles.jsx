@@ -27,7 +27,7 @@ const Articles = ({ data = [] }) => {
                             {
                                 data.map((it, index) => {
                                     return (
-                                        <div className="col-lg-4 col-md-12 col-xs-12 mb-4" key={index}>
+                                        <div className="col-lg-4 col-md-12 col-xs-12 mb-4 pointer" key={index} onClick={() => onNavigate(it.idTinTuc)}>
                                             <div className="news-item overflow-hidden">
                                                 <div className="news-image">
                                                     <img src={showImageCommon(it.hinhAnh)} alt="image" height={255} />
@@ -48,7 +48,7 @@ const Articles = ({ data = [] }) => {
                                                 </div>
                                                 <div className="news-content mt-2">
                                                     <h4 className="pb-2 mb-2 border-b">
-                                                        <a className='text-truncate-2' onClick={() => onNavigate(it.idTinTuc)}>
+                                                        <a className='text-truncate-2'>
                                                             {it.tieuDe}
                                                         </a>
                                                     </h4>

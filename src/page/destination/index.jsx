@@ -118,7 +118,9 @@ const ListDestination = () => {
                 <div className="row">
                   {listDiaDiem.map((it, index) => {
                     return (
-                      <div className="col-lg-4 col-md-6 col-xs-12 mb-4" key={index}>
+                      <div className="col-lg-4 col-md-6 col-xs-12 mb-4 pointer" key={index}
+                        onClick={() => onNavigate(it.idDiaDiem)}
+                      >
                         <div className="trend-item">
                           <div className="trend-image">
                             <img src={it.hinhAnh} alt="image" height={255} />
@@ -126,7 +128,7 @@ const ListDestination = () => {
                           <div className="trend-content-main">
                             <div className="trend-content ">
                               <h4 className="text-truncate-1">
-                                <a onClick={() => onNavigate(it.idDiaDiem)}>
+                                <a>
                                   {it.tenDiaDiem}{" "}
                                 </a>
                               </h4>

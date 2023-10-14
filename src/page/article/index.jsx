@@ -72,7 +72,9 @@ const ListArticle = () => {
                 <div className="row">
                   {listTinTuc.map((it, index) => {
                     return (
-                      <div className="col-lg-4 col-md-6 col-xs-12 mb-4" key={index}>
+                      <div className="col-lg-4 col-md-6 col-xs-12 mb-4 pointer" key={index}
+                        onClick={() => onNavigate(it.idTinTuc)}
+                      >
                         <div className="trend-item">
                           <div className="trend-image">
                             <img
@@ -81,12 +83,12 @@ const ListArticle = () => {
                               height={255}
                             />
                           </div>
-                          <div className="trend-content-main">
+                          <div className="trend-content-main"
+                          >
                             <div className="trend-content">
                               <h4>
                                 <a
                                   className="text-truncate-2"
-                                  onClick={() => onNavigate(it.idTinTuc)}
                                 >
                                   {it.tieuDe}{" "}
                                 </a>

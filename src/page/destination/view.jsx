@@ -8,6 +8,8 @@ import { useLocation } from "react-router-dom";
 import api from "../../infratructure/api";
 import EvaluateDestination from "./evaluate";
 import { WarningMessage } from "../../infratructure/common/toast/toastMessage";
+import ModalLogin from "../../infratructure/common/modal/login-modal";
+import ModalRegister from "../../infratructure/common/modal/register-modal";
 
 const DetailDestination = () => {
   const [loading, setLoading] = useState(false);
@@ -19,6 +21,8 @@ const DetailDestination = () => {
   const [pagination, setPagination] = useState({});
   const [totalItem, setTotalItem] = useState();
   const [pageSize, setPageSize] = useState(Constants.PaginationConfigs.Size);
+  const [isOpenLogin, setIsOpenLogin] = useState(false);
+  const [isOpenRegister, setIsOpenRegister] = useState(false);
 
   let storage = sessionStorage.getItem(Constants.TOKEN);
   const location = useLocation();
@@ -44,15 +48,13 @@ const DetailDestination = () => {
   }, []);
 
   const getAllEvaluate = async () => {
-    if (storage) {
-      const response = await api.getAllDanhGiaDiaDiem(
-        `idDiaDiem=${param}`,
-        setLoading
-      );
-      setListEvaluate(response.data.danhGias);
-      setPagination(response.data.pagination);
-      setTotalItem(response.data.totalItems);
-    }
+    const response = await api.getAllDanhGiaDiaDiem(
+      `idDiaDiem=${param}`,
+      setLoading
+    );
+    setListEvaluate(response.data.danhGias);
+    setPagination(response.data.pagination);
+    setTotalItem(response.data.totalItems);
   };
 
   useEffect(() => {
@@ -63,27 +65,46 @@ const DetailDestination = () => {
     setPageSize(prev + Constants.Params.limit);
   };
 
+  const onOpenLogin = () => {
+    setIsOpenLogin(true);
+  };
+
+  const onCloseLogin = () => {
+    setIsOpenLogin(false);
+  };
+
+  const onOpenRegister = () => {
+    setIsOpenRegister(true);
+  };
+
+  const onCloseRegister = () => {
+    setIsOpenRegister(false);
+  };
+
   const onEvaluate = async () => {
-    if (soSao && noiDung) {
-      api.danhGiaDiaDiem({
-        soSao: soSao,
-        noiDung: noiDung,
-        thoiGianDanhGia: timeNow,
-        idDiaDiem: param
-      },
-        getAllEvaluate,
-        setLoading,
-      )
-      setNoiDung("");
-      setSoSao(0);
-    }
+    if (storage) {
+      if (soSao && noiDung) {
+        api.danhGiaDiaDiem({
+          soSao: soSao,
+          noiDung: noiDung,
+          thoiGianDanhGia: timeNow,
+          idDiaDiem: param
+        },
+          getAllEvaluate,
+          setLoading,
+        )
+        setNoiDung("");
+        setSoSao(0);
+      }
 
+      else {
+        WarningMessage("Không thể đánh giá", "Vui lòng đánh giá số sao và nhập đánh giá của bạn")
+      }
+    }
     else {
-      WarningMessage("Không thể đánh giá", "Vui lòng đánh giá số sao và nhập đánh giá của bạn")
+      onOpenLogin()
     }
-
   }
-
   return (
     <MainLayout>
       <LoadingFullPage loading={loading} />
@@ -183,21 +204,15 @@ const DetailDestination = () => {
                     </a>
                   </div>
                 </div>
-                {
-                  storage ?
-                    <EvaluateDestination
-                      listEvaluate={listEvaluate}
-                      onEvaluate={onEvaluate}
-                      soSao={soSao}
-                      setSoSao={setSoSao}
-                      noiDung={noiDung}
-                      setNoiDung={setNoiDung}
-                      showMore={showMore}
-                    />
-                    :
-                    null
-                }
-
+                <EvaluateDestination
+                  listEvaluate={listEvaluate}
+                  onEvaluate={onEvaluate}
+                  soSao={soSao}
+                  setSoSao={setSoSao}
+                  noiDung={noiDung}
+                  setNoiDung={setNoiDung}
+                  showMore={showMore}
+                />
               </div>
             </div>
           </div>
@@ -210,6 +225,18 @@ const DetailDestination = () => {
           slogan={Constants.Slogan}
         />
       )}
+      <ModalLogin
+        visible={isOpenLogin}
+        handleCancel={onCloseLogin}
+        setLoading={setLoading}
+        onOpenRegister={onOpenRegister}
+        isCurrentPage={true}
+      />
+      <ModalRegister
+        visible={isOpenRegister}
+        handleCancel={onCloseRegister}
+        setLoading={setLoading}
+      />
     </MainLayout>
   );
 };

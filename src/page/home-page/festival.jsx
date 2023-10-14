@@ -25,10 +25,10 @@ const Festival = ({ data }) => {
         {data.length > 0 && (
           <div className="news-outer">
             <div className="row">
-              <div className="col-lg-5 col-md-12 col-xs-12 mb-4">
+              <div className="col-lg-5 col-md-12 col-xs-12 mb-4 pointer" onClick={() => { onNavigate(data[0].idDiaDiem) }}>
                 <div className="news-item overflow-hidden">
                   <div className="news-image">
-                    <img src={showImageCommon(data[0].hinhAnh)} alt="image" height={260}/>
+                    <img src={showImageCommon(data[0].hinhAnh)} alt="image" height={260} />
                   </div>
                   <div className="news-list mt-2 border-b pb-2 mb-2">
                     <ul>
@@ -54,7 +54,7 @@ const Festival = ({ data }) => {
                   </div>
                   <div className="news-content mt-2">
                     <h4 className="pb-2 mb-2 border-b">
-                      <a onClick={() => { onNavigate(data[0].idDiaDiem) }}>{data[0].tenDiaDiem}</a>
+                      <a>{data[0].tenDiaDiem}</a>
                     </h4>
                     <p className="mb-3">
                       {data[0].moTa.length > 500
@@ -78,11 +78,12 @@ const Festival = ({ data }) => {
                   {data.map((it, index) => (
                     <div
                       key={index}
-                      className="col-lg-6 col-md-6 col-xs-12 mb-4"
+                      className="col-lg-6 col-md-6 col-xs-12 mb-4 pointer"
+                      onClick={() => { onNavigate(it.idDiaDiem) }}
                     >
                       <div className="news-item overflow-hidden">
                         <div className="news-image">
-                          <img src={showImageCommon(it.hinhAnh)} alt="image" height={180}/>
+                          <img src={showImageCommon(it.hinhAnh)} alt="image" height={180} />
                         </div>
                         <div className="news-list mt-2 border-b pb-2 mb-2">
                           <ul>
@@ -108,7 +109,7 @@ const Festival = ({ data }) => {
                         </div>
                         <div className="news-content mt-2">
                           <h4 className="bordernone mb-0">
-                            <a onClick={() => { onNavigate(it.idDiaDiem) }}>{it.tenDiaDiem}</a>
+                            <a>{it.tenDiaDiem}</a>
                           </h4>
                         </div>
                       </div>

@@ -79,7 +79,7 @@ const ListSpecialty = () => {
                                 {
                                     listDacSan.map((it, index) => {
                                         return (
-                                            <div className="blog-full d-flex justify-content-around mb-4" key={index}>
+                                            <div className="blog-full d-flex justify-content-around mb-4 pointer" key={index} onClick={() => onNavigate(it.idDiaDiem)}>
                                                 <div className="row w-100">
                                                     <div className="col-lg-5 col-md-4 col-xs-12 blog-height">
                                                         <div className="blog-image">
@@ -88,7 +88,7 @@ const ListSpecialty = () => {
                                                     </div>
                                                     <div className="col-lg-7 col-md-8 col-xs-12">
                                                         <div className="blog-content p-0">
-                                                            <h4 className="mb-1"><a onClick={() => onNavigate(it.idDiaDiem)} className="">{it.tenDiaDiem} </a></h4>
+                                                            <h4 className="mb-1"><a className="">{it.tenDiaDiem} </a></h4>
                                                             <div className="trend-tags">
                                                                 <a href={ROUTE_PATH.VIEW_SPECIALTY} ><i className="fa fa-heart"></i></a>
                                                             </div>

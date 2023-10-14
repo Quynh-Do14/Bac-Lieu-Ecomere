@@ -79,16 +79,22 @@ h6 {
   font-size: 14px;
 }
 
-@media (max-width: 991px) {
+.mobile-screen .mobile-screen-text:hover {
+  color: #02c3ff;
+}
+
+@media (max-width: 1100px) {
   h2 {
     font-size: 28px;
   }
 
+  .mobile-screen {
+    display: block !important;
+  }
 
 }
 
-@media (min-width:992px) {
-
+@media (min-width:1100px) {
   .mobile-screen {
     display: none !important;
   }
@@ -2135,7 +2141,7 @@ header #navbar {
 /* Main Menu Dropdown */
 .navbar-nav li {
   position: relative;
-  text-align: left;
+  text-align: right;
   margin-bottom: 0;
 }
 
@@ -2512,6 +2518,17 @@ header #navbar {
 }
 
 .header_menu .navbar.navbar-default a.cart-icon i {
+  font-size: 21px;
+  line-height: 1.8;
+  height: 35px;
+  width: 35px;
+  background: #F56961;
+  text-align: center;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.logout-icon {
   font-size: 21px;
   line-height: 1.8;
   height: 35px;
@@ -3116,11 +3133,16 @@ nav.navbar.navbar-default.navbar-sticky-in .logo-black {
     color: #fff !important;
   }
 
-  .dropdown-toggle::after,
+  F .dropdown-toggle::after,
   .search-wrapper,
-  .header_menu .navbar.navbar-default a.cart-icon,
-  .register-login {
+  .header_menu .navbar.navbar-default a.cart-icon {
     display: none !important;
+  }
+}
+
+@media (max-width:1099px) {
+  .register-login {
+    display: block !important;
   }
 }
 

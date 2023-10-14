@@ -1,19 +1,89 @@
 import { Modal } from 'antd'
-import React from 'react'
+import React, { useState } from 'react'
 import Constants from '../../../core/common/constant';
 import { MessageError } from '../controls/MessageError';
+import api from '../../api';
+import { validateEmail, validateInputPassword } from '../../utils/validate';
+import { validateFields } from '../../utils/helper';
+import { ROUTE_PATH } from '../../../core/common/appRouter';
+import { WarningMessage } from '../toast/toastMessage';
+import { useNavigate } from 'react-router-dom';
 
-const ModalLogin = ({ visible,
+const ModalLogin = ({
+    visible,
     handleCancel,
-    onChangeEmail,
-    onChangePassword,
-    onSubmit,
+    // onChangeEmail,
+    // onChangePassword,
+    // onSubmit,
     onOpenRegister,
-    validate,
-    setValidate,
-    onBlurEmail,
-    onBlurPassword,
+    setLoading,
+    isCurrentPage
+    // validate,
+    // setValidate,
+    // onBlurEmail,
+    // onBlurPassword,
 }) => {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [validate, setValidate] = useState({})
+    const [submittedTime, setSubmittedTime] = useState(null);
+    const navigate = useNavigate();
+    const isValidData = () => {
+        onBlurEmail(true);
+        onBlurPassword(true);
+
+        setValidate({ ...validate });
+        let checkEmail = !!email;
+        let checkPassword = !!password;
+
+        return !(!checkEmail ||
+            !checkPassword
+        );
+    };
+
+    const onChangeEmail = (e) => {
+        setEmail(e.target.value);
+    };
+
+    const onChangePassword = (e) => {
+        setPassword(e.target.value);
+    };
+
+    const onBlurEmail = (isImplicitChange = false) => {
+        let checkEmail = validateEmail(email);
+        setEmail(email.trim())
+        validateFields(isImplicitChange, "email", !checkEmail, setValidate, validate, !checkEmail ? email ? `Vui lòng nhập đúng định dạng email` : `Vui lòng nhập email` : "");
+    }
+
+    const onBlurPassword = (isImplicitChange = false) => {
+        let checkPassword = validateInputPassword(password);
+        setPassword(password.trim())
+        validateFields(isImplicitChange, "password", !checkPassword, setValidate, validate, !checkPassword ? password ? `Vui lòng nhập đúng định dạng mật khẩu` : `Vui lòng nhập mật khẩu` : "");
+    };
+
+    const onSubmit = async (e) => {
+        await setSubmittedTime(Date.now());
+        handleCancel();
+        if (isValidData()) {
+            const login = await api.login({
+                email: email,
+                password: password,
+            },
+                setLoading
+            );
+            if (login.success == true) {
+                sessionStorage.setItem(Constants.TOKEN, login.data.token)
+                if(!isCurrentPage){
+                    navigate(ROUTE_PATH.HOME_PAGE);
+                }
+            }
+            return false;
+        }
+        else {
+            WarningMessage("Nhập thiếu thông tin", "Vui lòng nhập đầy đủ thông tin")
+        };
+    }
 
     return (
         <div className=''>

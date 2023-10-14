@@ -91,7 +91,7 @@ const ListFestival = () => {
                                 {
                                     listLeHoi.map((it, index) => {
                                         return (
-                                            <div className="blog-full d-flex justify-content-around mb-4" key={index}>
+                                            <div className="blog-full d-flex justify-content-around mb-4 pointer" key={index} onClick={() => onNavigate(it.idDiaDiem)}>
                                                 <div className="row w-100">
                                                     <div className="col-lg-5 col-md-4 col-xs-12 blog-height">
                                                         <div className="blog-image">
@@ -100,7 +100,7 @@ const ListFestival = () => {
                                                     </div>
                                                     <div className="col-lg-7 col-md-8 col-xs-12">
                                                         <div className="blog-content p-0">
-                                                            <h4 className="mb-1"><a onClick={() => onNavigate(it.idDiaDiem)} className="">{it.tenDiaDiem} </a></h4>
+                                                            <h4 className="mb-1"><a className="">{it.tenDiaDiem} </a></h4>
                                                             <p className="mb-2 pink"><i className="fa fa-eye mr-1"></i> {it.luotXem} <i className="fa fa-map-marker mr-1 ml-3"></i> {it.diaChi}</p>
                                                             <p className="mb-2 border-t pt-2">{it.moTa.length > 200 ? it.moTa.slice(0, 200) + ' ...' : it.moTa} </p>
                                                         </div>

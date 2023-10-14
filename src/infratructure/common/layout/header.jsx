@@ -17,15 +17,6 @@ import { validateEmail, validateInputPassword } from '../../utils/validate';
 const HeaderPage = () => {
     const [isOpenLogin, setIsOpenLogin] = useState(false);
     const [isOpenRegister, setIsOpenRegister] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [userName, setUserName] = useState("");
-    const [sdt, setSdt] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [address, setAddress] = useState("");
-    const [validate, setValidate] = useState({})
-    const [submittedTime, setSubmittedTime] = useState(null);
 
     const [loading, setLoading] = useState(false);
     const [isOpenModalLogout, setIsOpenModalLogout] = useState(false);
@@ -58,157 +49,13 @@ const HeaderPage = () => {
         setIsOpenModalLogout(false);
     };
 
-
     const onLogout = () => {
         sessionStorage.clear();
         closeModalLogout();
+        navigate(ROUTE_PATH.HOME_PAGE);
         window.location.reload();
     };
     //////////////
-
-    const isValidData = () => {
-        onBlurEmail(true);
-        onBlurPassword(true);
-
-        onBlurUserName(true);
-        onBlurSdt(true);
-        onBlurFirstName(true);
-        onBlurLastName(true);
-        onBlurAddress(true);
-        setValidate({ ...validate });
-        let checkEmail = !!email;
-        let checkPassword = !!password;
-        let checkUserName = !!userName;
-        let checkSdt = !!sdt;
-        let checkFirstName = !!firstName;
-        let checkLastName = !!lastName;
-        let checkAddress = !!address;
-
-        return !(!checkEmail ||
-            !checkPassword ||
-            !checkUserName ||
-            !checkSdt ||
-            !checkFirstName ||
-            !checkAddress ||
-            !checkLastName
-        );
-
-    };
-
-    const onBlurEmail = (isImplicitChange = false) => {
-        let checkEmail = validateEmail(email);
-        setEmail(email.trim())
-        validateFields(isImplicitChange, "email", !checkEmail, setValidate, validate, !checkEmail ? email ? `Vui lòng nhập đúng định dạng email` : `Vui lòng nhập email` : "");
-    }
-
-    const onBlurPassword = (isImplicitChange = false) => {
-        let checkPassword = validateInputPassword(password);
-        setPassword(password.trim())
-        validateFields(isImplicitChange, "password", !checkPassword, setValidate, validate, !checkPassword ? password ? `Vui lòng nhập đúng định dạng mật khẩu` : `Vui lòng nhập mật khẩu` : "");
-    };
-
-    const onBlurUserName = (isImplicitChange = false) => {
-        let checkUserName = !!userName;
-        setUserName(userName.trim())
-        validateFields(isImplicitChange, "userName", !checkUserName, setValidate, validate, !userName ? "Vui lòng nhập tên người dùng" : "");
-    };
-
-
-    const onBlurSdt = (isImplicitChange = false) => {
-        let checkSdt = !!sdt;
-        setSdt(sdt.trim())
-        validateFields(isImplicitChange, "sdt", !checkSdt, setValidate, validate, !sdt ? "Vui lòng nhập số điện thoại" : "");
-    };
-
-
-    const onBlurFirstName = (isImplicitChange = false) => {
-        let checkFirstName = !!firstName;
-        setFirstName(firstName.trim())
-        validateFields(isImplicitChange, "firstName", !checkFirstName, setValidate, validate, !firstName ? "Vui lòng nhập tên" : "");
-    };
-
-
-    const onBlurLastName = (isImplicitChange = false) => {
-        let checkLastName = !!lastName;
-        setLastName(lastName.trim())
-        validateFields(isImplicitChange, "lastName", !checkLastName, setValidate, validate, !lastName ? "Vui lòng nhập họ" : "");
-    };
-
-
-    const onBlurAddress = (isImplicitChange = false) => {
-        let checkAddress = !!address;
-        setAddress(address.trim())
-        validateFields(isImplicitChange, "address", !checkAddress, setValidate, validate, !address ? "Vui lòng nhập địa chỉ" : "");
-    };
-
-    const onChangeEmail = (e) => {
-        setEmail(e.target.value);
-    };
-
-    const onChangePassword = (e) => {
-        setPassword(e.target.value);
-    };
-
-    const onChangeUserName = (e) => {
-        setUserName(e.target.value);
-    };
-
-    const onChangeSdt = (e) => {
-        setSdt(e.target.value);
-    };
-
-    const onChangeFirstName = (e) => {
-        setFirstName(e.target.value);
-    };
-
-    const onChangeLastName = (e) => {
-        setLastName(e.target.value);
-    };
-    const onChangeAddress = (e) => {
-        setAddress(e.target.value);
-    };
-
-
-    const onSubmit = async (e) => {
-        // await setSubmittedTime(Date.now());
-        onCloseLogin();
-        // if (isValidData()) {
-        const login = await api.login({
-            email: email,
-            password: password,
-        },
-            setLoading
-        );
-        if (login.success == true) {
-            sessionStorage.setItem(Constants.TOKEN, login.data.token)
-            navigate(ROUTE_PATH.HOME_PAGE);
-        }
-        return false;
-        // }
-        // else {
-        //     WarningMessage("Nhập thiếu thông tin", "Vui lòng nhập đầy đủ thông tin")
-        // };
-    }
-    const onRegister = async () => {
-        await setSubmittedTime(Date.now());
-        onCloseRegister();
-        if (isValidData()) {
-            await api.register({
-                email: email,
-                password: password,
-                userName: userName,
-                address: address,
-                sdt: sdt,
-            },
-                setLoading
-            );
-            return false;
-        }
-        // else {
-        //     WarningMessage("Nhập thiếu thông tin", "Vui lòng nhập đầy đủ thông tin")
-        // };
-    }
-
 
     const ItemMenu = () => {
         return (
@@ -232,6 +79,7 @@ const HeaderPage = () => {
                                     <img src="./images/logo.png" alt="image" style={{ maxHeight: 57 }} />
                                 </a>
                             </div>
+
                             {/* Collect the nav links, forms, and other content for toggling */}
                             <div
                                 className="navbar-collapse1 d-flex align-items-center"
@@ -246,19 +94,20 @@ const HeaderPage = () => {
                                         )
 
                                     })}
-                                    {
+                                    {/* {
                                         storage ?
-                                            <li onClick={() => openModalLogout} className="menu-title mobile-screen" >
-                                                <a >Đăng xuất </a>
+                                            <li className="menu-title mobile-screen" >
+                                                <div onClick={openModalLogout}>Đăng xuất </div>
                                             </li>
                                             :
-                                            <li onClick={() => onOpenLogin} className="menu-title mobile-screen" >
+                                            <li onClick={onOpenLogin} className="menu-title mobile-screen" >
                                                 <a >Đăng nhập </a>
                                             </li>
-                                    }
+                                    } */}
                                 </ul>
                             </div>
                             {/* /.navbar-collapse */}
+
                             {
                                 storage ?
                                     // <div class="header_sidemenu">
@@ -294,6 +143,31 @@ const HeaderPage = () => {
                                     </div>
                             }
 
+                            {
+                                storage
+                                    ?
+                                    <div className='mobile-screen '>
+                                        <a onClick={openModalLogout} className='ml-1 d-flex align-items-center white'>
+                                            <div className='logout-icon'>
+                                                <i className="icon-user mr-1 " />
+                                            </div>
+                                            <div className='mobile-screen-text'>
+                                                Đăng xuất
+                                            </div>
+                                        </a>
+                                    </div>
+                                    :
+                                    <div className='mobile-screen'>
+                                        <a onClick={onOpenLogin} className='ml-1 d-flex align-items-center white'>
+                                            <div className='logout-icon'>
+                                                <i className="icon-user mr-1 " />
+                                            </div>
+                                            <div className='mobile-screen-text'>
+                                                Đăng nhập
+                                            </div>
+                                        </a>
+                                    </div>
+                            }
                             <div id="slicknav-mobile" />
                         </div>
                     </div>
@@ -305,35 +179,13 @@ const HeaderPage = () => {
             <ModalLogin
                 visible={isOpenLogin}
                 handleCancel={onCloseLogin}
-                onChangeEmail={onChangeEmail}
-                onChangePassword={onChangePassword}
-                onSubmit={onSubmit}
+                setLoading={setLoading}
                 onOpenRegister={onOpenRegister}
-                validate={validate}
-                setValidate={setValidate}
-                onBlurEmail={onBlurEmail}
-                onBlurPassword={onBlurPassword}
             />
             <ModalRegister
                 visible={isOpenRegister}
                 handleCancel={onCloseRegister}
-                onChangeEmail={onChangeEmail}
-                onChangePassword={onChangePassword}
-                onChangeUserName={onChangeUserName}
-                onChangeSdt={onChangeSdt}
-                onChangeFirstName={onChangeFirstName}
-                onChangeLastName={onChangeLastName}
-                onChangeAddress={onChangeAddress}
-                onSubmit={onRegister}
-                validate={validate}
-                setValidate={setValidate}
-                onBlurEmail={onBlurEmail}
-                onBlurPassword={onBlurPassword}
-                onBlurUserName={onBlurUserName}
-                onBlurSdt={onBlurSdt}
-                onBlurFirstName={onBlurFirstName}
-                onBlurLastName={onBlurLastName}
-                onBlurAddress={onBlurAddress}
+                setLoading={setLoading}
             />
             <ModalConfirm
                 visible={isOpenModalLogout}

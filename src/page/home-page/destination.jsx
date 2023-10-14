@@ -39,7 +39,9 @@ const Destination = ({ data }) => {
                             <div className="row">
                                 {data.map((it, index) => {
                                     return (
-                                        <div className="col-lg-4 col-md-6 mb-4" key={index}>
+                                        <div className="col-lg-4 col-md-6 mb-4 pointer" key={index}
+                                            onClick={() => onNavigate(it.idDiaDiem)}
+                                        >
                                             <div className="trend-item">
                                                 <div className="trend-image">
                                                     <img
@@ -65,7 +67,7 @@ const Destination = ({ data }) => {
                                                             <span className="ml-2">đánh giá từ Google</span>
                                                         </div>
                                                         <h4>
-                                                            <a onClick={() => onNavigate(it.idDiaDiem)}>{it.tenDiaDiem}</a>
+                                                            <a>{it.tenDiaDiem}</a>
                                                         </h4>
                                                         <p className="mb-0">
                                                             <i className="fa fa-eye mr-1 mb-1"></i>{" "}
