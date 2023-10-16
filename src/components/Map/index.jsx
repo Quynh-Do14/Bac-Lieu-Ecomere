@@ -25,6 +25,7 @@ const Map = () => {
   };
 
   const fecthData = async () => {
+    document.getElementById("map").scrollIntoView()
     let map = new mapboxgl.Map({
       container: mapContainer.current,
       zoom: 13,
