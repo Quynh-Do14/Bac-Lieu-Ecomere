@@ -1,16 +1,7 @@
 import React, { useState } from 'react'
+import { ViewStarCommon } from '../../infratructure/common/controls/view-star';
 
 const EvaluateDestination = ({ listEvaluate, onEvaluate, soSao, setSoSao, noiDung, setNoiDung, showMore }) => {
-
-    const starEvaluateCount = (star) => {
-        const stars = [];
-        for (let i = 0; i < star; i++) {
-            stars.push(
-                <span key={i} class="fa fa-star checked"></span>
-            );
-        }
-        return stars
-    }
 
     const viewStarEvaluate = () => {
         const stars = [];
@@ -45,7 +36,7 @@ const EvaluateDestination = ({ listEvaluate, onEvaluate, soSao, setSoSao, noiDun
                                     <p class="comment-date">{it.thoiGianDanhGia}</p>
                                     <div class="comment-rate">
                                         <div class="rating mar-right-15">
-                                            {starEvaluateCount(it.soSao)}
+                                            {ViewStarCommon(it.soSao)}
                                         </div>
                                     </div>
 

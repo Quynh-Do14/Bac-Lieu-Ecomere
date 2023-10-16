@@ -1,5 +1,7 @@
 // import { FailMessage, SuccessMessage } from "../common/components/toast/notificationToast";
 
+import { FailMessage, SuccessMessage } from "../common/toast/toastMessage";
+
 
 // import store from "../store";
 const request = {
@@ -129,12 +131,12 @@ const request = {
     });
     setLoading(true);
     if (result.ok) {
-      // SuccessMessage("Tạo mới dữ liệu thành công", "Dữ liệu đã được tạo mới thành công")
+      SuccessMessage(`Đánh giá thành công`, `Cảm ơn bạn đánh giá địa điểm này`)
       setLoading(false);
       callBack()
       return result.json();
     } else {
-      // FailMessage("Tạo mới dữ liệu thất bại", "Dữ liệu đã được tạo mới thất bại");
+      FailMessage(`Đánh giá thất bại`, "Đánh giá địa điểm này không thành công");
       setLoading(false);
       return {
         status: false,
@@ -227,7 +229,7 @@ const request = {
     }
   },
 
-  login: async (url, data, setLoading) => {
+  login: async (url, data, callBack, setLoading, title) => {
     var myHeaders = new Headers();
     setLoading(true);
     let result = await fetch(url, {
@@ -242,11 +244,12 @@ const request = {
       console.log(e);
     });
     if (result.ok) {
-      // SuccessMessage("Đăng nhập thành công", "")
+      SuccessMessage(`${title} thành công`, "");
+      callBack()
       setLoading(false);
       return result.json();
     } else {
-      // FailMessage("Đăng nhập thất bại", "");
+      FailMessage(`${title} thất bại`, "");
       setLoading(false);
       return {
         status: false,

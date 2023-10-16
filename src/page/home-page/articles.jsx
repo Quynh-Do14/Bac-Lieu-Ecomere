@@ -52,7 +52,7 @@ const Articles = ({ data = [] }) => {
                                                             {it.tieuDe}
                                                         </a>
                                                     </h4>
-                                                    <p className="mb-3 text-truncate">
+                                                    <p className="mb-3 text-truncate-2">
                                                         {it.tieuDeCon}
                                                     </p>
 

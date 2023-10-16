@@ -5,18 +5,22 @@ import requestDuong from "./makeRequestDuong";
 import request from "./makeRequest";
 
 const api = {
-  login: (data, setLoading) =>
+  login: (data, callBack, setLoading) =>
     request.login(
       `${apiLinks.API}${Endpoint.Auth.Login}`,
       data,
-      setLoading
+      callBack,
+      setLoading,
+      "Đăng nhập"
     ),
 
-  register: (data, setLoading) =>
+  register: (data, callBack, setLoading) =>
     request.login(
       `${apiLinks.API}${Endpoint.Auth.Register}`,
       data,
-      setLoading
+      callBack,
+      setLoading,
+      "Đăng kí"
     ),
 
   upload: (data, setLoading) =>

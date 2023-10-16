@@ -4666,8 +4666,136 @@ span.location-box {
   border: 6px solid #ffffff1a;
 }
 
+/* 
 .top-destination .desti-image img {
   width: 100%;
+  max-width: 510px;
+  max-height: 510px;
+  min-width: 395px;
+  min-height: 395px;
+  width: 395px;
+  height: 395px;
+  object-fit: cover;
+}
+
+.top-destination .small-image img {
+  width: 100%;
+  min-width: 290px;
+  min-height: 290px;
+
+  object-fit: cover;
+} */
+@media (max-width: 575px) {
+
+  .top-destination .desti-image img {
+    width: 100%;
+  }
+
+  .top-destination .small-image img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 576px) {
+  .top-destination .desti-image {
+    width: 510px;
+    height: 510px;
+  }
+
+  .top-destination .desti-image img {
+    width: 100%;
+    width: 510px;
+    height: 510px;
+    object-fit: cover;
+  }
+
+  .top-destination .small-image {
+    width: 510px;
+    height: 510px;
+  }
+
+  .top-destination .small-image img {
+    width: 100%;
+    min-width: 510px;
+    min-height: 510px;
+
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+  .top-destination .desti-image {
+    width: 360px;
+    height: 360px;
+  }
+
+  .top-destination .desti-image img {
+    width: 360px;
+    height: 360px;
+    object-fit: cover;
+  }
+
+  .top-destination .small-image {
+    width: 360px;
+    height: 360px;
+  }
+
+  .top-destination .small-image img {
+    min-width: 360px;
+    min-height: 360px;
+
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 1200px) and (min-width:992px) {
+  .top-destination .desti-image {
+    width: 320px;
+    height: 320px;
+  }
+
+  .top-destination .desti-image img {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+  }
+
+  .top-destination .small-image {
+    width: 234px;
+    height: 234px;
+  }
+
+  .top-destination .small-image img {
+    min-width: 230px;
+    min-height: 230px;
+
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 1200px) {
+  .top-destination .desti-image {
+    width: 395px;
+    height: 395px;
+  }
+
+  .top-destination .desti-image img {
+    width: 395px;
+    height: 395px;
+    object-fit: cover;
+  }
+
+  .top-destination .small-image {
+    width: 290px;
+    height: 290px;
+  }
+
+  .top-destination .small-image img {
+    min-width: 290px;
+    min-height: 290px;
+
+    object-fit: cover;
+  }
 }
 
 .top-destination .desti-image .desti-content {
@@ -9609,5 +9737,6 @@ ul.sidebar-tags li a:hover {
   box-shadow: 1px 1px 2px 0px #91bdff;
   transition: border .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
 
 /*# sourceMappingURL=style.css.map */

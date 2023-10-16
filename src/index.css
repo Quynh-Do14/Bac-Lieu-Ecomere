@@ -96,6 +96,11 @@ code {
   font-size: 20px !important;
 }
 
+.bigStar {
+  font-size: 30px !important;
+  margin: 0 1px;
+}
+
 .carousel-control-next,
 .carousel-control-prev {
   opacity: 0;
@@ -133,6 +138,11 @@ code {
 
 .align-items-center {
   align-items: center;
+}
+
+
+.justify-content-start {
+  justify-content: flex-start !important
 }
 
 .justify-content-between {

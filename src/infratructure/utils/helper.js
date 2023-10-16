@@ -61,3 +61,11 @@ export const convertTimeOnly = (date) => {
 export const showImageCommon = (img) => {
     return `${API}${PUBLIC}/${img}`
 }
+export const convertNumber = (number = 0, isDecimal = true) => {
+    if (isDecimal) {
+        return parseFloat(number)?.toFixed(1);
+    }
+    else {
+        return parseInt(number)?.toFixed(0);
+    }
+}

@@ -29,7 +29,7 @@ const ListDestination = () => {
 
   const navigate = useNavigate();
 
-  const onGetListDiemDenAsync = async ({ searchText = "", limit = pageSize, page = 1, danhMuc = 1, quanhuyen = "" }) => {
+  const onGetListDiemDenAsync = async ({ searchText = "", limit = pageSize, page = 1, danhMuc = "", quanhuyen = "" }) => {
     const response = await api.getAllDiaDiem(
       `dichvu/top?${Constants.Params.limit}=${limit}&${Constants.Params.page}=${page}&idQuanHuyen=${quanhuyen}&search=${searchText}&idDanhMuc=${danhMuc}`,
       setLoading
@@ -48,8 +48,8 @@ const ListDestination = () => {
     setDsDanhMucDiaDiem(resGetDanhMucConCuaDanhMuc.result);
   };
 
-  const onSearch = async (keyWord = "", limit = pageSize, page = 1, danhMuc = 1, quanhuyen = "") => {
-    onGetListDiemDenAsync({ keyWord: keyWord, limit: limit, page: page, danhMuc: danhMuc, quanhuyen: quanhuyen });
+  const onSearch = async (searchText = "", limit = pageSize, page = 1, danhMuc = 1, quanhuyen = "") => {
+    onGetListDiemDenAsync({ searchText: searchText, limit: limit, page: page, danhMuc: danhMuc, quanhuyen: quanhuyen });
   };
   useEffect(() => {
     onSearch().then((_) => { });
@@ -133,7 +133,7 @@ const ListDestination = () => {
                                 </a>
                               </h4>
                               <div className="d-flex justify-content-between">
-                                <div className="mb-0 pink">
+                                <div className="mb-0 pink text-truncate-2 ">
                                   <i className="fa fa-map-marker mr-2"></i>
                                   {it.diaChi.replace(", Bạc Liêu", "")}{" "}
                                 </div>

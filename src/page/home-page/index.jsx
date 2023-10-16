@@ -234,7 +234,7 @@ const HomePage = () => {
           <div className="container">
             <div className="desti-inner">
               <div className="row d-flex align-items-center">
-                <div className="col-lg-4 col-md-6 p-1">
+                <div className="col-lg-4 col-md-12 p-1">
                   <div className="desti-title text-center">
                     <h2 className="white">
                       Du lịch <br />
@@ -251,7 +251,7 @@ const HomePage = () => {
                   listDiaDiemTop2.map((v, k) => (
                     <div className="col-lg-4 col-md-6 p-1" key={k}>
                       <div className="desti-image">
-                        <img src={v.hinhAnh} alt="desti" height={250} />
+                        <img src={v.hinhAnh} alt="desti"/>
                         <div className="desti-content">
                           <div className="rating mb-1">
                             <span className="fa fa-star checked" />
@@ -274,8 +274,8 @@ const HomePage = () => {
                 {listDiaDiemTop4TuTop2.length > 0 &&
                   listDiaDiemTop4TuTop2.map((v, k) => (
                     <div className="col-lg-3 col-md-6 p-1" key={k}>
-                      <div className="desti-image">
-                        <img src={v.hinhAnh} alt="desti" height={200} />
+                      <div className="desti-image small-image">
+                        <img src={v.hinhAnh} alt="desti" />
                         <div className="desti-content">
                           <div className="rating mb-1">
                             <span className="fa fa-star checked" />

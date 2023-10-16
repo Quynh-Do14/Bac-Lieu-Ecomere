@@ -120,8 +120,8 @@ const BannerCommon = () => {
                     <h1 className="white mb-4">
                         Cùng tôi tham gia du lịch Bạc Liêu
                     </h1>
-                    <a className="per-btn">
-                        <span className="white" href={ROUTE_PATH.DESTINATION}>Khám phá</span>
+                    <a className="per-btn" href={ROUTE_PATH.DESTINATION}>
+                        <span className="white" >Khám phá</span>
                         <i className="fa fa-arrow-right white" />
                     </a>
                 </div>

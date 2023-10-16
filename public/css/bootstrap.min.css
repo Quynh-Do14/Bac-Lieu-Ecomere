@@ -10821,13 +10821,14 @@ button.bg-dark:hover {
     white-space: nowrap !important
 }
 
+
 .text-truncate-2 {
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    height: 5.4vh;
+    height: 5vh;
 }
 
 .text-truncate-1 {
@@ -10836,7 +10837,7 @@ button.bg-dark:hover {
     -webkit-line-clamp: 1;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    height: 4.5vh;
+    height: 4vh;
 }
 
 .text-truncate {

@@ -70,11 +70,12 @@ const ModalLogin = ({
                 email: email,
                 password: password,
             },
+                handleCancel,
                 setLoading
             );
             if (login.success == true) {
                 sessionStorage.setItem(Constants.TOKEN, login.data.token)
-                if(!isCurrentPage){
+                if (!isCurrentPage) {
                     navigate(ROUTE_PATH.HOME_PAGE);
                 }
             }
@@ -139,7 +140,7 @@ const ModalLogin = ({
                                 <a href="#" class="btn-twitter"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a> */}
                             </div>
                             <div class="sign-up">
-                                <p class="m-0">Bạn đã có tài khoản chưa?<a onClick={onOpenRegister} class="pink">Đăng kí</a></p>
+                                <p class="m-0">Bạn đã có tài khoản chưa?<a onClick={onOpenRegister} class="pink ml-1">Đăng kí</a></p>
                             </div>
                         </div>
                     </div>

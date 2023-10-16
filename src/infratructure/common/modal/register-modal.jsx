@@ -24,8 +24,7 @@ const ModalRegister = ({
     const isValidData = () => {
         onBlurEmail(true);
         onBlurPassword(true);
-
-        onBlurUserName(true);
+        // onBlurUserName(true);
         onBlurSdt(true);
         onBlurFirstName(true);
         onBlurLastName(true);
@@ -33,7 +32,7 @@ const ModalRegister = ({
         setValidate({ ...validate });
         let checkEmail = !!email;
         let checkPassword = !!password;
-        let checkUserName = !!userName;
+        // let checkUserName = !!userName;
         let checkSdt = !!sdt;
         let checkFirstName = !!firstName;
         let checkLastName = !!lastName;
@@ -41,7 +40,7 @@ const ModalRegister = ({
 
         return !(!checkEmail ||
             !checkPassword ||
-            !checkUserName ||
+            // !checkUserName ||
             !checkSdt ||
             !checkFirstName ||
             !checkAddress ||
@@ -62,11 +61,11 @@ const ModalRegister = ({
         validateFields(isImplicitChange, "password", !checkPassword, setValidate, validate, !checkPassword ? password ? `Vui lòng nhập đúng định dạng mật khẩu` : `Vui lòng nhập mật khẩu` : "");
     };
 
-    const onBlurUserName = (isImplicitChange = false) => {
-        let checkUserName = !!userName;
-        setUserName(userName.trim())
-        validateFields(isImplicitChange, "userName", !checkUserName, setValidate, validate, !userName ? "Vui lòng nhập tên người dùng" : "");
-    };
+    // const onBlurUserName = (isImplicitChange = false) => {
+    //     let checkUserName = !!userName;
+    //     setUserName(userName.trim())
+    //     validateFields(isImplicitChange, "userName", !checkUserName, setValidate, validate, !userName ? "Vui lòng nhập tên người dùng" : "");
+    // };
 
 
     const onBlurSdt = (isImplicitChange = false) => {
@@ -104,9 +103,9 @@ const ModalRegister = ({
         setPassword(e.target.value);
     };
 
-    const onChangeUserName = (e) => {
-        setUserName(e.target.value);
-    };
+    // const onChangeUserName = (e) => {
+    //     setUserName(e.target.value);
+    // };
 
     const onChangeSdt = (e) => {
         setSdt(e.target.value);
@@ -126,18 +125,21 @@ const ModalRegister = ({
 
     const onRegister = async () => {
         await setSubmittedTime(Date.now());
-        handleCancel();
         if (isValidData()) {
             await api.register({
                 email: email,
                 password: password,
-                userName: userName,
+                // userName: userName,
                 address: address,
                 sdt: sdt,
+                firstName: firstName,
+                lastName: lastName
             },
+                handleCancel,
                 setLoading
             );
             return false;
+
         }
         else {
             WarningMessage("Nhập thiếu thông tin", "Vui lòng nhập đầy đủ thông tin")
@@ -186,13 +188,13 @@ const ModalRegister = ({
                                         <MessageError isError={validate.password?.isError || false}
                                             message={validate.password?.message || ""} />
                                     </div>
-                                    <div class="form-group">
+                                    {/* <div class="form-group">
                                         <input type="text"
                                             onBlur={() => onBlurUserName(false)}
                                             onChange={onChangeUserName} placeholder="Nhập tên đăng nhập" />
                                         <MessageError isError={validate.userName?.isError || false}
                                             message={validate.userName?.message || ""} />
-                                    </div>
+                                    </div> */}
                                     <div class="form-group">
                                         <input type="text"
                                             onBlur={() => onBlurSdt(false)}
@@ -237,7 +239,7 @@ const ModalRegister = ({
                                 <a href="#" class="btn-google"><i class="fab fa-google" aria-hidden="true"></i> Google</a> */}
                             </div>
                             <div class="sign-up">
-                                <p class="m-0">Bạn đã có tài khoản? <a class="pink" onClick={handleCancel}>Đăng nhập</a></p>
+                                <p class="m-0">Bạn đã có tài khoản? <a class="pink ml-1" onClick={handleCancel}>Đăng nhập</a></p>
                             </div>
                         </div>
                     </div>

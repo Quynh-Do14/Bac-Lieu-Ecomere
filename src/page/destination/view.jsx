@@ -10,6 +10,8 @@ import EvaluateDestination from "./evaluate";
 import { WarningMessage } from "../../infratructure/common/toast/toastMessage";
 import ModalLogin from "../../infratructure/common/modal/login-modal";
 import ModalRegister from "../../infratructure/common/modal/register-modal";
+import { convertNumber } from "../../infratructure/utils/helper";
+import { ViewStarCommon } from "../../infratructure/common/controls/view-star";
 
 const DetailDestination = () => {
   const [loading, setLoading] = useState(false);
@@ -27,8 +29,18 @@ const DetailDestination = () => {
   let storage = sessionStorage.getItem(Constants.TOKEN);
   const location = useLocation();
   const dateTime = new Date();
-  const timeNow = `${dateTime.getFullYear()}-${dateTime.getMonth()}-${dateTime.getDate()}`
+
+  const converDateTime = (date) => {
+    const dateLength = date.toString().split("").length
+    if (dateLength < 2) {
+      return `0${date}`
+    }
+    return date
+  }
+
+  const timeNow = `${converDateTime(dateTime.getFullYear())}-${converDateTime(dateTime.getMonth() + 1)}-${dateTime.getDate()}`
   const param = location.search.replace("?", "");
+
   const onGetDetailDiemDenAsync = async () => {
     const response = await api.getDiaDiemById(
       `dichvu/top/${param}?idDanhMuc=${Constants.CategoryConfig.Location.value}&limit=${pageSize}`,
@@ -90,7 +102,10 @@ const DetailDestination = () => {
           thoiGianDanhGia: timeNow,
           idDiaDiem: param
         },
-          getAllEvaluate,
+          () => {
+            getAllEvaluate();
+            onGetDetailDiemDenAsync()
+          },
           setLoading,
         )
         setNoiDung("");
@@ -105,6 +120,8 @@ const DetailDestination = () => {
       onOpenLogin()
     }
   }
+  console.log(' Number.isInteger(detailDestination.soSaoTrungBinh)', (Number(detailDestination.soSaoTrungBinh)));
+
   return (
     <MainLayout>
       <LoadingFullPage loading={loading} />
@@ -204,6 +221,36 @@ const DetailDestination = () => {
                     </a>
                   </div>
                 </div>
+
+                {
+                  listEvaluate.length
+                    ?
+                    <div className="single-review mb-4 mt-4" id="single-review">
+                      <h4>Đánh giá</h4>
+                      <div className="row d-flex align-items-center">
+                        <div className="col">
+                          <div className="review-box bg-blue text-center pb-4 pt-4">
+                            <h4 class="white mb-1">Địa điểm này được đánh giá</h4>
+
+                            <h2 className="mb-1 white"><span>{convertNumber(detailDestination.soSaoTrungBinh)} </span>/5 Sao</h2>
+                            <div class="rating mar-right-15">
+                              {ViewStarCommon(convertNumber(detailDestination.soSaoTrungBinh, false), true)}
+                              {
+                                Number.isInteger(Number(detailDestination.soSaoTrungBinh))
+                                  ?
+                                  null
+                                  :
+                                  <span className="fa fa-star-half checked bigStar"></span>
+                              }
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    : null
+                }
+
                 <EvaluateDestination
                   listEvaluate={listEvaluate}
                   onEvaluate={onEvaluate}
