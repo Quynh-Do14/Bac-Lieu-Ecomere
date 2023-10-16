@@ -109,6 +109,7 @@ const BannerCommon = () => {
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src={slide} class="d-block w-100 opacity-8" alt="..." height={550} />
+
                     <div className="overlay-custom" />
                 </div>
                 <div class="carousel-item">
