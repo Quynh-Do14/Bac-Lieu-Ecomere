@@ -79,7 +79,13 @@ h6 {
   font-size: 14px;
 }
 
-.mobile-screen .mobile-screen-text:hover {
+.mobile-screen,
+.desktop-screen {
+  text-transform: uppercase;
+}
+
+.mobile-screen .mobile-screen-text:hover,
+.desktop-screen .desktop-screen-text:hover {
   color: #02c3ff;
 }
 
@@ -92,11 +98,19 @@ h6 {
     display: block !important;
   }
 
+  .desktop-screen {
+    display: none !important;
+  }
+
 }
 
 @media (min-width:1100px) {
   .mobile-screen {
     display: none !important;
+  }
+
+  .desktop-screen {
+    display: block !important;
   }
 }
 

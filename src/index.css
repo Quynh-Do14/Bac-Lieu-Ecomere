@@ -132,6 +132,28 @@ code {
   margin-top: 280px;
 }
 
+.white-space-no-wrap {
+  white-space: nowrap;
+}
+
+@media (max-width: 1500px) and (min-width:992px) {
+  .swiper-content.container {
+    padding-left: 175px !important;
+  }
+}
+
+@media (max-width: 850px) and (min-width:767px) {
+  .swiper-content.container {
+    padding-left: 110px !important;
+  }
+}
+
+@media (max-width: 768px) and (min-width:576px) {
+  .swiper-content.container {
+    padding-left: 100px !important;
+  }
+}
+
 .d-flex {
   display: flex;
 }

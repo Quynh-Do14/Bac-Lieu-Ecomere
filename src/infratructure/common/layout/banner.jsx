@@ -105,15 +105,14 @@ const BannerCommon = () => {
         //     </div>
         // </section>
 
-        <div id="carouselExampleFade" class="carousel slide carousel-fade">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src={slide} class="d-block w-100 opacity-8" alt="..." height={550} />
-
+        <div id="carouselExampleFade" className="carousel slide carousel-fade">
+            <div className="carousel-inner">
+                <div className="carousel-item active">
+                    <img src={slide} className="d-block w-100 opacity-8" alt="..." height={550} style={{objectFit:"cover"}} />
                     <div className="overlay-custom" />
                 </div>
-                <div class="carousel-item">
-                    <img src={slide1} class="d-block w-100 opacity-8" alt="..." height={550} />
+                <div className="carousel-item">
+                    <img src={slide1} className="d-block w-100 opacity-8" alt="..." height={550} />
                     <div className="overlay-custom" />
                 </div>
                 <div className="swiper-content container">
@@ -127,16 +126,18 @@ const BannerCommon = () => {
                     </a>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true">
-                    <div class="swiper-button-prev"></div>
+            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                <span className="carousel-control-prev-icon" aria-hidden="true"> </span>
+                <div className="swiper-button-prev"></div>
+            </button>
+            <div className="swiper-button-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev"></div>
 
-                </span>
+            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                <span className="carousel-control-next-icon red" aria-hidden="true"></span>
+                <div className="swiper-button-next"></div>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <div class="swiper-button-next"></div>
-            </button>
+            <div className="swiper-button-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next"></div>
+
         </div>
     )
 }

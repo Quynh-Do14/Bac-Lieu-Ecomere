@@ -10,6 +10,7 @@ import ModalConfirm from '../modal/confirm-modal';
 import LoadingFullPage from '../controls/loading';
 import { validateFields } from '../../utils/helper';
 import { validateEmail, validateInputPassword } from '../../utils/validate';
+import { SuccessMessage } from '../toast/toastMessage';
 // import logoWhite from "../../../assets/images/logo-white.png"
 // import logo from "../../../assets/images/logo.png"
 // import { DownOutlined } from "@ant-design/icons";
@@ -54,6 +55,7 @@ const HeaderPage = () => {
         closeModalLogout();
         navigate(ROUTE_PATH.HOME_PAGE);
         window.location.reload();
+        SuccessMessage("Đăng  xuất thành công", "Bạn đã đăng xuất khỏi hệ thống")
     };
     //////////////
 
@@ -71,7 +73,7 @@ const HeaderPage = () => {
             <div className="header_menu" id="header_menu">
                 <nav className="navbar navbar-default">
                     <div className="container">
-                        <div className="navbar-flex d-flex align-items-center justify-content-between w-100 pb-2 pt-2">
+                        <div className="navbar-flex d-flex align-items-center justify-content-between w-100 pb-2 pt-2 ">
                             {/* Brand and toggle get grouped for better mobile display */}
                             <div className="navbar-header">
                                 <a className="navbar-brand" href={ROUTE_PATH.HOME_PAGE}>
@@ -82,7 +84,7 @@ const HeaderPage = () => {
 
                             {/* Collect the nav links, forms, and other content for toggling */}
                             <div
-                                className="navbar-collapse1 d-flex align-items-center"
+                                className="navbar-collapse1 d-flex align-items-center white-space-no-wrap"
                                 id="bs-example-navbar-collapse-1"
                             >
                                 <ul className="nav navbar-nav" id="responsive-menu">
@@ -117,28 +119,38 @@ const HeaderPage = () => {
                                     //         </span>
                                     //     </div>
                                     // </div>
-                                    <div class="header_sidemenu">
-                                        <Space
-                                            size="small"
-                                        >
-                                            <Dropdown
-                                                overlay={ItemMenu}
-                                                placement="bottomLeft"
-                                                arrow
-                                            >
-                                                <span class="menu-ham">
-                                                    <a class="cart-icon d-flex align-items-center ml-1"><i className="icon-user ml-2 mr-1" /></a>
-                                                </span>
-                                            </Dropdown>
-                                        </Space>
+                                    // <div class="header_sidemenu">
+                                    //     <Space
+                                    //         size="small"
+                                    //     >
+                                    //         <Dropdown
+                                    //             overlay={ItemMenu}
+                                    //             placement="bottomLeft"
+                                    //             arrow
+                                    //         >
+                                    //             <span class="menu-ham">
+                                    //                 <a class="cart-icon d-flex align-items-center ml-1"><i className="icon-user ml-2 mr-1" /></a>
+                                    //             </span>
+                                    //         </Dropdown>
+                                    //     </Space>
+                                    // </div>
+                                    <div className='desktop-screen'>
+                                        <a onClick={openModalLogout} className='ml-1 d-flex align-items-center white  white-space-no-wrap'>
+                                            <div className='logout-icon mr-1'>
+                                                <i className="icon-user" />
+                                            </div>
+                                            <div className='desktop-screen-text'>
+                                                Đăng xuất
+                                            </div>
+                                        </a>
                                     </div>
                                     :
-                                    <div className="register-login">
+                                    <div className="register-login white-space-no-wrap">
                                         {/* <a onClick={onOpenRegister} className='auth-title'>
                                             <i className="icon-user mr-1" /> Đăng kí
                                         </a> */}
                                         <a onClick={onOpenLogin} className='auth-title ml-1'>
-                                            <i className="icon-user mr-1" />  Đăng nhập
+                                            <i className="icon-user" />  Đăng nhập
                                         </a>
                                     </div>
                             }
@@ -148,8 +160,8 @@ const HeaderPage = () => {
                                     ?
                                     <div className='mobile-screen '>
                                         <a onClick={openModalLogout} className='ml-1 d-flex align-items-center white'>
-                                            <div className='logout-icon'>
-                                                <i className="icon-user mr-1 " />
+                                            <div className='logout-icon  mr-1'>
+                                                <i className="icon-user" />
                                             </div>
                                             <div className='mobile-screen-text'>
                                                 Đăng xuất
@@ -159,8 +171,8 @@ const HeaderPage = () => {
                                     :
                                     <div className='mobile-screen'>
                                         <a onClick={onOpenLogin} className='ml-1 d-flex align-items-center white'>
-                                            <div className='logout-icon'>
-                                                <i className="icon-user mr-1 " />
+                                            <div className='logout-icon mr-1'>
+                                                <i className="icon-user" />
                                             </div>
                                             <div className='mobile-screen-text'>
                                                 Đăng nhập
