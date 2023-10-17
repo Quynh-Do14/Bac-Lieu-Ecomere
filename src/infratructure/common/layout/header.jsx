@@ -134,8 +134,8 @@ const HeaderPage = () => {
                                     //         </Dropdown>
                                     //     </Space>
                                     // </div>
-                                    <div className='desktop-screen'>
-                                        <a onClick={openModalLogout} className='ml-1 d-flex align-items-center white  white-space-no-wrap'>
+                                    <div className='desktop-screen register-login white-space-no-wrap'>
+                                        <a onClick={openModalLogout} className='ml-1 d-flex align-items-center white-space-no-wrap'>
                                             <div className='logout-icon mr-1'>
                                                 <i className="icon-user" />
                                             </div>
@@ -149,7 +149,7 @@ const HeaderPage = () => {
                                         {/* <a onClick={onOpenRegister} className='auth-title'>
                                             <i className="icon-user mr-1" /> Đăng kí
                                         </a> */}
-                                        <a onClick={onOpenLogin} className='auth-title ml-1'>
+                                        <a onClick={onOpenLogin} className='auth-title ml-1 header_sidemenu'>
                                             <i className="icon-user" />  Đăng nhập
                                         </a>
                                     </div>

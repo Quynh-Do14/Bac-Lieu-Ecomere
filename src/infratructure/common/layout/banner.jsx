@@ -1,9 +1,9 @@
-import { Carousel } from 'antd';
 import React from 'react'
 import { ROUTE_PATH } from '../../../core/common/appRouter';
 import slide from "../../../assets/images/banner-slide.jpg";
 import slide1 from "../../../assets/images/banner-slide1.jpg";
-
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 const data = [
     {
         img: "https://topal.vn/wp-content/uploads/2020/07/anh-mui-ca-mau-1-1024x427.jpg",
@@ -105,40 +105,54 @@ const BannerCommon = () => {
         //     </div>
         // </section>
 
-        <div id="carouselExampleFade" className="carousel slide carousel-fade">
-            <div className="carousel-inner">
-                <div className="carousel-item active">
-                    <img src={slide} className="d-block w-100 opacity-8" alt="..." height={550} style={{objectFit:"cover"}} />
-                    <div className="overlay-custom" />
-                </div>
-                <div className="carousel-item">
-                    <img src={slide1} className="d-block w-100 opacity-8" alt="..." height={550} />
-                    <div className="overlay-custom" />
-                </div>
-                <div className="swiper-content container">
-                    <h4 className="blue">Bạc liêu, vùng đất tuyệt vời !</h4>
-                    <h1 className="white mb-4">
-                        Cùng tôi tham gia du lịch Bạc Liêu
-                    </h1>
-                    <a className="per-btn" href={ROUTE_PATH.DESTINATION}>
-                        <span className="white" >Khám phá</span>
-                        <i className="fa fa-arrow-right white" />
-                    </a>
-                </div>
+        // <div id="carouselExampleFade" className="carousel slide carousel-fade">
+        //     <div className="carousel-inner">
+        //         <div className="carousel-item active">
+        //             <img src={slide} className="d-block w-100 opacity-8" alt="..." height={550} style={{objectFit:"cover"}} />
+        //             <div className="overlay-custom" />
+        //         </div>
+        //         <div className="carousel-item">
+        //             <img src={slide1} className="d-block w-100 opacity-8" alt="..." height={550} />
+        //             <div className="overlay-custom" />
+        //         </div>
+        //         <div className="swiper-content container">
+        //             <h4 className="blue">Bạc liêu, vùng đất tuyệt vời !</h4>
+        //             <h1 className="white mb-4">
+        //                 Cùng tôi tham gia du lịch Bạc Liêu
+        //             </h1>
+        //             <a className="per-btn" href={ROUTE_PATH.DESTINATION}>
+        //                 <span className="white" >Khám phá</span>
+        //                 <i className="fa fa-arrow-right white" />
+        //             </a>
+        //         </div>
+        //     </div>
+        //     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        //         <span className="carousel-control-prev-icon" aria-hidden="true"> </span>
+        //         <div className="swiper-button-prev"></div>
+        //     </button>
+        //     <div className="swiper-button-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev"></div>
+
+        //     <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        //         <span className="carousel-control-next-icon red" aria-hidden="true"></span>
+        //         <div className="swiper-button-next"></div>
+        //     </button>
+        //     <div className="swiper-button-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next"></div>
+
+        // </div>
+        <Carousel showStatus={false} showThumbs={false}>
+            <div>
+                <img src={slide} height={550}
+                    style={{ objectFit: "cover" }} alt=''
+                />
+                <div className="overlay-custom" />
             </div>
-            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true"> </span>
-                <div className="swiper-button-prev"></div>
-            </button>
-            <div className="swiper-button-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev"></div>
-
-            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                <span className="carousel-control-next-icon red" aria-hidden="true"></span>
-                <div className="swiper-button-next"></div>
-            </button>
-            <div className="swiper-button-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next"></div>
-
-        </div>
+            <div>
+                <img src={slide1} height={550}
+                    style={{ objectFit: "cover" }} alt=''
+                />
+                <div className="overlay-custom" />
+            </div>
+        </Carousel>
     )
 }
 

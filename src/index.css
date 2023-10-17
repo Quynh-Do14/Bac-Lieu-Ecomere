@@ -68,6 +68,10 @@ code {
   font-size: 15px;
 }
 
+ul.slider.animated{
+  height: 550px !important;
+}
+
 .register-login .auth-title {
   background: transparent;
   color: #777;
