@@ -15,7 +15,7 @@ import { SuccessMessage } from '../toast/toastMessage';
 // import logo from "../../../assets/images/logo.png"
 // import { DownOutlined } from "@ant-design/icons";
 
-const HeaderPage = () => {
+const HeaderBanDo = () => {
     const [isOpenLogin, setIsOpenLogin] = useState(false);
     const [isOpenRegister, setIsOpenRegister] = useState(false);
 
@@ -68,7 +68,7 @@ const HeaderPage = () => {
     }
 
     return (
-        <header className="main_header_area headerstye-1">
+        <header className="main_header_area">
             {/* Navigation Bar */}
             <div className="header_menu" id="header_menu">
                 <nav className="navbar navbar-default">
@@ -136,7 +136,7 @@ const HeaderPage = () => {
                                     // </div>
                                     <div className='desktop-screen register-login white-space-no-wrap'>
                                         <a onClick={openModalLogout} className='ml-1 d-flex align-items-center white-space-no-wrap'>
-                                            <div className='logout-icon mr-1'>
+                                            <div className='logout-icon mr-5'>
                                                 <i className="icon-user" />
                                             </div>
                                             <div className='desktop-screen-text'>
@@ -160,7 +160,7 @@ const HeaderPage = () => {
                                     ?
                                     <div className='mobile-screen '>
                                         <a onClick={openModalLogout} className='ml-1 d-flex align-items-center white'>
-                                            <div className='logout-icon   mr-5'>
+                                            <div className='logout-icon  mr-1'>
                                                 <i className="icon-user" />
                                             </div>
                                             <div className='mobile-screen-text'>
@@ -171,7 +171,7 @@ const HeaderPage = () => {
                                     :
                                     <div className='mobile-screen'>
                                         <a onClick={onOpenLogin} className='ml-1 d-flex align-items-center white'>
-                                            <div className='logout-icon mr-2'>
+                                            <div className='logout-icon mr-1'>
                                                 <i className="icon-user" />
                                             </div>
                                             <div className='mobile-screen-text'>
@@ -209,4 +209,4 @@ const HeaderPage = () => {
     )
 }
 
-export default HeaderPage;
+export default HeaderBanDo;

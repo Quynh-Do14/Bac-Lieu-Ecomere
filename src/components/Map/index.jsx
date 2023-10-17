@@ -7,6 +7,9 @@ import api from "../../infratructure/api";
 import { removeAccents, removeDiacriticsAndSpaces } from "../../common";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_PATH } from "../../core/common/appRouter";
+import HeaderBanDo from "../../infratructure/common/layout/headerBanDo";
+import { DATALICHTRINH } from "./datalichtrinh";
+import * as turf from "@turf/turf";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoibnRkMTAxMDIwMDAiLCJhIjoiY2tvbzJ4anl1MDZjMzJwbzNpcnA5NXZpcCJ9.dePfFDv0RlCLnWoDq1zHlw";
@@ -19,17 +22,22 @@ const Map = () => {
   const [dsDanhMucDiaDiemDuLich, setDsDanhMucDiaDiemDuLich] = useState([]);
   const [textSearch, setTextSearch] = useState("");
   const [dsDiaDiemSearch, setDsDiaDiemSearch] = useState([]);
+  const [geometryLichTrinh, setGeometryLichTrinh] = useState({
+    type: "FeatureCollection",
+    features: [],
+  });
+
   const onNavigate = (id) => {
     // navigate(`${(ROUTE_PATH.VIEW_DESTINATION).replace(`${Constants.UseParams.Id}`, "")}${id}`);
     navigate(`${ROUTE_PATH.VIEW_DESTINATION}?${id}`);
   };
 
   const fecthData = async () => {
-    document.getElementById("map").scrollIntoView()
+    // document.getElementById("map").scrollIntoView()
     let map = new mapboxgl.Map({
       container: mapContainer.current,
-      zoom: 13,
-      center: [105.7119304, 9.2684649],
+      zoom: 9,
+      center: [105.3240641, 9.3102405],
       style: "mapbox://styles/mapbox/streets-v12",
     });
 
@@ -58,54 +66,53 @@ const Map = () => {
       setDsDiaDiemGeoJson(dataDsDiaDiemGeoJson);
       setDsDanhMucDiaDiemDuLich(resGetDanhMucConCuaDanhMuc.result);
       map.on("load", () => {
-
-        map.addSource('ranhGioiTinh', {
+        map.addSource("ranhGioiTinh", {
           type: "geojson",
           data: `http://14.248.94.155:9022/api/quanHuyen/ranhGioiTinh`,
         });
         map.addLayer({
-          id: 'ranhGioiTinh',
+          id: "ranhGioiTinh",
           type: "fill",
-          source: 'ranhGioiTinh',
+          source: "ranhGioiTinh",
           layout: {},
           paint: {
-            "fill-color": '#f1416c',
+            "fill-color": "#f1416c",
             "fill-opacity": 0.0,
           },
         });
         map.addLayer({
           id: "outline-ranhGioiTinh",
           type: "line",
-          source: 'ranhGioiTinh',
+          source: "ranhGioiTinh",
           layout: {},
           paint: {
-            "line-color": '#f1416c',
-            "line-width": 3,
+            "line-color": "#f1416c",
+            "line-width": 6,
           },
         });
 
-        map.addSource('ranhGioiHuyen', {
+        map.addSource("ranhGioiHuyen", {
           type: "geojson",
           data: `http://14.248.94.155:9022/api/quanHuyen/ranhGioiHuyen`,
         });
         map.addLayer({
-          id: 'ranhGioiHuyen',
+          id: "ranhGioiHuyen",
           type: "fill",
-          source: 'ranhGioiHuyen',
+          source: "ranhGioiHuyen",
           layout: {},
           paint: {
-            "fill-color": '#50cd89',
+            "fill-color": "#50cd89",
             "fill-opacity": 0.0,
           },
         });
         map.addLayer({
           id: "outline-ranhGioiHuyen",
           type: "line",
-          source: 'ranhGioiHuyen',
+          source: "ranhGioiHuyen",
           layout: {},
           paint: {
-            "line-color": '#50cd89',
-            "line-width": 1.5,
+            "line-color": "#50cd89",
+            "line-width": 2,
           },
         });
 
@@ -333,6 +340,52 @@ const Map = () => {
       .addTo(map);
   };
 
+  const openLichTrinh = (lichTrinh) => {
+    map.setZoom(11);
+    if (map.getLayer("lichTrinh")) {
+      // Layer tồn tại, có thể xoá nó ở đây
+      map.removeLayer("lichTrinh");
+    }
+    if (map.getSource("lichTrinh")) {
+      // Source tồn tại, có thể xoá nó ở đây
+      map.removeSource("lichTrinh");
+    }
+
+    map.addSource("lichTrinh", {
+      type: "geojson",
+      data: {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            properties: {},
+            geometry: lichTrinh.geometry,
+          },
+        ],
+      },
+    });
+
+    map.addLayer({
+      id: "lichTrinh",
+      type: "line",
+      source: "lichTrinh",
+      layout: {},
+      paint: {
+        "line-color": "#3e97ff",
+        "line-width": 9,
+      },
+    });
+
+    var features = turf.points(lichTrinh.geometry.coordinates);
+    var center = turf.center(features);
+
+    map.flyTo({
+      center: center.geometry.coordinates,
+      essential: true,
+      duration: 1000,
+    });
+  };
+
   return (
     <>
       {/* Preloader */}
@@ -342,31 +395,16 @@ const Map = () => {
       {/* Preloader Ends */}
 
       {/* header starts */}
-      <HeaderPage />
+      <HeaderBanDo />
       {/* header ends */}
 
       {/* BreadCrumb Starts */}
       <section
-        className="breadcrumb-main pb-0"
+        className="breadcrumb-main pb-0 pt-0"
         style={{ backgroundImage: "url(images/bg/bg8.jpg)" }}
       >
-        <div className="breadcrumb-outer pt-10">
-          <div className="container">
-            <div className="breadcrumb-content d-md-flex align-items-center pt-10">
-              <h2>Bản đồ</h2>
-              <nav aria-label="breadcrumb">
-                <ul className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <a href="#">Trang chủ</a>
-                  </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    Bản đồ
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <div className="container-fluid" style={{ paddingBottom: 20 }}>
+        <div className="breadcrumb-outer pt-0">
+          <div className="container-fluid" style={{ padding: 16 }}>
             <div id="map" ref={mapContainer}></div>
             {dsDanhMucDiaDiemDuLich.length > 0 && (
               <div
@@ -374,18 +412,20 @@ const Map = () => {
                   backgroundColor: "#fff",
                   padding: 4,
                   position: "absolute",
-                  top: 234,
+                  top: 34,
                   left: 34,
                   boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
                 }}
               >
                 <p
                   style={{
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: 500,
-                    paddingLeft: 12,
-                    paddingTop: 8,
+                    padding: 8,
                     color: "#333",
+                    textAlign: "center",
+                    borderBottom: "1px solid #ccc",
+                    margin: "0px 12px",
                   }}
                 >
                   Các loại hình du lịch
@@ -461,7 +501,7 @@ const Map = () => {
             <div
               style={{
                 position: "absolute",
-                top: 234,
+                top: 34,
                 right: 70,
               }}
             >
@@ -539,6 +579,126 @@ const Map = () => {
                 </div>
               )}
             </div>
+            <div
+              style={{
+                position: "absolute",
+                bottom: 50,
+                left: 34,
+                width: "92%",
+                maxHeight: 250,
+                boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
+                backgroundColor: "#fff",
+              }}
+            >
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: 14,
+                  fontWeight: 500,
+                  paddingLeft: 16,
+                  paddingTop: 8,
+                  color: "#071437",
+                }}
+              >
+                Gợi ý lịch trình
+              </p>
+              <div
+                id="style-6"
+                className="d-flex flex-row"
+                style={{
+                  overflow: "hidden",
+                  overflowX: "auto",
+                  padding: 12,
+                }}
+              >
+                {DATALICHTRINH.danhSachLichTrinh.map((v, k) => (
+                  <div
+                    onClick={() => openLichTrinh(v)}
+                    key={k}
+                    style={{
+                      padding: 12,
+                      border: "1px solid #3e97ff",
+                      borderRadius: 10,
+                      borderStyle: "dashed",
+                      marginRight: 12,
+                      minWidth: 271,
+                      flexDirection: "row",
+                      alignItems: "center",
+                      display: "flex",
+                    }}
+                  >
+                    <div
+                      className="d-flex align-items-center justify-content-center"
+                      style={{
+                        width: 50,
+                        height: 50,
+                        borderRadius: 5,
+                        backgroundColor: "#f1faff",
+                        marginRight: 16,
+                      }}
+                    >
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/512/7291/7291475.png"
+                        alt=""
+                        style={{
+                          maxHeight: 30,
+                        }}
+                      />
+                    </div>
+                    <div className="d-flex flex-column">
+                      <p
+                        style={{
+                          fontSize: 14,
+                          fontWeight: 500,
+                          color: "#071437",
+                        }}
+                      >
+                        {v.ten}
+                      </p>
+                      <p
+                        style={{
+                          fontSize: 13,
+                          fontWeight: 300,
+                          color: "#99a1b7",
+                          margin: 0,
+                        }}
+                      >
+                        Số địa điểm: {v.soDiaDiem}
+                      </p>
+                    </div>
+                    <div className="d-flex flex-row align-items-center ml-4">
+                      <i
+                        className="fa fa-clock-o mr-1"
+                        style={{
+                          color: "#3e97ff",
+                        }}
+                      ></i>
+                      <p
+                        style={{
+                          margin: 0,
+                          fontSize: 12,
+                          color: "#3e97ff",
+                        }}
+                      >
+                        {v.thoiGian}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div
+              style={{
+                backgroundColor: "#fff",
+                padding: 4,
+                position: "absolute",
+                top: 34,
+                right: 70,
+                boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
+              }}
+            >
+              <p>ádadasd</p>
+            </div>
           </div>
         </div>
         <div className="dot-overlay" />
@@ -553,263 +713,6 @@ const Map = () => {
         <a href="#" />
       </div>
       {/* Back to top ends */}
-      {/* Register Modal */}
-      <div
-        className="modal fade"
-        id="register"
-        tabIndex={-1}
-        role="dialog"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-centered" role="document">
-          <div className="modal-content">
-            <div className="modal-header bordernone p-0">
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div className="modal-body p-0">
-              <div className="login-content p-4 text-center">
-                <div className="login-title section-border">
-                  <h3 className="pink mb-1">Register</h3>
-                  <p>
-                    Access thousands of online classes in design, business, and
-                    more!
-                  </p>
-                </div>
-                <div className="login-form text-center">
-                  <form>
-                    <div className="form-group">
-                      <input type="text" placeholder="Enter Full Name" />
-                    </div>
-                    <div className="form-group">
-                      <input type="email" placeholder="Enter email address" />
-                    </div>
-                    <div className="form-group">
-                      <input type="password" placeholder="Enter password" />
-                    </div>
-                    <div className="form-group">
-                      <input type="password" placeholder="Confirm password" />
-                    </div>
-                  </form>
-                  <div className="form-btn">
-                    <a href="#" className="nir-btn">
-                      Register
-                    </a>
-                  </div>
-                  <div className="form-group mb-0 form-checkbox mt-3">
-                    <input type="checkbox" /> By clicking this, you are agree to
-                    to
-                    <a href="#" className="">
-                      {" "}
-                      our terms of use
-                    </a>{" "}
-                    and{" "}
-                    <a href="#" className="">
-                      privacy policy
-                    </a>{" "}
-                    including the use of cookies
-                  </div>
-                </div>
-                <div className="login-social border-t mt-3 pt-2 mb-3">
-                  <p className="mb-2">OR continue with</p>
-                  <a href="#" className="btn-facebook">
-                    <i className="fab fa-facebook" aria-hidden="true" />{" "}
-                    Facebook
-                  </a>
-                  <a href="#" className="btn-twitter">
-                    <i className="fab fa-twitter" aria-hidden="true" /> Twitter
-                  </a>
-                  <a href="#" className="btn-google">
-                    <i className="fab fa-google" aria-hidden="true" /> Google
-                  </a>
-                </div>
-                <div className="sign-up">
-                  <p className="m-0">
-                    Already have an account?{" "}
-                    <a href="login.html" className="pink">
-                      Login
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* login Modal */}
-      <div
-        className="modal fade"
-        id="login"
-        tabIndex={-1}
-        role="dialog"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-centered" role="document">
-          <div className="modal-content">
-            <div className="modal-header bordernone p-0">
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div className="modal-body p-0">
-              <div className="login-content p-4 text-center">
-                <div className="login-title section-border">
-                  <h3 className="pink">Login</h3>
-                </div>
-                <div className="login-form">
-                  <form>
-                    <div className="form-group">
-                      <input type="email" placeholder="Enter email address" />
-                    </div>
-                    <div className="form-group">
-                      <input type="password" placeholder="Enter password" />
-                    </div>
-                  </form>
-                  <div className="form-btn">
-                    <a href="#" className="nir-btn">
-                      LOGIN
-                    </a>
-                  </div>
-                  <div className="form-group mb-0 form-checkbox mt-3">
-                    <input type="checkbox" /> Remember Me |{" "}
-                    <a href="#" className="">
-                      Forgot password?
-                    </a>
-                  </div>
-                </div>
-                <div className="login-social border-t mt-3 pt-2 mb-3">
-                  <p className="mb-2">OR continue with</p>
-                  <a href="#" className="btn-facebook">
-                    <i className="fab fa-facebook" aria-hidden="true" />{" "}
-                    Facebook
-                  </a>
-                  <a href="#" className="btn-twitter">
-                    <i className="fab fa-twitter" aria-hidden="true" /> Twitter
-                  </a>
-                </div>
-                <div className="sign-up">
-                  <p className="m-0">
-                    Do not have an account?{" "}
-                    <a href="login.html" className="pink">
-                      Sign Up
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* header side menu */}
-      <div className="header_sidemenu">
-        <div className="header_sidemenu_in">
-          <div className="menu">
-            <div className="close-menu">
-              <i className="fa fa-times white" />
-            </div>
-            <div className="m-contentmain">
-              <div className="cart-main">
-                <div className="cart-box">
-                  <div className="popup-container">
-                    <h5 className="p-3 mb-0 bg-pink white text-caps">
-                      My Carts(3 Items)
-                    </h5>
-                    <div className="cart-entry d-flex align-items-center p-3">
-                      <a href="#" className="image">
-                        <img src="./images/shop/shop1.jpg" alt="" />
-                      </a>
-                      <div className="content">
-                        <a href="#" className="title font-weight-bold">
-                          Pullover Batwing
-                        </a>
-                        <p className="quantity m-0">Quantity: 3</p>
-                        <span className="price">$45.00</span>
-                      </div>
-                      <div className="button-x">
-                        <i className="icon-close" />
-                      </div>
-                    </div>
-                    <div className="cart-entry d-flex align-items-center p-3">
-                      <a href="#" className="image">
-                        <img src="./images/shop/shop2.jpg" alt="" />
-                      </a>
-                      <div className="content">
-                        <a href="#" className="title font-weight-bold">
-                          Pullover Batwing
-                        </a>
-                        <p className="quantity m-0">Quantity: 3</p>
-                        <span className="price">$90.00</span>
-                      </div>
-                      <div className="button-x">
-                        <i className="icon-close" />
-                      </div>
-                    </div>
-                    <div className="cart-entry d-flex align-items-center p-3">
-                      <a href="#" className="image">
-                        <img src="./images/shop/shop6.jpg" alt="" />
-                      </a>
-                      <div className="content">
-                        <a href="#" className="title font-weight-bold">
-                          Pullover Batwing
-                        </a>
-                        <p className="quantity m-0">Quantity: 3</p>
-                        <span className="price">$90.00</span>
-                      </div>
-                      <div className="button-x">
-                        <i className="icon-close" />
-                      </div>
-                    </div>
-                    <div className="summary-total">
-                      <div className="summary d-flex align-items-center justify-content-between">
-                        <div className="subtotal font-weight-bold">
-                          Delivery Charge
-                        </div>
-                        <div className="price-s">$10</div>
-                      </div>
-                      <div className="summary d-flex align-items-center justify-content-between">
-                        <div className="subtotal font-weight-bold">
-                          Sub Total
-                        </div>
-                        <div className="price-s">$200</div>
-                      </div>
-                      <div className="summary d-flex align-items-center justify-content-between">
-                        <div className="subtotal font-weight-bold">
-                          Discount
-                        </div>
-                        <div className="price-s">$2</div>
-                      </div>
-                      <div className="summary d-flex align-items-center justify-content-between">
-                        <div className="subtotal font-weight-bold">Total</div>
-                        <div className="price-s">$208</div>
-                      </div>
-                    </div>
-                    <div className="cart-buttons d-flex align-items-center justify-content-between">
-                      <a href="#" className="nir-btn">
-                        View Cart
-                      </a>
-                      <a href="#" className="nir-btn-black">
-                        Checkout
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="overlay hide" />
-        </div>
-      </div>
     </>
   );
 };
