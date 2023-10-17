@@ -687,7 +687,7 @@ const Map = () => {
                 ))}
               </div>
             </div>
-            <div
+            {/* <div
               style={{
                 backgroundColor: "#fff",
                 padding: 4,
@@ -698,7 +698,7 @@ const Map = () => {
               }}
             >
               <p>ádadasd</p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="dot-overlay" />
