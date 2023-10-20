@@ -76,11 +76,11 @@ const ListFestival = () => {
         <MainLayout>
             <BreadcumbCommon title={"Lễ hội"} breadcumb={"Trang chủ"} />
             <section className="blog destination-b pb-6">
-                <div className="container">
+                <div className="container mt-n5">
                     <div className="row">
                         <div className="col-lg-8 col-xs-12 mb-4">
                             <div className="trend-box">
-                                
+
                                 {
                                     listLeHoi.map((it, index) => {
                                         return (

@@ -3,7 +3,7 @@ import React from 'react'
 const SearchBar = ({ value, onChange, onSearch }) => {
     return (
         < div className="form-main-search mt-2 mb-4" >
-            <div className="container">
+            <div className="container mt-n5">
                 <div className="form-content w-100">
                     <h3 className="form-title text-center d-inline white">Tìm kiếm</h3>
                     <div className="row w-100">

@@ -10,7 +10,7 @@ const SearchBarCommon = ({
 }) => {
   return (
     <div className="form-main-search mt-2 mb-4">
-      <div className="container">
+      <div className="container mt-n5">
         <div className="form-content w-100">
           <h3 className="form-title text-center d-inline white">Tìm kiếm</h3>
           <div className="d-lg-flex align-items-center justify-content-between">
