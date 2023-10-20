@@ -123,7 +123,12 @@ const ListDestination = () => {
                       >
                         <div className="trend-item">
                           <div className="trend-image">
-                            <img src={it.hinhAnh} alt="image" height={255} />
+                            <img
+                              src={
+                                it.hinhAnh.indexOf("http") == -1
+                                  ? showImageCommon(it.hinhAnh)
+                                  : it.hinhAnh
+                              } alt="image" height={255} />
                           </div>
                           <div className="trend-content-main">
                             <div className="trend-content ">

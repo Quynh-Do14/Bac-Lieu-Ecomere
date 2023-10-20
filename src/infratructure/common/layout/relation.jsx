@@ -1,6 +1,7 @@
 import React from 'react'
 import { ROUTE_PATH } from '../../../core/common/appRouter'
 import { useNavigate } from 'react-router-dom'
+import { showImageCommon } from '../../utils/helper';
 
 const RelationCommon = ({ data = [], title, slogan }) => {
     const navigate = useNavigate();
@@ -18,7 +19,11 @@ const RelationCommon = ({ data = [], title, slogan }) => {
                                 <div className="col-lg-4 col-md-6 col-xs-12 mb-4" key={index}>
                                     <div className="trend-item">
                                         <div className="trend-image">
-                                            <img src={it.hinhAnh} alt="image" height={255} />
+                                            <img src={
+                                                it.hinhAnh.indexOf("http") == -1
+                                                    ? showImageCommon(it.hinhAnh)
+                                                    : it.hinhAnh
+                                            } alt="image" height={255} />
                                         </div>
                                         <div className="trend-content-main">
                                             <div className="trend-content ">
