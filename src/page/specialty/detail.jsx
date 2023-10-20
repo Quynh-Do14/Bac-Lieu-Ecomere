@@ -39,7 +39,7 @@ const DetailSpecialty = () => {
                                         <div className="slider-store">
                                             <div>
                                                 <img src={
-                                                    detailSpecialty.hinhAnh.indexOf("http") == -1
+                                                    detailSpecialty.hinhAnh?.indexOf("http") == -1
                                                         ?
                                                         showImageCommon(detailSpecialty.hinhAnh)
                                                         :

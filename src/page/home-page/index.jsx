@@ -253,7 +253,7 @@ const HomePage = () => {
                     <div className="col-lg-4 col-md-6 p-1" key={k}>
                       <div className="desti-image">
                         <img src={
-                          v.hinhAnh.indexOf("http") == -1
+                          v.hinhAnh?.indexOf("http") == -1
                             ?
                             showImageCommon(v.hinhAnh)
                             :
@@ -283,7 +283,7 @@ const HomePage = () => {
                     <div className="col-lg-3 col-md-6 p-1" key={k}>
                       <div className="desti-image small-image">
                         <img src={
-                          v.hinhAnh.indexOf("http") == -1
+                          v.hinhAnh?.indexOf("http") == -1
                             ?
                             showImageCommon(v.hinhAnh)
                             :

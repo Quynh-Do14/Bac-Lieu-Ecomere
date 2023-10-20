@@ -79,7 +79,7 @@ const ListArticle = () => {
                           <div className="trend-image">
                             <img
                               src={
-                                it.hinhAnh.indexOf("http") == -1
+                                it.hinhAnh?.indexOf("http") == -1
                                   ?
                                   showImageCommon(it.hinhAnh)
                                   :

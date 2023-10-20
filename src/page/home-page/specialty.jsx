@@ -23,7 +23,7 @@ const Specialty = ({ data }) => {
                                 <div className="col-lg-4 col-md-6 p-1" key={index}>
                                     <div className="desti-image">
                                         <img src={
-                                            it.hinhAnh.indexOf("http") == -1
+                                            it.hinhAnh?.indexOf("http") == -1
                                                 ?
                                                 showImageCommon(it.hinhAnh)
                                                 :

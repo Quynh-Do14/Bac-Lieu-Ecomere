@@ -125,7 +125,7 @@ const ListDestination = () => {
                           <div className="trend-image">
                             <img
                               src={
-                                it.hinhAnh.indexOf("http") == -1
+                                it.hinhAnh?.indexOf("http") == -1
                                   ? showImageCommon(it.hinhAnh)
                                   : it.hinhAnh
                               } alt="image" height={255} />

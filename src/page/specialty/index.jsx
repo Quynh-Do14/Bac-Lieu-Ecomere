@@ -100,7 +100,7 @@ const ListSpecialty = () => {
                           <div className="blog-image">
                             <img
                               src={
-                                it.hinhAnh.indexOf("http") == -1
+                                it.hinhAnh?.indexOf("http") == -1
                                   ?
                                   showImageCommon(it.hinhAnh)
                                   :

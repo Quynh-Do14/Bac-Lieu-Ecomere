@@ -29,7 +29,7 @@ const Festival = ({ data }) => {
                 <div className="news-item overflow-hidden">
                   <div className="news-image">
                     <img src={
-                      data[0].hinhAnh.indexOf("http") == -1
+                      data[0].hinhAnh?.indexOf("http") == -1
                         ?
                         showImageCommon(data[0].hinhAnh)
                         :
@@ -90,7 +90,7 @@ const Festival = ({ data }) => {
                       <div className="news-item overflow-hidden">
                         <div className="news-image">
                           <img src={
-                            it.hinhAnh.indexOf("http") == -1
+                            it.hinhAnh?.indexOf("http") == -1
                               ?
                               showImageCommon(it.hinhAnh)
                               :

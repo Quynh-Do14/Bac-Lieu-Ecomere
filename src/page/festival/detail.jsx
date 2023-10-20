@@ -43,7 +43,7 @@ const DetailFestival = () => {
                       <div>
                         <img
                           src={
-                            detailFestival.hinhAnh.indexOf("http") == -1
+                            detailFestival.hinhAnh?.indexOf("http") == -1
                               ?
                               showImageCommon(detailFestival.hinhAnh)
                               :

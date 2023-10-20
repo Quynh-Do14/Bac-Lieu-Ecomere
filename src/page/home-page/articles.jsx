@@ -31,7 +31,7 @@ const Articles = ({ data = [] }) => {
                                             <div className="news-item overflow-hidden">
                                                 <div className="news-image">
                                                     <img src={
-                                                        it.hinhAnh.indexOf("http") == -1
+                                                        it.hinhAnh?.indexOf("http") == -1
                                                             ?
                                                             showImageCommon(it.hinhAnh)
                                                             :

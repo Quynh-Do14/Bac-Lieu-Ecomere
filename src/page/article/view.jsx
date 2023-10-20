@@ -37,7 +37,7 @@ const DetailArticle = () => {
                             <div className="blog-single">
                                 <div className="blog-imagelist mb-3">
                                     <img src={
-                                        detailArticle.hinhAnh.indexOf("http") == -1
+                                        detailArticle.hinhAnh?.indexOf("http") == -1
                                             ?
                                             showImageCommon(detailArticle.hinhAnh)
                                             :

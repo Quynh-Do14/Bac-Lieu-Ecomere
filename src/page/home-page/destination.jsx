@@ -82,7 +82,7 @@ const Destination = ({ data }) => {
                                                         <div className="trend-last d-flex align-items-center justify-content-between">
                                                             <p className="mb-0 white d-flex align-items-center">
                                                                 <img
-                                                                    src={it.hinhAnh.indexOf("http") == -1
+                                                                    src={it.hinhAnh?.indexOf("http") == -1
                                                                         ? showImageCommon(it.hinhAnh)
                                                                         : it.hinhAnh}
                                                                     className="d-author mr-2"
