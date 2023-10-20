@@ -31,6 +31,20 @@ export const DATALICHTRINH = {
         ],
         type: "LineString",
       },
+      danhSachDiaDiem: [
+        {
+          tenDiaDiem: 'Công tử BL',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+        {
+          tenDiaDiem: 'Thiền Viện Trúc Lâm',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+      ]
     },
     {
       ten: "Cao Văn Lầu, Cánh đồng gió",
@@ -74,6 +88,20 @@ export const DATALICHTRINH = {
         ],
         type: "LineString",
       },
+      danhSachDiaDiem: [
+        {
+          tenDiaDiem: 'Cao Văn Lầu',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+        {
+          tenDiaDiem: 'Cánh đồng gió',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+      ]
     },
     {
       ten: "Chùa Xiêm Cán, KDL Nhà Mát",
@@ -113,9 +141,23 @@ export const DATALICHTRINH = {
         ],
         type: "LineString",
       },
+      danhSachDiaDiem: [
+        {
+          tenDiaDiem: 'Chùa Xiêm Cán',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+        {
+          tenDiaDiem: 'KDL Nhà Mát',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+      ]
     },
     {
-      ten: "Nhà thờ Tắc Sậy,Đồng Nọc Nạng",
+      ten: "Nhà thờ Tắc Sậy, Đồng Nọc Nạng",
       thoiGian: "Vài tiếng",
       soDiaDiem: 2,
       geometry: {
@@ -153,9 +195,23 @@ export const DATALICHTRINH = {
         ],
         type: "LineString",
       },
+      danhSachDiaDiem: [
+        {
+          tenDiaDiem: 'Nhà thờ Tắc Sậy',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+        {
+          tenDiaDiem: 'Đồng Nọc Nạng',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+      ]
     },
     {
-      ten: "Đồng Đông Hải,Lăng Ông Nam Hải",
+      ten: "Đồng Đông Hải, Lăng Ông Nam Hải",
       thoiGian: "Vài tiếng",
       soDiaDiem: 2,
       geometry: {
@@ -228,9 +284,23 @@ export const DATALICHTRINH = {
         ],
         type: "LineString",
       },
+      danhSachDiaDiem: [
+        {
+          tenDiaDiem: 'Đồng Đông Hải',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+        {
+          tenDiaDiem: 'Lăng Ông Nam Hải',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+      ]
     },
     {
-      ten: "Tháp Vĩnh Hưng,Ghositaram",
+      ten: "Tháp Vĩnh Hưng, Ghositaram",
       thoiGian: "Vài tiếng",
       soDiaDiem: 2,
       geometry: {
@@ -270,9 +340,23 @@ export const DATALICHTRINH = {
         ],
         type: "LineString",
       },
+      danhSachDiaDiem: [
+        {
+          tenDiaDiem: 'Tháp Vĩnh Hưng',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+        {
+          tenDiaDiem: 'Ghositaram',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+      ]
     },
     {
-      ten: "Chùa Vĩnh Phước An,Chùa Vĩnh Đức",
+      ten: "Chùa Vĩnh Phước An, Chùa Vĩnh Đức",
       thoiGian: "Vài tiếng",
       soDiaDiem: 2,
       geometry: {
@@ -294,9 +378,23 @@ export const DATALICHTRINH = {
         ],
         type: "LineString",
       },
+      danhSachDiaDiem: [
+        {
+          tenDiaDiem: 'Chùa Vĩnh Phước An',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+        {
+          tenDiaDiem: 'Chùa Vĩnh Đức',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+      ]
     },
     {
-      ten: "Nhà thờ BL,Chợ Bạc Liêu",
+      ten: "Nhà thờ BL, Chợ Bạc Liêu",
       thoiGian: "Vài tiếng",
       soDiaDiem: 2,
       geometry: {
@@ -314,6 +412,20 @@ export const DATALICHTRINH = {
         ],
         type: "LineString",
       },
+      danhSachDiaDiem: [
+        {
+          tenDiaDiem: 'Nhà thờ BL',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+        {
+          tenDiaDiem: 'Chợ Bạc Liêu',
+          gioMoCua: '00:59',
+          gioDongCua: '23:59',
+          giaVe: 'Miễn phí',
+        },
+      ]
     },
   ],
 };

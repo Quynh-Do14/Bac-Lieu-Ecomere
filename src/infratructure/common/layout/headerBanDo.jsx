@@ -72,12 +72,12 @@ const HeaderBanDo = () => {
             {/* Navigation Bar */}
             <div className="header_menu" id="header_menu">
                 <nav className="navbar navbar-default">
-                    <div className="container">
+                    <div className="container-fluid">
                         <div className="navbar-flex d-flex align-items-center justify-content-between w-100 pb-2 pt-2 ">
                             {/* Brand and toggle get grouped for better mobile display */}
                             <div className="navbar-header">
                                 <a className="navbar-brand" href={ROUTE_PATH.HOME_PAGE}>
-                                    <img src="./images/logo-white.png" alt="image" height={90} />
+                                    {/* <img src="./images/logo-white.png" alt="image" height={90} /> */}
                                     <img src="./images/logo.png" alt="image" style={{ maxHeight: 57 }} />
                                 </a>
                             </div>
