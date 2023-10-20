@@ -88,7 +88,13 @@ const ListFestival = () => {
                                                 <div className="row w-100">
                                                     <div className="col-lg-5 col-md-4 col-xs-12 blog-height">
                                                         <div className="blog-image">
-                                                            <img src={showImageCommon(it.hinhAnh)} alt="image" height={255} />
+                                                            <img src={
+                                                                it.hinhAnh.indexOf("http") == -1
+                                                                    ?
+                                                                    showImageCommon(it.hinhAnh)
+                                                                    :
+                                                                    it.hinhAnh
+                                                            } alt="image" height={255} />
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-7 col-md-8 col-xs-12">

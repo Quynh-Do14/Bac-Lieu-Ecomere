@@ -36,7 +36,13 @@ const DetailArticle = () => {
                         <div className="col-lg-12">
                             <div className="blog-single">
                                 <div className="blog-imagelist mb-3">
-                                    <img src={showImageCommon(detailArticle.hinhAnh)} alt='1' />
+                                    <img src={
+                                        detailArticle.hinhAnh.indexOf("http") == -1
+                                            ?
+                                            showImageCommon(detailArticle.hinhAnh)
+                                            :
+                                            detailArticle.hinhAnh
+                                    } alt='1' />
                                 </div>
                                 <div className="row">
                                     <div className="col-lg-2 col-md-2">
@@ -48,9 +54,9 @@ const DetailArticle = () => {
                                         <div className="blog-content mb-4 pt-0">
                                             <h3 className="blog-title"><a href="blog-single.html" className="yellow">{detailArticle.tieuDe} </a></h3>
                                             <div className="para-content mb-2">
-                                                <span className="mr-2"><a  className="tag pink"><i className="fa fa-tag mr-1"></i> Văn hóa </a></span>
-                                                <span className="mr-2"><a  className="pink"><i className="fa fa-user mr-1"></i>Hưng Trần </a></span>
-                                                <span><a  className="pink"><i className="fa fa-eye mb-1"></i>{detailArticle.luotXem} </a></span>
+                                                <span className="mr-2"><a className="tag pink"><i className="fa fa-tag mr-1"></i> Văn hóa </a></span>
+                                                <span className="mr-2"><a className="pink"><i className="fa fa-user mr-1"></i>Hưng Trần </a></span>
+                                                <span><a className="pink"><i className="fa fa-eye mb-1"></i>{detailArticle.luotXem} </a></span>
                                             </div>
                                             <p>{detailArticle.tieuDeCon} </p>
                                         </div>

@@ -21,15 +21,17 @@ const RelationCommon = ({ data = [], title, slogan }) => {
                                         <div className="trend-image">
                                             <img src={
                                                 it.hinhAnh.indexOf("http") == -1
-                                                    ? showImageCommon(it.hinhAnh)
-                                                    : it.hinhAnh
+                                                    ?
+                                                    showImageCommon(it.hinhAnh)
+                                                    :
+                                                    it.hinhAnh
                                             } alt="image" height={255} />
                                         </div>
                                         <div className="trend-content-main">
                                             <div className="trend-content ">
                                                 <h4 className='text-truncate-1'><a href={`${(ROUTE_PATH.VIEW_DESTINATION)}?${it.idDiaDiem}`}>{it.tenDiaDiem} </a></h4>
                                                 <div className='d-flex justify-content-between'>
-                                                    <div className="col-10 mb-0 pink">
+                                                    <div className="col-10 mb-0 pink text-truncate-2">
                                                         <i className="fa fa-map-marker mr-2"></i>{it.diaChi.replace(', Bạc Liêu', '')} </div>
                                                     <div className="col-2 mb-0 pink no-wrap">
                                                         <i className="fa fa-eye mb-1"></i> {it.luotXem}

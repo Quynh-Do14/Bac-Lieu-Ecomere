@@ -54,25 +54,25 @@ const ListSpecialty = () => {
     });
   };
   useEffect(() => {
-    onSearch().then((_) => {});
+    onSearch().then((_) => { });
   }, []);
 
   const onChangeSearchText = (e) => {
     setSearchText(e.target.value);
     timeout = setTimeout(() => {
-      onSearch(e.target.value, pageSize, page, qH).then((_) => {});
+      onSearch(e.target.value, pageSize, page, qH).then((_) => { });
     }, Constants.DEBOUNCE_SEARCH);
   };
 
   const OnChangeQH = async (e) => {
     setQH(e.target.value);
-    await onSearch(searchText, pageSize, page, e.target.value).then((_) => {});
+    await onSearch(searchText, pageSize, page, e.target.value).then((_) => { });
   };
 
   const showMore = async (prev) => {
     setPageSize(prev + Constants.Params.limit);
     await onSearch(searchText, prev + Constants.Params.limit, page, qH).then(
-      (_) => {}
+      (_) => { }
     );
   };
 
@@ -99,7 +99,13 @@ const ListSpecialty = () => {
                         <div className="col-lg-5 col-md-4 col-xs-12 blog-height">
                           <div className="blog-image">
                             <img
-                              src={showImageCommon(it.hinhAnh)}
+                              src={
+                                it.hinhAnh.indexOf("http") == -1
+                                  ?
+                                  showImageCommon(it.hinhAnh)
+                                  :
+                                  it.hinhAnh
+                              }
                               alt="image"
                               height={255}
                             />

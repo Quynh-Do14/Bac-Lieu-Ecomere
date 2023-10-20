@@ -30,7 +30,13 @@ const Articles = ({ data = [] }) => {
                                         <div className="col-lg-4 col-md-12 col-xs-12 mb-4 pointer" key={index} onClick={() => onNavigate(it.idTinTuc)}>
                                             <div className="news-item overflow-hidden">
                                                 <div className="news-image">
-                                                    <img src={showImageCommon(it.hinhAnh)} alt="image" height={255} />
+                                                    <img src={
+                                                        it.hinhAnh.indexOf("http") == -1
+                                                            ?
+                                                            showImageCommon(it.hinhAnh)
+                                                            :
+                                                            it.hinhAnh
+                                                    } alt="image" height={255} />
                                                 </div>
                                                 <div className="news-list mt-2 border-b pb-2 mb-2">
                                                     <ul>

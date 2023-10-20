@@ -28,7 +28,13 @@ const Festival = ({ data }) => {
               <div className="col-lg-5 col-md-12 col-xs-12 mb-4 pointer" onClick={() => { onNavigate(data[0].idDiaDiem) }}>
                 <div className="news-item overflow-hidden">
                   <div className="news-image">
-                    <img src={showImageCommon(data[0].hinhAnh)} alt="image" height={260} />
+                    <img src={
+                      data[0].hinhAnh.indexOf("http") == -1
+                        ?
+                        showImageCommon(data[0].hinhAnh)
+                        :
+                        data[0].hinhAnh
+                    } alt="image" height={260} />
                   </div>
                   <div className="news-list mt-2 border-b pb-2 mb-2">
                     <ul>
@@ -83,7 +89,13 @@ const Festival = ({ data }) => {
                     >
                       <div className="news-item overflow-hidden">
                         <div className="news-image">
-                          <img src={showImageCommon(it.hinhAnh)} alt="image" height={180} />
+                          <img src={
+                            it.hinhAnh.indexOf("http") == -1
+                              ?
+                              showImageCommon(it.hinhAnh)
+                              :
+                              it.hinhAnh
+                          } alt="image" height={180} />
                         </div>
                         <div className="news-list mt-2 border-b pb-2 mb-2">
                           <ul>

@@ -45,10 +45,11 @@ const Destination = ({ data }) => {
                                             <div className="trend-item">
                                                 <div className="trend-image">
                                                     <img
-                                                        src={
-                                                            it.hinhAnh.indexOf("http") == -1
-                                                                ? showImageCommon(it.hinhAnh)
-                                                                : it.hinhAnh
+                                                        src={it.hinhAnh?.indexOf("http") == -1
+                                                            ?
+                                                            showImageCommon(it.hinhAnh)
+                                                            :
+                                                            it.hinhAnh
                                                         }
                                                         alt="image"
                                                         height={255}

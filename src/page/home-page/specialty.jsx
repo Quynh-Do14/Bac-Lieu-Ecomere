@@ -22,7 +22,13 @@ const Specialty = ({ data }) => {
                             return (
                                 <div className="col-lg-4 col-md-6 p-1" key={index}>
                                     <div className="desti-image">
-                                        <img src={showImageCommon(it.hinhAnh)} alt="desti" height={255} />
+                                        <img src={
+                                            it.hinhAnh.indexOf("http") == -1
+                                                ?
+                                                showImageCommon(it.hinhAnh)
+                                                :
+                                                it.hinhAnh
+                                        } alt="desti" height={255} />
                                         <div className="desti-content">
                                             <h4 className="white mb-0">{it.tenDiaDiem}</h4>
                                         </div>

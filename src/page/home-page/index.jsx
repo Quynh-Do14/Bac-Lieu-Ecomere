@@ -10,6 +10,7 @@ import LoadingFullPage from "../../infratructure/common/controls/loading";
 import Constants from "../../core/common/constant";
 import { useNavigate } from 'react-router-dom'
 import { ROUTE_PATH } from "../../core/common/appRouter";
+import { showImageCommon } from "../../infratructure/utils/helper";
 
 const HomePage = () => {
   const [loading, setLoading] = useState(false);
@@ -251,7 +252,13 @@ const HomePage = () => {
                   listDiaDiemTop2.map((v, k) => (
                     <div className="col-lg-4 col-md-6 p-1" key={k}>
                       <div className="desti-image">
-                        <img src={v.hinhAnh} alt="desti"/>
+                        <img src={
+                          v.hinhAnh.indexOf("http") == -1
+                            ?
+                            showImageCommon(v.hinhAnh)
+                            :
+                            v.hinhAnh
+                        } alt="desti" />
                         <div className="desti-content">
                           <div className="rating mb-1">
                             <span className="fa fa-star checked" />
@@ -275,7 +282,13 @@ const HomePage = () => {
                   listDiaDiemTop4TuTop2.map((v, k) => (
                     <div className="col-lg-3 col-md-6 p-1" key={k}>
                       <div className="desti-image small-image">
-                        <img src={v.hinhAnh} alt="desti" />
+                        <img src={
+                          v.hinhAnh.indexOf("http") == -1
+                            ?
+                            showImageCommon(v.hinhAnh)
+                            :
+                            v.hinhAnh
+                        } alt="desti" />
                         <div className="desti-content">
                           <div className="rating mb-1">
                             <span className="fa fa-star checked" />

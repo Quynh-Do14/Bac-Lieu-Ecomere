@@ -10,7 +10,7 @@ import EvaluateDestination from "./evaluate";
 import { WarningMessage } from "../../infratructure/common/toast/toastMessage";
 import ModalLogin from "../../infratructure/common/modal/login-modal";
 import ModalRegister from "../../infratructure/common/modal/register-modal";
-import { convertNumber } from "../../infratructure/utils/helper";
+import { convertNumber, showImageCommon } from "../../infratructure/utils/helper";
 import { ViewStarCommon } from "../../infratructure/common/controls/view-star";
 
 const DetailDestination = () => {
@@ -120,7 +120,7 @@ const DetailDestination = () => {
       onOpenLogin()
     }
   }
-  console.log(' Number.isInteger(detailDestination.soSaoTrungBinh)', (Number(detailDestination.soSaoTrungBinh)));
+  console.log(' detailDestination', detailDestination);
 
   return (
     <MainLayout>
@@ -135,7 +135,13 @@ const DetailDestination = () => {
                   <div className="thumbnail-images">
                     <div className="slider-store">
                       <div>
-                        <img src={detailDestination.hinhAnh} alt="1" />
+                        <img src={detailDestination.hinhAnh?.indexOf("http") == -1
+                          ?
+                          showImageCommon(detailDestination.hinhAnh)
+                          :
+                          detailDestination.hinhAnh
+                        }
+                          alt="1" />
                       </div>
                     </div>
                     {/* <div className="slider-thumbs">

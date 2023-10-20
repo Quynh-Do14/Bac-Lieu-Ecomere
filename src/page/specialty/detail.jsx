@@ -38,7 +38,13 @@ const DetailSpecialty = () => {
                                     <div className="thumbnail-images">
                                         <div className="slider-store">
                                             <div>
-                                                <img src={showImageCommon(detailSpecialty.hinhAnh)} alt="1" />
+                                                <img src={
+                                                    detailSpecialty.hinhAnh.indexOf("http") == -1
+                                                        ?
+                                                        showImageCommon(detailSpecialty.hinhAnh)
+                                                        :
+                                                        detailSpecialty.hinhAnh
+                                                } alt="1" />
                                             </div>
                                         </div>
                                         {/* <div className="slider-thumbs">

@@ -26,7 +26,7 @@ const DetailFestival = () => {
   };
 
   useEffect(() => {
-    onGetDetailDiemDenAsync().then((_) => {});
+    onGetDetailDiemDenAsync().then((_) => { });
   }, []);
 
   return (
@@ -42,7 +42,13 @@ const DetailFestival = () => {
                     <div className="slider-store">
                       <div>
                         <img
-                          src={showImageCommon(detailFestival.hinhAnh)}
+                          src={
+                            detailFestival.hinhAnh.indexOf("http") == -1
+                              ?
+                              showImageCommon(detailFestival.hinhAnh)
+                              :
+                              detailFestival.hinhAnh
+                          }
                           alt="1"
                         />
                       </div>
