@@ -180,7 +180,7 @@ const Map = () => {
                 "icon-image": `img${feature.properties.idDanhMuc}`,
                 // "icon-allow-overlap": true,
                 "icon-size": 0.05,
-                "text-field": feature.properties.tenDiaDiem,
+                "text-field": ["get", "tenDiaDiem"],
                 "text-size": 11,
                 "text-offset": [0, 2],
                 "icon-offset": [0, -17],
