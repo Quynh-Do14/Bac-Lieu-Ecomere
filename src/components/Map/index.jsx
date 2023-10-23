@@ -67,6 +67,48 @@ const Map = () => {
       `idDanhMuc=${1}`
     );
     if (resGetDiaDiemGeometry.features && resGetDanhMucConCuaDanhMuc.success) {
+      resGetDanhMucConCuaDanhMuc.result.map((v) => {
+        var uriImg = "";
+
+        if (v.tenDanhMuc == "Du lịch văn hóa - lịch sử") {
+          uriImg = "https://cdn-icons-png.flaticon.com/512/5778/5778440.png";
+        }
+        if (v.tenDanhMuc == "Địa điểm tâm linh") {
+          uriImg = "https://cdn-icons-png.flaticon.com/512/2510/2510482.png";
+        }
+        if (v.tenDanhMuc == "Du lịch khám phá") {
+          uriImg =
+            "https://iconape.com/wp-content/png_logo_vector/google-discover.png";
+        }
+        if (v.tenDanhMuc == "Du lịch sinh thái") {
+          uriImg =
+            "https://images.squarespace-cdn.com/content/v1/5b07c60a96e76f9f641cdad6/1626769467137-PUUVF03Q49KZMCVTQ1PC/Conservation.png";
+        }
+        if (v.tenDanhMuc == "Du lịch nghỉ dưỡng") {
+          uriImg = "https://cdn-icons-png.flaticon.com/512/5273/5273660.png";
+        }
+        if (v.tenDanhMuc == "Công trình kiến trúc") {
+          uriImg =
+            "https://cdn4.iconfinder.com/data/icons/hotel-105/64/hotel_building_architecture_tourism_travel_five_star-512.png";
+        }
+        if (v.tenDanhMuc == "Du lịch giải trí") {
+          uriImg =
+            "https://cdn1.iconfinder.com/data/icons/travel-and-vacation-16/80/vector_825_06-512.png";
+        }
+        if (v.tenDanhMuc == "Thương mại - ẩm thực") {
+          uriImg = "https://cdn-icons-png.flaticon.com/512/1205/1205756.png";
+        }
+        if (v.tenDanhMuc == "Nguồn nước khoáng") {
+          uriImg = "https://cdn-icons-png.flaticon.com/512/7075/7075789.png";
+        }
+        if (v.tenDanhMuc == "Khu bảo tồn") {
+          uriImg = "https://cdn-icons-png.flaticon.com/512/3937/3937245.png";
+        }
+        map.loadImage(uriImg, (error, image) => {
+          if (error) throw error;
+          map.addImage(`img${v.idDanhMucDiaDiem}`, image);
+        });
+      });
       var dataDsDiaDiemGeoJson = { ...resGetDiaDiemGeometry };
       setDsDiaDiemGeoJson(dataDsDiaDiemGeoJson);
       setDsDanhMucDiaDiemDuLich(resGetDanhMucConCuaDanhMuc.result);
@@ -126,60 +168,16 @@ const Map = () => {
           data: `http://14.248.94.155:9022/api/diadiem/geometry?idDanhMuc=${1}`,
         });
 
-        resGetDanhMucConCuaDanhMuc.result.map((v) => {
-          var uriImg = "";
-
-          if (v.tenDanhMuc == "Du lịch văn hóa - lịch sử") {
-            uriImg = "https://cdn-icons-png.flaticon.com/512/5778/5778440.png";
-          }
-          if (v.tenDanhMuc == "Địa điểm tâm linh") {
-            uriImg = "https://cdn-icons-png.flaticon.com/512/2510/2510482.png";
-          }
-          if (v.tenDanhMuc == "Du lịch khám phá") {
-            uriImg =
-              "https://iconape.com/wp-content/png_logo_vector/google-discover.png";
-          }
-          if (v.tenDanhMuc == "Du lịch sinh thái") {
-            uriImg =
-              "https://images.squarespace-cdn.com/content/v1/5b07c60a96e76f9f641cdad6/1626769467137-PUUVF03Q49KZMCVTQ1PC/Conservation.png";
-          }
-          if (v.tenDanhMuc == "Du lịch nghỉ dưỡng") {
-            uriImg = "https://cdn-icons-png.flaticon.com/512/5273/5273660.png";
-          }
-          if (v.tenDanhMuc == "Công trình kiến trúc") {
-            uriImg =
-              "https://cdn4.iconfinder.com/data/icons/hotel-105/64/hotel_building_architecture_tourism_travel_five_star-512.png";
-          }
-          if (v.tenDanhMuc == "Du lịch giải trí") {
-            uriImg =
-              "https://cdn1.iconfinder.com/data/icons/travel-and-vacation-16/80/vector_825_06-512.png";
-          }
-          if (v.tenDanhMuc == "Thương mại - ẩm thực") {
-            uriImg = "https://cdn-icons-png.flaticon.com/512/1205/1205756.png";
-          }
-          if (v.tenDanhMuc == "Nguồn nước khoáng") {
-            uriImg = "https://cdn-icons-png.flaticon.com/512/7075/7075789.png";
-          }
-          if (v.tenDanhMuc == "Khu bảo tồn") {
-            uriImg = "https://cdn-icons-png.flaticon.com/512/3937/3937245.png";
-          }
-          map.loadImage(uriImg, (error, image) => {
-            if (error) throw error;
-            map.addImage(removeDiacriticsAndSpaces(v.tenDanhMuc), image);
-          });
-        });
-
         for (const feature of dataDsDiaDiemGeoJson.features) {
-          var symbol = feature.properties.tenDanhMuc;
-          const layerID = `diaDiemDuLich-${removeDiacriticsAndSpaces(symbol)}`;
           // Add a layer for this symbol type if it hasn't been added already.
-          if (!map.getLayer(layerID)) {
+          if (!map.getLayer(`poi-${feature.properties.idDanhMuc}`)) {
+            console.log(feature.properties);
             map.addLayer({
-              id: layerID,
-              type: "symbol",
+              id: `poi-${feature.properties.idDanhMuc}`,
+              type: "symbol", 
               source: "diaDiemDuLich",
               layout: {
-                "icon-image": removeDiacriticsAndSpaces(symbol),
+                "icon-image": `img${feature.properties.idDanhMuc}`,
                 // "icon-allow-overlap": true,
                 "icon-size": 0.05,
                 "text-field": feature.properties.tenDiaDiem,
@@ -192,13 +190,17 @@ const Map = () => {
                 "text-halo-color": "#fff",
                 "text-halo-width": 2,
               },
-              filter: ["==", "tenDanhMuc", symbol],
+              filter: ["==", "idDanhMuc", feature.properties.idDanhMuc],
             });
 
-            map.on("click", layerID, (e) => {
+            map.on("click", `poi-${feature.properties.idDanhMuc}`, (e) => {
               const coordinates = e.features[0].geometry.coordinates.slice();
               const html = `<div>
-              <img src="${e.features[0].properties.hinhAnh}" alt="" style="min-width: 280px;min-height: 120px;">
+              <img src="${
+                e.features[0].properties.hinhAnh.indexOf("https") != -1
+                  ? e.features[0].properties.hinhAnh
+                  : `http://14.248.94.155:9022/${e.features[0].properties.hinhAnh}`
+              }" alt="" style="min-width: 280px;min-height: 120px;">
               <div style="
                   padding: 20px;
               ">
@@ -207,7 +209,9 @@ const Map = () => {
           font-size: 11px;
           text-transform: uppercase;
       ">${e.features[0].properties.tenDanhMuc}</p>
-                  <a href="/destination-view?${e.features[0].properties.idDiaDiem}" style="
+                  <a href="/destination-view?${
+                    e.features[0].properties.idDiaDiem
+                  }" style="
           color: #333;
           font-size: 18px;
           width: 240px;
@@ -217,7 +221,9 @@ const Map = () => {
           font-size: 11px;
           color: #333;
           font-weight: 400;
-      ">${e.features[0].properties.gioMoCua} - ${e.features[0].properties.gioDongCua}</p>
+      ">${e.features[0].properties.gioMoCua} - ${
+                e.features[0].properties.gioDongCua
+              }</p>
                   <p style="
           width: 240px;
           overflow: hidden;
@@ -248,11 +254,11 @@ const Map = () => {
                 .addTo(map);
             });
 
-            map.on("mouseenter", layerID, () => {
+            map.on("mouseenter", `poi-${feature.properties.idDanhMuc}`, () => {
               map.getCanvas().style.cursor = "pointer";
             });
 
-            map.on("mouseleave", layerID, () => {
+            map.on("mouseleave", `poi-${feature.properties.idDanhMuc}`, () => {
               map.getCanvas().style.cursor = "";
             });
           }
@@ -300,7 +306,11 @@ const Map = () => {
       popup[0].remove();
     }
     const html = `<div>
-              <img src="${e.properties.hinhAnh}" alt="" style="min-width: 280px;min-height: 120px;">
+              <img src="${
+                e.properties.hinhAnh.indexOf("https") != -1
+                  ? e.properties.hinhAnh
+                  : `http://14.248.94.155:9022/${e.properties.hinhAnh}`
+              }" alt="" style="min-width: 280px;min-height: 120px;">
               <div style="
                   padding: 20px;
               ">

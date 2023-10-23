@@ -144,10 +144,10 @@ const BannerCommon = () => {
         <img src={slide} style={{ objectFit: "cover" }} alt="" />
         <div className="overlay-custom" />
       </div>
-      <div>
+      {/* <div>
         <img src={slide1} style={{ objectFit: "cover" }} alt="" />
         <div className="overlay-custom" />
-      </div>
+      </div> */}
     </Carousel>
   );
 };
