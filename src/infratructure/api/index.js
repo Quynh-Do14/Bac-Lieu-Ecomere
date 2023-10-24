@@ -75,5 +75,11 @@ const api = {
   ///////
   getAllQuanHuyen: (params) =>
     requestDuong.get(`${apiLinks.API}${Endpoint.Module.District}`),
+
+  getHinhAnhByIdDiaDiem: (params, setLoading) =>
+    request.get(
+      `${apiLinks.API}${Endpoint.Module.Files}?idDiaDiem=${params}`,
+      setLoading
+    ),
 };
 export default api;

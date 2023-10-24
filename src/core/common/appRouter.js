@@ -34,5 +34,6 @@ export class Endpoint {
         static DiaDiem = "/diadiem";
         static TinTuc = "/tintuc";
         static Evaluate = "/danhgia"
+        static Files = "/files/hinh-anh"
     }
 };

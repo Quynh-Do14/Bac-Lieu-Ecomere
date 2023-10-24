@@ -11,10 +11,13 @@ import {
   showImageCommon,
 } from "../../infratructure/utils/helper";
 import api from "../../infratructure/api";
+import { ShowImageModal } from "../../infratructure/common/modal/show-image-modal";
 
 const DetailFestival = () => {
   const [loading, setLoading] = useState(false);
   const [detailFestival, setDetailFestival] = useState({});
+  const [isOpenListImage, setIsOpenListImage] = useState(false);
+
   const location = useLocation();
   const search = location.search.replace("?", "");
   const onGetDetailDiemDenAsync = async () => {
@@ -28,7 +31,15 @@ const DetailFestival = () => {
   useEffect(() => {
     onGetDetailDiemDenAsync().then((_) => { });
   }, []);
+  ///////////////////
+  const onOpenListImage = () => {
+    setIsOpenListImage(true);
+  };
 
+  const onCloseListImage = () => {
+    setIsOpenListImage(false);
+  };
+  ///////////////////
   return (
     <MainLayout>
       <BreadcumbCommon title={"Lễ hội"} breadcumb={"Trang chủ"} />
@@ -129,11 +140,12 @@ const DetailFestival = () => {
                     <br />
                     <br />
                     <a
-                      target="_blank"
-                      href={detailFestival.thoiGianGhe}
+                      // target="_blank"
+                      // href={detailFestival.thoiGianGhe}
                       style={{
                         color: "#F56961",
                       }}
+                      onClick={onOpenListImage}
                     >
                       Album ảnh về {detailFestival.tenDiaDiem}
                     </a>
@@ -151,6 +163,12 @@ const DetailFestival = () => {
             /> */}
       {/* <LoadingFullPage loading={loading} /> */}
       <LoadingFullPage loading={loading} />
+      <ShowImageModal
+        visible={isOpenListImage}
+        onCancel={onCloseListImage}
+        detailDestination={detailFestival}
+        setLoading={setLoading}
+      />
     </MainLayout>
   );
 };

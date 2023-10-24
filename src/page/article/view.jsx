@@ -55,7 +55,7 @@ const DetailArticle = () => {
                                             <h3 className="blog-title"><a href="blog-single.html" className="yellow">{detailArticle.tieuDe} </a></h3>
                                             <div className="para-content mb-2">
                                                 <span className="mr-2"><a className="tag pink"><i className="fa fa-tag mr-1"></i> Văn hóa </a></span>
-                                                <span className="mr-2"><a className="pink"><i className="fa fa-user mr-1"></i>Hưng Trần </a></span>
+                                                <span className="mr-2"><a className="pink"><i className="fa fa-user mr-1"></i> </a></span>
                                                 <span><a className="pink"><i className="fa fa-eye mb-1"></i>{detailArticle.luotXem} </a></span>
                                             </div>
                                             <p>{detailArticle.tieuDeCon} </p>

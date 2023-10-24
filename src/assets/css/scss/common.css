@@ -13,6 +13,7 @@
 /* ========================================= */
 @import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Texturina:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap");
+
 header,
 nav,
 section,
@@ -187,6 +188,18 @@ img {
     margin-left: auto
 }
 
+.padding-show-image {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto
+}
+
+.image-show{
+    object-fit: cover;
+}
+
 @media (min-width:576px) {
     .container {
         max-width: 540px
@@ -209,6 +222,12 @@ img {
     .container {
         max-width: 1240px
     }
+
+    .padding-show-image {
+        max-width: 1700px !important;
+        min-width: 1200px;
+    }
+
 }
 
 .white {

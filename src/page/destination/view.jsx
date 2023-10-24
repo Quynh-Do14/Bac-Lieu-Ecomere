@@ -12,6 +12,7 @@ import ModalLogin from "../../infratructure/common/modal/login-modal";
 import ModalRegister from "../../infratructure/common/modal/register-modal";
 import { convertNumber, showImageCommon } from "../../infratructure/utils/helper";
 import { ViewStarCommon } from "../../infratructure/common/controls/view-star";
+import { ShowImageModal } from "../../infratructure/common/modal/show-image-modal";
 
 const DetailDestination = () => {
   const [loading, setLoading] = useState(false);
@@ -25,6 +26,7 @@ const DetailDestination = () => {
   const [pageSize, setPageSize] = useState(Constants.PaginationConfigs.Size);
   const [isOpenLogin, setIsOpenLogin] = useState(false);
   const [isOpenRegister, setIsOpenRegister] = useState(false);
+  const [isOpenListImage, setIsOpenListImage] = useState(false);
 
   let storage = sessionStorage.getItem(Constants.TOKEN);
   const location = useLocation();
@@ -120,7 +122,16 @@ const DetailDestination = () => {
       onOpenLogin()
     }
   }
-  console.log(' detailDestination', detailDestination);
+
+  ///////////////////
+  const onOpenListImage = () => {
+    setIsOpenListImage(true);
+  };
+
+  const onCloseListImage = () => {
+    setIsOpenListImage(false);
+  };
+  ///////////////////
 
   return (
     <MainLayout>
@@ -218,7 +229,8 @@ const DetailDestination = () => {
                     <br />
                     <br />
                     <a target="_blank"
-                      href={detailDestination.thoiGianGhe}
+                      // href={detailDestination.thoiGianGhe}
+                      onClick={onOpenListImage}
                       style={{
                         color: "#F56961",
                       }}
@@ -271,13 +283,15 @@ const DetailDestination = () => {
           </div>
         </div>
       </section>
-      {dsDiaDiemLienQuan.length > 0 && (
-        <RelationCommon
-          data={dsDiaDiemLienQuan}
-          title={"Địa Điểm"}
-          slogan={Constants.Slogan}
-        />
-      )}
+      {
+        dsDiaDiemLienQuan.length > 0 && (
+          <RelationCommon
+            data={dsDiaDiemLienQuan}
+            title={"Địa Điểm"}
+            slogan={Constants.Slogan}
+          />
+        )
+      }
       <ModalLogin
         visible={isOpenLogin}
         handleCancel={onCloseLogin}
@@ -290,7 +304,13 @@ const DetailDestination = () => {
         handleCancel={onCloseRegister}
         setLoading={setLoading}
       />
-    </MainLayout>
+      <ShowImageModal
+        visible={isOpenListImage}
+        onCancel={onCloseListImage}
+        detailDestination={detailDestination}
+        setLoading={setLoading}
+      />
+    </MainLayout >
   );
 };
 
