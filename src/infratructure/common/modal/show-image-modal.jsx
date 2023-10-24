@@ -80,7 +80,7 @@ export const ShowImageModal = (props) => {
                             </div>
                             :
                             <div class="single-comments single-box mb-4 mt-4" id="single-comments">
-                                <h5 class="border-b pb-2 mb-2 text-center">Tất cả các đánh giá</h5>
+                                <h5 class="border-b pb-2 mb-2 text-center">Chưa có hình ảnh</h5>
                             </div>
                     }
 
