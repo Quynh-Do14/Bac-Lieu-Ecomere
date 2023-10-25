@@ -406,9 +406,9 @@ const Map = () => {
   return (
     <>
       {/* Preloader */}
-      <div id="preloader">
+      {/* <div id="preloader">
         <div id="status" />
-      </div>
+      </div> */}
       {/* Preloader Ends */}
 
       {/* header starts */}
