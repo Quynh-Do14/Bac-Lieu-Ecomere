@@ -115,7 +115,7 @@ const Map = () => {
       map.on("load", () => {
         map.addSource("ranhGioiTinh", {
           type: "geojson",
-          data: `http://14.248.94.155:9022/api/quanHuyen/ranhGioiTinh`,
+          data: `http://103.130.212.145:42319/api/quanHuyen/ranhGioiTinh`,
         });
         map.addLayer({
           id: "ranhGioiTinh",
@@ -140,7 +140,7 @@ const Map = () => {
 
         map.addSource("ranhGioiHuyen", {
           type: "geojson",
-          data: `http://14.248.94.155:9022/api/quanHuyen/ranhGioiHuyen`,
+          data: `http://103.130.212.145:42319/api/quanHuyen/ranhGioiHuyen`,
         });
         map.addLayer({
           id: "ranhGioiHuyen",
@@ -165,7 +165,7 @@ const Map = () => {
 
         map.addSource("diaDiemDuLich", {
           type: "geojson",
-          data: `http://14.248.94.155:9022/api/diadiem/geometry?idDanhMuc=${1}`,
+          data: `http://103.130.212.145:42319/api/diadiem/geometry?idDanhMuc=${1}`,
         });
 
         for (const feature of dataDsDiaDiemGeoJson.features) {
@@ -199,7 +199,7 @@ const Map = () => {
               <img src="${
                 e.features[0].properties.hinhAnh.indexOf("https") != -1
                   ? e.features[0].properties.hinhAnh
-                  : `http://14.248.94.155:9022/${e.features[0].properties.hinhAnh}`
+                  : `http://103.130.212.145:42319/${e.features[0].properties.hinhAnh}`
               }" alt="" style="min-width: 280px;min-height: 120px;">
               <div style="
                   padding: 20px;
@@ -309,7 +309,7 @@ const Map = () => {
               <img src="${
                 e.properties.hinhAnh.indexOf("https") != -1
                   ? e.properties.hinhAnh
-                  : `http://14.248.94.155:9022/${e.properties.hinhAnh}`
+                  : `http://103.130.212.145:42319/${e.properties.hinhAnh}`
               }" alt="" style="min-width: 280px;min-height: 120px;">
               <div style="
                   padding: 20px;
