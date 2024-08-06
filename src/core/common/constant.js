@@ -25,14 +25,14 @@ export default class Constants {
         label: "Điểm du lịch",
         link: ROUTE_PATH.DESTINATION,
       },
-      {
-        label: "Lễ hội",
-        link: ROUTE_PATH.FESTIVAL,
-      },
-      {
-        label: "Đặc sản",
-        link: ROUTE_PATH.SPECIALTY,
-      },
+      // {
+      //   label: "Lễ hội",
+      //   link: ROUTE_PATH.FESTIVAL,
+      // },
+      // {
+      //   label: "Đặc sản",
+      //   link: ROUTE_PATH.SPECIALTY,
+      // },
       {
         label: "Bản đồ",
         link: ROUTE_PATH.LAYOUT_MAP,

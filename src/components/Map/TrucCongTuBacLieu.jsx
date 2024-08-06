@@ -41,8 +41,8 @@ const TrucCongTuBacLieu = () => {
     // document.getElementById("map").scrollIntoView()
     let map = new mapboxgl.Map({
       container: mapContainer.current,
-      zoom: 9,
-      center: [105.3240641, 9.3102405],
+      zoom: 11,
+      center: [105.6921277, 9.3206427],
       style: "mapbox://styles/mapbox/streets-v12",
     });
 
@@ -124,11 +124,9 @@ const TrucCongTuBacLieu = () => {
         layout: {},
         paint: {
           "line-color": "#7239ea",
-          "line-opacity": 0.6,
+          "line-width": 3,
         },
       });
-
-      
 
       map.addSource("Tuyendulich_MK3_polyline", {
         type: "geojson",
@@ -141,8 +139,8 @@ const TrucCongTuBacLieu = () => {
         source: "Tuyendulich_MK3_polyline",
         layout: {},
         paint: {
-          "line-color": "#1b84ff",
-          "line-width": 2,
+          "line-color": "#071437",
+          "line-width": 3,
         },
       });
 
@@ -158,7 +156,7 @@ const TrucCongTuBacLieu = () => {
         layout: {},
         paint: {
           "circle-color": "#ff6f1e",
-          "circle-radius": 6,
+          "circle-radius": 9,
         },
       });
     });
@@ -323,102 +321,102 @@ const TrucCongTuBacLieu = () => {
         }}
       >
         <div id="map" ref={mapContainer}></div>
-          <div
+        <div
+          style={{
+            backgroundColor: "#fff",
+            padding: 4,
+            position: "absolute",
+            top: 12,
+            left: 12,
+            boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
+          }}
+        >
+          <p
             style={{
-              backgroundColor: "#fff",
-              padding: 4,
-              position: "absolute",
-              top: 12,
-              left: 12,
-              boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
+              fontSize: 15,
+              fontWeight: 500,
+              padding: 8,
+              color: "#333",
+              textAlign: "center",
+              borderBottom: "1px solid #ccc",
+              margin: "0px 12px",
             }}
           >
-            <p
+            Lớp bản đồ
+          </p>
+          <div
+            className="d-flex align-items-center"
+            style={{ padding: "8px 12px" }}
+          >
+            <input
+              type="checkbox"
+              name={`Cumtndl_polyline`}
+              id={`Cumtndl_polyline`}
+              value={`Cumtndl_polyline`}
               style={{
-                fontSize: 15,
-                fontWeight: 500,
-                padding: 8,
-                color: "#333",
-                textAlign: "center",
-                borderBottom: "1px solid #ccc",
-                margin: "0px 12px",
+                marginRight: 8,
+              }}
+              onClick={btDiaDiemDuLich}
+              defaultChecked={true}
+            />
+            <label
+              htmlFor={`Cumtndl_polyline`}
+              style={{
+                margin: 0,
               }}
             >
-              Lớp bản đồ
-            </p>
-            <div
-              className="d-flex align-items-center"
-              style={{ padding: "8px 12px" }}
-            >
-              <input
-                type="checkbox"
-                name={`Cumtndl_polyline`}
-                id={`Cumtndl_polyline`}
-                value={`Cumtndl_polyline`}
-                style={{
-                  marginRight: 8,
-                }}
-                onClick={btDiaDiemDuLich}
-                defaultChecked={true}
-              />
-              <label
-                htmlFor={`Cumtndl_polyline`}
-                style={{
-                  margin: 0,
-                }}
-              >
-                Cụm TNDL
-              </label>
-            </div>
-            <div
-              className="d-flex align-items-center"
-              style={{ padding: "8px 12px" }}
-            >
-              <input
-                type="checkbox"
-                name={`Tuyendulich_MK3_polyline`}
-                id={`Tuyendulich_MK3_polyline`}
-                value={`Tuyendulich_MK3_polyline`}
-                style={{
-                  marginRight: 8,
-                }}
-                onClick={btDiaDiemDuLich}
-                defaultChecked={true}
-              />
-              <label
-                htmlFor={`Tuyendulich_MK3_polyline`}
-                style={{
-                  margin: 0,
-                }}
-              >
-                Tuyến du lịch MK3
-              </label>
-            </div>
-            <div
-              className="d-flex align-items-center"
-              style={{ padding: "8px 12px" }}
-            >
-              <input
-                type="checkbox"
-                name={`Diem_TNDL3_point`}
-                id={`Diem_TNDL3_point`}
-                value={`Diem_TNDL3_point`}
-                style={{
-                  marginRight: 8,
-                }}
-                onClick={btDiaDiemDuLich}
-                defaultChecked={true}
-              />
-              <label
-                htmlFor={`Diem_TNDL3_point`}
-                style={{
-                  margin: 0,
-                }}
-              >
-                Điểm TNDL
-              </label>
-            </div>
+              Cụm TNDL
+            </label>
           </div>
+          <div
+            className="d-flex align-items-center"
+            style={{ padding: "8px 12px" }}
+          >
+            <input
+              type="checkbox"
+              name={`Tuyendulich_MK3_polyline`}
+              id={`Tuyendulich_MK3_polyline`}
+              value={`Tuyendulich_MK3_polyline`}
+              style={{
+                marginRight: 8,
+              }}
+              onClick={btDiaDiemDuLich}
+              defaultChecked={true}
+            />
+            <label
+              htmlFor={`Tuyendulich_MK3_polyline`}
+              style={{
+                margin: 0,
+              }}
+            >
+              Tuyến du lịch MK3
+            </label>
+          </div>
+          <div
+            className="d-flex align-items-center"
+            style={{ padding: "8px 12px" }}
+          >
+            <input
+              type="checkbox"
+              name={`Diem_TNDL3_point`}
+              id={`Diem_TNDL3_point`}
+              value={`Diem_TNDL3_point`}
+              style={{
+                marginRight: 8,
+              }}
+              onClick={btDiaDiemDuLich}
+              defaultChecked={true}
+            />
+            <label
+              htmlFor={`Diem_TNDL3_point`}
+              style={{
+                margin: 0,
+              }}
+            >
+              Điểm TNDL
+            </label>
+          </div>
+        </div>
       </section>
       {/* BreadCrumb Ends */}
     </>

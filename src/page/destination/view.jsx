@@ -207,7 +207,7 @@ const DetailDestination = () => {
                   <div>
                     <br />
                     <br />
-                    <a target="_blank"
+                    {/* <a target="_blank"
                       href={detailDestination.uriVideo}
                       style={{
                         color: "#F56961",
@@ -225,7 +225,7 @@ const DetailDestination = () => {
                       }}
                     >
                       Bài viết mô tả {detailDestination.tenDiaDiem}
-                    </a>
+                    </a> */}
                     <br />
                     <br />
                     <a target="_blank"

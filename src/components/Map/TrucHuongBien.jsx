@@ -41,8 +41,8 @@ const TrucHuongBien = () => {
     // document.getElementById("map").scrollIntoView()
     let map = new mapboxgl.Map({
       container: mapContainer.current,
-      zoom: 9,
-      center: [105.3240641, 9.3102405],
+      zoom: 11,
+      center: [105.604931, 9.193049, ],
       style: "mapbox://styles/mapbox/streets-v12",
     });
 
@@ -124,7 +124,7 @@ const TrucHuongBien = () => {
         layout: {},
         paint: {
           "line-color": "#7239ea",
-          "line-opacity": 0.6,
+          "line-width": 3,
         },
       });
 
@@ -156,7 +156,7 @@ const TrucHuongBien = () => {
     //     layout: {},
     //     paint: {
     //       "circle-color": "#ff6f1e",
-    //       "circle-radius": 6,
+    //       "circle-radius": 9,
     //     },
     //   });
     });

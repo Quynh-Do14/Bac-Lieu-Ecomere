@@ -67,6 +67,14 @@ const HeaderPage = () => {
           style={{ borderRadius: 5 }}
         >
           <span className="auth-title">
+            <a href={`/map`}>Bản đồ du lịch tỉnh Bạc Liêu </a>
+          </span>
+        </div>
+        <div
+          class="header_sidemenu pointer bg-white p-2"
+          style={{ borderRadius: 5 }}
+        >
+          <span className="auth-title">
             <a href={`/TrucCongTuBacLieu`}>Bản đồ trục công tử Bạc Liêu </a>
           </span>
         </div>
