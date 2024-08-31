@@ -42,7 +42,7 @@ const TrucHuongBien = () => {
     let map = new mapboxgl.Map({
       container: mapContainer.current,
       zoom: 11,
-      center: [105.604931, 9.193049, ],
+      center: [105.604931, 9.193049],
       style: "mapbox://styles/mapbox/streets-v12",
     });
 
@@ -128,37 +128,37 @@ const TrucHuongBien = () => {
         },
       });
 
-    //   map.addSource("Tuyen_hanhtrinh_1_polyline", {
-    //     type: "geojson",
-    //     data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=Tuyen_hanhtrinh_1_polyline`,
-    //   });
+      map.addSource("Tuyen_hanhtrinh_1_polyline", {
+        type: "geojson",
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=Tuyen_hanhtrinh_1_polyline`,
+      });
 
-    //   map.addLayer({
-    //     id: "Tuyen_hanhtrinh_1_polyline",
-    //     type: "line",
-    //     source: "Tuyen_hanhtrinh_1_polyline",
-    //     layout: {},
-    //     paint: {
-    //       "line-color": "#1b84ff",
-    //       "line-width": 2,
-    //     },
-    //   });
+      map.addLayer({
+        id: "Tuyen_hanhtrinh_1_polyline",
+        type: "line",
+        source: "Tuyen_hanhtrinh_1_polyline",
+        layout: {},
+        paint: {
+          "line-color": "#1b84ff",
+          "line-width": 2,
+        },
+      });
 
-    //   map.addSource("Diem_TNDL_1_point", {
-    //     type: "geojson",
-    //     data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=Diem_TNDL_1_point`,
-    //   });
+      map.addSource("Diem_TNDL_1_point", {
+        type: "geojson",
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=Diem_TNDL_1_point`,
+      });
 
-    //   map.addLayer({
-    //     id: "Diem_TNDL_1_point",
-    //     type: "circle",
-    //     source: "Diem_TNDL_1_point",
-    //     layout: {},
-    //     paint: {
-    //       "circle-color": "#ff6f1e",
-    //       "circle-radius": 9,
-    //     },
-    //   });
+      map.addLayer({
+        id: "Diem_TNDL_1_point",
+        type: "circle",
+        source: "Diem_TNDL_1_point",
+        layout: {},
+        paint: {
+          "circle-color": "#ff6f1e",
+          "circle-radius": 9,
+        },
+      });
     });
   };
 
@@ -322,101 +322,127 @@ const TrucHuongBien = () => {
       >
         <div id="map" ref={mapContainer}></div>
         <div
+          style={{
+            backgroundColor: "#fff",
+            padding: 4,
+            position: "absolute",
+            top: 12,
+            left: 12,
+            boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
+          }}
+        >
+          <p
             style={{
-              backgroundColor: "#fff",
-              padding: 4,
-              position: "absolute",
-              top: 12,
-              left: 12,
-              boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
+              fontSize: 15,
+              fontWeight: 500,
+              padding: 8,
+              color: "#333",
+              textAlign: "center",
+              borderBottom: "1px solid #ccc",
+              margin: "0px 12px",
             }}
           >
-            <p
+            Lớp bản đồ
+          </p>
+          <div
+            className="d-flex align-items-center"
+            style={{ padding: "8px 12px" }}
+          >
+            <input
+              type="checkbox"
+              name={`cum_TNDL_1_polyline`}
+              id={`cum_TNDL_1_polyline`}
+              value={`cum_TNDL_1_polyline`}
               style={{
-                fontSize: 15,
-                fontWeight: 500,
-                padding: 8,
-                color: "#333",
-                textAlign: "center",
-                borderBottom: "1px solid #ccc",
-                margin: "0px 12px",
+                marginRight: 8,
+              }}
+              onClick={btDiaDiemDuLich}
+              defaultChecked={true}
+            />
+            <div
+              style={{
+                height: 20,
+                width: 20,
+                border: "2px solid #7239ea",
+                marginRight: 8,
+              }}
+            ></div>
+            <label
+              htmlFor={`cum_TNDL_1_polyline`}
+              style={{
+                margin: 0,
               }}
             >
-              Lớp bản đồ
-            </p>
-            <div
-              className="d-flex align-items-center"
-              style={{ padding: "8px 12px" }}
-            >
-              <input
-                type="checkbox"
-                name={`cum_TNDL_1_polyline`}
-                id={`cum_TNDL_1_polyline`}
-                value={`cum_TNDL_1_polyline`}
-                style={{
-                  marginRight: 8,
-                }}
-                onClick={btDiaDiemDuLich}
-                defaultChecked={true}
-              />
-              <label
-                htmlFor={`cum_TNDL_1_polyline`}
-                style={{
-                  margin: 0,
-                }}
-              >
-                Cụm TNDL
-              </label>
-            </div>
-            {/* <div
-              className="d-flex align-items-center"
-              style={{ padding: "8px 12px" }}
-            >
-              <input
-                type="checkbox"
-                name={`Tuyen_hanhtrinh_1_polyline`}
-                id={`Tuyen_hanhtrinh_1_polyline`}
-                value={`Tuyen_hanhtrinh_1_polyline`}
-                style={{
-                  marginRight: 8,
-                }}
-                onClick={btDiaDiemDuLich}
-                defaultChecked={true}
-              />
-              <label
-                htmlFor={`Tuyen_hanhtrinh_1_polyline`}
-                style={{
-                  margin: 0,
-                }}
-              >
-                Tuyến hành trình
-              </label>
-            </div> */}
-            {/* <div
-              className="d-flex align-items-center"
-              style={{ padding: "8px 12px" }}
-            >
-              <input
-                type="checkbox"
-                name={`Diem_TNDL_1_point`}
-                id={`Diem_TNDL_1_point`}
-                value={`Diem_TNDL_1_point`}
-                style={{
-                  marginRight: 8,
-                }}
-                onClick={btDiaDiemDuLich}
-                defaultChecked={true}
-              />
-              <label
-                htmlFor={`Diem_TNDL_1_point`}
-                style={{
-                  margin: 0,
-                }}
-              >
-                Điểm TNDL
-              </label>
-            </div> */}
+              Cụm TNDL
+            </label>
           </div>
+          <div
+            className="d-flex align-items-center"
+            style={{ padding: "8px 12px" }}
+          >
+            <input
+              type="checkbox"
+              name={`Tuyen_hanhtrinh_1_polyline`}
+              id={`Tuyen_hanhtrinh_1_polyline`}
+              value={`Tuyen_hanhtrinh_1_polyline`}
+              style={{
+                marginRight: 8,
+              }}
+              onClick={btDiaDiemDuLich}
+              defaultChecked={true}
+            />
+            <div
+              style={{
+                height: 2,
+                width: 20,
+                backgroundColor: "#071437",
+                marginRight: 8,
+                transform: "rotate(120deg)",
+              }}
+            ></div>
+            <label
+              htmlFor={`Tuyen_hanhtrinh_1_polyline`}
+              style={{
+                margin: 0,
+              }}
+            >
+              Tuyến hành trình
+            </label>
+          </div>
+          <div
+            className="d-flex align-items-center"
+            style={{ padding: "8px 12px" }}
+          >
+            <input
+              type="checkbox"
+              name={`Diem_TNDL_1_point`}
+              id={`Diem_TNDL_1_point`}
+              value={`Diem_TNDL_1_point`}
+              style={{
+                marginRight: 8,
+              }}
+              onClick={btDiaDiemDuLich}
+              defaultChecked={true}
+            />
+            <div
+              style={{
+                width: 20,
+                height: 20,
+                backgroundColor: "#ff6f1e",
+                marginRight: 8,
+                borderRadius: 10,
+              }}
+            ></div>
+            <label
+              htmlFor={`Diem_TNDL_1_point`}
+              style={{
+                margin: 0,
+              }}
+            >
+              Điểm TNDL
+            </label>
+          </div>
+        </div>
       </section>
       {/* BreadCrumb Ends */}
     </>

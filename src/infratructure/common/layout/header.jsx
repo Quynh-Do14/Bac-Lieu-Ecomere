@@ -64,7 +64,7 @@ const HeaderPage = () => {
       <>
         <div
           class="header_sidemenu pointer bg-white p-2"
-          style={{ borderRadius: 5 }}
+          style={{ borderBottom: '1px solid #999' }}
         >
           <span className="auth-title">
             <a href={`/map`}>Bản đồ du lịch tỉnh Bạc Liêu </a>
@@ -72,7 +72,7 @@ const HeaderPage = () => {
         </div>
         <div
           class="header_sidemenu pointer bg-white p-2"
-          style={{ borderRadius: 5 }}
+          style={{ borderBottom: '1px solid #999' }}
         >
           <span className="auth-title">
             <a href={`/TrucCongTuBacLieu`}>Bản đồ trục công tử Bạc Liêu </a>
@@ -80,7 +80,7 @@ const HeaderPage = () => {
         </div>
         <div
           class="header_sidemenu pointer bg-white p-2"
-          style={{ borderRadius: 5 }}
+          style={{ borderBottom: '1px solid #999' }}
         >
           <span className="auth-title">
             <a href={`/TongHopDiemDiLich`}>Bản đồ tổng hợp điểm du lịch </a>
@@ -88,7 +88,7 @@ const HeaderPage = () => {
         </div>
         <div
           class="header_sidemenu pointer bg-white p-2"
-          style={{ borderRadius: 5 }}
+          style={{ borderBottom: '1px solid #999' }}
         >
           <span className="auth-title">
             <a href={`/TrucHuongBien`}>Bản đồ trục hướng biển </a>
@@ -96,7 +96,7 @@ const HeaderPage = () => {
         </div>
         <div
           class="header_sidemenu pointer bg-white p-2"
-          style={{ borderRadius: 5 }}
+          style={{ borderBottom: '1px solid #999' }}
         >
           <span className="auth-title">
             <a href={`/TrucQuocLo`}>Bản đồ trục quốc lộ </a>
@@ -143,7 +143,7 @@ const HeaderPage = () => {
                           <Dropdown
                             overlay={ItemMenu}
                             placement="bottomLeft"
-                            arrow
+                            
                           >
                             <span class="menu-ham">
                               <a

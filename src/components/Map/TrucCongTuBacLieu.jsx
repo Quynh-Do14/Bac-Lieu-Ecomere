@@ -359,6 +359,14 @@ const TrucCongTuBacLieu = () => {
               onClick={btDiaDiemDuLich}
               defaultChecked={true}
             />
+            <div
+              style={{
+                height: 20,
+                width: 20,
+                border: "2px solid #7239ea",
+                marginRight: 8,
+              }}
+            ></div>
             <label
               htmlFor={`Cumtndl_polyline`}
               style={{
@@ -383,6 +391,15 @@ const TrucCongTuBacLieu = () => {
               onClick={btDiaDiemDuLich}
               defaultChecked={true}
             />
+            <div
+              style={{
+                height: 2,
+                width: 20,
+                backgroundColor: "#071437",
+                marginRight: 8,
+                transform: "rotate(120deg)",
+              }}
+            ></div>
             <label
               htmlFor={`Tuyendulich_MK3_polyline`}
               style={{
@@ -407,6 +424,15 @@ const TrucCongTuBacLieu = () => {
               onClick={btDiaDiemDuLich}
               defaultChecked={true}
             />
+            <div
+              style={{
+                width: 20,
+                height: 20,
+                backgroundColor: "#ff6f1e",
+                marginRight: 8,
+                borderRadius: 10,
+              }}
+            ></div>
             <label
               htmlFor={`Diem_TNDL3_point`}
               style={{

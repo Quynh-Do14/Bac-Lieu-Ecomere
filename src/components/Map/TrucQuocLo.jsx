@@ -144,21 +144,21 @@ const TrucQuocLo = () => {
         },
       });
 
-      //   map.addSource("Diem_TNDL3_point", {
-      //     type: "geojson",
-      //     data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=Diem_TNDL3_point`,
-      //   });
+      map.addSource("Diemtndl2_point", {
+        type: "geojson",
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=Diemtndl2_point`,
+      });
 
-      //   map.addLayer({
-      //     id: "Diem_TNDL3_point",
-      //     type: "circle",
-      //     source: "Diem_TNDL3_point",
-      //     layout: {},
-      //     paint: {
-      //       "circle-color": "#ff6f1e",
-      //       "circle-radius": 9,
-      //     },
-      //   });
+      map.addLayer({
+        id: "Diemtndl2_point",
+        type: "circle",
+        source: "Diemtndl2_point",
+        layout: {},
+        paint: {
+          "circle-color": "#ff6f1e",
+          "circle-radius": 9,
+        },
+      });
     });
   };
 
@@ -359,6 +359,14 @@ const TrucQuocLo = () => {
               onClick={btDiaDiemDuLich}
               defaultChecked={true}
             />
+            <div
+              style={{
+                height: 20,
+                width: 20,
+                border: "2px solid #7239ea",
+                marginRight: 8,
+              }}
+            ></div>
             <label
               htmlFor={`cumtainguyendulich2_polyline`}
               style={{
@@ -383,6 +391,15 @@ const TrucQuocLo = () => {
               onClick={btDiaDiemDuLich}
               defaultChecked={true}
             />
+            <div
+              style={{
+                height: 2,
+                width: 20,
+                backgroundColor: "#071437",
+                marginRight: 8,
+                transform: "rotate(120deg)",
+              }}
+            ></div>
             <label
               htmlFor={`Tuyendulich_2_polyline`}
               style={{
@@ -392,30 +409,39 @@ const TrucQuocLo = () => {
               Tuyến du lịch
             </label>
           </div>
-          {/* <div
-              className="d-flex align-items-center"
-              style={{ padding: "8px 12px" }}
+          <div
+            className="d-flex align-items-center"
+            style={{ padding: "8px 12px" }}
+          >
+            <input
+              type="checkbox"
+              name={`Diemtndl2_point`}
+              id={`Diemtndl2_point`}
+              value={`Diemtndl2_point`}
+              style={{
+                marginRight: 8,
+              }}
+              onClick={btDiaDiemDuLich}
+              defaultChecked={true}
+            />
+            <div
+              style={{
+                width: 20,
+                height: 20,
+                backgroundColor: "#ff6f1e",
+                marginRight: 8,
+                borderRadius: 10,
+              }}
+            ></div>
+            <label
+              htmlFor={`Diemtndl2_point`}
+              style={{
+                margin: 0,
+              }}
             >
-              <input
-                type="checkbox"
-                name={`Diem_TNDL3_point`}
-                id={`Diem_TNDL3_point`}
-                value={`Diem_TNDL3_point`}
-                style={{
-                  marginRight: 8,
-                }}
-                onClick={btDiaDiemDuLich}
-                defaultChecked={true}
-              />
-              <label
-                htmlFor={`Diem_TNDL3_point`}
-                style={{
-                  margin: 0,
-                }}
-              >
-                Điểm TNDL
-              </label>
-            </div> */}
+              Điểm TNDL
+            </label>
+          </div>
         </div>
       </section>
       {/* BreadCrumb Ends */}

@@ -77,8 +77,7 @@ const Map = () => {
           uriImg = "https://cdn-icons-png.flaticon.com/512/2510/2510482.png";
         }
         if (v.tenDanhMuc == "Du lịch khám phá") {
-          uriImg =
-            "https://iconape.com/wp-content/png_logo_vector/google-discover.png";
+          uriImg = "https://cdn-icons-png.flaticon.com/512/17657/17657453.png";
         }
         if (v.tenDanhMuc == "Du lịch sinh thái") {
           uriImg =
@@ -174,7 +173,7 @@ const Map = () => {
             console.log(feature.properties);
             map.addLayer({
               id: `poi-${feature.properties.idDanhMuc}`,
-              type: "symbol", 
+              type: "symbol",
               source: "diaDiemDuLich",
               layout: {
                 "icon-image": `img${feature.properties.idDanhMuc}`,
@@ -487,7 +486,7 @@ const Map = () => {
                       : v.tenDanhMuc == "Địa điểm tâm linh"
                       ? "https://cdn-icons-png.flaticon.com/512/2510/2510482.png"
                       : v.tenDanhMuc == "Du lịch khám phá"
-                      ? "https://iconape.com/wp-content/png_logo_vector/google-discover.png"
+                      ? "https://cdn-icons-png.flaticon.com/512/17657/17657453.png"
                       : v.tenDanhMuc == "Du lịch sinh thái"
                       ? "https://images.squarespace-cdn.com/content/v1/5b07c60a96e76f9f641cdad6/1626769467137-PUUVF03Q49KZMCVTQ1PC/Conservation.png"
                       : v.tenDanhMuc == "Du lịch nghỉ dưỡng"
