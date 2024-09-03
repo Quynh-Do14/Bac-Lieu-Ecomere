@@ -11,10 +11,12 @@ import ListSpecialty from "./page/specialty";
 import DetailSpecialty from "./page/specialty/detail";
 import ListArticle from "./page/article";
 import DetailArticle from "./page/article/view";
-import TrucCongTuBacLieu from "./components/Map/TrucCongTuBacLieu";
+import BanDo2 from "./components/Map/2";
 import TongHopDiemDiLich from "./components/Map/TongHopDiemDuLich";
-import TrucHuongBien from "./components/Map/TrucHuongBien";
-import TrucQuocLo from "./components/Map/TrucQuocLo";
+import BanDo3 from "./components/Map/3";
+import BanDo1 from "./components/Map/1";
+import BanDo5 from "./components/Map/5";
+import BanDo4 from "./components/Map/4";
 
 function App() {
   return (
@@ -41,10 +43,13 @@ function App() {
             element={<DetailSpecialty />}
           />
           <Route path="/map" element={<Map />} />
-          <Route path="/TrucCongTuBacLieu" element={<TrucCongTuBacLieu />} />
+          <Route path="/BanDo2" element={<BanDo2 />} />
           <Route path="/TongHopDiemDiLich" element={<TongHopDiemDiLich />} />
-          <Route path="/TrucHuongBien" element={<TrucHuongBien />} />
-          <Route path="/TrucQuocLo" element={<TrucQuocLo />} />
+          <Route path="/BanDo3" element={<BanDo3 />} />
+          <Route path="/BanDo1" element={<BanDo1 />} />
+          <Route path="/BanDo5" element={<BanDo5 />} />
+          <Route path="/BanDo4" element={<BanDo4 />} />
+
         </Routes>
       </BrowserRouter>
     </div>

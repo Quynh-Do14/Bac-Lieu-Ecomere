@@ -35,12 +35,12 @@ export default class Constants {
       // },
       {
         label: "Bản đồ",
-        link: ROUTE_PATH.LAYOUT_MAP,
+        link: '/TongHopDiemDiLich',
         children: [
           {
             id: 1,
-            label: "Bản đồ trục công tử Bạc Liêu",
-            link: `/TrucCongTuBacLieu`,
+            label: "Bản đồ ven biển thành phố Bạc Liêu",
+            link: `/BanDo2`,
           },
           {
             id: 2,
@@ -49,13 +49,23 @@ export default class Constants {
           },    
           {
             id: 3,
-            label: "Bản đồ trục hướng biển",
-            link: `/TrucHuongBien`,
+            label: "Bản đồ vành đai sinh thái ven biển",
+            link: `/BanDo3`,
           },
           {
             id: 4,
-            label: "Bản đồ trục quốc lộ",
-            link: `/TrucQuocLo`,
+            label: "Bản đồ trung tâm thành phố Bạc Liêu",
+            link: `/BanDo1`,
+          },
+          {
+            id: 5,
+            label: "Bản đồ Vinh Loi - Hong Dan - Phuoc Long",
+            link: `/BanDo5`,
+          },
+          {
+            id: 6,
+            label: "Bản đồ Hoa Binh - Gia Rai - Dong Hai",
+            link: `/BanDo4`,
           },
         ],
       },

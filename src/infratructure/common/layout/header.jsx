@@ -64,23 +64,7 @@ const HeaderPage = () => {
       <>
         <div
           class="header_sidemenu pointer bg-white p-2"
-          style={{ borderBottom: '1px solid #999' }}
-        >
-          <span className="auth-title">
-            <a href={`/map`}>Bản đồ du lịch tỉnh Bạc Liêu </a>
-          </span>
-        </div>
-        <div
-          class="header_sidemenu pointer bg-white p-2"
-          style={{ borderBottom: '1px solid #999' }}
-        >
-          <span className="auth-title">
-            <a href={`/TrucCongTuBacLieu`}>Bản đồ trục công tử Bạc Liêu </a>
-          </span>
-        </div>
-        <div
-          class="header_sidemenu pointer bg-white p-2"
-          style={{ borderBottom: '1px solid #999' }}
+          style={{ borderBottom: "1px solid #999" }}
         >
           <span className="auth-title">
             <a href={`/TongHopDiemDiLich`}>Bản đồ tổng hợp điểm du lịch </a>
@@ -88,18 +72,53 @@ const HeaderPage = () => {
         </div>
         <div
           class="header_sidemenu pointer bg-white p-2"
-          style={{ borderBottom: '1px solid #999' }}
+          style={{ borderBottom: "1px solid #999" }}
         >
           <span className="auth-title">
-            <a href={`/TrucHuongBien`}>Bản đồ trục hướng biển </a>
+            <a href={`/BanDo1`}>Bản đồ trung tâm thành phố Bạc Liêu </a>
           </span>
         </div>
         <div
           class="header_sidemenu pointer bg-white p-2"
-          style={{ borderBottom: '1px solid #999' }}
+          style={{ borderBottom: "1px solid #999" }}
         >
           <span className="auth-title">
-            <a href={`/TrucQuocLo`}>Bản đồ trục quốc lộ </a>
+            <a href={`/BanDo2`}>Bản đồ ven biển thành phố Bạc Liêu </a>
+          </span>
+        </div>
+
+        <div
+          class="header_sidemenu pointer bg-white p-2"
+          style={{ borderBottom: "1px solid #999" }}
+        >
+          <span className="auth-title">
+            <a href={`/BanDo3`}>Bản đồ vành đai sinh thái ven biển </a>
+          </span>
+        </div>
+
+        <div
+          class="header_sidemenu pointer bg-white p-2"
+          style={{ borderBottom: "1px solid #999" }}
+        >
+          <span className="auth-title">
+            <a href={`/BanDo4`}>Bản đồ Hoa Binh - Gia Rai - Dong Hai</a>
+          </span>
+        </div>
+        <div
+          class="header_sidemenu pointer bg-white p-2"
+          style={{ borderBottom: "1px solid #999" }}
+        >
+          <span className="auth-title">
+            <a href={`/BanDo5`}>Bản đồ Vinh Loi - Hong Dan - Phuoc Long </a>
+          </span>
+        </div>
+
+        <div
+          class="header_sidemenu pointer bg-white p-2"
+          style={{ borderBottom: "1px solid #999" }}
+        >
+          <span className="auth-title">
+            <a href={`/map`}>Bản đồ du lịch tỉnh Bạc Liêu </a>
           </span>
         </div>
       </>
@@ -140,11 +159,7 @@ const HeaderPage = () => {
                         key={index}
                       >
                         {it.children ? (
-                          <Dropdown
-                            overlay={ItemMenu}
-                            placement="bottomLeft"
-                            
-                          >
+                          <Dropdown overlay={ItemMenu} placement="bottomLeft">
                             <span class="menu-ham">
                               <a
                                 href={it.link}

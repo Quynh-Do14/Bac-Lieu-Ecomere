@@ -31,6 +31,10 @@ const api = {
     ),
 
   ////// map
+  getGeoJson: (uri) =>
+    requestDuong.get(
+      `${uri}`
+    ),
   getDiaDiemGeometry: (params) =>
     requestDuong.get(
       `${apiLinks.API}${Endpoint.Module.DiaDiem}/geometry?${params}`

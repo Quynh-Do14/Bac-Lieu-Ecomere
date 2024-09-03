@@ -20,7 +20,7 @@ function getRandomValueFromArray(arr) {
   return arr[randomIndex];
 }
 
-const TongHopDiemDiLich = () => {
+const BanDo5 = () => {
   const mapContainer = useRef(null);
   const navigate = useNavigate();
 
@@ -40,13 +40,13 @@ const TongHopDiemDiLich = () => {
   const fecthData = async () => {
     // document.getElementById("map").scrollIntoView()
     const resgetGeoJson = await api.getGeoJson(
-      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=th_diem_du_lich`
+      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=diem_dl_5`
     );
-    setDsDiaDiemGeoJson(resgetGeoJson)
+    setDsDiaDiemGeoJson(resgetGeoJson);
     let map = new mapboxgl.Map({
       container: mapContainer.current,
-      zoom: 9,
-      center: [105.3240641, 9.3102405],
+      zoom: 10.630417677054728 ,
+      center: [105.53098052284588, 9.455424591260225],
       style: "mapbox://styles/mapbox/streets-v12",
     });
 
@@ -89,46 +89,75 @@ const TongHopDiemDiLich = () => {
           "line-width": 6,
         },
       });
+      //   map.addSource("ranhGioiHuyen", {
+      //     type: "geojson",
+      //     data: `http://103.130.212.145:42319/api/quanHuyen/ranhGioiHuyen`,
+      //   });
+      //   map.addLayer({
+      //     id: "ranhGioiHuyen",
+      //     type: "fill",
+      //     source: "ranhGioiHuyen",
+      //     layout: {},
+      //     paint: {
+      //       "fill-color": "#50cd89",
+      //       "fill-opacity": 0.0,
+      //     },
+      //   });
 
-      map.addSource("ranhGioiHuyen", {
+      //   map.addLayer({
+      //     id: "outline-ranhGioiHuyen",
+      //     type: "line",
+      //     source: "ranhGioiHuyen",
+      //     layout: {},
+      //     paint: {
+      //       "line-color": "#50cd89",
+      //       "line-width": 2,
+      //     },
+      //   });
+
+      map.addSource("Cum_TNDL_tinh_BacLieu_5_polyline", {
         type: "geojson",
-        data: `http://103.130.212.145:42319/api/quanHuyen/ranhGioiHuyen`,
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=Cum_TNDL_tinh_BacLieu_5_polyline`,
+      });
+
+      map.addLayer({
+        id: "Cum_TNDL_tinh_BacLieu_5_polyline",
+        type: "line",
+        source: "Cum_TNDL_tinh_BacLieu_5_polyline",
+        layout: {},
+        paint: {
+          "line-color": "#ff6f1e",
+          "line-width": 4,
+        },
+      });
+
+      map.addSource("tuyen_dl_5", {
+        type: "geojson",
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tuyen_dl_5`,
+      });
+
+      map.addLayer({
+        id: "tuyen_dl_5",
+        type: "line",
+        source: "tuyen_dl_5",
+        layout: {},
+        paint: {
+          "line-color": "#546e7a",
+          "line-width": 2,
+        },
+      });
+
+      map.addSource("tuyen_du_lich5_region", {
+        type: "geojson",
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tuyen_du_lich5_region`,
       });
       map.addLayer({
-        id: "ranhGioiHuyen",
+        id: "tuyen_du_lich5_region",
         type: "fill",
-        source: "ranhGioiHuyen",
+        source: "tuyen_du_lich5_region",
         layout: {},
         paint: {
-          "fill-color": "#50cd89",
-          "fill-opacity": 0.0,
-        },
-      });
-
-      map.addLayer({
-        id: "outline-ranhGioiHuyen",
-        type: "line",
-        source: "ranhGioiHuyen",
-        layout: {},
-        paint: {
-          "line-color": "#50cd89",
-          "line-width": 2,
-        },
-      });
-
-      map.addSource("Cum_TNDL_tinh_BacLieu_polyline", {
-        type: "geojson",
-        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=Cum_TNDL_tinh_BacLieu_polyline`,
-      });
-
-      map.addLayer({
-        id: "Cum_TNDL_tinh_BacLieu_polyline",
-        type: "line",
-        source: "Cum_TNDL_tinh_BacLieu_polyline",
-        layout: {},
-        paint: {
-          "line-color": "#1b84ff",
-          "line-width": 2,
+          "fill-color": "#546e7a",
         },
       });
 
@@ -188,15 +217,15 @@ const TongHopDiemDiLich = () => {
         }
       );
 
-      map.addSource("th_diem_du_lich", {
+      map.addSource("diem_dl_5", {
         type: "geojson",
-        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=th_diem_du_lich`,
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=diem_dl_5`,
       });
 
       map.addLayer({
-        id: "th_diem_du_lichkp",
+        id: "diem_dl_5kp",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "diem_dl_5",
         layout: {
           "icon-image": "dongmuoi",
           "icon-size": 0.25,
@@ -214,9 +243,9 @@ const TongHopDiemDiLich = () => {
       });
 
       map.addLayer({
-        id: "th_diem_du_lichls",
+        id: "diem_dl_5ls",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "diem_dl_5",
         layout: {
           "icon-image": "lichsuvanhoa",
           "icon-size": 0.25,
@@ -232,15 +261,15 @@ const TongHopDiemDiLich = () => {
         },
         filter: [
           "==",
-          ["get", "kieutndl"],
-          "khu di tích lịch sử văn hoá và cách mạng (ls)",
+          ["get", "kieu_tndl"],
+          "Ls",
         ],
       });
 
       map.addLayer({
-        id: "th_diem_du_lichtn",
+        id: "diem_dl_5tn",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "diem_dl_5",
         layout: {
           "icon-image": "baotonthien",
           "icon-size": 0.25,
@@ -254,13 +283,13 @@ const TongHopDiemDiLich = () => {
           "text-halo-color": "#fff",
           "text-halo-width": 2,
         },
-        filter: ["==", ["get", "kieutndl"], "khu bảo tồn thiên nhiên (tn)"],
+        filter: ["==", ["get", "kieu_tndl"], "Tn"],
       });
 
       map.addLayer({
-        id: "th_diem_du_lichdg",
+        id: "diem_dl_5dg",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "diem_dl_5",
         layout: {
           "icon-image": "diengio",
           "icon-size": 0.25,
@@ -278,9 +307,9 @@ const TongHopDiemDiLich = () => {
       });
 
       map.addLayer({
-        id: "th_diem_du_lichcq",
+        id: "diem_dl_5cq",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "diem_dl_5",
         layout: {
           "icon-image": "canhquan",
           "icon-size": 0.25,
@@ -296,15 +325,15 @@ const TongHopDiemDiLich = () => {
         },
         filter: [
           "==",
-          ["get", "kieutndl"],
-          "khu du lịch sinh thái, cảnh quan đẹp (cq)",
+          ["get", "kieu_tndl"],
+          "Cq",
         ],
       });
 
       map.addLayer({
-        id: "th_diem_du_lichkt",
+        id: "diem_dl_5kt",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "diem_dl_5",
         layout: {
           "icon-image": "kientruc",
           "icon-size": 0.25,
@@ -320,15 +349,15 @@ const TongHopDiemDiLich = () => {
         },
         filter: [
           "==",
-          ["get", "kieutndl"],
-          "khu di tích kiến trúc, nghệ thuật (kt)",
+          ["get", "kieu_tndl"],
+          "Kt",
         ],
       });
 
       map.addLayer({
-        id: "th_diem_du_lichnk",
+        id: "diem_dl_5nk",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "diem_dl_5",
         layout: {
           "icon-image": "nuocnong",
           "icon-size": 0.25,
@@ -342,23 +371,65 @@ const TongHopDiemDiLich = () => {
           "text-halo-color": "#fff",
           "text-halo-width": 2,
         },
-        filter: ["==", ["get", "kieutndl"], "nguồn nước khoáng nóng (nk)"],
+        filter: ["==", ["get", "kieu_tndl"], "Nk"],
       });
 
       map.on(
         "click",
         [
-          `th_diem_du_lichkp`,
-          "th_diem_du_lichls",
-          "th_diem_du_lichtn",
-          "th_diem_du_lichdg",
-          "th_diem_du_lichcq",
-          "th_diem_du_lichkt",
-          "th_diem_du_lichnk",
+          `diem_dl_5kp`,
+          "diem_dl_5ls",
+          "diem_dl_5tn",
+          "diem_dl_5dg",
+          "diem_dl_5cq",
+          "diem_dl_5kt",
+          "diem_dl_5nk",
+          "tuyen_dl_5",
         ],
         (e) => {
-          const coordinates = e.features[0].geometry.coordinates.slice();
-          const html = `<div>
+          console.log(e);
+          if (e.features[0].source == "tuyen_dl_5") {
+            const coordinates = [e.lngLat.lng, e.lngLat.lat];
+            const html = `
+        <div style="
+            padding: 20px;
+        ">
+        <p style="
+          color: #d32f2f;
+          font-size: 11px;
+          text-transform: uppercase;
+      ">${e.features[0].properties.tuyen_du_l}</p>
+            <p style="
+    width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #333;
+">${e.features[0].properties.chu_de_chi}</p>
+        </div>
+    `;
+
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+
+            map.flyTo({
+              center: coordinates,
+              essential: true,
+              duration: 1000,
+            });
+
+            new mapboxgl.Popup()
+              .setLngLat(coordinates)
+              .setHTML(html)
+              .addTo(map);
+          } else {
+            const coordinates = e.features[0].geometry.coordinates;
+            const html = `<div>
           <img src="${`http://103.130.212.145:42319/api/public/anh/${e.features[0].properties.tt}.jpg`}" alt="" style="min-width: 280px;min-height: 120px;">
         <div style="
             padding: 20px;
@@ -393,31 +464,36 @@ const TongHopDiemDiLich = () => {
         </div>
     </div>`;
 
-          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+
+            map.flyTo({
+              center: coordinates,
+              essential: true,
+              duration: 1000,
+            });
+
+            new mapboxgl.Popup()
+              .setLngLat(coordinates)
+              .setHTML(html)
+              .addTo(map);
           }
-
-          map.flyTo({
-            center: e.features[0].geometry.coordinates,
-            essential: true,
-            duration: 1000,
-          });
-
-          new mapboxgl.Popup().setLngLat(coordinates).setHTML(html).addTo(map);
         }
       );
 
       map.on(
         "mouseenter",
         [
-          `th_diem_du_lichkp`,
-          "th_diem_du_lichls",
-          "th_diem_du_lichtn",
-          "th_diem_du_lichdg",
-          "th_diem_du_lichcq",
-          "th_diem_du_lichkt",
-          "th_diem_du_lichnk",
-          "th_diem_du_lichk",
+          `diem_dl_5kp`,
+          "diem_dl_5ls",
+          "diem_dl_5tn",
+          "diem_dl_5dg",
+          "diem_dl_5cq",
+          "diem_dl_5kt",
+          "diem_dl_5nk",
+          "diem_dl_5k",
+          'tuyen_dl_5'
         ],
         () => {
           map.getCanvas().style.cursor = "pointer";
@@ -427,14 +503,15 @@ const TongHopDiemDiLich = () => {
       map.on(
         "mouseleave",
         [
-          `th_diem_du_lichkp`,
-          "th_diem_du_lichls",
-          "th_diem_du_lichtn",
-          "th_diem_du_lichdg",
-          "th_diem_du_lichcq",
-          "th_diem_du_lichkt",
-          "th_diem_du_lichnk",
-          "th_diem_du_lichk",
+          `diem_dl_5kp`,
+          "diem_dl_5ls",
+          "diem_dl_5tn",
+          "diem_dl_5dg",
+          "diem_dl_5cq",
+          "diem_dl_5kt",
+          "diem_dl_5nk",
+          "diem_dl_5k",
+          'tuyen_dl_5'
         ],
         () => {
           map.getCanvas().style.cursor = "";
@@ -627,9 +704,9 @@ const TongHopDiemDiLich = () => {
           >
             <input
               type="checkbox"
-              name={`Cum_TNDL_tinh_BacLieu_polyline`}
-              id={`Cum_TNDL_tinh_BacLieu_polyline`}
-              value={`Cum_TNDL_tinh_BacLieu_polyline`}
+              name={`Cum_TNDL_tinh_BacLieu_5_polyline`}
+              id={`Cum_TNDL_tinh_BacLieu_5_polyline`}
+              value={`Cum_TNDL_tinh_BacLieu_5_polyline`}
               style={{
                 marginRight: 8,
               }}
@@ -640,12 +717,12 @@ const TongHopDiemDiLich = () => {
               style={{
                 width: 25,
                 height: 25,
-                border: "2px solid #1b84ff",
+                border: "2px solid #ff6f1e",
                 marginRight: 8,
               }}
             ></div>
             <label
-              htmlFor={`Cum_TNDL_tinh_BacLieu_polyline`}
+              htmlFor={`Cum_TNDL_tinh_BacLieu_5_polyline`}
               style={{
                 margin: 0,
               }}
@@ -659,49 +736,50 @@ const TongHopDiemDiLich = () => {
           >
             <input
               type="checkbox"
-              name={`th_diem_du_lichkp`}
-              id={`th_diem_du_lichkp`}
-              value={`th_diem_du_lichkp`}
+              name={`tuyen_dl_5`}
+              id={`tuyen_dl_5`}
+              value={`tuyen_dl_5`}
               style={{
                 marginRight: 8,
               }}
               onClick={btDiaDiemDuLich}
               defaultChecked={true}
             />
-           <img
+            <div
               style={{
+                height: 2,
                 width: 25,
-                height: 25,
+                backgroundColor: "#546e7a",
                 marginRight: 8,
+                transform: "rotate(120deg)",
               }}
-              src={"https://cdn-icons-png.flaticon.com/128/3193/3193443.png"}
-              alt=""
-            />
+            ></div>
             <label
-              htmlFor={`th_diem_du_lichkp`}
+              htmlFor={`tuyen_dl_5`}
               style={{
                 margin: 0,
               }}
             >
-              Cánh đồng muối
+              Tuyến du lịch
             </label>
           </div>
+          
           <div
             className="d-flex align-items-center"
             style={{ padding: "8px 12px" }}
           >
             <input
               type="checkbox"
-              name={`th_diem_du_lichls`}
-              id={`th_diem_du_lichls`}
-              value={`th_diem_du_lichls`}
+              name={`diem_dl_5ls`}
+              id={`diem_dl_5ls`}
+              value={`diem_dl_5ls`}
               style={{
                 marginRight: 8,
               }}
               onClick={btDiaDiemDuLich}
               defaultChecked={true}
             />
-           <img
+            <img
               style={{
                 width: 25,
                 height: 25,
@@ -711,7 +789,7 @@ const TongHopDiemDiLich = () => {
               alt=""
             />
             <label
-              htmlFor={`th_diem_du_lichls`}
+              htmlFor={`diem_dl_5ls`}
               style={{
                 margin: 0,
               }}
@@ -725,42 +803,9 @@ const TongHopDiemDiLich = () => {
           >
             <input
               type="checkbox"
-              name={`th_diem_du_lichtn`}
-              id={`th_diem_du_lichtn`}
-              value={`th_diem_du_lichtn`}
-              style={{
-                marginRight: 8,
-              }}
-              onClick={btDiaDiemDuLich}
-              defaultChecked={true}
-            />
-           <img
-              style={{
-                width: 25,
-                height: 25,
-                marginRight: 8,
-              }}
-              src={"https://cdn-icons-png.flaticon.com/128/15052/15052824.png"}
-              alt=""
-            />
-            <label
-              htmlFor={`th_diem_du_lichtn`}
-              style={{
-                margin: 0,
-              }}
-            >
-              Khu bảo tồn thiên nhiên
-            </label>
-          </div>
-          <div
-            className="d-flex align-items-center"
-            style={{ padding: "8px 12px" }}
-          >
-            <input
-              type="checkbox"
-              name={`th_diem_du_lichdg`}
-              id={`th_diem_du_lichdg`}
-              value={`th_diem_du_lichdg`}
+              name={`diem_dl_5tn`}
+              id={`diem_dl_5tn`}
+              value={`diem_dl_5tn`}
               style={{
                 marginRight: 8,
               }}
@@ -773,27 +818,28 @@ const TongHopDiemDiLich = () => {
                 height: 25,
                 marginRight: 8,
               }}
-              src={"https://cdn-icons-png.flaticon.com/128/5223/5223040.png"}
+              src={"https://cdn-icons-png.flaticon.com/128/15052/15052824.png"}
               alt=""
             />
             <label
-              htmlFor={`th_diem_du_lichdg`}
+              htmlFor={`diem_dl_5tn`}
               style={{
                 margin: 0,
               }}
             >
-              Cánh đồng điện gió
+              Khu bảo tồn thiên nhiên
             </label>
           </div>
+          
           <div
             className="d-flex align-items-center"
             style={{ padding: "8px 12px" }}
           >
             <input
               type="checkbox"
-              name={`th_diem_du_lichcq`}
-              id={`th_diem_du_lichcq`}
-              value={`th_diem_du_lichcq`}
+              name={`diem_dl_5cq`}
+              id={`diem_dl_5cq`}
+              value={`diem_dl_5cq`}
               style={{
                 marginRight: 8,
               }}
@@ -810,7 +856,7 @@ const TongHopDiemDiLich = () => {
               alt=""
             />
             <label
-              htmlFor={`th_diem_du_lichcq`}
+              htmlFor={`diem_dl_5cq`}
               style={{
                 margin: 0,
               }}
@@ -824,16 +870,16 @@ const TongHopDiemDiLich = () => {
           >
             <input
               type="checkbox"
-              name={`th_diem_du_lichkt`}
-              id={`th_diem_du_lichkt`}
-              value={`th_diem_du_lichkt`}
+              name={`diem_dl_5kt`}
+              id={`diem_dl_5kt`}
+              value={`diem_dl_5kt`}
               style={{
                 marginRight: 8,
               }}
               onClick={btDiaDiemDuLich}
               defaultChecked={true}
             />
-           <img
+            <img
               style={{
                 width: 25,
                 height: 25,
@@ -843,7 +889,7 @@ const TongHopDiemDiLich = () => {
               alt=""
             />
             <label
-              htmlFor={`th_diem_du_lichkt`}
+              htmlFor={`diem_dl_5kt`}
               style={{
                 margin: 0,
               }}
@@ -857,9 +903,9 @@ const TongHopDiemDiLich = () => {
           >
             <input
               type="checkbox"
-              name={`th_diem_du_lichnk`}
-              id={`th_diem_du_lichnk`}
-              value={`th_diem_du_lichnk`}
+              name={`diem_dl_5nk`}
+              id={`diem_dl_5nk`}
+              value={`diem_dl_5nk`}
               style={{
                 marginRight: 8,
               }}
@@ -876,7 +922,7 @@ const TongHopDiemDiLich = () => {
               alt=""
             />
             <label
-              htmlFor={`th_diem_du_lichnk`}
+              htmlFor={`diem_dl_5nk`}
               style={{
                 margin: 0,
               }}
@@ -972,4 +1018,4 @@ const TongHopDiemDiLich = () => {
   );
 };
 
-export default TongHopDiemDiLich;
+export default BanDo5;
