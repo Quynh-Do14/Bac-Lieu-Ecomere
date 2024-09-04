@@ -32,12 +32,63 @@ const BanDo4 = () => {
   const [dsDiaDiemTuLichTrinh, setDsDiaDiemTuLichTrinh] = useState([]);
   const [lichTrinh, setLichTrinh] = useState({});
 
-  const onNavigate = (id) => {
-    // navigate(`${(ROUTE_PATH.VIEW_DESTINATION).replace(`${Constants.UseParams.Id}`, "")}${id}`);
-    navigate(`${ROUTE_PATH.VIEW_DESTINATION}?${id}`);
+  const [dsLichTrinh, setDsLichTrinh] = useState([]);
+  const openLichTrinh = (lichTrinh) => {
+    var arrcenter = [];
+    lichTrinh.geometry.coordinates.map((v) => {
+      var a = [];
+      v.map((val) => {
+        var vo = val.filter((va) => va != 0);
+        a.push(vo);
+      });
+      
+      var features = turf.points(a);
+      
+      var center = turf.center(features);
+      arrcenter.push(center.geometry.coordinates);
+    });
+    
+    var features = turf.points(arrcenter);
+    var center = turf.center(features);
+    const coordinates = center.geometry.coordinates;
+    const html = `
+        <div style="
+            padding: 20px;
+        ">
+        <p style="
+          color: #d32f2f;
+          font-size: 11px;
+          text-transform: uppercase;
+      ">${lichTrinh.properties.tuyen_du_l}</p>
+            <p style="
+    width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #333;
+">${lichTrinh.properties.chu_de_chi}</p>
+        </div>
+    `;
+
+    map.flyTo({
+      center: coordinates,
+      essential: true,
+      duration: 1000,
+      zoom:12
+    });
+
+    new mapboxgl.Popup().setLngLat(coordinates).setHTML(html).addTo(map);
   };
 
   const fecthData = async () => {
+    const resgetGeoJsonLichTrinh = await api.getGeoJson(
+      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tuyen_dl_1`
+    );
+    setDsLichTrinh(resgetGeoJsonLichTrinh.features);
     // document.getElementById("map").scrollIntoView()
     const resgetGeoJson = await api.getGeoJson(
       `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=diem_dl_4`
@@ -579,53 +630,7 @@ const BanDo4 = () => {
       .addTo(map);
   };
 
-  const openLichTrinh = (lichTrinh) => {
-    setLichTrinh(lichTrinh);
-    setDsDiaDiemTuLichTrinh(lichTrinh.danhSachDiaDiem);
-    map.setZoom(11);
-    if (map.getLayer("lichTrinh")) {
-      // Layer tồn tại, có thể xoá nó ở đây
-      map.removeLayer("lichTrinh");
-    }
-    if (map.getSource("lichTrinh")) {
-      // Source tồn tại, có thể xoá nó ở đây
-      map.removeSource("lichTrinh");
-    }
 
-    map.addSource("lichTrinh", {
-      type: "geojson",
-      data: {
-        type: "FeatureCollection",
-        features: [
-          {
-            type: "Feature",
-            properties: {},
-            geometry: lichTrinh.geometry,
-          },
-        ],
-      },
-    });
-
-    map.addLayer({
-      id: "lichTrinh",
-      type: "line",
-      source: "lichTrinh",
-      layout: {},
-      paint: {
-        "line-color": "#3e97ff",
-        "line-width": 9,
-      },
-    });
-
-    var features = turf.points(lichTrinh.geometry.coordinates);
-    var center = turf.center(features);
-
-    map.flyTo({
-      center: center.geometry.coordinates,
-      essential: true,
-      duration: 1000,
-    });
-  };
 
   return (
     <>
@@ -1021,6 +1026,111 @@ const BanDo4 = () => {
             </div>
           )}
         </div>
+        {dsLichTrinh.length > 0 && (
+          <div
+            style={{
+              position: "absolute",
+              bottom: 12,
+              left: 12,
+              right: 12,
+              maxHeight: 250,
+              boxShadow: `0px 0px 10px rgba(0, 0, 0, 0.2)`,
+              backgroundColor: "#fff",
+            }}
+          >
+            <p
+              style={{
+                margin: 0,
+                fontSize: 14,
+                fontWeight: 500,
+                paddingLeft: 16,
+                paddingTop: 8,
+                color: "#071437",
+              }}
+            >
+              Gợi ý lịch trình
+            </p>
+            <div
+              id="style-6"
+              className="d-flex flex-row"
+              style={{
+                overflow: "hidden",
+                overflowX: "auto",
+                paddingTop: 12,
+                paddingBottom: 12,
+                marginLeft: 12,
+                marginRight: 12,
+              }}
+            >
+              {dsLichTrinh.map((v, k) => (
+                <div
+                  className="detailLichTrinh"
+                  onClick={() => openLichTrinh(v)}
+                  key={k}
+                  style={{
+                    padding: 12,
+                    border: "1px solid #3e97ff",
+                    borderRadius: 10,
+                    borderStyle: "dashed",
+                    marginRight: 12,
+                    width: 380,
+                    flexDirection: "row",
+                    alignItems: "center",
+                    display: "flex",
+                  }}
+                >
+                  <div
+                    className="d-flex align-items-center justify-content-center"
+                    style={{
+                      width: 50,
+                      height: 50,
+                      borderRadius: 5,
+                      backgroundColor: "#f1faff",
+                      marginRight: 16,
+                    }}
+                  >
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/7291/7291475.png"
+                      alt=""
+                      style={{
+                        height: 30,
+                      }}
+                    />
+                  </div>
+                  <div className="d-flex flex-column" style={{ width: 306 }}>
+                    <p
+                      style={{
+                        fontSize: 14,
+                        fontWeight: 500,
+                        color: "#071437",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {v.properties.tuyen_du_l}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: 13,
+                        fontWeight: 300,
+                        color: "#99a1b7",
+                        margin: 0,
+                        display: "-webkit-box",
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {v.properties.chu_de_chi}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
       {/* BreadCrumb Ends */}
     </>

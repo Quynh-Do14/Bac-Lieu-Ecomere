@@ -141,7 +141,7 @@ const BannerCommon = () => {
     // </div>
     <Carousel showStatus={false} showThumbs={false}>
       <div>
-        <img src={slide} style={{ objectFit: "cover" }} alt="" />
+        <img src={slide1} style={{ objectFit: "cover" }} alt="" />
         <div className="overlay-custom" />
       </div>
       {/* <div>
