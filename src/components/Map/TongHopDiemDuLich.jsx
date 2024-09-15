@@ -619,7 +619,7 @@ const TongHopDiemDiLich = () => {
               margin: "0px 12px",
             }}
           >
-            Lớp bản đồ
+            Bản đồ tổng hợp điểm du lịch
           </p>
           <div
             className="d-flex align-items-center"

@@ -34,6 +34,10 @@ const BanDo4 = () => {
 
   const [dsLichTrinh, setDsLichTrinh] = useState([]);
   const openLichTrinh = (lichTrinh) => {
+    const popup = document.getElementsByClassName("mapboxgl-popup");
+    if (popup.length) {
+      popup[0].remove();
+    }
     var arrcenter = [];
     lichTrinh.geometry.coordinates.map((v) => {
       var a = [];
@@ -678,7 +682,7 @@ const BanDo4 = () => {
               margin: "0px 12px",
             }}
           >
-            Lớp bản đồ
+            Bản đồ Hoa Binh - Gia Rai - Dong Hai
           </p>
           <div
             className="d-flex align-items-center"

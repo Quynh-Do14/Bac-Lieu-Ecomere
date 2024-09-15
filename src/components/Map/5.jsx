@@ -34,6 +34,10 @@ const BanDo5 = () => {
 
   const [dsLichTrinh, setDsLichTrinh] = useState([]);
   const openLichTrinh = (lichTrinh) => {
+    const popup = document.getElementsByClassName("mapboxgl-popup");
+    if (popup.length) {
+      popup[0].remove();
+    }
     var arrcenter = [];
     lichTrinh.geometry.coordinates.map((v) => {
       var a = [];
@@ -426,7 +430,6 @@ const BanDo5 = () => {
           "tuyen_dl_5",
         ],
         (e) => {
-          console.log(e);
           if (e.features[0].source == "tuyen_dl_5") {
             const coordinates = [e.lngLat.lng, e.lngLat.lat];
             const html = `
@@ -687,7 +690,7 @@ const BanDo5 = () => {
               margin: "0px 12px",
             }}
           >
-            Lớp bản đồ
+            Bản đồ Vinh Loi - Hong Dan - Phuoc Long
           </p>
           <div
             className="d-flex align-items-center"

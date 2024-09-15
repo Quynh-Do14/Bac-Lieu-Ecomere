@@ -355,6 +355,10 @@ const Map = () => {
   };
 
   const openLichTrinh = (lichTrinh) => {
+    // const popup = document.getElementsByClassName("mapboxgl-popup");
+    // if (popup.length) {
+    //   popup[0].remove();
+    // }
     setLichTrinh(lichTrinh);
     setDsDiaDiemTuLichTrinh(lichTrinh.danhSachDiaDiem);
     map.setZoom(11);

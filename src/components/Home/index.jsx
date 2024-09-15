@@ -77,7 +77,7 @@ const Home = () => {
                 <div className="slide-inner">
                   <div
                     className="slide-image"
-                    style={{ backgroundImage: "url(images/slider/slide1.png)" }}
+                    style={{ backgroundImage: "url(images/slider/slide.png)" }}
                   />
                   <div className="swiper-content container">
                     <h4 className="blue">Bạc liêu, vùng đất tuyệt vời !</h4>

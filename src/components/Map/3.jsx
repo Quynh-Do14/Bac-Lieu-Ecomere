@@ -33,6 +33,10 @@ const BanDo3 = () => {
   const [lichTrinh, setLichTrinh] = useState({});
   const [dsLichTrinh, setDsLichTrinh] = useState([]);
   const openLichTrinh = (lichTrinh) => {
+    const popup = document.getElementsByClassName("mapboxgl-popup");
+    if (popup.length) {
+      popup[0].remove();
+    }
     var arrcenter = [];
     lichTrinh.geometry.coordinates.map((v) => {
       var a = [];
@@ -661,7 +665,7 @@ const BanDo3 = () => {
               margin: "0px 12px",
             }}
           >
-            Lớp bản đồ
+            Bản đồ vành đai sinh thái ven biển
           </p>
           <div
             className="d-flex align-items-center"
