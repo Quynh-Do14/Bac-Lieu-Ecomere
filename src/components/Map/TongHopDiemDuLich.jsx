@@ -40,7 +40,7 @@ const TongHopDiemDiLich = () => {
   const fecthData = async () => {
     // document.getElementById("map").scrollIntoView()
     const resgetGeoJson = await api.getGeoJson(
-      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=th_diem_du_lich`
+      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=font_th_diem_dl`
     );
     setDsDiaDiemGeoJson(resgetGeoJson)
     let map = new mapboxgl.Map({
@@ -188,15 +188,15 @@ const TongHopDiemDiLich = () => {
         }
       );
 
-      map.addSource("th_diem_du_lich", {
+      map.addSource("font_th_diem_dl", {
         type: "geojson",
-        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=th_diem_du_lich`,
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=font_th_diem_dl`,
       });
 
       map.addLayer({
-        id: "th_diem_du_lichkp",
+        id: "font_th_diem_dlkp",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "font_th_diem_dl",
         layout: {
           "icon-image": "dongmuoi",
           "icon-size": 0.25,
@@ -210,13 +210,13 @@ const TongHopDiemDiLich = () => {
           "text-halo-color": "#fff",
           "text-halo-width": 2,
         },
-        filter: ["==", ["get", "kieutndl"], "cánh đồng muối (kp)"],
+        filter: ["==", ["get", "kieu_tndl"], "Kp"],
       });
 
       map.addLayer({
-        id: "th_diem_du_lichls",
+        id: "font_th_diem_dlls",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "font_th_diem_dl",
         layout: {
           "icon-image": "lichsuvanhoa",
           "icon-size": 0.25,
@@ -232,15 +232,15 @@ const TongHopDiemDiLich = () => {
         },
         filter: [
           "==",
-          ["get", "kieutndl"],
-          "khu di tích lịch sử văn hoá và cách mạng (ls)",
+          ["get", "kieu_tndl"],
+          "Ls",
         ],
       });
 
       map.addLayer({
-        id: "th_diem_du_lichtn",
+        id: "font_th_diem_dltn",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "font_th_diem_dl",
         layout: {
           "icon-image": "baotonthien",
           "icon-size": 0.25,
@@ -254,13 +254,13 @@ const TongHopDiemDiLich = () => {
           "text-halo-color": "#fff",
           "text-halo-width": 2,
         },
-        filter: ["==", ["get", "kieutndl"], "khu bảo tồn thiên nhiên (tn)"],
+        filter: ["==", ["get", "kieu_tndl"], "Tn"],
       });
 
       map.addLayer({
-        id: "th_diem_du_lichdg",
+        id: "font_th_diem_dldg",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "font_th_diem_dl",
         layout: {
           "icon-image": "diengio",
           "icon-size": 0.25,
@@ -274,13 +274,13 @@ const TongHopDiemDiLich = () => {
           "text-halo-color": "#fff",
           "text-halo-width": 2,
         },
-        filter: ["==", ["get", "kieutndl"], "cánh đồng điện gió (dg)"],
+        filter: ["==", ["get", "kieu_tndl"], "Đg"],
       });
 
       map.addLayer({
-        id: "th_diem_du_lichcq",
+        id: "font_th_diem_dlcq",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "font_th_diem_dl",
         layout: {
           "icon-image": "canhquan",
           "icon-size": 0.25,
@@ -296,15 +296,15 @@ const TongHopDiemDiLich = () => {
         },
         filter: [
           "==",
-          ["get", "kieutndl"],
-          "khu du lịch sinh thái, cảnh quan đẹp (cq)",
+          ["get", "kieu_tndl"],
+          "Cq",
         ],
       });
 
       map.addLayer({
-        id: "th_diem_du_lichkt",
+        id: "font_th_diem_dlkt",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "font_th_diem_dl",
         layout: {
           "icon-image": "kientruc",
           "icon-size": 0.25,
@@ -320,15 +320,15 @@ const TongHopDiemDiLich = () => {
         },
         filter: [
           "==",
-          ["get", "kieutndl"],
-          "khu di tích kiến trúc, nghệ thuật (kt)",
+          ["get", "kieu_tndl"],
+          "Kt",
         ],
       });
 
       map.addLayer({
-        id: "th_diem_du_lichnk",
+        id: "font_th_diem_dlnk",
         type: "symbol",
-        source: "th_diem_du_lich",
+        source: "font_th_diem_dl",
         layout: {
           "icon-image": "nuocnong",
           "icon-size": 0.25,
@@ -342,19 +342,19 @@ const TongHopDiemDiLich = () => {
           "text-halo-color": "#fff",
           "text-halo-width": 2,
         },
-        filter: ["==", ["get", "kieutndl"], "nguồn nước khoáng nóng (nk)"],
+        filter: ["==", ["get", "kieu_tndl"], "Nk"],
       });
 
       map.on(
         "click",
         [
-          `th_diem_du_lichkp`,
-          "th_diem_du_lichls",
-          "th_diem_du_lichtn",
-          "th_diem_du_lichdg",
-          "th_diem_du_lichcq",
-          "th_diem_du_lichkt",
-          "th_diem_du_lichnk",
+          `font_th_diem_dlkp`,
+          "font_th_diem_dlls",
+          "font_th_diem_dltn",
+          "font_th_diem_dldg",
+          "font_th_diem_dlcq",
+          "font_th_diem_dlkt",
+          "font_th_diem_dlnk",
         ],
         (e) => {
           const coordinates = e.features[0].geometry.coordinates.slice();
@@ -410,14 +410,14 @@ const TongHopDiemDiLich = () => {
       map.on(
         "mouseenter",
         [
-          `th_diem_du_lichkp`,
-          "th_diem_du_lichls",
-          "th_diem_du_lichtn",
-          "th_diem_du_lichdg",
-          "th_diem_du_lichcq",
-          "th_diem_du_lichkt",
-          "th_diem_du_lichnk",
-          "th_diem_du_lichk",
+          `font_th_diem_dlkp`,
+          "font_th_diem_dlls",
+          "font_th_diem_dltn",
+          "font_th_diem_dldg",
+          "font_th_diem_dlcq",
+          "font_th_diem_dlkt",
+          "font_th_diem_dlnk",
+          "font_th_diem_dlk",
         ],
         () => {
           map.getCanvas().style.cursor = "pointer";
@@ -427,14 +427,14 @@ const TongHopDiemDiLich = () => {
       map.on(
         "mouseleave",
         [
-          `th_diem_du_lichkp`,
-          "th_diem_du_lichls",
-          "th_diem_du_lichtn",
-          "th_diem_du_lichdg",
-          "th_diem_du_lichcq",
-          "th_diem_du_lichkt",
-          "th_diem_du_lichnk",
-          "th_diem_du_lichk",
+          `font_th_diem_dlkp`,
+          "font_th_diem_dlls",
+          "font_th_diem_dltn",
+          "font_th_diem_dldg",
+          "font_th_diem_dlcq",
+          "font_th_diem_dlkt",
+          "font_th_diem_dlnk",
+          "font_th_diem_dlk",
         ],
         () => {
           map.getCanvas().style.cursor = "";
@@ -659,9 +659,9 @@ const TongHopDiemDiLich = () => {
           >
             <input
               type="checkbox"
-              name={`th_diem_du_lichkp`}
-              id={`th_diem_du_lichkp`}
-              value={`th_diem_du_lichkp`}
+              name={`font_th_diem_dlkp`}
+              id={`font_th_diem_dlkp`}
+              value={`font_th_diem_dlkp`}
               style={{
                 marginRight: 8,
               }}
@@ -678,7 +678,7 @@ const TongHopDiemDiLich = () => {
               alt=""
             />
             <label
-              htmlFor={`th_diem_du_lichkp`}
+              htmlFor={`font_th_diem_dlkp`}
               style={{
                 margin: 0,
               }}
@@ -692,9 +692,9 @@ const TongHopDiemDiLich = () => {
           >
             <input
               type="checkbox"
-              name={`th_diem_du_lichls`}
-              id={`th_diem_du_lichls`}
-              value={`th_diem_du_lichls`}
+              name={`font_th_diem_dlls`}
+              id={`font_th_diem_dlls`}
+              value={`font_th_diem_dlls`}
               style={{
                 marginRight: 8,
               }}
@@ -711,7 +711,7 @@ const TongHopDiemDiLich = () => {
               alt=""
             />
             <label
-              htmlFor={`th_diem_du_lichls`}
+              htmlFor={`font_th_diem_dlls`}
               style={{
                 margin: 0,
               }}
@@ -725,9 +725,9 @@ const TongHopDiemDiLich = () => {
           >
             <input
               type="checkbox"
-              name={`th_diem_du_lichtn`}
-              id={`th_diem_du_lichtn`}
-              value={`th_diem_du_lichtn`}
+              name={`font_th_diem_dltn`}
+              id={`font_th_diem_dltn`}
+              value={`font_th_diem_dltn`}
               style={{
                 marginRight: 8,
               }}
@@ -744,7 +744,7 @@ const TongHopDiemDiLich = () => {
               alt=""
             />
             <label
-              htmlFor={`th_diem_du_lichtn`}
+              htmlFor={`font_th_diem_dltn`}
               style={{
                 margin: 0,
               }}
@@ -758,9 +758,9 @@ const TongHopDiemDiLich = () => {
           >
             <input
               type="checkbox"
-              name={`th_diem_du_lichdg`}
-              id={`th_diem_du_lichdg`}
-              value={`th_diem_du_lichdg`}
+              name={`font_th_diem_dldg`}
+              id={`font_th_diem_dldg`}
+              value={`font_th_diem_dldg`}
               style={{
                 marginRight: 8,
               }}
@@ -777,7 +777,7 @@ const TongHopDiemDiLich = () => {
               alt=""
             />
             <label
-              htmlFor={`th_diem_du_lichdg`}
+              htmlFor={`font_th_diem_dldg`}
               style={{
                 margin: 0,
               }}
@@ -791,9 +791,9 @@ const TongHopDiemDiLich = () => {
           >
             <input
               type="checkbox"
-              name={`th_diem_du_lichcq`}
-              id={`th_diem_du_lichcq`}
-              value={`th_diem_du_lichcq`}
+              name={`font_th_diem_dlcq`}
+              id={`font_th_diem_dlcq`}
+              value={`font_th_diem_dlcq`}
               style={{
                 marginRight: 8,
               }}
@@ -810,7 +810,7 @@ const TongHopDiemDiLich = () => {
               alt=""
             />
             <label
-              htmlFor={`th_diem_du_lichcq`}
+              htmlFor={`font_th_diem_dlcq`}
               style={{
                 margin: 0,
               }}
@@ -824,9 +824,9 @@ const TongHopDiemDiLich = () => {
           >
             <input
               type="checkbox"
-              name={`th_diem_du_lichkt`}
-              id={`th_diem_du_lichkt`}
-              value={`th_diem_du_lichkt`}
+              name={`font_th_diem_dlkt`}
+              id={`font_th_diem_dlkt`}
+              value={`font_th_diem_dlkt`}
               style={{
                 marginRight: 8,
               }}
@@ -843,7 +843,7 @@ const TongHopDiemDiLich = () => {
               alt=""
             />
             <label
-              htmlFor={`th_diem_du_lichkt`}
+              htmlFor={`font_th_diem_dlkt`}
               style={{
                 margin: 0,
               }}
@@ -857,9 +857,9 @@ const TongHopDiemDiLich = () => {
           >
             <input
               type="checkbox"
-              name={`th_diem_du_lichnk`}
-              id={`th_diem_du_lichnk`}
-              value={`th_diem_du_lichnk`}
+              name={`font_th_diem_dlnk`}
+              id={`font_th_diem_dlnk`}
+              value={`font_th_diem_dlnk`}
               style={{
                 marginRight: 8,
               }}
@@ -876,7 +876,7 @@ const TongHopDiemDiLich = () => {
               alt=""
             />
             <label
-              htmlFor={`th_diem_du_lichnk`}
+              htmlFor={`font_th_diem_dlnk`}
               style={{
                 margin: 0,
               }}
