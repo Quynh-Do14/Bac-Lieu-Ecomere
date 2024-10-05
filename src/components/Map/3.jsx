@@ -94,7 +94,7 @@ const BanDo3 = () => {
     setDsLichTrinh(resgetGeoJsonLichTrinh.features);
     // document.getElementById("map").scrollIntoView()
     const resgetGeoJson = await api.getGeoJson(
-      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=diem_dl_3`
+      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tndl_c3_font`
     );
     setDsDiaDiemGeoJson(resgetGeoJson);
     let map = new mapboxgl.Map({
@@ -186,15 +186,15 @@ const BanDo3 = () => {
         },
       });
 
-      map.addSource("Cum_TNDL_tinh_BacLieu_3_polyline", {
+      map.addSource("cum_c3", {
         type: "geojson",
-        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=Cum_TNDL_tinh_BacLieu_3_polyline`,
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=cum_c3`,
       });
 
       map.addLayer({
-        id: "Cum_TNDL_tinh_BacLieu_3_polyline",
+        id: "cum_c3",
         type: "line",
-        source: "Cum_TNDL_tinh_BacLieu_3_polyline",
+        source: "cum_c3",
         layout: {},
         paint: {
           "line-color": "#ff6f1e",
@@ -202,15 +202,15 @@ const BanDo3 = () => {
         },
       });
 
-      map.addSource("tuyen_dl_3", {
+      map.addSource("tuyen_dl_c3_font", {
         type: "geojson",
-        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tuyen_dl_3`,
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tuyen_dl_c3_font`,
       });
 
       map.addLayer({
-        id: "tuyen_dl_3",
+        id: "tuyen_dl_c3_font",
         type: "line",
-        source: "tuyen_dl_3",
+        source: "tuyen_dl_c3_font",
         layout: {},
         paint: {
           "line-color": "#546e7a",
@@ -218,14 +218,14 @@ const BanDo3 = () => {
         },
       });
 
-      map.addSource("tuyen_du_lich3_region", {
+      map.addSource("tuyen_dl_arrow3", {
         type: "geojson",
-        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tuyen_du_lich3_region`,
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tuyen_dl_arrow3`,
       });
       map.addLayer({
-        id: "tuyen_du_lich3_region",
+        id: "tuyen_dl_arrow3",
         type: "fill",
-        source: "tuyen_du_lich3_region",
+        source: "tuyen_dl_arrow3",
         layout: {},
         paint: {
           "fill-color": "#546e7a",
@@ -287,15 +287,15 @@ const BanDo3 = () => {
         }
       );
 
-      map.addSource("diem_dl_3", {
+      map.addSource("tndl_c3_font", {
         type: "geojson",
-        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=diem_dl_3`,
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tndl_c3_font`,
       });
 
       map.addLayer({
-        id: "diem_dl_3ls",
+        id: "tndl_c3_fontls",
         type: "symbol",
-        source: "diem_dl_3",
+        source: "tndl_c3_font",
         layout: {
           "icon-image": "lichsuvanhoa",
           "icon-size": 0.25,
@@ -317,9 +317,9 @@ const BanDo3 = () => {
       });
 
       map.addLayer({
-        id: "diem_dl_3dg",
+        id: "tndl_c3_fontdg",
         type: "symbol",
-        source: "diem_dl_3",
+        source: "tndl_c3_font",
         layout: {
           "icon-image": "diengio",
           "icon-size": 0.25,
@@ -337,9 +337,9 @@ const BanDo3 = () => {
       });
 
       map.addLayer({
-        id: "diem_dl_3cq",
+        id: "tndl_c3_fontcq",
         type: "symbol",
-        source: "diem_dl_3",
+        source: "tndl_c3_font",
         layout: {
           "icon-image": "canhquan",
           "icon-size": 0.25,
@@ -361,9 +361,9 @@ const BanDo3 = () => {
       });
 
       map.addLayer({
-        id: "diem_dl_3kp",
+        id: "tndl_c3_fontkp",
         type: "symbol",
-        source: "diem_dl_3",
+        source: "tndl_c3_font",
         layout: {
           "icon-image": "dongmuoi",
           "icon-size": 0.25,
@@ -381,9 +381,9 @@ const BanDo3 = () => {
       });
 
       map.addLayer({
-        id: "diem_dl_3tn",
+        id: "tndl_c3_fonttn",
         type: "symbol",
-        source: "diem_dl_3",
+        source: "tndl_c3_font",
         layout: {
           "icon-image": "baotonthien",
           "icon-size": 0.25,
@@ -403,15 +403,15 @@ const BanDo3 = () => {
       map.on(
         "click",
         [
-          "diem_dl_3ls",
-          "diem_dl_3dg",
-          "diem_dl_3cq",
-          'diem_dl_3kp',
-          'diem_dl_3tn',
-          "tuyen_dl_3",
+          "tndl_c3_fontls",
+          "tndl_c3_fontdg",
+          "tndl_c3_fontcq",
+          'tndl_c3_fontkp',
+          'tndl_c3_fonttn',
+          "tuyen_dl_c3_font",
         ],
         (e) => {
-          if (e.features[0].source == "tuyen_dl_3") {
+          if (e.features[0].source == "tuyen_dl_c3_font") {
             const coordinates = [e.lngLat.lng, e.lngLat.lat];
             const html = `
         <div style="
@@ -508,12 +508,12 @@ const BanDo3 = () => {
       map.on(
         "mouseenter",
         [
-          "diem_dl_3ls",
-          "diem_dl_3dg",
-          "diem_dl_3cq",
-          'diem_dl_3kp',
-          'diem_dl_3tn',
-          'tuyen_dl_3'
+          "tndl_c3_fontls",
+          "tndl_c3_fontdg",
+          "tndl_c3_fontcq",
+          'tndl_c3_fontkp',
+          'tndl_c3_fonttn',
+          'tuyen_dl_c3_font'
         ],
         () => {
           map.getCanvas().style.cursor = "pointer";
@@ -523,12 +523,12 @@ const BanDo3 = () => {
       map.on(
         "mouseleave",
         [
-          "diem_dl_3ls",
-          "diem_dl_3dg",
-          "diem_dl_3cq",
-          'diem_dl_3kp',
-          'diem_dl_3tn',
-          'tuyen_dl_3'
+          "tndl_c3_fontls",
+          "tndl_c3_fontdg",
+          "tndl_c3_fontcq",
+          'tndl_c3_fontkp',
+          'tndl_c3_fonttn',
+          'tuyen_dl_c3_font'
         ],
         () => {
           map.getCanvas().style.cursor = "";
@@ -705,9 +705,9 @@ const BanDo3 = () => {
           >
             <input
               type="checkbox"
-              name={`cum_tndl_tinh_baclieu_3_polyline`}
-              id={`cum_tndl_tinh_baclieu_3_polyline`}
-              value={`cum_tndl_tinh_baclieu_3_polyline`}
+              name={`cum_c3`}
+              id={`cum_c3`}
+              value={`cum_c3`}
               style={{
                 marginRight: 8,
               }}
@@ -723,7 +723,7 @@ const BanDo3 = () => {
               }}
             ></div>
             <label
-              htmlFor={`cum_tndl_tinh_baclieu_3_polyline`}
+              htmlFor={`cum_c3`}
               style={{
                 margin: 0,
               }}
@@ -737,9 +737,9 @@ const BanDo3 = () => {
           >
             <input
               type="checkbox"
-              name={`tuyen_dl_3`}
-              id={`tuyen_dl_3`}
-              value={`tuyen_dl_3`}
+              name={`tuyen_dl_c3_font`}
+              id={`tuyen_dl_c3_font`}
+              value={`tuyen_dl_c3_font`}
               style={{
                 marginRight: 8,
               }}
@@ -756,7 +756,7 @@ const BanDo3 = () => {
               }}
             ></div>
             <label
-              htmlFor={`tuyen_dl_3`}
+              htmlFor={`tuyen_dl_c3_font`}
               style={{
                 margin: 0,
               }}
@@ -770,9 +770,9 @@ const BanDo3 = () => {
           >
             <input
               type="checkbox"
-              name={`diem_dl_3kp`}
-              id={`diem_dl_3kp`}
-              value={`diem_dl_3kp`}
+              name={`tndl_c3_fontkp`}
+              id={`tndl_c3_fontkp`}
+              value={`tndl_c3_fontkp`}
               style={{
                 marginRight: 8,
               }}
@@ -789,7 +789,7 @@ const BanDo3 = () => {
               alt=""
             />
             <label
-              htmlFor={`diem_dl_3kp`}
+              htmlFor={`tndl_c3_fontkp`}
               style={{
                 margin: 0,
               }}
@@ -803,9 +803,9 @@ const BanDo3 = () => {
           >
             <input
               type="checkbox"
-              name={`diem_dl_3ls`}
-              id={`diem_dl_3ls`}
-              value={`diem_dl_3ls`}
+              name={`tndl_c3_fontls`}
+              id={`tndl_c3_fontls`}
+              value={`tndl_c3_fontls`}
               style={{
                 marginRight: 8,
               }}
@@ -822,7 +822,7 @@ const BanDo3 = () => {
               alt=""
             />
             <label
-              htmlFor={`diem_dl_3ls`}
+              htmlFor={`tndl_c3_fontls`}
               style={{
                 margin: 0,
               }}
@@ -836,9 +836,9 @@ const BanDo3 = () => {
           >
             <input
               type="checkbox"
-              name={`diem_dl_3tn`}
-              id={`diem_dl_3tn`}
-              value={`diem_dl_3tn`}
+              name={`tndl_c3_fonttn`}
+              id={`tndl_c3_fonttn`}
+              value={`tndl_c3_fonttn`}
               style={{
                 marginRight: 8,
               }}
@@ -855,7 +855,7 @@ const BanDo3 = () => {
               alt=""
             />
             <label
-              htmlFor={`diem_dl_3tn`}
+              htmlFor={`tndl_c3_fonttn`}
               style={{
                 margin: 0,
               }}
@@ -869,9 +869,9 @@ const BanDo3 = () => {
           >
             <input
               type="checkbox"
-              name={`diem_dl_3dg`}
-              id={`diem_dl_3dg`}
-              value={`diem_dl_3dg`}
+              name={`tndl_c3_fontdg`}
+              id={`tndl_c3_fontdg`}
+              value={`tndl_c3_fontdg`}
               style={{
                 marginRight: 8,
               }}
@@ -888,7 +888,7 @@ const BanDo3 = () => {
               alt=""
             />
             <label
-              htmlFor={`diem_dl_3dg`}
+              htmlFor={`tndl_c3_fontdg`}
               style={{
                 margin: 0,
               }}
@@ -902,9 +902,9 @@ const BanDo3 = () => {
           >
             <input
               type="checkbox"
-              name={`diem_dl_3cq`}
-              id={`diem_dl_3cq`}
-              value={`diem_dl_3cq`}
+              name={`tndl_c3_fontcq`}
+              id={`tndl_c3_fontcq`}
+              value={`tndl_c3_fontcq`}
               style={{
                 marginRight: 8,
               }}
@@ -921,7 +921,7 @@ const BanDo3 = () => {
               alt=""
             />
             <label
-              htmlFor={`diem_dl_3cq`}
+              htmlFor={`tndl_c3_fontcq`}
               style={{
                 margin: 0,
               }}

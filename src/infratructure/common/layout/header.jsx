@@ -113,14 +113,14 @@ const HeaderPage = () => {
           </span>
         </div>
 
-        <div
+        {/* <div
           class="header_sidemenu pointer bg-white p-2"
           style={{ borderBottom: "1px solid #999" }}
         >
           <span className="auth-title">
             <a href={`/map`}>Bản đồ du lịch tỉnh Bạc Liêu </a>
           </span>
-        </div>
+        </div> */}
       </>
     );
   };

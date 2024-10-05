@@ -90,12 +90,12 @@ const BanDo4 = () => {
 
   const fecthData = async () => {
     const resgetGeoJsonLichTrinh = await api.getGeoJson(
-      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tuyen_dl_1`
+      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tuyen_dl_c4_font`
     );
     setDsLichTrinh(resgetGeoJsonLichTrinh.features);
     // document.getElementById("map").scrollIntoView()
     const resgetGeoJson = await api.getGeoJson(
-      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=diem_dl_4`
+      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tndl_c4_font`
     );
     setDsDiaDiemGeoJson(resgetGeoJson);
     let map = new mapboxgl.Map({
@@ -187,15 +187,15 @@ const BanDo4 = () => {
         },
       });
 
-      map.addSource("Cum_TNDL_tinh_BacLieu_4_polyline", {
+      map.addSource("cum_c4", {
         type: "geojson",
-        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=Cum_TNDL_tinh_BacLieu_4_polyline`,
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=cum_c4`,
       });
 
       map.addLayer({
-        id: "Cum_TNDL_tinh_BacLieu_4_polyline",
+        id: "cum_c4",
         type: "line",
-        source: "Cum_TNDL_tinh_BacLieu_4_polyline",
+        source: "cum_c4",
         layout: {},
         paint: {
           "line-color": "#ff6f1e",
@@ -203,15 +203,15 @@ const BanDo4 = () => {
         },
       });
 
-      map.addSource("tuyen_dl_4", {
+      map.addSource("tuyen_dl_c4_font", {
         type: "geojson",
-        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tuyen_dl_4`,
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tuyen_dl_c4_font`,
       });
 
       map.addLayer({
-        id: "tuyen_dl_4",
+        id: "tuyen_dl_c4_font",
         type: "line",
-        source: "tuyen_dl_4",
+        source: "tuyen_dl_c4_font",
         layout: {},
         paint: {
           "line-color": "#546e7a",
@@ -289,15 +289,15 @@ const BanDo4 = () => {
         }
       );
 
-      map.addSource("diem_dl_4", {
+      map.addSource("tndl_c4_font", {
         type: "geojson",
-        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=diem_dl_4`,
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tndl_c4_font`,
       });
 
       map.addLayer({
-        id: "diem_dl_4kp",
+        id: "tndl_c4_fontkp",
         type: "symbol",
-        source: "diem_dl_4",
+        source: "tndl_c4_font",
         layout: {
           "icon-image": "dongmuoi",
           "icon-size": 0.25,
@@ -315,9 +315,9 @@ const BanDo4 = () => {
       });
 
       map.addLayer({
-        id: "diem_dl_4ls",
+        id: "tndl_c4_fontls",
         type: "symbol",
-        source: "diem_dl_4",
+        source: "tndl_c4_font",
         layout: {
           "icon-image": "lichsuvanhoa",
           "icon-size": 0.25,
@@ -339,9 +339,9 @@ const BanDo4 = () => {
       });
 
       map.addLayer({
-        id: "diem_dl_4dg",
+        id: "tndl_c4_fontdg",
         type: "symbol",
-        source: "diem_dl_4",
+        source: "tndl_c4_font",
         layout: {
           "icon-image": "diengio",
           "icon-size": 0.25,
@@ -359,9 +359,9 @@ const BanDo4 = () => {
       });
 
       map.addLayer({
-        id: "diem_dl_4cq",
+        id: "tndl_c4_fontcq",
         type: "symbol",
-        source: "diem_dl_4",
+        source: "tndl_c4_font",
         layout: {
           "icon-image": "canhquan",
           "icon-size": 0.25,
@@ -383,9 +383,9 @@ const BanDo4 = () => {
       });
 
       map.addLayer({
-        id: "diem_dl_4kt",
+        id: "tndl_c4_fontkt",
         type: "symbol",
-        source: "diem_dl_4",
+        source: "tndl_c4_font",
         layout: {
           "icon-image": "kientruc",
           "icon-size": 0.25,
@@ -409,18 +409,18 @@ const BanDo4 = () => {
       map.on(
         "click",
         [
-          `diem_dl_4kp`,
-          "diem_dl_4ls",
-          "diem_dl_4tn",
-          "diem_dl_4dg",
-          "diem_dl_4cq",
-          "diem_dl_4kt",
-          "diem_dl_4nk",
-          "tuyen_dl_4",
+          `tndl_c4_fontkp`,
+          "tndl_c4_fontls",
+          "tndl_c4_fonttn",
+          "tndl_c4_fontdg",
+          "tndl_c4_fontcq",
+          "tndl_c4_fontkt",
+          "tndl_c4_fontnk",
+          "tuyen_dl_c4_font",
         ],
         (e) => {
           console.log(e);
-          if (e.features[0].source == "tuyen_dl_4") {
+          if (e.features[0].source == "tuyen_dl_c4_font") {
             const coordinates = [e.lngLat.lng, e.lngLat.lat];
             const html = `
         <div style="
@@ -517,15 +517,15 @@ const BanDo4 = () => {
       map.on(
         "mouseenter",
         [
-          `diem_dl_4kp`,
-          "diem_dl_4ls",
-          "diem_dl_4tn",
-          "diem_dl_4dg",
-          "diem_dl_4cq",
-          "diem_dl_4kt",
-          "diem_dl_4nk",
-          "diem_dl_4k",
-          'tuyen_dl_4'
+          `tndl_c4_fontkp`,
+          "tndl_c4_fontls",
+          "tndl_c4_fonttn",
+          "tndl_c4_fontdg",
+          "tndl_c4_fontcq",
+          "tndl_c4_fontkt",
+          "tndl_c4_fontnk",
+          "tndl_c4_fontk",
+          'tuyen_dl_c4_font'
         ],
         () => {
           map.getCanvas().style.cursor = "pointer";
@@ -535,15 +535,15 @@ const BanDo4 = () => {
       map.on(
         "mouseleave",
         [
-          `diem_dl_4kp`,
-          "diem_dl_4ls",
-          "diem_dl_4tn",
-          "diem_dl_4dg",
-          "diem_dl_4cq",
-          "diem_dl_4kt",
-          "diem_dl_4nk",
-          "diem_dl_4k",
-          'tuyen_dl_4'
+          `tndl_c4_fontkp`,
+          "tndl_c4_fontls",
+          "tndl_c4_fonttn",
+          "tndl_c4_fontdg",
+          "tndl_c4_fontcq",
+          "tndl_c4_fontkt",
+          "tndl_c4_fontnk",
+          "tndl_c4_fontk",
+          'tuyen_dl_c4_font'
         ],
         () => {
           map.getCanvas().style.cursor = "";
@@ -722,9 +722,9 @@ const BanDo4 = () => {
           >
             <input
               type="checkbox"
-              name={`Cum_TNDL_tinh_BacLieu_4_polyline`}
-              id={`Cum_TNDL_tinh_BacLieu_4_polyline`}
-              value={`Cum_TNDL_tinh_BacLieu_4_polyline`}
+              name={`cum_c4`}
+              id={`cum_c4`}
+              value={`cum_c4`}
               style={{
                 marginRight: 8,
               }}
@@ -740,7 +740,7 @@ const BanDo4 = () => {
               }}
             ></div>
             <label
-              htmlFor={`Cum_TNDL_tinh_BacLieu_4_polyline`}
+              htmlFor={`cum_c4`}
               style={{
                 margin: 0,
               }}
@@ -754,9 +754,9 @@ const BanDo4 = () => {
           >
             <input
               type="checkbox"
-              name={`tuyen_dl_4`}
-              id={`tuyen_dl_4`}
-              value={`tuyen_dl_4`}
+              name={`tuyen_dl_c4_font`}
+              id={`tuyen_dl_c4_font`}
+              value={`tuyen_dl_c4_font`}
               style={{
                 marginRight: 8,
               }}
@@ -773,7 +773,7 @@ const BanDo4 = () => {
               }}
             ></div>
             <label
-              htmlFor={`tuyen_dl_4`}
+              htmlFor={`tuyen_dl_c4_font`}
               style={{
                 margin: 0,
               }}
@@ -787,9 +787,9 @@ const BanDo4 = () => {
           >
             <input
               type="checkbox"
-              name={`diem_dl_4kp`}
-              id={`diem_dl_4kp`}
-              value={`diem_dl_4kp`}
+              name={`tndl_c4_fontkp`}
+              id={`tndl_c4_fontkp`}
+              value={`tndl_c4_fontkp`}
               style={{
                 marginRight: 8,
               }}
@@ -806,7 +806,7 @@ const BanDo4 = () => {
               alt=""
             />
             <label
-              htmlFor={`diem_dl_4kp`}
+              htmlFor={`tndl_c4_fontkp`}
               style={{
                 margin: 0,
               }}
@@ -820,9 +820,9 @@ const BanDo4 = () => {
           >
             <input
               type="checkbox"
-              name={`diem_dl_4ls`}
-              id={`diem_dl_4ls`}
-              value={`diem_dl_4ls`}
+              name={`tndl_c4_fontls`}
+              id={`tndl_c4_fontls`}
+              value={`tndl_c4_fontls`}
               style={{
                 marginRight: 8,
               }}
@@ -839,7 +839,7 @@ const BanDo4 = () => {
               alt=""
             />
             <label
-              htmlFor={`diem_dl_4ls`}
+              htmlFor={`tndl_c4_fontls`}
               style={{
                 margin: 0,
               }}
@@ -854,9 +854,9 @@ const BanDo4 = () => {
           >
             <input
               type="checkbox"
-              name={`diem_dl_4dg`}
-              id={`diem_dl_4dg`}
-              value={`diem_dl_4dg`}
+              name={`tndl_c4_fontdg`}
+              id={`tndl_c4_fontdg`}
+              value={`tndl_c4_fontdg`}
               style={{
                 marginRight: 8,
               }}
@@ -873,7 +873,7 @@ const BanDo4 = () => {
               alt=""
             />
             <label
-              htmlFor={`diem_dl_4dg`}
+              htmlFor={`tndl_c4_fontdg`}
               style={{
                 margin: 0,
               }}
@@ -887,9 +887,9 @@ const BanDo4 = () => {
           >
             <input
               type="checkbox"
-              name={`diem_dl_4cq`}
-              id={`diem_dl_4cq`}
-              value={`diem_dl_4cq`}
+              name={`tndl_c4_fontcq`}
+              id={`tndl_c4_fontcq`}
+              value={`tndl_c4_fontcq`}
               style={{
                 marginRight: 8,
               }}
@@ -906,7 +906,7 @@ const BanDo4 = () => {
               alt=""
             />
             <label
-              htmlFor={`diem_dl_4cq`}
+              htmlFor={`tndl_c4_fontcq`}
               style={{
                 margin: 0,
               }}
@@ -920,9 +920,9 @@ const BanDo4 = () => {
           >
             <input
               type="checkbox"
-              name={`diem_dl_4kt`}
-              id={`diem_dl_4kt`}
-              value={`diem_dl_4kt`}
+              name={`tndl_c4_fontkt`}
+              id={`tndl_c4_fontkt`}
+              value={`tndl_c4_fontkt`}
               style={{
                 marginRight: 8,
               }}
@@ -939,7 +939,7 @@ const BanDo4 = () => {
               alt=""
             />
             <label
-              htmlFor={`diem_dl_4kt`}
+              htmlFor={`tndl_c4_fontkt`}
               style={{
                 margin: 0,
               }}

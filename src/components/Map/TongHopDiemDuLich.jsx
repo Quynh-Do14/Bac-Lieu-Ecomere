@@ -116,15 +116,15 @@ const TongHopDiemDiLich = () => {
         },
       });
 
-      map.addSource("Cum_TNDL_tinh_BacLieu_polyline", {
+      map.addSource("cum_tndl_th", {
         type: "geojson",
-        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=Cum_TNDL_tinh_BacLieu_polyline`,
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=cum_tndl_th`,
       });
 
       map.addLayer({
-        id: "Cum_TNDL_tinh_BacLieu_polyline",
+        id: "cum_tndl_th",
         type: "line",
-        source: "Cum_TNDL_tinh_BacLieu_polyline",
+        source: "cum_tndl_th",
         layout: {},
         paint: {
           "line-color": "#1b84ff",
@@ -627,9 +627,9 @@ const TongHopDiemDiLich = () => {
           >
             <input
               type="checkbox"
-              name={`Cum_TNDL_tinh_BacLieu_polyline`}
-              id={`Cum_TNDL_tinh_BacLieu_polyline`}
-              value={`Cum_TNDL_tinh_BacLieu_polyline`}
+              name={`cum_tndl_th`}
+              id={`cum_tndl_th`}
+              value={`cum_tndl_th`}
               style={{
                 marginRight: 8,
               }}
@@ -645,7 +645,7 @@ const TongHopDiemDiLich = () => {
               }}
             ></div>
             <label
-              htmlFor={`Cum_TNDL_tinh_BacLieu_polyline`}
+              htmlFor={`cum_tndl_th`}
               style={{
                 margin: 0,
               }}

@@ -89,12 +89,12 @@ const BanDo2 = () => {
 
   const fecthData = async () => {
     const resgetGeoJsonLichTrinh = await api.getGeoJson(
-      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tuyen_dl_1`
+      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tuyen_dl_2`
     );
     setDsLichTrinh(resgetGeoJsonLichTrinh.features);
     // document.getElementById("map").scrollIntoView()
     const resgetGeoJson = await api.getGeoJson(
-      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=diem_dl_2`
+      `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tndl_c2_font`
     );
     setDsDiaDiemGeoJson(resgetGeoJson);
     let map = new mapboxgl.Map({
@@ -186,15 +186,15 @@ const BanDo2 = () => {
         },
       });
 
-      map.addSource("Cum_TNDL_tinh_BacLieu_2_polyline", {
+      map.addSource("cum_c2", {
         type: "geojson",
-        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=Cum_TNDL_tinh_BacLieu_2_polyline`,
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=cum_c2`,
       });
 
       map.addLayer({
-        id: "Cum_TNDL_tinh_BacLieu_2_polyline",
+        id: "cum_c2",
         type: "line",
-        source: "Cum_TNDL_tinh_BacLieu_2_polyline",
+        source: "cum_c2",
         layout: {},
         paint: {
           "line-color": "#ff6f1e",
@@ -288,15 +288,15 @@ const BanDo2 = () => {
         }
       );
 
-      map.addSource("diem_dl_2", {
+      map.addSource("tndl_c2_font", {
         type: "geojson",
-        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=diem_dl_2`,
+        data: `http://103.130.212.145:42319/api/diadiem/dataGeoJson/dataGeoJson/dataGeoJson?tenbang=tndl_c2_font`,
       });
 
       map.addLayer({
-        id: "diem_dl_2ls",
+        id: "tndl_c2_fontls",
         type: "symbol",
-        source: "diem_dl_2",
+        source: "tndl_c2_font",
         layout: {
           "icon-image": "lichsuvanhoa",
           "icon-size": 0.25,
@@ -318,9 +318,9 @@ const BanDo2 = () => {
       });
 
       map.addLayer({
-        id: "diem_dl_2dg",
+        id: "tndl_c2_fontdg",
         type: "symbol",
-        source: "diem_dl_2",
+        source: "tndl_c2_font",
         layout: {
           "icon-image": "diengio",
           "icon-size": 0.25,
@@ -338,9 +338,9 @@ const BanDo2 = () => {
       });
 
       map.addLayer({
-        id: "diem_dl_2cq",
+        id: "tndl_c2_fontcq",
         type: "symbol",
-        source: "diem_dl_2",
+        source: "tndl_c2_font",
         layout: {
           "icon-image": "canhquan",
           "icon-size": 0.25,
@@ -364,9 +364,9 @@ const BanDo2 = () => {
       map.on(
         "click",
         [
-          "diem_dl_2ls",
-          "diem_dl_2dg",
-          "diem_dl_2cq",
+          "tndl_c2_fontls",
+          "tndl_c2_fontdg",
+          "tndl_c2_fontcq",
           "tuyen_dl_2",
         ],
         (e) => {
@@ -467,9 +467,9 @@ const BanDo2 = () => {
       map.on(
         "mouseenter",
         [
-          "diem_dl_2ls",
-          "diem_dl_2dg",
-          "diem_dl_2cq",
+          "tndl_c2_fontls",
+          "tndl_c2_fontdg",
+          "tndl_c2_fontcq",
           'tuyen_dl_2'
         ],
         () => {
@@ -480,9 +480,9 @@ const BanDo2 = () => {
       map.on(
         "mouseleave",
         [
-          "diem_dl_2ls",
-          "diem_dl_2dg",
-          "diem_dl_2cq",
+          "tndl_c2_fontls",
+          "tndl_c2_fontdg",
+          "tndl_c2_fontcq",
           'tuyen_dl_2'
         ],
         () => {
@@ -662,9 +662,9 @@ const BanDo2 = () => {
           >
             <input
               type="checkbox"
-              name={`cum_tndl_tinh_baclieu_2_polyline`}
-              id={`cum_tndl_tinh_baclieu_2_polyline`}
-              value={`cum_tndl_tinh_baclieu_2_polyline`}
+              name={`cum_c2`}
+              id={`cum_c2`}
+              value={`cum_c2`}
               style={{
                 marginRight: 8,
               }}
@@ -680,7 +680,7 @@ const BanDo2 = () => {
               }}
             ></div>
             <label
-              htmlFor={`cum_tndl_tinh_baclieu_2_polyline`}
+              htmlFor={`cum_c2`}
               style={{
                 margin: 0,
               }}
@@ -727,9 +727,9 @@ const BanDo2 = () => {
           >
             <input
               type="checkbox"
-              name={`diem_dl_2ls`}
-              id={`diem_dl_2ls`}
-              value={`diem_dl_2ls`}
+              name={`tndl_c2_fontls`}
+              id={`tndl_c2_fontls`}
+              value={`tndl_c2_fontls`}
               style={{
                 marginRight: 8,
               }}
@@ -746,7 +746,7 @@ const BanDo2 = () => {
               alt=""
             />
             <label
-              htmlFor={`diem_dl_2ls`}
+              htmlFor={`tndl_c2_fontls`}
               style={{
                 margin: 0,
               }}
@@ -760,9 +760,9 @@ const BanDo2 = () => {
           >
             <input
               type="checkbox"
-              name={`diem_dl_2dg`}
-              id={`diem_dl_2dg`}
-              value={`diem_dl_2dg`}
+              name={`tndl_c2_fontdg`}
+              id={`tndl_c2_fontdg`}
+              value={`tndl_c2_fontdg`}
               style={{
                 marginRight: 8,
               }}
@@ -779,7 +779,7 @@ const BanDo2 = () => {
               alt=""
             />
             <label
-              htmlFor={`diem_dl_2dg`}
+              htmlFor={`tndl_c2_fontdg`}
               style={{
                 margin: 0,
               }}
@@ -793,9 +793,9 @@ const BanDo2 = () => {
           >
             <input
               type="checkbox"
-              name={`diem_dl_2cq`}
-              id={`diem_dl_2cq`}
-              value={`diem_dl_2cq`}
+              name={`tndl_c2_fontcq`}
+              id={`tndl_c2_fontcq`}
+              value={`tndl_c2_fontcq`}
               style={{
                 marginRight: 8,
               }}
@@ -812,7 +812,7 @@ const BanDo2 = () => {
               alt=""
             />
             <label
-              htmlFor={`diem_dl_2cq`}
+              htmlFor={`tndl_c2_fontcq`}
               style={{
                 margin: 0,
               }}
